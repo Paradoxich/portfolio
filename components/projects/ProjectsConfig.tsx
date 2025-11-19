@@ -9,7 +9,6 @@ export type ProjectConfig = {
   key: string;
   label?: string;
   title: string;
-  summary: string;
   href?: string;
 
   // hero vizual – opcionalno za SVE projekte
@@ -29,8 +28,6 @@ export const projectsConfig: ProjectConfig[] = [
   //   key: "portfolio",
   //   label: "Portfolio",
   //   title: "This very portfolio – from structure to tiny peppers.",
-  //   summary:
-  //     "Designing the layout, visual language, and small interactive moments that reflect how I actually work.",
   //   href: "/projects/portfolio",
   //   hero: {
   //     type: "image",
@@ -45,8 +42,6 @@ export const projectsConfig: ProjectConfig[] = [
     label: "Neptune",
     title:
       "Brand and web design for an AI platform engineer handling infra end-to-end.",
-    summary:
-      "Dev console and marketing site that make complex infra feel calm, legible, and scalable.",
     href: "/projects/neptune",
 
     Page: ProjectPageNeptune,
@@ -58,8 +53,6 @@ export const projectsConfig: ProjectConfig[] = [
     label: "Shuttle",
     title:
       "Dev console redesign with a system that supports clarity, ease, and scale.",
-    summary:
-      "Tidy navigation, consistent UI patterns, and flows that work for real-world workloads.",
     href: "/projects/shuttle",
     // zasad samo Page + placeholder hero (bez pravog URL-a)
     Page: ProjectPageShuttle,
@@ -74,8 +67,6 @@ export const projectsConfig: ProjectConfig[] = [
     key: "mixlodge-brand",
     label: "MixLodge",
     title: "Brand & MVP for a studio booking platform.",
-    summary:
-      "Simple flows for musicians, robust controls for studios – inside a calm dark UI.",
     href: "/projects/mixlodge",
     Page: ProjectPageMixlodge,
   },
@@ -84,7 +75,6 @@ export const projectsConfig: ProjectConfig[] = [
     key: "portfolio",
     label: "Portfolio",
     title: "Figma to Prod: How I built this",
-    summary: "How I built this site.",
     href: "/contact",
     Page: ProjectPagePortfolio,
   },

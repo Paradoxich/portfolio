@@ -71,7 +71,6 @@ export default function ProjectsPage() {
                   key={p.key}
                   label={p.label}
                   title={p.title}
-                  summary={p.summary}
                   href={p.href}
                   onClick={() => openProject(index)}
                 />

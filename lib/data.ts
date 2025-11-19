@@ -26,19 +26,16 @@ export const projects = [
   {
     title: "Neptune",
     year: "2025",
-    summary: "Brand & web for an AI platform",
     href: "#",
   },
   {
     title: "Shuttle",
     year: "2025",
-    summary: "Console redesign for clarity & scale",
     href: "#",
   },
   {
     title: "MixLodge",
     year: "2025",
-    summary: "MVP for a studio booking product",
     href: "#",
   },
 ];
