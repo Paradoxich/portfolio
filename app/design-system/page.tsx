@@ -12,7 +12,6 @@ import {
   colorTokens,
   radiusTokens,
   layoutGridTokens,
-  layoutColumnTokens,
   layoutContainerTokens,
   // utilities
   typeUtilities,
@@ -546,37 +545,43 @@ function SectionHeader({
   );
 }
 
-function Th({
-  children,
-  align,
-}: {
+/* ================================
+ * Table cells
+ * ============================== */
+
+type ThProps = {
   children: ReactNode;
   align?: "left" | "right";
-}) {
+  className?: string;
+};
+
+function Th({ children, align, className }: ThProps) {
+  const base =
+    "type-body-xs text-color-text-secondary py-2 pr-4";
+  const alignClass = align === "right" ? "text-right" : "text-left";
+  const extra = className ?? "";
+
   return (
-    <th
-      className={`type-body-xs text-color-text-secondary py-2 pr-4 ${
-        align === "right" ? "text-right" : "text-left"
-      }`}
-    >
+    <th className={`${base} ${alignClass} ${extra}`.trim()}>
       {children}
     </th>
   );
 }
 
-function Td({
-  children,
-  align,
-}: {
+type TdProps = {
   children: ReactNode;
   align?: "left" | "right";
-}) {
+  className?: string;
+};
+
+function Td({ children, align, className }: TdProps) {
+  const base =
+    "type-body-xs text-color-text-secondary py-3 pr-4 align-top";
+  const alignClass = align === "right" ? "text-right" : "text-left";
+  const extra = className ?? "";
+
   return (
-    <td
-      className={`type-body-xs text-color-text-secondary py-3 pr-4 ${
-        align === "right" ? "text-right" : "text-left"
-      }`}
-    >
+    <td className={`${base} ${alignClass} ${extra}`.trim()}>
       {children}
     </td>
   );
