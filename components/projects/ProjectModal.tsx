@@ -94,65 +94,6 @@ export function ProjectModal({ isOpen, project, onClose }: ProjectModalProps) {
 
   return (
     <>
-      {/* SVG FILTER DEFINITION */}
-      <svg width="0" height="0" style={{ position: "absolute" }}>
-        <defs>
-          <filter
-            id="filter0_n_210_779"
-            x="-50"
-            y="-50"
-            width="1612"
-            height="4810"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="5 5"
-              stitchTiles="stitch"
-              numOctaves={3}
-              result="noise"
-              seed={9956}
-            />
-            <feColorMatrix
-              in="noise"
-              type="luminanceToAlpha"
-              result="alphaNoise"
-            />
-            <feComponentTransfer in="alphaNoise" result="coloredNoise1">
-              <feFuncA
-                type="discrete"
-                tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"
-              />
-            </feComponentTransfer>
-            <feComposite
-              operator="in"
-              in2="shape"
-              in="coloredNoise1"
-              result="noise1Clipped"
-            />
-            <feFlood floodColor="#020202" result="color1Flood" />
-            <feComposite
-              operator="in"
-              in2="noise1Clipped"
-              in="color1Flood"
-              result="color1"
-            />
-            <feMerge result="effect1_noise_210_779">
-              <feMergeNode in="shape" />
-              <feMergeNode in="color1" />
-            </feMerge>
-          </filter>
-        </defs>
-      </svg>
-
       {/* OVERLAY */}
       <div
         className="
@@ -165,19 +106,6 @@ export function ProjectModal({ isOpen, project, onClose }: ProjectModalProps) {
   "
         onClick={onClose}
       >
-        {/* NOISE layer */}
-        <svg
-          className="
-      pointer-events-none
-      absolute inset-0
-      w-full h-full
-      opacity-40
-      mix-blend-soft-light
-    "
-          style={{ filter: "url(#filter0_n_210_779)" }}
-        >
-          <rect width="100%" height="100%" fill="#020202" />
-        </svg>
         {/* MODAL CARD */}
         <motion.div
           onClick={(e) => e.stopPropagation()}
