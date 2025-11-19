@@ -1,0 +1,280 @@
+// components/projects/ProjectPageShuttle.tsx
+"use client";
+
+import * as React from "react";
+
+export function ProjectPageShuttle() {
+  return (
+    // ⬅️ full-width, bez max-w na articleu
+    <article className="w-full space-y-14">
+      {/* 0. PAGE TITLE BLOK */}
+      <section className="space-y-4">
+        <div className="max-w-[640px] mx-auto space-y-4">
+          <h1 className="text-[32px] leading-tight tracking-tight font-medium text-color-text-primary">
+            Shuttle: Dev console redesign{" "}
+            <span className="text-color-text-secondary font-normal">
+              with a system that supports real-world workloads.
+            </span>
+          </h1>
+
+          <div className="flex items-center gap-4">
+            <p className="type-body-sm text-color-text-secondary">2025</p>
+
+            <a
+              href="https://www.shuttle.dev"
+              target="_blank"
+              rel="noreferrer"
+              className="pill-filled h-8"
+            >
+              shuttle.dev
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 1. CONTEXT */}
+      <section className="space-y-3">
+        <div className="max-w-[640px] mx-auto space-y-3">
+          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+            Context
+          </h3>
+          <p className="type-body">
+            Shuttle is a deployment platform where your infra lives in code, but
+            the console is where you actually see what&apos;s running. Over
+            time, the old console became a bit of a Frankenstein — features
+            bolted on, states handled ad-hoc, and a UI that didn&apos;t really
+            match how production-ready the platform actually was.
+          </p>
+          <p className="type-body">
+            By the time we started this redesign, we had more users, more
+            features, and a console that was… let&apos;s say very creative with
+            borders, radii and text colors. Design work meant constantly asking:
+            “Which of these 62 slightly different styles is the least wrong?”
+          </p>
+        </div>
+      </section>
+
+      {/* 2. BEFORE / AFTER – HERO VISUAL PLACEHOLDER */}
+      <section className="space-y-3 pt-4 pb-4">
+        {/* FULL-WIDTH unutar modala */}
+        <div
+          className="
+            w-full
+            h-[420px]
+            rounded-surface
+            border border-color-border-secondary
+            bg-color-bg-muted
+            flex items-center justify-center
+          "
+        >
+          <span className="type-body-xs text-color-text-secondary">
+            Before / after console screens placeholder
+          </span>
+        </div>
+
+        <div className="max-w-[640px] mx-auto">
+          <p className="type-body-sm">
+            Before / after: The old console technically did the job, but
+            didn&apos;t scale.
+          </p>
+        </div>
+      </section>
+
+      {/* 3. WHAT WASN'T WORKING */}
+      <section className="space-y-3">
+        <div className="max-w-[640px] mx-auto space-y-3">
+          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+            What wasn&apos;t working
+          </h3>
+          <p className="type-body">
+            From user feedback, support threads and internal dogfooding, a few
+            themes kept repeating:
+          </p>
+          <ul className="list-disc pl-5 space-y-1 type-body">
+            <li>
+              Important features (resources, domains, secrets) were hard to
+              find.
+            </li>
+            <li>
+              Workflows felt different from page to page — a sign of features
+              being added without a stable design system underneath.
+            </li>
+            <li>
+              For teams running many projects, the console didn&apos;t really
+              scale. It was easy to get lost in deployments and states.
+            </li>
+            <li>
+              Visually, the UI didn&apos;t match the maturity of the platform
+              itself — it looked more “early beta” than “production ready”.
+            </li>
+          </ul>
+          <p className="type-body">
+            On the design side, there was another quiet villain: visual debt. No
+            single catastrophic decision — just years of small, slightly
+            different choices. Every time you touched a screen, you had to
+            decide which button, which border, which gray, which radius you were
+            going to pretend was “the real one”.
+          </p>
+        </div>
+      </section>
+
+      {/* 4. PRODUCT MOVES */}
+      <section className="space-y-3">
+        <div className="max-w-[640px] mx-auto space-y-3">
+          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+            Product moves
+          </h3>
+          <p className="type-body">
+            The redesign wasn&apos;t just about fresh paint — it was about
+            making key workflows obvious and predictable:
+          </p>
+          <ul className="list-disc pl-5 space-y-1 type-body">
+            <li>
+              <strong>Project overview</strong> became the home base:
+              deployments, resources, domains and quick actions all live in one
+              place.
+            </li>
+            <li>
+              <strong>Deployments</strong> now highlight the important bits:
+              commit message / ID, environment, status, plus full-screen logs
+              when you need to go deep.
+            </li>
+            <li>
+              <strong>Domains</strong> walk you through setup with copy-paste
+              CNAMEs and clear validation states — no guessing whether things
+              are “still propagating or just broken”.
+            </li>
+            <li>
+              <strong>Secrets & resources</strong> got their own dedicated,
+              consistent flows, instead of being tucked into whatever page had
+              room.
+            </li>
+            <li>
+              <strong>Compute size</strong> surfaces the right config as
+              pre-filled snippets. You still change things in code — the console
+              just points you to a good starting point.
+            </li>
+          </ul>
+          <p className="type-body">
+            The console stays opinionated: it shows you what&apos;s running and
+            helps you do the right thing, without trying to be an IDE in the
+            browser.
+          </p>
+        </div>
+      </section>
+
+      {/* 5. DESIGN SYSTEM WORK */}
+      <section className="space-y-3">
+        <div className="max-w-[640px] mx-auto space-y-3">
+          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+            Taming the UI (a.k.a. 62 borders later)
+          </h3>
+          <p className="type-body">
+            The first step wasn&apos;t drawing screens — it was deciding what
+            should even exist in the UI toolkit. We aligned on a small set of
+            primitives and forced everything through that lens:
+          </p>
+        </div>
+
+        {/* FULL-WIDTH MEDIA */}
+        <section className="pt-4 pb-4">
+          <div
+            className="
+            w-full
+            h-[420px]
+            rounded-surface
+            border border-color-border-secondary
+            bg-color-bg-muted
+            flex items-center justify-center
+          "
+          >
+            <span className="type-body-xs text-color-text-secondary">
+              Design system / components overview placeholder
+            </span>
+          </div>
+        </section>
+        <div className="max-w-[640px] mx-auto space-y-3">
+          <ul className="list-disc pl-5 space-y-1 type-body">
+            <li>
+              A tighter <strong>token set</strong> for colors, radii, spacing
+              and typography. Enough to express hierarchy, not enough to
+              improvise a new card style every Tuesday.
+            </li>
+            <li>
+              A single <strong>card language</strong> for panels, tables and
+              detail views, so new features “snap into” the existing layout
+              instead of inventing their own.
+            </li>
+            <li>
+              <strong>Navigation and page headers</strong> that follow the same
+              pattern across the console — you always know where you are and
+              what you can do from there.
+            </li>
+          </ul>
+
+          <p className="type-body">
+            The result: less time deciding which gray to use, more time actually
+            designing workflows.
+          </p>
+        </div>
+      </section>
+
+      {/* 6. VIDEO WALKTHROUGH */}
+      <section className="space-y-3">
+        {/* FULL-WIDTH MEDIA */}
+        <div
+          className="
+            w-full
+            aspect-[16/9]
+            overflow-hidden
+            rounded-surface
+            border border-color-border-secondary
+            bg-color-bg-muted
+          "
+        >
+          <video
+            controls
+            className="w-full h-full object-cover"
+            poster="/projects/shuttle-console-poster.png"
+          >
+            <source
+              src="https://www.shuttle.dev/images/blog/new-console/new-console-main.mp4"
+              type="video/mp4"
+            />
+            Your browser doesn&apos;t support the video tag.
+          </video>
+        </div>
+
+        <div className="max-w-[640px] mx-auto">
+          <p className="type-body-xs text-color-text-secondary">
+            See it in motion: Perfect for getting a feel for the flows in under
+            a minute.
+          </p>
+        </div>
+      </section>
+
+      {/* 7. OUTCOME */}
+      <section className="space-y-3">
+        <div className="max-w-[640px] mx-auto space-y-3">
+          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+            What it unlocked
+          </h3>
+          <p className="type-body">
+            For smaller teams, the console now feels calmer and more direct.
+            You&apos;re never more than a click away from the things you
+            actually care about: deployments, logs, domains and resources.
+          </p>
+          <p className="type-body">
+            For heavier users, it&apos;s finally something that scales: clearer
+            structure, predictable patterns, and a design language that can keep
+            up with the platform instead of fighting it.
+          </p>
+          <p className="type-body">
+            And for the team, it&apos;s a UI foundation that&apos;s a lot less
+            “which border is this” and a lot more “cool, we can ship this”.
+          </p>
+        </div>
+      </section>
+    </article>
+  );
+}

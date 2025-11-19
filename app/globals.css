@@ -1,0 +1,373 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================
+   DESIGN TOKENS (jedini izvor istine)
+   ========================================= */
+
+:root {
+  /* Color scale – neutral ramp */
+  --color-0: #100f0c;
+  --color-10: #191813;
+  --color-20: #23221b;
+  --color-30: #23251e;
+  --color-40: #2e3027;
+  --color-60: #555a4b;
+  --color-80: #c5bfab;
+  --color-90: #f3f0e9;
+  --color-100: #ffffff;
+
+  /* Usage aliases */
+  --color-bg: var(--color-0); /* page background / outline card bg */
+  --color-bg-surface: var(--color-20); /* filled card bg */
+  --color-bg-muted: var(--color-10); /* muted card bg */
+  --color-border: var(--color-30); /* main border */
+  --color-border-secondary: var(--color-40); /* secondary border */
+  --color-text-primary: var(--color-90);
+  --color-text-secondary: var(--color-80);
+
+  /* Type scale */
+  --font-size-xxxs: 12px;
+  --font-size-xxs: 13px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-md: 24px;
+  --font-size-lg: 32px;
+  --font-size-xl: 48px;
+
+  /* Layout */
+  --layout-container: 1400px; /* 1512 - 80 - 80 */
+  --layout-gutter: 20px;
+
+  /* Radius scale */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Spacing scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 20px;
+  --space-xl: 24px; /* card padding */
+  --space-2xl: 32px;
+  --space-3xl: 40px;
+
+  /* Line-height scale */
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.4;
+  --line-height-relaxed: 1.5;
+  --line-height-loose: 1.7;
+
+  /* Tracking scale */
+  --tracking-tight: -0.03em;
+  --tracking-normal: 0em;
+  --tracking-expanded: 0.02em;
+
+  /* Font weight scale */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+}
+
+/* =========================================
+   BASE
+   ========================================= */
+
+@layer base {
+  html {
+    @apply bg-color-bg text-color-text-primary antialiased;
+
+    font-family: var(--font-geist), system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+
+    /* GLOBAL GEIST OPENTYPE FEATURES */
+    font-feature-settings: "ss02" 1, "ss03" 1;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  /* Layout container – koristiš className="layout-container" */
+  .layout-container {
+    max-width: var(--layout-container);
+    margin-inline: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* =========================================
+   TYPE STYLES (utility / “type-*”)
+   ========================================= */
+
+@layer components {
+  /* Heading 1 — 48 / tight / tracking-tight / medium */
+  .type-h1 {
+    @apply text-[48px] leading-tight tracking-tight font-medium text-color-text-primary;
+  }
+
+  /* Heading 2 — 40 / 1.1 / tracking-tight / medium */
+  .type-h2 {
+    @apply text-[40px] leading-[1.1] tracking-tight font-medium text-color-text-primary;
+  }
+
+  /* Body — 16 / loose / normal / regular */
+  .type-body {
+    @apply text-[16px] leading-loose tracking-normal font-normal text-color-text-secondary;
+  }
+
+  /* Small body — 14 / snug / tight / regular */
+  .type-body-sm {
+    @apply text-[14px] leading-snug tracking-tight font-normal text-color-text-secondary;
+  }
+
+  /* XS body — 12 / loose / normal / medium */
+  .type-body-xs {
+    @apply text-[12px] leading-loose tracking-normal font-medium text-color-text-secondary;
+  }
+
+  /* CTA — 13 / relaxed / expanded / medium */
+  .type-cta {
+    @apply text-[13px] leading-relaxed tracking-expanded font-medium text-color-text-primary;
+  }
+
+  /* Label — 12 / relaxed / expanded / medium */
+  .type-label {
+    @apply text-[12px] leading-none tracking-expanded font-medium uppercase text-color-text-secondary;
+  }
+}
+
+/* =========================================
+   SURFACES (card utilities)
+   ========================================= */
+
+@layer components {
+  /* Primary outline card – glavna kartica u layoutu */
+  .card {
+    @apply bg-color-bg border border-color-border;
+    border-radius: var(--radius-lg); /* radius scale token */
+    padding: var(--space-xl); /* spacing scale token: 24px */
+  }
+
+  /* CTA / filled surface */
+  .card-cta {
+    @apply bg-color-bg-surface border border-color-border-secondary;
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+  }
+
+  /* Muted card surface */
+  .card-muted {
+    @apply bg-color-bg-muted border border-color-border;
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+  }
+
+  .nav-pill {
+    @apply bg-color-bg-muted border border-color-border rounded-full;
+    padding: var(--space-sm) var(--space-xl); /* 8px top/bottom — 24px left/right */
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xl); /* 32px spacing between links */
+  }
+
+  .nav-link {
+    @apply type-cta text-color-text-secondary;
+  }
+
+  .nav-link-active {
+    @apply type-cta text-color-text-primary;
+  }
+}
+
+/* =========================================
+   CTAs 
+   ========================================= */
+@layer components {
+  /* TEXT CTA */
+  .btn-cta {
+    @apply type-cta leading-[20px] text-color-text-secondary pr-10 inline-flex items-center;
+  }
+
+  /* ICON CIRCLE BUTTON (32×32) */
+  .btn-cta-icon {
+    @apply absolute right-0 top-1/2 -translate-y-1/2 
+           w-8 h-8 grid place-items-center 
+           rounded-[20px] border border-color-border bg-color-bg 
+           transition-colors;
+  }
+
+  /* HOVER EFFECT — unified */
+  .btn-cta:hover {
+    @apply text-color-text-primary;
+  }
+  .btn-cta:hover + .btn-cta-icon {
+    @apply border-color-text-primary text-color-text-primary;
+  }
+}
+
+@layer components {
+  /* INPUT CTA — “Tell me about your project…” */
+  .btn-input {
+    @apply inline-flex w-full items-center
+           rounded-full border border-color-border-secondary
+           bg-color-bg
+           h-12 pl-3 pr-12 text-left;
+  }
+
+  .btn-input-text {
+    @apply type-body-sm text-color-60;
+  }
+
+  /* Circle icon inside input */
+  .btn-input-icon {
+    @apply w-8 h-8 grid place-items-center 
+           rounded-[20px] border border-color-border-secondary
+           bg-color-bg-surface
+           absolute right-2 top-1/2 -translate-y-1/2;
+  }
+}
+
+@layer components {
+  /* ===== I DESIGN — patterned surface ===== */
+  .card-i-design {
+    @apply relative overflow-hidden;
+  }
+
+  /* Pattern background */
+  .card-i-design::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-bg); /* isti kao ostatak stranice */
+    background-image: url("data:image/svg+xml,%3Csvg width='42' height='20' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23191813' fill-opacity='1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Left→right fade into bg */
+  .card-i-design::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      var(--color-bg) 0%,
+      rgba(16, 15, 12, 0) 55%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Content above pattern */
+  .card-i-design > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Pills (filled, bez bordera) */
+  .pill-filled {
+    @apply inline-flex items-center justify-center
+           rounded-full bg-color-bg-surface
+           px-6 py-2
+           type-body-sm text-color-text-primary;
+  }
+}
+
+/* ========== CHAT BUBBLE POP-IN (iMessage style) ========== */
+@keyframes bubbleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-bubble {
+  animation: bubbleIn 0.32s ease-out;
+}
+
+/* ========== TYPING DOTS (3 bouncing dots) ========== */
+@keyframes typingDot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background-color: var(--color-40); /* blago svjetlija nijansa teksta */
+  animation: typingDot 1s ease-in-out infinite;
+}
+
+.typing-dot-delay-1 {
+  animation-delay: 0.18s;
+}
+
+.typing-dot-delay-2 {
+  animation-delay: 0.36s;
+}
+
+/* ========== CASE STUDIES ARTICLE IMGS ========== */
+@layer components {
+  .project-media-full {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@layer components {
+  /* ===== MODAL OVERLAY S NOISE-OM ===== */
+  .overlay-noise {
+    /* isto kao Figma: fill + blur */
+    background-color: rgba(16, 15, 12, 0.3);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(25px);
+
+    /* subtle noise preko cijelog ekrana */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: auto;
+  }
+}
+
+@layer components {
+  .experience-fade {
+    @apply pointer-events-none absolute inset-x-0 bottom-0 h-12;
+    background: linear-gradient(
+      to bottom,
+      rgba(16, 15, 12, 0),
+      var(--color-bg)
+    );
+  }
+
+  .testimonials-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: linear-gradient(90deg, rgba(16, 15, 12, 0) 39.69%, #100f0c 100%),
+      linear-gradient(270deg, rgba(16, 15, 12, 0) 43.41%, #100f0c 100%);
+  }
+}
