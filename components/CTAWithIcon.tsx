@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface CTAWithIconProps {
   label: string;
   href?: string;
@@ -9,13 +11,35 @@ export default function CTAWithIcon({
   href,
   onClick,
 }: CTAWithIconProps) {
-  const Wrapper = href ? "a" : "button";
+  const isInternalLink = typeof href === "string" && href.startsWith("/");
+
+  const Primary = (() => {
+    if (isInternalLink && href) {
+      return (
+        <Link href={href} onClick={onClick} className="btn-cta">
+          {label}
+        </Link>
+      );
+    }
+
+    if (href) {
+      return (
+        <a href={href} onClick={onClick} className="btn-cta">
+          {label}
+        </a>
+      );
+    }
+
+    return (
+      <button onClick={onClick} className="btn-cta">
+        {label}
+      </button>
+    );
+  })();
 
   return (
     <div className="relative inline-flex items-center">
-      <Wrapper href={href} onClick={onClick} className="btn-cta">
-        {label}
-      </Wrapper>
+      {Primary}
 
       <button aria-hidden="true" className="btn-cta-icon">
         <svg

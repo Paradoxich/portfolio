@@ -1,5 +1,6 @@
 // app/layout.tsx
 import "./globals.css";
+import Link from "next/link";
 import { GeistSans } from "geist/font/sans";
 
 export const metadata = {
@@ -17,22 +18,30 @@ export default function RootLayout({
     <html lang="en" className={GeistSans.className}>
       <body>
         <nav className="layout-container py-5 flex items-center justify-between">
-          <a href="/" className="text-color-text-secondary">
+          <Link href="/" className="text-color-text-secondary">
             Hi, I’m Ana
-          </a>
+          </Link>
 
           <div className="nav-pill">
-            <a href="/" className="nav-link-active">
+            <Link href="/" className="nav-link-active">
               About
-            </a>
+            </Link>
 
-            <a href="/projects" className="nav-link">
-              Projects
-            </a>
+            <Link href="/projects" className="nav-link">
+              Work
+            </Link>
 
-            <a href="/#contact" className="nav-link">
+             <Link href="/#illustration" className="nav-link">
+              Illustrations
+            </Link>
+
+            <Link href="/#experiments" className="nav-link">
+              Experiments
+            </Link>
+
+            <Link href="/#contact" className="nav-link">
               Contact
-            </a>
+            </Link>
           </div>
         </nav>
 
