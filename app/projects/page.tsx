@@ -8,29 +8,30 @@ import { ProjectModal } from "../../components/projects/ProjectModal";
 
 export default function ProjectsPage() {
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  const projectCount = projectsConfig.length;
 
   const isModalOpen = activeIndex !== null;
   const activeProject =
     activeIndex !== null ? projectsConfig[activeIndex] : null;
 
-  const openProject = (index: number) => setActiveIndex(index);
-  const closeModal = () => setActiveIndex(null);
+  const openProject = React.useCallback((index: number) => {
+    setActiveIndex(index);
+  }, []);
+  const closeModal = React.useCallback(() => {
+    setActiveIndex(null);
+  }, []);
 
-  const showPrev = () => {
-    if (activeIndex === null) return;
+  const showPrev = React.useCallback(() => {
     setActiveIndex((prev) =>
-      prev === null
-        ? prev
-        : (prev - 1 + projectsConfig.length) % projectsConfig.length
+      prev === null ? prev : (prev - 1 + projectCount) % projectCount
     );
-  };
+  }, [projectCount]);
 
-  const showNext = () => {
-    if (activeIndex === null) return;
+  const showNext = React.useCallback(() => {
     setActiveIndex((prev) =>
-      prev === null ? prev : (prev + 1) % projectsConfig.length
+      prev === null ? prev : (prev + 1) % projectCount
     );
-  };
+  }, [projectCount]);
 
   // keyboard shortcuts
   React.useEffect(() => {
@@ -44,7 +45,7 @@ export default function ProjectsPage() {
 
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [isModalOpen, activeIndex]); // simple deps, ne diramo callbacks
+  }, [isModalOpen, closeModal, showNext, showPrev]); // simple deps, ne diramo callbacks
 
   return (
     <>

@@ -2,6 +2,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { ProjectConfig } from "./ProjectsConfig";
 
@@ -12,21 +13,20 @@ type ProjectModalProps = {
 };
 
 export function ProjectModal({ isOpen, project, onClose }: ProjectModalProps) {
-  if (!isOpen || !project) return null;
+  // flag za fade na vrhu
+  const [hasScrolled, setHasScrolled] = React.useState(false);
+  // flag za "card se digne od dna"
+  const [atEnd, setAtEnd] = React.useState(false);
 
   // scroll lock
   React.useEffect(() => {
+    if (!isOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = prev;
     };
-  }, []);
-
-  // flag za fade na vrhu
-  const [hasScrolled, setHasScrolled] = React.useState(false);
-  // flag za "card se digne od dna"
-  const [atEnd, setAtEnd] = React.useState(false);
+  }, [isOpen]);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
@@ -42,15 +42,20 @@ export function ProjectModal({ isOpen, project, onClose }: ProjectModalProps) {
     }
   };
 
+  if (!isOpen || !project) return null;
+
   // HERO
   const renderHero = () => {
     if (project.hero?.type === "image") {
       return (
         <div className="w-full mb-[var(--space-2xl)]">
-          <img
+          <Image
             src={project.hero.src}
             alt={project.hero.alt ?? ""}
+            width={1600}
+            height={900}
             className="w-full h-auto rounded-[var(--radius-md)] border border-color-border-secondary"
+            sizes="(max-width: 1024px) 100vw, 960px"
           />
         </div>
       );
