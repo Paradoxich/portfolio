@@ -219,7 +219,7 @@ export function ProjectPagePortfolio() {
           <p className="type-body">
             And maybe that’s the real win: I didn’t just build a site. I built a
             space that finally feels like my work — the real version, not the
-            polished summary.
+            polished wrap-up.
           </p>
           <p className="type-body">
             A weird, technical, experimental, slightly over-engineered version.

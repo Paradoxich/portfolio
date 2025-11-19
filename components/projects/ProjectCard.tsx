@@ -8,7 +8,6 @@ import CTAWithIcon from "../CTAWithIcon";
 type ProjectCardProps = {
   label?: string; // npr. "Neptune"
   title: string; // kratki opis
-  summary: string; // jedna rečenica ispod
   href?: string;
   onClick?: () => void;
 };
@@ -16,7 +15,6 @@ type ProjectCardProps = {
 export function ProjectCard({
   label,
   title,
-  summary,
   href = "#",
   onClick,
 }: ProjectCardProps) {
@@ -36,9 +34,6 @@ export function ProjectCard({
           <div className="type-body-strong">{label}</div>
         )}
         <p className="type-body-sm">{title}</p>
-        {summary && (
-          <p className="type-body-xs">{summary}</p>
-        )}
       </header>
 
       {/* Preview area – placeholder za kasnije slike/frames */}
