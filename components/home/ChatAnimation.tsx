@@ -61,7 +61,7 @@ export default function ChatAnimation({ messages }: ChatAnimationProps) {
     setVisibleMessages(0);
     setDotsVisible(true);
 
-    let timers: number[] = [];
+    const timers: number[] = [];
     let time = 0;
 
     MESSAGES.forEach((msg, index) => {

@@ -36,6 +36,9 @@ export function ProjectCard({
           <div className="type-body text-[var(--color-90)]">{label}</div>
         )}
         <p className="type-body-sm text-[var(--color-80)]">{title}</p>
+        {summary && (
+          <p className="type-body-xs text-[var(--color-70)]">{summary}</p>
+        )}
       </header>
 
       {/* Preview area – placeholder za kasnije slike/frames */}
