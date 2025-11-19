@@ -104,15 +104,15 @@ export default function ChatAnimation({ messages }: ChatAnimationProps) {
         {MESSAGES.slice(0, visibleMessages).map((msg, index) => (
           <div
             key={index}
-            className="inline-flex max-w-full rounded-[12px] bg-color-bg px-3 py-2 animate-bubble"
+            className="inline-flex max-w-full rounded-surface bg-color-bg px-3 py-2 animate-bubble"
           >
-            <p className="type-body-sm text-color-text-secondary">{msg}</p>
+            <p className="type-body-sm">{msg}</p>
           </div>
         ))}
 
         {/* Typing dots – uvijek lijevo, bez teksta */}
         {dotsVisible && (
-          <div className="inline-flex items-center gap-1 rounded-[12px] bg-color-bg px-3 py-2 animate-bubble">
+          <div className="inline-flex items-center gap-1 rounded-surface bg-color-bg px-3 py-2 animate-bubble">
             <span className="typing-dot" />
             <span className="typing-dot typing-dot-delay-1" />
             <span className="typing-dot typing-dot-delay-2" />

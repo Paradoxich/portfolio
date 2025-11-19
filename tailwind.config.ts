@@ -60,6 +60,8 @@ const config: Config = {
       },
 
       lineHeight: {
+        none: "var(--line-height-none)",
+        compact: "var(--line-height-compact)",
         tight: "var(--line-height-tight)",
         snug: "var(--line-height-snug)",
         relaxed: "var(--line-height-relaxed)",

@@ -6,24 +6,24 @@ import * as React from "react";
 export function ProjectPagePortfolio() {
   return (
     // full-width, text centered in 640px column
-    <article className="w-full space-y-14">
+    <article className="w-full stack-5xl">
       {/* 0. PAGE TITLE BLOCK */}
-      <section className="space-y-4">
-        <div className="max-w-[640px] mx-auto space-y-4">
-          <h1 className="text-[32px] leading-tight tracking-tight font-medium text-color-text-primary">
+      <section className="stack-lg">
+        <div className="text-column stack-lg">
+          <h1 className="type-h3">
             Portfolio Rebuild — Designing, Coding, and Chaos-Optimizing My Own
             Site
           </h1>
 
           <div className="flex items-center gap-4">
-            <p className="type-body-sm text-color-text-secondary">2025</p>
+            <p className="type-body-sm">2025</p>
           </div>
         </div>
       </section>
 
       {/* 1. INTRO */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
+      <section className="stack-md">
+        <div className="text-column stack-md">
           <p className="type-body">
             This portfolio started with a simple decision that immediately made
             my life harder: I wanted to design and build the entire thing
@@ -50,9 +50,9 @@ export function ProjectPagePortfolio() {
       </section>
 
       {/* 2. THE BEGINNING */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             The Beginning — designing the structure before the visuals
           </h3>
           <p className="type-body">
@@ -73,9 +73,9 @@ export function ProjectPagePortfolio() {
       </section>
 
       {/* 3. DESIGN SYSTEM */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             The Design System — small but surprisingly serious
           </h3>
           <p className="type-body">
@@ -100,9 +100,9 @@ export function ProjectPagePortfolio() {
       </section>
 
       {/* 4. BUILDING WITH AI */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Building with AI — the weirdly productive partnership
           </h3>
           <p className="type-body">
@@ -133,9 +133,9 @@ export function ProjectPagePortfolio() {
       </section>
 
       {/* 5. FUN CHAOS */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             The Fun Chaos — things I built just because I could
           </h3>
           <p className="type-body">
@@ -165,9 +165,9 @@ export function ProjectPagePortfolio() {
       </section>
 
       {/* 6. WRITING THE STORIES */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Writing the stories — the hidden boss battle
           </h3>
           <p className="type-body">
@@ -192,9 +192,9 @@ export function ProjectPagePortfolio() {
       </section>
 
       {/* 7. OUTCOME / PLAYGROUND */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             The Result — not a portfolio, a playground
           </h3>
           <p className="type-body">
@@ -203,7 +203,7 @@ export function ProjectPagePortfolio() {
             extend, tweak, break, and rebuild however I want.
           </p>
           <p className="type-body">It lets me:</p>
-          <ul className="list-disc pl-5 space-y-1 type-body">
+          <ul className="list-disc pl-5 stack-xs type-body">
             <li>tell stories with clarity,</li>
             <li>show process instead of just outcomes,</li>
             <li>experiment with visuals and motion,</li>

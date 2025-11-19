@@ -6,11 +6,11 @@ import * as React from "react";
 export function ProjectPageShuttle() {
   return (
     // ⬅️ full-width, bez max-w na articleu
-    <article className="w-full space-y-14">
+    <article className="w-full stack-5xl">
       {/* 0. PAGE TITLE BLOK */}
-      <section className="space-y-4">
-        <div className="max-w-[640px] mx-auto space-y-4">
-          <h1 className="text-[32px] leading-tight tracking-tight font-medium text-color-text-primary">
+      <section className="stack-lg">
+        <div className="text-column stack-lg">
+          <h1 className="type-h3">
             Shuttle: Dev console redesign{" "}
             <span className="text-color-text-secondary font-normal">
               with a system that supports real-world workloads.
@@ -18,7 +18,7 @@ export function ProjectPageShuttle() {
           </h1>
 
           <div className="flex items-center gap-4">
-            <p className="type-body-sm text-color-text-secondary">2025</p>
+            <p className="type-body-sm">2025</p>
 
             <a
               href="https://www.shuttle.dev"
@@ -33,9 +33,9 @@ export function ProjectPageShuttle() {
       </section>
 
       {/* 1. CONTEXT */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Context
           </h3>
           <p className="type-body">
@@ -55,7 +55,7 @@ export function ProjectPageShuttle() {
       </section>
 
       {/* 2. BEFORE / AFTER – HERO VISUAL PLACEHOLDER */}
-      <section className="space-y-3 pt-4 pb-4">
+      <section className="stack-md pt-4 pb-4">
         {/* FULL-WIDTH unutar modala */}
         <div
           className="
@@ -67,12 +67,12 @@ export function ProjectPageShuttle() {
             flex items-center justify-center
           "
         >
-          <span className="type-body-xs text-color-text-secondary">
+          <span className="type-body-xs">
             Before / after console screens placeholder
           </span>
         </div>
 
-        <div className="max-w-[640px] mx-auto">
+        <div className="text-column">
           <p className="type-body-sm">
             Before / after: The old console technically did the job, but
             didn&apos;t scale.
@@ -81,16 +81,16 @@ export function ProjectPageShuttle() {
       </section>
 
       {/* 3. WHAT WASN'T WORKING */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             What wasn&apos;t working
           </h3>
           <p className="type-body">
             From user feedback, support threads and internal dogfooding, a few
             themes kept repeating:
           </p>
-          <ul className="list-disc pl-5 space-y-1 type-body">
+          <ul className="list-disc pl-5 stack-xs type-body">
             <li>
               Important features (resources, domains, secrets) were hard to
               find.
@@ -119,16 +119,16 @@ export function ProjectPageShuttle() {
       </section>
 
       {/* 4. PRODUCT MOVES */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Product moves
           </h3>
           <p className="type-body">
             The redesign wasn&apos;t just about fresh paint — it was about
             making key workflows obvious and predictable:
           </p>
-          <ul className="list-disc pl-5 space-y-1 type-body">
+          <ul className="list-disc pl-5 stack-xs type-body">
             <li>
               <strong>Project overview</strong> became the home base:
               deployments, resources, domains and quick actions all live in one
@@ -164,9 +164,9 @@ export function ProjectPageShuttle() {
       </section>
 
       {/* 5. DESIGN SYSTEM WORK */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Taming the UI (a.k.a. 62 borders later)
           </h3>
           <p className="type-body">
@@ -188,13 +188,13 @@ export function ProjectPageShuttle() {
             flex items-center justify-center
           "
           >
-            <span className="type-body-xs text-color-text-secondary">
+            <span className="type-body-xs">
               Design system / components overview placeholder
             </span>
           </div>
         </section>
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <ul className="list-disc pl-5 space-y-1 type-body">
+        <div className="text-column stack-md">
+          <ul className="list-disc pl-5 stack-xs type-body">
             <li>
               A tighter <strong>token set</strong> for colors, radii, spacing
               and typography. Enough to express hierarchy, not enough to
@@ -220,7 +220,7 @@ export function ProjectPageShuttle() {
       </section>
 
       {/* 6. VIDEO WALKTHROUGH */}
-      <section className="space-y-3">
+      <section className="stack-md">
         {/* FULL-WIDTH MEDIA */}
         <div
           className="
@@ -245,8 +245,8 @@ export function ProjectPageShuttle() {
           </video>
         </div>
 
-        <div className="max-w-[640px] mx-auto">
-          <p className="type-body-xs text-color-text-secondary">
+        <div className="text-column">
+          <p className="type-body-xs">
             See it in motion: Perfect for getting a feel for the flows in under
             a minute.
           </p>
@@ -254,9 +254,9 @@ export function ProjectPageShuttle() {
       </section>
 
       {/* 7. OUTCOME */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             What it unlocked
           </h3>
           <p className="type-body">

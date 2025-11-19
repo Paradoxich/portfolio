@@ -31,18 +31,18 @@ export function ProjectCard({
       onClick={onClick}
     >
       {/* Top: label + short title */}
-      <header className="space-y-1">
+      <header className="stack-xs">
         {label && (
-          <div className="type-body text-[var(--color-90)]">{label}</div>
+          <div className="type-body-strong">{label}</div>
         )}
-        <p className="type-body-sm text-[var(--color-80)]">{title}</p>
+        <p className="type-body-sm">{title}</p>
         {summary && (
-          <p className="type-body-xs text-[var(--color-70)]">{summary}</p>
+          <p className="type-body-xs">{summary}</p>
         )}
       </header>
 
       {/* Preview area – placeholder za kasnije slike/frames */}
-      <div className="card rounded-xl h-[400px]" />
+      <div className="panel h-[400px]" />
 
       {/* Footer link */}
       <CTAWithIcon label="Check it out" href={href} />

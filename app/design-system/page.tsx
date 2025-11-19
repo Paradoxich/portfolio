@@ -19,6 +19,7 @@ import {
   spacingUtilityTokens,
   radiusUtilityTokens,
   surfaceUtilities,
+  layoutUtilities,
 } from "./tokens/index";
 
 /* ================================
@@ -42,9 +43,9 @@ export default function DesignSystemPage() {
 
   return (
     <main className="min-h-screen">
-      <div className="layout-container py-10 md:py-16 space-y-6">
+      <div className="page-shell stack-xl">
         {/* Header */}
-        <header className="space-y-3">
+        <header className="stack-md">
           <h1 className="type-h1">Design System</h1>
           <p className="type-body max-w-xl">
             A small working design system for my portfolio – starting from
@@ -98,7 +99,7 @@ function FoundationsTab() {
       {/* =========================
           TYPOGRAPHY (4 cols)
       ========================== */}
-      <section className="card space-y-6">
+      <section className="card stack-xl">
         <SectionHeader
           label="Typography"
           description="Usage-agnostic type scale"
@@ -112,7 +113,7 @@ function FoundationsTab() {
             { title: "Font weight", tokens: fontWeightTokens },
           ].map((group) => (
             <div key={group.title} className="card rounded-xl p-4">
-              <p className="type-body-sm mb-3 text-color-text-primary">
+              <p className="type-body-sm-strong mb-3">
                 {group.title}
               </p>
               <TokenTable title="" tokens={group.tokens} />
@@ -124,7 +125,7 @@ function FoundationsTab() {
       {/* =========================
           COLOR + RADIUS (2 cols)
       ========================== */}
-      <section className="card space-y-6">
+      <section className="card stack-xl">
         <SectionHeader
           label="Color & Radius"
           description="Foundational visuals"
@@ -132,8 +133,8 @@ function FoundationsTab() {
 
         <div className="grid md:grid-cols-2 gap-gutter">
           {/* COLORS */}
-          <div className="card rounded-xl p-4 space-y-4">
-            <p className="type-body-sm text-color-text-primary">Color</p>
+          <div className="panel stack-lg">
+            <p className="type-body-sm-strong">Color</p>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-left">
                 <thead>
@@ -165,8 +166,8 @@ function FoundationsTab() {
           </div>
 
           {/* RADIUS */}
-          <div className="card rounded-xl p-4 space-y-4">
-            <p className="type-body-sm text-color-text-primary">Radius</p>
+          <div className="panel stack-lg">
+            <p className="type-body-sm-strong">Radius</p>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-left">
                 <thead>
@@ -202,7 +203,7 @@ function FoundationsTab() {
       {/* =========================
           SPACING + LAYOUT (2 cols)
       ========================== */}
-      <section className="card space-y-6 mb-10">
+      <section className="card stack-xl mb-10">
         <SectionHeader
           label="Spacing & Layout"
           description="Structure + rhythm"
@@ -210,8 +211,8 @@ function FoundationsTab() {
 
         <div className="grid md:grid-cols-2 gap-gutter">
           {/* SPACING */}
-          <div className="card rounded-xl p-4 space-y-4">
-            <p className="type-body-sm text-color-text-primary">Spacing</p>
+          <div className="panel stack-lg">
+            <p className="type-body-sm-strong">Spacing</p>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-left">
                 <thead>
@@ -243,8 +244,8 @@ function FoundationsTab() {
           </div>
 
           {/* LAYOUT TOKENS */}
-          <div className="card rounded-xl p-4 space-y-4">
-            <p className="type-body-sm text-color-text-primary">Layout</p>
+          <div className="panel stack-lg">
+            <p className="type-body-sm-strong">Layout</p>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-left">
                 <thead>
@@ -281,7 +282,7 @@ function UtilitiesTab() {
   return (
     <div className="space-y-8 md:space-y-10">
       {/* Typography utilities */}
-      <section className="card space-y-4">
+      <section className="card stack-lg">
         <SectionHeader
           label="Typography · utilities"
           description="Type styles composed from foundations"
@@ -319,7 +320,7 @@ function UtilitiesTab() {
       </section>
 
       {/* Color utilities */}
-      <section className="card space-y-4">
+      <section className="card stack-lg">
         <SectionHeader
           label="Color · utilities"
           description="Usage-based aliases"
@@ -356,7 +357,7 @@ function UtilitiesTab() {
       </section>
 
       {/* Radius utilities */}
-      <section className="card space-y-4">
+      <section className="card stack-lg">
         <SectionHeader
           label="Border radius · utilities"
           description="Usage-based corner styles"
@@ -393,7 +394,7 @@ function UtilitiesTab() {
       </section>
 
       {/* Spacing utilities */}
-      <section className="card space-y-4">
+      <section className="card stack-lg">
         <SectionHeader
           label="Spacing · utilities"
           description="Functional spacing patterns"
@@ -429,8 +430,42 @@ function UtilitiesTab() {
         </div>
       </section>
 
+      {/* Layout utilities */}
+      <section className="card stack-lg">
+        <SectionHeader
+          label="Layout · utilities"
+          description="Containers, grids, and section offsets"
+        />
+
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-left">
+            <thead>
+              <tr className="border-b border-color-border">
+                <Th>Name</Th>
+                <Th>Role</Th>
+                <Th>Uses tokens</Th>
+                <Th>Description</Th>
+              </tr>
+            </thead>
+            <tbody>
+              {layoutUtilities.map((layout) => (
+                <tr
+                  key={layout.name}
+                  className="border-b border-color-border last:border-0 align-top"
+                >
+                  <Td>{layout.name}</Td>
+                  <Td>{layout.role}</Td>
+                  <Td>{layout.tokens}</Td>
+                  <Td>{layout.description}</Td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* Surface utilities */}
-      <section className="card space-y-4 mb-10">
+      <section className="card stack-lg mb-10">
         <SectionHeader
           label="Surfaces · utilities"
           description="Cards & muted surfaces"
@@ -476,9 +511,9 @@ function UtilitiesTab() {
 
 function ComponentsTab() {
   return (
-    <section className="card space-y-4">
+    <section className="card stack-lg">
       <p className="type-label">Components</p>
-      <p className="type-body-sm text-color-text-secondary max-w-lg">
+      <p className="type-body-sm max-w-lg">
         This section will eventually list higher-level components built from the
         utilities and tokens above – things like project cards, testimonial
         stack, pill carousel, and the “water the plant” interaction.
@@ -504,7 +539,7 @@ function TokenTable({
 }) {
   return (
     <div>
-      <p className="type-body-sm mb-3 text-color-text-primary">{title}</p>
+      <p className="type-body-sm-strong mb-3">{title}</p>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-left">
           <thead>

@@ -49,9 +49,9 @@ export default function ProjectsPage() {
 
   return (
     <>
-      <main className="layout-container py-10 md:py-16">
+      <main className="page-shell">
         {/* HEADER */}
-        <div className="grid grid-cols-12 gap-gutter mb-10 md:mb-14">
+        <div className="layout-grid hero-gap">
           <section className="col-span-12 md:col-span-5">
             <h1 className="type-h1 text-balance">
               A look at the work I do{" "}
@@ -63,7 +63,7 @@ export default function ProjectsPage() {
         </div>
 
         {/* PROJECT GRID */}
-        <div className="grid grid-cols-12 gap-gutter">
+        <div className="layout-grid">
           <section className="col-span-12">
             <div className="grid gap-gutter md:grid-cols-2">
               {projectsConfig.map((p, index) => (

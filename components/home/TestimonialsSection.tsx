@@ -21,8 +21,8 @@ export default function TestimonialsSection({
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   return (
-    <section className="col-span-12 mt-[120px] mb-[120px]">
-      <div className="grid gap-20 md:grid-cols-[3fr,7fr] items-stretch">
+    <section className="col-span-12 section-offset">
+      <div className="grid gap-feature md:grid-cols-[3fr,7fr] items-stretch">
         {/* LEFT: heading + people list */}
         <div className="flex flex-col justify-between gap-8">
           {/* Heading */}
@@ -34,7 +34,7 @@ export default function TestimonialsSection({
           </h2>
 
           {/* People list */}
-          <div className="space-y-3">
+          <div className="stack-md">
             {testimonials.map((t, index) => {
               const isActive = index === activeTestimonial;
 
@@ -59,14 +59,12 @@ export default function TestimonialsSection({
                   <span className="flex flex-col">
                     <span
                       className={`type-body ${
-                        isActive
-                          ? "text-color-text-primary"
-                          : "text-color-text-secondary"
+                        isActive ? "text-color-text-primary" : ""
                       }`}
                     >
                       {t.name}
                     </span>
-                    <span className="type-body-sm text-color-text-secondary">
+                    <span className="type-body-sm">
                       {t.role}
                     </span>
                   </span>

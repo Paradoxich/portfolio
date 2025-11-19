@@ -73,11 +73,15 @@ export default function LifeGallery() {
             }
             className={`
               absolute -translate-x-1/2 -translate-y-full
-              rounded-full border border-black/60 shadow
-              ${activeId === loc.id ? "bg-accent scale-110" : "bg-white/90"}
+              rounded-full border border-color-border shadow
+              ${
+                activeId === loc.id
+                  ? "bg-color-text-primary scale-110"
+                  : "bg-color-text-primary/80"
+              }
               transition-transform duration-150
               w-3 h-3
-              after:block after:w-[1px] after:h-4 after:bg-white/60 after:mx-auto
+              after:block after:w-px after:h-4 after:bg-color-text-primary/60 after:mx-auto
             `}
             style={{ left: loc.x, top: loc.y }}
           >
@@ -97,18 +101,18 @@ export default function LifeGallery() {
           >
             <div
               className="
-                card-muted rounded-xl
+                panel bg-color-bg-muted
                 w-[140px] h-[140px]
                 flex flex-col items-center justify-center
-                text-[11px] text-white/80
+                stack-xs text-center text-color-text-primary
               "
             >
               {/* za sad placeholder, kasnije može ići prava slika */}
-              <div className="mb-2 h-10 w-10 rounded-full border border-color-border bg-color-bg-muted" />
-              <span className="uppercase tracking-[0.12em] text-[10px] opacity-70">
+              <div className="mb-2 h-10 w-10 rounded-full border border-color-border bg-color-bg" />
+              <span className="type-label opacity-70">
                 {activeLocation.name}
               </span>
-              <span className="mt-1 text-center leading-snug">
+              <span className="type-body-xs text-color-text-primary">
                 {activeLocation.caption}
               </span>
             </div>

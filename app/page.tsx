@@ -47,9 +47,9 @@ const TESTIMONIALS: Testimonial[] = [
 
 export default function Page() {
   return (
-    <main className="layout-container py-10 md:py-16">
+    <main className="page-shell">
       {/* ================= HERO TITLE (4/12, not boxed) ================= */}
-      <div className="grid grid-cols-12 gap-gutter mb-10 md:mb-14">
+      <div className="layout-grid hero-gap">
         <section className="col-span-12 md:col-span-5">
           <h1 className="type-h1 text-balance">
             <span className="text-color-text-secondary font-normal">
@@ -61,14 +61,14 @@ export default function Page() {
       </div>
 
       {/* ================= BENTO GRID (12 cols, 20px gutter) ================= */}
-      <div className="grid grid-cols-12 gap-gutter">
+      <div className="layout-grid">
         {/* ---------- ROW A ---------- */}
 
         {/* LEFT: ABOUT (7/12) */}
         <section className="col-span-12 md:col-span-7">
           <div className="card h-full flex flex-col gap-4">
             {/* Illustration placeholder FIRST */}
-            <div className="rounded-[12px] border border-color-border bg-color-bg h-full w-full" />
+            <div className="rounded-surface border border-color-border bg-color-bg h-full w-full" />
 
             {/* Label */}
             <p className="type-label">About me</p>
@@ -114,13 +114,13 @@ export default function Page() {
                     className="card-cta flex flex-col justify-between  p-3"
                   >
                     {/* TAG */}
-                    <p className="type-body-xs text-color-text-secondary mb-2">
+                    <p className="type-body-xs mb-2">
                       {p.tag}
                     </p>
 
                     {/* TITLE + DESC */}
                     <div className="flex-1">
-                      <p className="type-body-sm text-color-text-primary mb-1">
+                      <p className="type-body-sm-strong mb-1">
                         {p.title}
                       </p>
                       <p className="type-body-sm">{p.desc}</p>
@@ -156,17 +156,17 @@ export default function Page() {
                       className="grid grid-cols-[1.4fr,1.4fr,1.4fr] items-baseline gap-4 py-3"
                     >
                       {/* Company */}
-                      <span className="type-body-sm text-color-text-primary">
+                      <span className="type-body-sm-strong">
                         {job.company}
                       </span>
 
                       {/* Role */}
-                      <span className="type-body-sm text-color-text-secondary">
+                      <span className="type-body-sm">
                         {job.role}
                       </span>
 
                       {/* Period */}
-                      <span className="type-body-xs text-color-text-secondary text-right">
+                      <span className="type-body-xs text-right">
                         {job.period}
                       </span>
                     </div>
@@ -186,7 +186,7 @@ export default function Page() {
         {/* ---------- ROW B (4/12 · 3/12 · 5/12) ---------- */}
 
         {/* LEFT COL 4/12: Hire → Gallery */}
-        <section className="flex flex-col col-span-12 md:col-span-4 space-y-gutter">
+        <section className="flex flex-col col-span-12 md:col-span-4 stack-gutter">
           {/* HIRE */}
           <div className="card-muted flex flex-col gap-4">
             <p className="type-label">Available for hire</p>
@@ -220,7 +220,7 @@ export default function Page() {
         </section>
 
         {/* MID COL 3/12: Pills → Water plant → Song */}
-        <section className="flex flex-col col-span-12 md:col-span-3 space-y-gutter">
+        <section className="flex flex-col col-span-12 md:col-span-3 stack-gutter">
           {/* I DESIGN */}
           <section className="card-i-design h-[112px] card">
             <div className="flex h-full items-start justify-between">
@@ -252,9 +252,9 @@ export default function Page() {
             </div>
 
             {/* DONJI TEKST BLOK */}
-            <div className="space-y-1">
+            <div className="stack-xs">
               <p className="type-label">Current hobby</p>
-              <p className="type-body-sm text-color-text-primary leading-none">
+            <p className="type-body-sm-strong leading-none">
                 Cultivating biquinho peppers.
               </p>
             </div>
@@ -264,8 +264,8 @@ export default function Page() {
           <div className="card flex flex-col">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="type-body-sm text-color-text-primary">Oboe</p>
-                <p className="type-body-xs text-color-text-secondary">
+                <p className="type-body-sm-strong">Oboe</p>
+                <p className="type-body-xs">
                   By Camel Power Club
                 </p>
               </div>
@@ -277,11 +277,11 @@ export default function Page() {
         </section>
 
         {/* RIGHT COL 5/12: Illustrations → Experiments */}
-        <section className="flex flex-col col-span-12 md:col-span-5 space-y-gutter">
+        <section className="flex flex-col col-span-12 md:col-span-5 stack-gutter">
           {/* ILLUSTRATIONS */}
           <div className="card flex flex-col gap-5">
             <p className="type-label">Illustrations</p>
-            <div className="h-[200px] rounded-[12px] border border-color-border bg-color-bg-muted" />
+            <div className="h-[200px] rounded-surface border border-color-border bg-color-bg-muted" />
             <CTAWithIcon label="See Illustrations" href="/illustrations" />
           </div>
 

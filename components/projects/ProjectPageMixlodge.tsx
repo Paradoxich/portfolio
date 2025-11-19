@@ -6,11 +6,11 @@ import * as React from "react";
 export function ProjectPageMixlodge() {
   return (
     // full-width, kao Shuttle
-    <article className="w-full space-y-14">
+    <article className="w-full stack-5xl">
       {/* 0. PAGE TITLE BLOK */}
-      <section className="space-y-4">
-        <div className="max-w-[640px] mx-auto space-y-4">
-          <h1 className="text-[32px] leading-tight tracking-tight font-medium text-color-text-primary">
+      <section className="stack-lg">
+        <div className="text-column stack-lg">
+          <h1 className="type-h3">
             MixLodge: Brand &amp; MVP for a studio booking platform{" "}
             <span className="text-color-text-secondary font-normal">
               that connects musicians, studios, and remote producers.
@@ -18,7 +18,7 @@ export function ProjectPageMixlodge() {
           </h1>
 
           <div className="flex items-center gap-4">
-            <p className="type-body-sm text-color-text-secondary">2024</p>
+            <p className="type-body-sm">2024</p>
 
             <a href="#" className="pill-filled h-8">
               Private case study
@@ -28,9 +28,9 @@ export function ProjectPageMixlodge() {
       </section>
 
       {/* 1. CONTEXT */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             The context
           </h3>
           <p className="type-body">
@@ -53,9 +53,9 @@ export function ProjectPageMixlodge() {
       </section>
 
       {/* 2. EARLY DISCOVERY */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Early discovery
           </h3>
           <p className="type-body">
@@ -69,7 +69,7 @@ export function ProjectPageMixlodge() {
             The discovery also revealed that we weren&apos;t building one
             product — we were building two:
           </p>
-          <ul className="list-disc pl-5 space-y-1 type-body">
+          <ul className="list-disc pl-5 stack-xs type-body">
             <li>A studio booking platform for musicians</li>
             <li>A remote project workspace for producers</li>
           </ul>
@@ -81,9 +81,9 @@ export function ProjectPageMixlodge() {
       </section>
 
       {/* 3. PHASED APPROACH */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Phased approach
           </h3>
           <p className="type-body">
@@ -93,7 +93,7 @@ export function ProjectPageMixlodge() {
             because there was no PM to explain or translate the designs.
           </p>
 
-          <ul className="list-disc pl-5 space-y-1 type-body">
+          <ul className="list-disc pl-5 stack-xs type-body">
             <li>
               <strong>Phase 1 – Discovery:</strong> Low-fidelity wireframes,
               functional scope, requirement mapping.
@@ -124,9 +124,9 @@ export function ProjectPageMixlodge() {
       </section>
 
       {/* 4. DEFINING THE PRODUCT */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Defining the product through design
           </h3>
           <p className="type-body">
@@ -151,9 +151,9 @@ export function ProjectPageMixlodge() {
       </section>
 
       {/* 5. DESIGN SYSTEM WORK */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Design system work
           </h3>
           <p className="type-body">
@@ -161,7 +161,7 @@ export function ProjectPageMixlodge() {
             library, but the platform still needed structure. I created a small,
             resilient design language:
           </p>
-          <ul className="list-disc pl-5 space-y-1 type-body">
+          <ul className="list-disc pl-5 stack-xs type-body">
             <li>A clear token set for colors, spacing, type and radii</li>
             <li>
               One card style reused across listings, messages and detail views
@@ -181,9 +181,9 @@ export function ProjectPageMixlodge() {
       </section>
 
       {/* 6. LANDING PAGE + VISUAL DIRECTION */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Landing page &amp; visual direction
           </h3>
           <p className="type-body">
@@ -197,9 +197,9 @@ export function ProjectPageMixlodge() {
       </section>
 
       {/* 7. BEHIND THE SCENES */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Behind the scenes
           </h3>
           <p className="type-body">
@@ -215,7 +215,7 @@ export function ProjectPageMixlodge() {
           <p className="type-body">
             This was one of those projects where the designer ends up being:
           </p>
-          <ul className="list-disc pl-5 space-y-1 type-body">
+          <ul className="list-disc pl-5 stack-xs type-body">
             <li>UX strategist</li>
             <li>Product manager</li>
             <li>Copywriter</li>
@@ -226,13 +226,13 @@ export function ProjectPageMixlodge() {
       </section>
 
       {/* 8. OUTCOME */}
-      <section className="space-y-3 pb-10">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md pb-10">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Outcome
           </h3>
           <p className="type-body">In the end, MixLodge received:</p>
-          <ul className="list-disc pl-5 space-y-1 type-body">
+          <ul className="list-disc pl-5 stack-xs type-body">
             <li>
               A full responsive platform for booking studios, hiring producers
               and collaborating remotely

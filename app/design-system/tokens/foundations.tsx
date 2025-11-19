@@ -6,9 +6,11 @@ export const fontSizeTokens = [
   { token: "font-size.xxs", value: "13px" },
   { token: "font-size.xs", value: "14px" },
   { token: "font-size.sm", value: "16px" },
-  { token: "font-size.md", value: "24px" },
-  { token: "font-size.lg", value: "32px" },
-  { token: "font-size.xl", value: "48px" },
+  { token: "font-size.md", value: "20px" },
+  { token: "font-size.lg", value: "24px" },
+  { token: "font-size.xl", value: "32px" },
+  { token: "font-size.2xl", value: "40px" },
+  { token: "font-size.3xl", value: "48px" },
 ];
 
 // Spacing scale (4px grid)
@@ -36,6 +38,8 @@ export const layoutTokens = [
 
 // Line-height scale
 export const lineHeightTokens = [
+  { token: "line-height.none", value: "1" },
+  { token: "line-height.compact", value: "1.1" },
   { token: "line-height.tight", value: "1.2" },
   { token: "line-height.snug", value: "1.4" },
   { token: "line-height.relaxed", value: "1.5" },

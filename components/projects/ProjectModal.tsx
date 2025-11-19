@@ -85,7 +85,7 @@ export function ProjectModal({ isOpen, project, onClose }: ProjectModalProps) {
           flex items-center justify-center
         "
       >
-        <span className="type-body-xs text-color-text-secondary">
+        <span className="type-body-xs">
           Hero placeholder (500px tall)
         </span>
       </div>
@@ -186,7 +186,7 @@ export function ProjectModal({ isOpen, project, onClose }: ProjectModalProps) {
 
       {/* HINT */}
       <div className="pointer-events-none fixed bottom-6 right-6 z-50">
-        <p className="type-body-xs text-color-text-secondary text-right">
+        <p className="type-body-xs text-right">
           ← / → to switch projects
         </p>
       </div>

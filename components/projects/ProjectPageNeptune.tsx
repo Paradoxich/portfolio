@@ -5,11 +5,11 @@ import * as React from "react";
 
 export function ProjectPageNeptune() {
   return (
-    <article className="w-full space-y-14">
+    <article className="w-full stack-5xl">
       {/* 0. PAGE TITLE BLOCK */}
-      <section className="space-y-4">
-        <div className="max-w-[640px] mx-auto space-y-4">
-          <h1 className="text-[32px] leading-tight tracking-tight font-medium text-color-text-primary">
+      <section className="stack-lg">
+        <div className="text-column stack-lg">
+          <h1 className="type-h3">
             Neptune: shaping an AI infra platform
             <span className="text-color-text-secondary font-normal">
               {" "}
@@ -20,9 +20,9 @@ export function ProjectPageNeptune() {
       </section>
 
       {/* 1. CONTEXT */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Context
           </h3>
           <p className="type-body">
@@ -44,16 +44,16 @@ export function ProjectPageNeptune() {
       </section>
 
       {/* 2. USERS & DISCOVERY */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             AI-native users, not &quot;traditional devs&quot;
           </h3>
           <p className="type-body">
             Before touching visuals, we did discovery work. And immediately,
             three truths showed up:
           </p>
-          <ul className="list-disc pl-5 space-y-1 type-body">
+          <ul className="list-disc pl-5 stack-xs type-body">
             <li>
               Users were already living in AI tools — Cursor, Copilot, Claude
               Projects, agent workflows.
@@ -79,9 +79,9 @@ export function ProjectPageNeptune() {
       </section>
 
       {/* 3. PRODUCT FUZZINESS */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Branding something that kept changing
           </h3>
           <p className="type-body">
@@ -101,15 +101,15 @@ export function ProjectPageNeptune() {
       </section>
 
       {/* 4. VISUAL DIRECTION */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Visual direction — technical, calm, not sci-fi
           </h3>
           <p className="type-body">
             Once the strategy clicked, I explored an aesthetic that felt:
           </p>
-          <ul className="list-disc pl-5 space-y-1 type-body">
+          <ul className="list-disc pl-5 stack-xs type-body">
             <li>dark but not dystopian</li>
             <li>technical without screaming &quot;matrix grid&quot;</li>
             <li>elegant, precise type with soft glow accents</li>
@@ -126,9 +126,9 @@ export function ProjectPageNeptune() {
       </section>
 
       {/* 5. WEBSITE & STORYTELLING */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Website &amp; storytelling — simplifying the abstract
           </h3>
           <p className="type-body">
@@ -150,9 +150,9 @@ export function ProjectPageNeptune() {
       </section>
 
       {/* 6. NATURE OF THE WORK */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             The messy, collaborative nature of the project
           </h3>
           <p className="type-body">
@@ -171,9 +171,9 @@ export function ProjectPageNeptune() {
       </section>
 
       {/* 7. OUTCOME */}
-      <section className="space-y-3">
-        <div className="max-w-[640px] mx-auto space-y-3">
-          <h3 className="text-[20px] leading-snug font-medium text-color-text-primary">
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">
             Outcome — coherence for something still becoming
           </h3>
           <p className="type-body">
