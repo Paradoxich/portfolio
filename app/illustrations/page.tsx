@@ -18,17 +18,20 @@ export default function IllustrationsPage() {
   const [activeTab, setActiveTab] = useState<TabId>("ui");
   const activeBlocks =
     activeTab === "ui" ? uiIllustrationBlocks : personalIllustrationBlocks;
+  const activeVariant = activeTab === "personal" ? "triptych" : "default";
 
   return (
     <main className="min-h-screen">
-      <div className="page-shell stack-xl">
-        <header className="stack-md">
-          <h1 className="type-h1">Illustrations</h1>
-          <p className="type-body max-w-xl">
-            Selected UI and personal explorations, covering everything from
-            system-heavy dashboards to playful sketches I paint on quieter
-            evenings.
-          </p>
+      <div className="page-shell stack-xl ">
+        <header className="layout-grid hero-gap">
+          <section className="col-span-12 md:col-span-5 stack-md">
+            <h1 className="type-h1">
+              Bits of color, characters and odd ideas{" "}
+              <span className="font-normal text-color-text-secondary">
+                I draw for fun and for work.
+              </span>
+            </h1>
+          </section>
         </header>
 
         <div className="inline-flex items-center gap-1 rounded-full border border-color-border bg-color-bg-muted p-1">
@@ -50,7 +53,7 @@ export default function IllustrationsPage() {
           })}
         </div>
 
-        <IllustrationBlocks blocks={activeBlocks} />
+        <IllustrationBlocks blocks={activeBlocks} variant={activeVariant} />
       </div>
     </main>
   );
