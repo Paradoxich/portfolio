@@ -7,18 +7,22 @@ import { useMemo } from "react";
 const ILLUSTRATION_IMAGES = [
   // UI illustrations
   "/illustrations/ui/worldcoin-o-block-hero.png",
-  "/illustrations/ui/worldcoin-block-hero.png",
-  "/illustrations/ui/five-block-hero.png",
-  "/illustrations/ui/audible-block-hero.png",
-  "/illustrations/ui/dummy-block-hero.png",
-  "/illustrations/ui/grow-game-hero.png",
-  "/illustrations/ui/shaolin-block-hero.png",
-  // Personal style
   "/illustrations/personal/illustration-1.png",
+  "/illustrations/ui/worldcoin-block-hero.png",
   "/illustrations/personal/illustration-2.png",
-  "/illustrations/personal/illustration-3.png",
-  "/illustrations/personal/illustration-4.png",
+  "/illustrations/ui/five-block-hero.png",
   "/illustrations/personal/illustration-5.png",
+  "/illustrations/ui/audible-block-hero.png",
+  "/illustrations/personal/illustration-4.png",
+  "/illustrations/ui/shaolin-block-hero.png",
+  "/illustrations/personal/illustration-3.png",
+  "/illustrations/ui/grow-game-hero.png",
+  "/illustrations/ui/worldcoin-o-top.png",
+ 
+  
+ 
+ 
+ 
 ];
 
 function shuffle<T>(arr: T[]): T[] {
