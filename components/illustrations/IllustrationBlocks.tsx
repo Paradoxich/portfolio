@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-type IllustrationImage = {
+export type IllustrationImage = {
   src: string;
   alt: string;
 };
@@ -13,71 +13,6 @@ export type IllustrationBlock = {
   stack: [IllustrationImage, IllustrationImage];
   description?: string;
 };
-
-const createPlaceholder = (label: string) => {
-  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'><rect width='100%' height='100%' fill='%23100F0C'/><text x='50%' y='50%' font-size='48' fill='%23F5F2EC' font-family='Helvetica, Arial, sans-serif' text-anchor='middle' alignment-baseline='middle'>${label}</text></svg>`;
-  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-};
-
-const baseBlocks = (prefix: string): IllustrationBlock[] => [
-  {
-    id: `${prefix}-hero-console`,
-    hero: {
-      src: createPlaceholder(`${prefix} · Feature shot`),
-      alt: `${prefix} hero illustration`,
-    },
-    stack: [
-      {
-        src: createPlaceholder(`${prefix} · Detail A`),
-        alt: `${prefix} detail illustration A`,
-      },
-      {
-        src: createPlaceholder(`${prefix} · Detail B`),
-        alt: `${prefix} detail illustration B`,
-      },
-    ],
-    description: "Block description…",
-  },
-  {
-    id: `${prefix}-hero-analytics`,
-    hero: {
-      src: createPlaceholder(`${prefix} · Narrative`),
-      alt: `${prefix} hero illustration 2`,
-    },
-    stack: [
-      {
-        src: createPlaceholder(`${prefix} · System map`),
-        alt: `${prefix} stacked illustration A`,
-      },
-      {
-        src: createPlaceholder(`${prefix} · UI overlay`),
-        alt: `${prefix} stacked illustration B`,
-      },
-    ],
-    description: "Block description…",
-  },
-  {
-    id: `${prefix}-hero-flow`,
-    hero: {
-      src: createPlaceholder(`${prefix} · Flow`),
-      alt: `${prefix} hero illustration 3`,
-    },
-    stack: [
-      {
-        src: createPlaceholder(`${prefix} · Sketch`),
-        alt: `${prefix} stacked illustration C`,
-      },
-      {
-        src: createPlaceholder(`${prefix} · Texture`),
-        alt: `${prefix} stacked illustration D`,
-      },
-    ],
-    description: "Block description…",
-  },
-];
-
-export const uiIllustrationBlocks = baseBlocks("UI");
-export const personalIllustrationBlocks = baseBlocks("Personal");
 
 type IllustrationBlocksProps = {
   blocks: IllustrationBlock[];

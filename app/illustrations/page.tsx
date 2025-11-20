@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { IllustrationBlocks } from "../../components/illustrations/IllustrationBlocks";
 import {
-  IllustrationBlocks,
   personalIllustrationBlocks,
   uiIllustrationBlocks,
-} from "../../components/illustrations/IllustrationBlocks";
+} from "../../components/illustrations/illustrationsData";
 
 type TabId = "ui" | "personal";
 
