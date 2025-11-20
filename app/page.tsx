@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import CTAWithIcon from "../components/CTAWithIcon";
 import { PotAnimation } from "../components/home/PotAnimation";
 import LifeGallery from "../components/home/LifeGallery";
@@ -263,18 +264,49 @@ export default function Page() {
           </section>
 
           {/* SONG CARD */}
-          <div className="card flex flex-col">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <p className="type-body-sm-strong">Oboe</p>
-                <p className="type-body-xs">
-                  By Camel Power Club
-                </p>
-              </div>
-              <button className="grid h-10 w-10 place-items-center rounded-full border border-color-border type-body-xs">
-                ▶
-              </button>
+                    <div className="card relative overflow-hidden flex flex-col">
+            {/* Background image + overlay */}
+            <div className="pointer-events-none absolute inset-0">
+              <Image
+                src="/music/oboe-cover.png" 
+                alt="Oboe by Camel Power Club"
+                fill
+                className="object-cover"
+                sizes="200px"
+              />
+             <div className="absolute inset-0 bg-[linear-gradient(270deg,rgba(16,15,12,0)_-1.36%,rgba(16,15,12,0.92)_45.22%,#100F0C_79.37%)]" />
             </div>
+
+            {/* Foreground sadržaj – identičan layoutu, samo klikabilan */}
+            <a
+              href="https://open.spotify.com/track/3IRON3rRIf2WJwejIbaehd?si=7ccc6d205ee04257"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="relative flex items-center  gap-5"
+            >
+              <button
+                type="button"
+                className="grid h-10 w-10 place-items-center rounded-full bg-color-bg-surface border border-color-border-secondary type-body-xs"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m7.752 5.439 10.508 6.13a.5.5 0 0 1 0 .863l-10.508 6.13A.5.5 0 0 1 7 18.13V5.87a.5.5 0 0 1 .752-.431"
+                  />
+                </svg>
+              </button>
+              <div>
+                <p className="type-body leading-relaxed text-color-text-primary">Oboe</p>
+                <p className="type-body-sm">By Camel Power Club</p>
+              </div>
+              
+            </a>
           </div>
         </section>
 

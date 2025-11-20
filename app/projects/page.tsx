@@ -6,6 +6,7 @@ import { projectsConfig } from "../../components/projects/ProjectsConfig";
 import { ProjectCard } from "../../components/projects/ProjectCard";
 import { ProjectModal } from "../../components/projects/ProjectModal";
 
+
 export default function ProjectsPage() {
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
   const projectCount = projectsConfig.length;
