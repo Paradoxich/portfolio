@@ -491,3 +491,12 @@
       linear-gradient(270deg, rgba(16, 15, 12, 0) 43.41%, #100f0c 100%);
   }
 }
+
+@keyframes illustration-pan {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

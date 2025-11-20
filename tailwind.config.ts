@@ -81,6 +81,17 @@ const config: Config = {
         // opcionalni alias ako želiš baš token ime:
         regular: "var(--font-weight-regular)",
       },
+
+      keyframes: {
+        "illustration-pan": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+
+      animation: {
+        "illustration-pan": "illustration-pan 40s linear infinite",
+      },
     },
   },
   plugins: [],

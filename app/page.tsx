@@ -5,6 +5,7 @@ import CTAWithIcon from "../components/CTAWithIcon";
 import { PotAnimation } from "../components/home/PotAnimation";
 import LifeGallery from "../components/home/LifeGallery";
 import TestimonialsSection from "../components/home/TestimonialsSection";
+import { HomeIllustrationsPreview } from "../components/illustrations/HomeIllustrationsPreview";
 
 type Testimonial = {
   name: string;
@@ -279,11 +280,13 @@ export default function Page() {
 
         {/* RIGHT COL 5/12: Illustrations → Experiments */}
         <section className="flex flex-col col-span-12 md:col-span-5 stack-gutter">
-          {/* ILLUSTRATIONS */}
-          <div className="card flex flex-col gap-5">
-            <div className="h-[200px] rounded-surface border border-color-border bg-color-bg-muted" />
-            <CTAWithIcon label="See Illustrations" href="/illustrations" />
-          </div>
+        
+
+{/* ILLUSTRATIONS */}
+<div className="card flex flex-col gap-5">
+  <HomeIllustrationsPreview />
+  <CTAWithIcon label="See Illustrations" href="/illustrations" />
+</div>
 
           {/* EXPERIMENTS: fill remaining height */}
           <div className="flex-1">
