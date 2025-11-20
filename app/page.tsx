@@ -281,23 +281,15 @@ export default function Page() {
         <section className="flex flex-col col-span-12 md:col-span-5 stack-gutter">
           {/* ILLUSTRATIONS */}
           <div className="card flex flex-col gap-5">
-            <p className="type-label">Illustrations</p>
             <div className="h-[200px] rounded-surface border border-color-border bg-color-bg-muted" />
             <CTAWithIcon label="See Illustrations" href="/illustrations" />
           </div>
 
           {/* EXPERIMENTS: fill remaining height */}
           <div className="flex-1">
-            <div className="grid grid-cols-5 gap-gutter h-full">
-              <div className="card flex flex-col col-span-3 gap-3 h-full">
-                <p className="type-label">Experiment</p>
-                <div className="flex-1 card-cta rounded-lg" />
-              </div>
-
-              <div className="card flex flex-col col-span-2 gap-3 h-full">
-                <p className="type-label">Experiment</p>
-                <div className="flex-1 card-cta rounded-lg" />
-              </div>
+            <div className="card flex h-full flex-col stack-gutter">
+              <div className="flex-1 card-cta" />
+              <CTAWithIcon label="See Experiments" href="/projects" />
             </div>
           </div>
         </section>
