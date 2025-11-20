@@ -31,7 +31,7 @@ export default function RootLayout({
               Work
             </Link>
 
-             <Link href="/#illustration" className="nav-link">
+             <Link href="/illustrations" className="nav-link">
               Illustrations
             </Link>
 
