@@ -99,7 +99,7 @@ export function ProjectModal({ isOpen, project, onClose }: ProjectModalProps) {
         className="
     fixed inset-0 z-50
     flex items-start justify-center
-    bg-[rgba(2,2,2,0.30)]
+    bg-[rgba(2,2,2,0.50)]
     backdrop-blur-[16px]
     pt-[40px]
     overflow-hidden

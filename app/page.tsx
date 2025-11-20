@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import CTAWithIcon from "../components/CTAWithIcon";
 import { PotAnimation } from "../components/home/PotAnimation";
 import LifeGallery from "../components/home/LifeGallery";
@@ -75,10 +76,8 @@ export default function Page() {
 
             {/* Body text */}
             <p className="type-body max-w-3xl">
-              You cannot just prompt it. I might. I’m a product designer who
-              enjoys the messy middle — turning half-formed ideas into things
-              people actually like using. I spend most of my time designing for
-              dev tools and early products, balancing structure with
+              I’m a product designer who enjoys the messy middle — turning half-formed ideas into things
+              people actually like using. I spend most of my time designing for dev tools and early products, balancing structure with
               personality. I like clear systems, small details, and teams that
               vibe.
             </p>
@@ -97,35 +96,37 @@ export default function Page() {
                     title: "Neptune",
                     tag: "Brand/Web",
                     desc: "AI platform engineer handling infra end-to-end.",
+                    href: "/projects/neptune",
                   },
                   {
                     title: "Shuttle",
                     tag: "Console redesign",
                     desc: "Created a system that supports clarity, ease, and scale.",
+                    href: "/projects/shuttle",
                   },
                   {
                     title: "MixLodge",
                     tag: "Brand/MVP",
                     desc: "Platform simplifying studio booking and producer hiring.",
+                    href: "/projects/mixlodge",
                   },
                 ].map((p) => (
-                  <div
+                  <Link
                     key={p.title}
-                    className="card-cta flex flex-col justify-between  p-3"
+                    href={p.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="card-cta flex flex-col justify-between  p-3 transition-colors hover:border-color-text-primary"
                   >
                     {/* TAG */}
-                    <p className="type-body-xs mb-2">
-                      {p.tag}
-                    </p>
+                    <p className="type-body-xs mb-2">{p.tag}</p>
 
                     {/* TITLE + DESC */}
                     <div className="flex-1">
-                      <p className="type-body-sm-strong mb-1">
-                        {p.title}
-                      </p>
+                      <p className="type-body-sm-strong mb-1">{p.title}</p>
                       <p className="type-body-sm">{p.desc}</p>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
 

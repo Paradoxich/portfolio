@@ -4,6 +4,14 @@
 import * as React from "react";
 
 export function ProjectPageShuttle() {
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.75;
+    }
+  }, []);
+
   return (
     // ⬅️ full-width, bez max-w na articleu
     <article className="w-full stack-5xl">
@@ -233,7 +241,11 @@ export function ProjectPageShuttle() {
           "
         >
           <video
-            controls
+            ref={videoRef}
+            loop
+            autoPlay
+            muted
+            playsInline
             className="w-full h-full object-cover"
             poster="/projects/shuttle-console-poster.png"
           >
