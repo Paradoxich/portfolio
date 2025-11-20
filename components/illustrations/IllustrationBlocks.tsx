@@ -17,17 +17,20 @@ export type IllustrationBlock = {
 type IllustrationBlocksProps = {
   blocks: IllustrationBlock[];
   variant?: "default" | "triptych";
+  copyTexts?: (string | undefined)[];
 };
 
 export function IllustrationBlocks({
   blocks,
   variant = "default",
+  copyTexts,
 }: IllustrationBlocksProps) {
   return (
     <div className="flex flex-col gap-14">
       {blocks.map((block, index) => {
         const isReversed = index % 2 === 1;
         const triptychImages = [block.hero, ...block.stack];
+        const copyText = copyTexts?.[index];
 
         return (
           <div key={block.id} className="flex flex-col gap-14">
@@ -88,7 +91,15 @@ export function IllustrationBlocks({
               </div>
             )}
 
-            {index < blocks.length - 1 ? (
+            {copyText ? (
+              <div className="layout-grid">
+                <div className="col-span-12 md:col-span-6 md:col-start-4 py-14">
+                  <p className="type-body text-color-text-secondary">
+                    {copyText}
+                  </p>
+                </div>
+              </div>
+            ) : index < blocks.length - 1 ? (
               <div className="py-14">
                 <p className="type-body text-color-text-secondary">
                   {block.description ?? "Block description…"}

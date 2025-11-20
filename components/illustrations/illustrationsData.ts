@@ -1,45 +1,48 @@
 import type { IllustrationBlock } from "./IllustrationBlocks";
 
-const uiProjects: { slug: string; label: string; description: string }[] = [
+const uiProjects: { slug: string; label: string }[] = [
   {
-    slug: "audible-block",
-    label: "Audible – console",
-    description: "Console storyboards for the Audible design language.",
-  },
-  {
-    slug: "dummy-block",
-    label: "Dummy data viz",
-    description: "Playful wayfinding for a data-heavy release.",
+    slug: "worldcoin-o-block",
+    label: "Worldcoin Ø",
   },
   {
     slug: "five-block",
     label: "Five OS",
-    description: "System monitors exploring multi-surface layouts.",
   },
   {
-    slug: "grow-game",
-    label: "Grow game",
-    description: "Narrative HUD experiments for in-app events.",
-  },
-  {
-    slug: "shaolin-block",
-    label: "Shaolin",
-    description: "Training companion screens with energy gradients.",
+    slug: "audible-block",
+    label: "Audible – console",
   },
   {
     slug: "worldcoin-block",
     label: "Worldcoin console",
-    description: "Identity orchestration screens set on dark glass.",
   },
   {
-    slug: "worldcoin-o-block",
-    label: "Worldcoin Ø",
-    description: "Motion frames for the Ø identity launch.",
+    slug: "dummy-block",
+    label: "Dummy data viz",
+  },
+  {
+    slug: "grow-game",
+    label: "Grow game",
+  },
+  {
+    slug: "shaolin-block",
+    label: "Shaolin",
   },
 ];
 
+export const uiCopyTexts = [
+  "Product/Marketing illustrations I create lean on controlled, thoughtful color — the kind that balances contrast with softness and lands in those warm, interesting harmonies that make a scene feel alive.",
+  "There’s a clear style running through the lines, shapes, and characters, but it never collapses into one formula; it stays varied without losing its identity.",
+  "The characters always carry a bit of personality, whether they’re simple, geometric, or intentionally odd — nothing generic, nothing stocky.",
+  "I like mixing flat simplicity with just enough depth to create atmosphere: soft shadows, subtle layering, small details that add dimension without clutter. ",
+  "And there’s always a tiny element that lifts the piece — a texture, a gesture, a strange proportion. ",
+  "The compositions stay warm and expressive, and the whole system works well across product, brand and narrative contexts without losing its charm.",
+  
+];
+
 export const uiIllustrationBlocks: IllustrationBlock[] = uiProjects.map(
-  ({ slug, label, description }) => ({
+  ({ slug, label }) => ({
     id: slug,
     hero: {
       src: `/illustrations/ui/${slug}-hero.png`,
@@ -55,7 +58,6 @@ export const uiIllustrationBlocks: IllustrationBlock[] = uiProjects.map(
         alt: `${label} detail (bottom)`,
       },
     ],
-    description,
   })
 );
 

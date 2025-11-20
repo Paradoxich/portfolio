@@ -4,6 +4,7 @@ import { useState } from "react";
 import { IllustrationBlocks } from "../../components/illustrations/IllustrationBlocks";
 import {
   personalIllustrationBlocks,
+  uiCopyTexts,
   uiIllustrationBlocks,
 } from "../../components/illustrations/illustrationsData";
 
@@ -14,11 +15,19 @@ const tabs: { id: TabId; label: string }[] = [
   { id: "personal", label: "Personal" },
 ];
 
+const personalCopyTexts = [
+  "My personal style leans into high contrast and graphic form: big blocks of color, strong shapes, minimal detail and compositions that feel almost cinematic.",
+  "The characters are reduced to essentials but still carry expression and attitude, and the scenes rely on rhythm, negative space and a few deliberate lines to tell the whole story.",
+  "It's a more distilled, more graphic, more personal side of my work.",
+];
+
 export default function IllustrationsPage() {
   const [activeTab, setActiveTab] = useState<TabId>("ui");
   const activeBlocks =
     activeTab === "ui" ? uiIllustrationBlocks : personalIllustrationBlocks;
   const activeVariant = activeTab === "personal" ? "triptych" : "default";
+  const activeCopyTexts =
+    activeTab === "ui" ? uiCopyTexts : activeTab === "personal" ? personalCopyTexts : undefined;
 
   return (
     <main className="min-h-screen">
@@ -53,7 +62,11 @@ export default function IllustrationsPage() {
           })}
         </div>
 
-        <IllustrationBlocks blocks={activeBlocks} variant={activeVariant} />
+        <IllustrationBlocks
+          blocks={activeBlocks}
+          variant={activeVariant}
+          copyTexts={activeCopyTexts}
+        />
       </div>
     </main>
   );
