@@ -1,4 +1,3 @@
-// components/projects/ProjectPageNeptune.tsx
 "use client";
 
 import * as React from "react";
@@ -10,11 +9,7 @@ export function ProjectPageNeptune() {
       <section className="stack-lg">
         <div className="text-column stack-lg">
           <h1 className="type-h3">
-            Neptune: shaping an AI infra platform
-            <span className="text-color-text-secondary font-normal">
-              {" "}
-              that was still deciding what it wanted to be.
-            </span>
+            Neptune: shaping the identity of an AI infra platform engineer 
           </h1>
         </div>
       </section>
@@ -26,19 +21,13 @@ export function ProjectPageNeptune() {
             Context
           </h3>
           <p className="type-body">
-            Neptune didn&apos;t arrive as a clear brief. It arrived as a vibe.
+            Neptune didn’t arrive as a clear brief. It arrived as a vibe.
           </p>
           <p className="type-body">
-            Half &quot;AI platform engineer,&quot; half &quot;agentic infra
-            copilot,&quot; and a little bit &quot;Shuttle&apos;s cousin who
-            spent too much time around LLMs.&quot; The team knew they were
-            solving something real — the gap between AI-generated code and
-            actual deployment — but the product itself was shifting every week.
+            Half “AI platform engineer,” half “agentic infra copilot,” and a little bit “Shuttle’s cousin who spent too much time around LLMs.” The team knew the problem was real — the gap between AI-generated code and actual deployment.
           </p>
           <p className="type-body">
-            Some days Neptune was a console. Some days an IDE agent. Some days a
-            CLI. Some days… all three. My job was to build a brand and narrative
-            that could survive this identity crisis.
+            Neptune kept changing shape — part CLI, part agent, sometimes both. I built a brand and landing page that could keep up.
           </p>
         </div>
       </section>
@@ -47,33 +36,24 @@ export function ProjectPageNeptune() {
       <section className="stack-md">
         <div className="text-column stack-md">
           <h3 className="type-h4">
-            AI-native users, not &quot;traditional devs&quot;
+            AI-native users, not "traditional devs"
           </h3>
           <p className="type-body">
-            Before touching visuals, we did discovery work. And immediately,
-            three truths showed up:
+            Before we designed anything, we listened. Three key insights emerged:
           </p>
           <ul className="list-disc pl-5 stack-xs type-body">
             <li>
-              Users were already living in AI tools — Cursor, Copilot, Claude
-              Projects, agent workflows.
+              Users already lived inside AI tools — Cursor, Copilot, Claude Projects, and agent workflows.
             </li>
             <li>
-              They trusted AI to write code, but not to deploy it. Infra was the
-              spooky part.
+              They trusted AI to write code but hesitated to trust it with deployment. Infra felt spooky.
             </li>
             <li>
-              They wanted an AI engineer, not an AI chaos gremlin — power with
-              guardrails, automation with clarity.
+              They wanted an AI engineer with guardrails — power combined with clarity and automation.
             </li>
           </ul>
           <p className="type-body">
-            That&apos;s where Neptune&apos;s personality landed:
-            <br />
-            <span className="text-color-text-primary">
-              calm, precise, quietly smart — the opposite of hype-drunk AI
-              branding.
-            </span>
+            Neptune’s personality landed as calm, precise, and quietly smart — a deliberate contrast to hype-driven AI branding.
           </p>
         </div>
       </section>
@@ -82,20 +62,16 @@ export function ProjectPageNeptune() {
       <section className="stack-md">
         <div className="text-column stack-md">
           <h3 className="type-h4">
-            Branding something that kept changing
+            Making sense of a moving target
           </h3>
           <p className="type-body">
-            This project was… fluid. One week the team said, &quot;There&apos;s
-            no console.&quot; Two weeks later: &quot;Okay, so here&apos;s the
-            console.&quot; Then: &quot;Actually the IDE agent is the primary
-            flow.&quot; Then: &quot;But what if infra was invisible?&quot; Then:
-            &quot;But also visual?&quot;
+            As the team refined what Neptune should be, the real question wasn’t “console or IDE?” — it was how much UI it needed at all.
           </p>
           <p className="type-body">
-            My work had to flex with the product without losing coherence. The
-            approach: create positioning and a design language that made sense
-            whether Neptune lived in the IDE, terminal, or browser. The
-            personality stayed stable even while features shape-shifted.
+            Neptune is a hybrid: you install a CLI, but most interaction flows through natural language in your IDE agent. Some commands return simple output; others write new files directly into your project — generating the agent file, adding infra specs, wiring services.
+          </p>
+          <p className="type-body">
+            My work had to support that ambiguity. I focused on brand positioning and landing page design that stayed coherent whether Neptune showed up as a light-touch agent, a richer console, or something between.
           </p>
         </div>
       </section>
@@ -104,68 +80,35 @@ export function ProjectPageNeptune() {
       <section className="stack-md">
         <div className="text-column stack-md">
           <h3 className="type-h4">
-            Visual direction — technical, calm, not sci-fi
+            Making infra feel human
           </h3>
           <p className="type-body">
-            Once the strategy clicked, I explored an aesthetic that felt:
+            The landing page became our first real artifact, because Neptune is hard to explain without drifting into sci-fi. We needed to talk about agentic workflows, infra wiring, and code-to-cloud automation without turning it into a space opera.
           </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
-            <li>dark but not dystopian</li>
-            <li>technical without screaming &quot;matrix grid&quot;</li>
-            <li>elegant, precise type with soft glow accents</li>
-            <li>
-              structured layouts with a sense of engineered calm instead of
-              visual noise
-            </li>
-          </ul>
           <p className="type-body">
-            Basically: &quot;AI-native… but also trustworthy.&quot; It needed to
-            sit next to Shuttle, not mimic it.
+            So the starting point wasn’t visuals — it was a flexible layout we could use to test messaging, tone, and structure together. While the team refined the story, I explored visual directions inside that framework: different backdrops, glow levels, orbit patterns, and how much “AI energy” felt right before things tipped into chaos.
+          </p>
+          <p className="type-body">
+            The final aesthetic hits the balance we wanted: dark but not dramatic, technical but not neon-matrix. Clean typography, measured spacing, subtle gradients, and small pulses of color that act like signals rather than decoration. Orbit graphics help communicate how Neptune connects things behind the scenes, while the restrained palette keeps the page calm and confident.
+          </p>
+          <p className="type-body">
+            It’s a visual language that makes complex infra feel surprisingly understandable — modern, trustworthy, and quietly powerful.
           </p>
         </div>
       </section>
 
-      {/* 5. WEBSITE & STORYTELLING */}
-      <section className="stack-md">
-        <div className="text-column stack-md">
-          <h3 className="type-h4">
-            Website &amp; storytelling — simplifying the abstract
-          </h3>
-          <p className="type-body">
-            The landing page became the first real artifact. Neptune had to be
-            explained without overpromising things still in development (or
-            still being debated).
-          </p>
-          <p className="type-body">
-            The narrative focused on who it&apos;s for, the real problem AI devs
-            feel, how Neptune connects AI-written code to real cloud infra, why
-            transparency and guardrails matter, and what an &quot;agentic
-            workflow&quot; means without sounding like sci-fi.
-          </p>
-          <p className="type-body">
-            A lot of my work was translating extremely technical conversations
-            into language that feels calm, clear, and human.
-          </p>
-        </div>
-      </section>
 
       {/* 6. NATURE OF THE WORK */}
       <section className="stack-md">
         <div className="text-column stack-md">
           <h3 className="type-h4">
-            The messy, collaborative nature of the project
+            How we actually worked together
           </h3>
           <p className="type-body">
-            This wasn&apos;t a &quot;give me three logo options by Friday&quot;
-            assignment. It was a moving mix of positioning, messaging, early
-            brand direction, visual exploration, landing page design, and
-            ongoing reframing as the product evolved.
+            This wasn’t a “give me three logo options by Friday” assignment. It was a moving mix of positioning, messaging, early brand direction, visual exploration, landing page design, and constant reframing as the product evolved.
           </p>
           <p className="type-body">
-            I collaborated closely with the team — especially product — and we
-            were shaping the brief as much as the brand. Design wasn&apos;t just
-            decorating the product; it was helping define how Neptune thinks and
-            speaks.
+            I collaborated closely with the team, and we were shaping the brief as much as the brand. Design wasn’t just decorating the product; it was helping define how Neptune thinks and speaks.
           </p>
         </div>
       </section>
@@ -174,19 +117,20 @@ export function ProjectPageNeptune() {
       <section className="stack-md">
         <div className="text-column stack-md">
           <h3 className="type-h4">
-            Outcome — coherence for something still becoming
+            A foundation for whatever Neptune becomes next
           </h3>
           <p className="type-body">
-            Neptune now has a clear identity for AI-assisted developers, a
-            positioning that survives product pivots, and a visual direction
-            rooted in engineering clarity.
+            Neptune now has:
           </p>
+          <ul className="list-disc pl-5 stack-xs type-body">
+            <li>a clear identity tailored for AI-assisted developers</li>
+            <li>positioning that withstands product pivots</li>
+            <li>a visual direction grounded in engineering clarity</li>
+            <li>a landing page that explains the concept without hype</li>
+            <li>alignment across the team on tone, audience, and personality</li>
+          </ul>
           <p className="type-body">
-            The landing page explains the concept without hype, and the team is
-            aligned on tone, audience, and personality. The work turned a fuzzy
-            idea into something structured and communicable — a platform that
-            finally sounds like it knows what it wants to be (even if it&apos;s
-            still evolving behind the scenes).
+            The work turned a fuzzy idea into something structured and communicable — a platform that finally sounds like it knows what it wants to be, even if it’s still evolving behind the scenes.
           </p>
         </div>
       </section>
