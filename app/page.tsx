@@ -330,7 +330,7 @@ export default function Page() {
       href="/design-system"
       target="_blank"
       rel="noreferrer noopener"
-      className="relative flex-1 overflow-hidden rounded-surface border border-color-border bg-color-bg-muted"
+      className="relative flex-1 overflow-hidden rounded-surface border border-color-border-secondary bg-color-bg-muted"
     >
       {/* Background image + gradient overlay */}
       <div className="pointer-events-none absolute inset-0">
