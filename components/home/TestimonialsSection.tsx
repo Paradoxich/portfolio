@@ -8,6 +8,7 @@ import ChatAnimation from "./ChatAnimation";
 type Testimonial = {
   name: string;
   role: string;
+  image: string;
   messages: string[];
 };
 
@@ -53,8 +54,16 @@ export default function TestimonialsSection({
                     }
                   `}
                 >
-                  {/* Avatar placeholder */}
-                  <span className="h-14 w-14 rounded-full bg-color-bg-muted border border-color-border" />
+                  {/* Avatar */}
+                  <span className="relative h-14 w-14 overflow-hidden border-0">
+                    <Image
+                      src={t.image}
+                      alt={`${t.name} headshot`}
+                      fill
+                      className="object-cover"
+                      sizes="56px"
+                    />
+                  </span>
 
                   <span className="flex flex-col">
                     <span

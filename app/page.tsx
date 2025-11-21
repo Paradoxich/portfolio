@@ -11,6 +11,7 @@ import { HomeIllustrationsPreview } from "../components/illustrations/HomeIllust
 type Testimonial = {
   name: string;
   role: string;
+  image: string;
   messages: string[];
 };
 
@@ -18,6 +19,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Nodar Daneliya",
     role: "CEO @ Shuttle",
+    image: "/testimonials/testimonial-nodar.png",
     messages: [
       "I love working with Ana!",
       "She has an incredible ability to quickly grasp what you’re looking for and translate it into thoughtful, practical options.",
@@ -28,6 +30,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Kurt, Jaka & Daniel",
     role: "Founders @ MixLodge",
+    image: "/testimonials/testimonial-mixlodge.png",
     messages: [
       "We are a small startup based in Switzerland and were looking for a designer for our website when we came across Ana.",
       "We can say confidently that our experience working with Ana was outstanding.",
@@ -39,6 +42,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Dino Pohilj",
     role: "Product Manager",
+    image: "/testimonials/testimonial-dino.png",
     messages: [
       "Working with Ana across multiple projects has been an exceptional experience.",
       "She consistently shows outstanding abilities as a product designer.",
@@ -214,12 +218,9 @@ export default function Page() {
           </div>
 
           {/* GALLERY */}
-          <div className="card flex flex-1 flex-col gap-3">
-            <div className="flex-1 rounded-xl border border-color-border bg-color-bg-muted overflow-hidden">
+ 
               <LifeGallery />
-            </div>
-            <p className="type-body-sm leading-none">Find me in</p>
-          </div>
+         
         </section>
 
         {/* MID COL 3/12: Pills → Water plant → Song */}
@@ -272,7 +273,7 @@ export default function Page() {
                 alt="Oboe by Camel Power Club"
                 fill
                 className="object-cover"
-                sizes="200px"
+                sizes="480px"
               />
              <div className="absolute inset-0 bg-[linear-gradient(270deg,rgba(16,15,12,0)_-1.36%,rgba(16,15,12,0.92)_45.22%,#100F0C_79.37%)]" />
             </div>

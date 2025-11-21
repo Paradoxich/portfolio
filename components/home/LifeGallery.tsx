@@ -5,119 +5,171 @@ import Image from "next/image";
 
 type Location = {
   id: string;
-  name: string;
-  x: string; // left %
-  y: string; // top %
-  imgSrc: string;
-  caption: string;
+  city: string;
+  country: string;
+  imgSrc?: string;
+  videoSrc?: string;
+  playbackRate?: number;
 };
 
-const locations: Location[] = [
+const LOCATIONS: Location[] = [
   {
     id: "opatija",
-    name: "Opatija",
-    x: "19.8%",
-    y: "64.9%",
+    city: "Opatija",
+    country: "Croatia",
     imgSrc: "/life/opatija.jpg",
-    caption: "Evenings in Opatija",
-  },
-  {
-    id: "zagreb",
-    name: "Zagreb",
-    x: "50.3%",
-    y: "34.6%",
-    imgSrc: "/life/zagreb.jpg",
-    caption: "Slow days in Zagreb",
-  },
-  {
-    id: "zadar",
-    name: "Zadar",
-    x: "41.8%",
-    y: "74.3%",
-    imgSrc: "/life/zadar.jpg",
-    caption: "Zadar sunsets",
+    // videoSrc: "/life/opatija.mp4",
+    // playbackRate: 0.5,
   },
   {
     id: "dugi-otok",
-    name: "Dugi otok",
-    x: "40.2%",
-    y: "70.2%",
+    city: "Dugi otok",
+    country: "Croatia",
+    videoSrc: "/life/dugi-otok.mp4",
     imgSrc: "/life/dugi-otok.jpg",
-    caption: "Dugi otok summers",
+    playbackRate: 0.8,
   },
+  {
+    id: "zagreb",
+    city: "Zagreb",
+    country: "Croatia",
+    imgSrc: "/life/zagreb.jpg",
+  },
+  {
+    id: "zadar",
+    city: "Zadar",
+    country: "Croatia",
+    imgSrc: "/life/zadar.jpg",
+  },
+  {
+    id: "alps",
+    city: "Alps",
+    country: "Italy",
+    imgSrc: "/life/alps.jpg",
+  },
+  
 ];
 
 export default function LifeGallery() {
-  const [activeId, setActiveId] = useState<Location["id"] | null>("opatija");
-  const activeLocation = locations.find((l) => l.id === activeId) || null;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = LOCATIONS[activeIndex];
+
+  const goPrev = () => {
+    setActiveIndex((prev) =>
+      prev === 0 ? LOCATIONS.length - 1 : prev - 1,
+    );
+  };
+
+  const goNext = () => {
+    setActiveIndex((prev) =>
+      prev === LOCATIONS.length - 1 ? 0 : prev + 1,
+    );
+  };
 
   return (
-    <div className="relative h-full w-full">
-      {/* MAPA */}
-      <div className="relative h-full w-full">
-        <Image
-          src="/life/map-croatia.png"
-          alt="Croatia map"
-          fill
-          className="object-cover"
-          priority
-        />
-
-        {/* PINOVI */}
-        {locations.map((loc) => (
-          <button
-            key={loc.id}
-            type="button"
-            onClick={() =>
-              setActiveId((prev) => (prev === loc.id ? null : loc.id))
-            }
-            className={`
-              absolute -translate-x-1/2 -translate-y-full
-              rounded-full border border-color-border shadow
-              ${
-                activeId === loc.id
-                  ? "bg-color-text-primary scale-110"
-                  : "bg-color-text-primary/80"
-              }
-              transition-transform duration-150
-              w-3 h-3
-              after:block after:w-px after:h-4 after:bg-color-text-primary/60 after:mx-auto
-            `}
-            style={{ left: loc.x, top: loc.y }}
-          >
-            <span className="sr-only">{loc.name}</span>
-          </button>
-        ))}
-
-        {/* FLOATING KARTICA IZNAD AKTIVNOG PINA */}
-        {activeLocation && (
-          <div
-            className="
-              absolute
-              -translate-x-1/2 -translate-y-full
-              mt-3
-            "
-            style={{ left: activeLocation.x, top: activeLocation.y }}
-          >
-            <div
-              className="
-                panel bg-color-bg-muted
-                w-[140px] h-[140px]
-                flex flex-col items-center justify-center
-                stack-xs text-center text-color-text-primary
-              "
-            >
-              {/* za sad placeholder, kasnije može ići prava slika */}
-              <div className="mb-2 h-10 w-10 rounded-full border border-color-border bg-color-bg" />
-              <span className="type-label opacity-70">
-                {activeLocation.name}
-              </span>
-              <span className="type-body-xs text-color-text-primary">
-                {activeLocation.caption}
-              </span>
-            </div>
-          </div>
+    <div className="card flex flex-1 flex-col gap-3 pb-4">
+      {/* FOTO BLOK */}
+      <div className="flex-1 border-0  overflow-hidden relative">
+        {active.videoSrc ? (
+          <video
+            src={active.videoSrc}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover"
+            onLoadedMetadata={(e) => {
+              e.currentTarget.playbackRate = active.playbackRate ?? 1;
+            }}
+          />
+        ) : (
+          <Image
+            src={active.imgSrc!}
+            alt={`${active.city}, ${active.country}`}
+            fill
+            className="object-cover"
+            sizes="600px"
+            priority
+          />
         )}
+
+        <div className="pointer-events-none absolute inset-0">
+          {/* TOP fade – tamno na vrhu, prozirno prema sredini */}
+          <div
+            className="absolute inset-x-0 top-0 h-1/3"
+            style={{
+              background:
+                "linear-gradient(180deg, #100F0C 0%, rgba(16, 15, 12, 0.81) 40%, rgba(16, 15, 12, 0) 100%)",
+            }}
+          />
+
+          {/* BOTTOM fade – tamno dolje, prozirno prema sredini */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-1/3"
+            style={{
+              background:
+                "linear-gradient(0deg, #100F0C 0%, rgba(16, 15, 12, 0.81) 40%, rgba(16, 15, 12, 0) 100%)",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* LABEL + STRELICE (dno karta) */}
+      <div className="flex items-center justify-between gap-3">
+        <p className="type-body-sm leading-none">
+          Find me in{" "}
+          <span className="font-medium text-color-text-primary">
+            {active.city}
+          </span>
+          {", "}
+          <span className="opacity-80">{active.country}</span>
+        </p>
+
+        <div className="flex items-center gap-2">
+          {/* Strelica GORE */}
+          <button
+            type="button"
+            onClick={goPrev}
+            aria-label="Previous location"
+            className="grid h-9 w-9 place-items-center rounded-full border border-color-border bg-color-bg/60 backdrop-blur-sm"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={16}
+              height={16}
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                fill="currentColor"
+                d="m16.172 11-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                transform="rotate(-90 12 12)"
+              />
+            </svg>
+          </button>
+
+          {/* Strelica DOLJE */}
+          <button
+            type="button"
+            onClick={goNext}
+            aria-label="Next location"
+            className="grid h-9 w-9 place-items-center rounded-full border border-color-border bg-color-bg/60 backdrop-blur-sm"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={16}
+              height={16}
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                fill="currentColor"
+                d="m16.172 11-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                transform="rotate(90 12 12)"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   );

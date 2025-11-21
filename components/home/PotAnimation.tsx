@@ -253,8 +253,20 @@ export function PotAnimation() {
       </div>
 
       {/* ========= ILUSTRACIJA ========= */}
-      <div className="flex flex-1 items-end justify-center pb-0 pt-4">
-        <PotIllustration className="h-40 w-auto" growthStage={stage} />
+      <div className="relative flex flex-1 items-end justify-center pb-0 pt-4">
+        {/* Ghost / fully-grown background plant */}
+        <PotIllustration
+          className="pointer-events-none absolute bottom-0 h-40 w-auto opacity-[0.07]"
+           variant="ghost"
+          growthStage={3}
+          aria-hidden="true"
+        />
+
+        {/* Active animated plant */}
+        <PotIllustration
+          className="relative h-40 w-auto"
+          growthStage={stage}
+        />
       </div>
     </div>
   );

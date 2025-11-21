@@ -32,7 +32,7 @@ export default function RootLayout({
             </Link>
 
              <Link href="/illustrations" className="nav-link">
-              Illustrations
+              Graphics
             </Link>
 
             <Link href="/#experiments" className="nav-link">

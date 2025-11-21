@@ -64,8 +64,7 @@ export function HomeIllustrationsPreview() {
 
       {/* Gradient overlay */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#100F0C_0%,rgba(16,15,12,0)_50.48%,#100F0C_100%)]" />
-   {/* COLOR overlay */}
-   <div className="pointer-events-none absolute inset-0 mix-blend-color bg-[#100F0C]" />
+   
     </div>
   );
 }

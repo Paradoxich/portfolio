@@ -7,10 +7,13 @@ type PotIllustrationProps = React.SVGProps<SVGSVGElement> & {
   growthStage?: 0 | 1 | 2 | 3;
   /** ostavljeno ako ga koristiš iz PotAnimation, ali ovdje ga ne trebamo */
   isWobbling?: boolean;
+  /** Vizualna varijanta: default ili ghost (outline peppers) */
+  variant?: "default" | "ghost";
 };
 
 export function PotIllustration({
   growthStage = 0,
+  variant = "default",
   ...props
 }: PotIllustrationProps) {
   /** Ulaz/izlaz stabljika (fade + slide up) */
@@ -159,7 +162,9 @@ export function PotIllustration({
                 </g>
                 <path
                   d="M59.293 41.6207C59.293 42.8703 58.7932 44.8005 57.9827 46.4356C57.1503 48.1148 55.9901 49.4828 54.7068 49.4828C53.4235 49.4828 54.2289 48.1148 53.3965 46.4356C52.5859 44.8005 50.1206 44.1807 50.1206 41.6207C50.1206 39.0878 52.1739 37.0345 54.7068 37.0345C57.2397 37.0345 59.293 39.0878 59.293 41.6207Z"
-                  fill="#FF1313"
+                  fill={variant === "ghost" ? "none" : "#FF1313"}
+                  stroke={variant === "ghost" ? "var(--color-60)" : "none"}
+                  opacity={variant === "ghost" ? 1 : 1}
                 />
               </motion.g>
             )}
@@ -199,7 +204,9 @@ export function PotIllustration({
                 </g>
                 <path
                   d="M9.63227 65.6207C9.63227 66.8703 10.132 68.8005 10.9426 70.4356C11.775 72.1148 12.9352 73.4828 14.2185 73.4828C15.5018 73.4828 14.6964 72.1148 15.5288 70.4356C16.3394 68.8005 18.8047 68.1807 18.8047 65.6207C18.8047 63.0878 16.7514 61.0345 14.2185 61.0345C11.6856 61.0345 9.63227 63.0878 9.63227 65.6207Z"
-                  fill="#FFC413"
+                  fill={variant === "ghost" ? "none" : "#FFC413"}
+                  stroke={variant === "ghost" ? "var(--color-60)" : "none"}
+                  opacity={variant === "ghost" ? 1 : 1}
                 />
               </motion.g>
             )}
@@ -278,7 +285,9 @@ export function PotIllustration({
                 </g>
                 <path
                   d="M61.4999 77.6207C61.4999 78.8703 61.9997 80.8005 62.8103 82.4356C63.6427 84.1148 64.8029 85.4828 66.0862 85.4828C67.3694 85.4828 66.5641 84.1148 67.3965 82.4356C68.2071 80.8005 70.6724 80.1807 70.6724 77.6207C70.6724 75.0878 68.619 73.0345 66.0862 73.0345C63.5533 73.0345 61.4999 75.0878 61.4999 77.6207Z"
-                  fill="#FF5613"
+                  fill={variant === "ghost" ? "none" : "#FF5613"}
+                  stroke={variant === "ghost" ? "var(--color-60)" : "none"}
+                  opacity={variant === "ghost" ? 1 : 1}
                 />
               </motion.g>
             )}

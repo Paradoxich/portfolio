@@ -90,7 +90,7 @@ const config: Config = {
       },
 
       animation: {
-        "illustration-pan": "illustration-pan 40s linear infinite",
+        "illustration-pan": "illustration-pan 80s linear infinite",
       },
     },
   },
