@@ -321,13 +321,44 @@ export default function Page() {
   <CTAWithIcon label="See Illustrations" href="/illustrations" />
 </div>
 
-          {/* EXPERIMENTS: fill remaining height */}
-          <div className="flex-1">
-            <div className="card flex h-full flex-col stack-gutter">
-              <div className="flex-1 card-cta" />
-              <CTAWithIcon label="See Experiments" href="/projects" />
-            </div>
-          </div>
+         
+          {/* EXPERIMENTS: design system preview card + CTA */}
+<div className="flex-1">
+  <div className="card flex h-full flex-col stack-gutter">
+    {/* Clickable preview card */}
+    <a
+      href="/design-system"
+      target="_blank"
+      rel="noreferrer noopener"
+      className="relative flex-1 overflow-hidden rounded-surface border border-color-border bg-color-bg-muted"
+    >
+      {/* Background image + gradient overlay */}
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src="/design-system.png"
+          alt="Design system foundations preview"
+          fill
+          className="object-cover object-left-top"
+          sizes="(min-width: 1024px) 900px, 100vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(35,34,27,0)_0%,rgba(35,34,27,0.81)_61.07%,#23221B_100%)]" />
+      </div>
+
+      {/* Text overlay */}
+      <div className="relative flex h-full flex-col justify-end gap-1 p-3">
+        <p className="type-body-strong text-color-text-primary">
+          /design-system
+        </p>
+        <p className="type-body-sm text-color-text-secondary">
+          Drafting structure for future builds.
+        </p>
+      </div>
+    </a>
+
+    {/* CTA row below card */}
+    <CTAWithIcon label="See Experiments" href="/#experiments" />
+  </div>
+</div>
         </section>
 
         {/* ---------- TESTIMONIALS (full width) ---------- */}
