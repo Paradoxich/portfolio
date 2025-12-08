@@ -17,7 +17,7 @@ const ILLUSTRATION_IMAGES = [
   "/illustrations/ui/shaolin-block-hero.png",
   "/illustrations/personal/illustration-3.png",
   "/illustrations/ui/grow-game-hero.png",
-  "/illustrations/ui/worldcoin-o-top.png",
+  "/illustrations/ui/worldcoin-o-block-top.png",
  
   
  
