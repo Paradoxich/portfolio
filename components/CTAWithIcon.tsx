@@ -37,7 +37,7 @@ export default function CTAWithIcon({
       <Link 
         href={href} 
         onClick={onClick} 
-        className="relative inline-flex items-center"
+        className="btn-cta-wrapper relative inline-flex items-center"
       >
         {content}
       </Link>
@@ -49,7 +49,7 @@ export default function CTAWithIcon({
       <a 
         href={href} 
         onClick={onClick} 
-        className="relative inline-flex items-center"
+        className="btn-cta-wrapper relative inline-flex items-center"
       >
         {content}
       </a>
@@ -59,7 +59,7 @@ export default function CTAWithIcon({
   return (
     <button 
       onClick={onClick} 
-      className="relative inline-flex items-center"
+      className="btn-cta-wrapper relative inline-flex items-center"
     >
       {content}
     </button>

@@ -131,7 +131,7 @@ export default function LifeGallery() {
             type="button"
             onClick={goPrev}
             aria-label="Previous location"
-            className="grid h-9 w-9 place-items-center rounded-full border border-color-border bg-color-bg/60 backdrop-blur-sm"
+            className="life-gallery-arrow grid h-9 w-9 place-items-center rounded-full border border-color-border bg-color-bg/60 backdrop-blur-sm"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +153,7 @@ export default function LifeGallery() {
             type="button"
             onClick={goNext}
             aria-label="Next location"
-            className="grid h-9 w-9 place-items-center rounded-full border border-color-border bg-color-bg/60 backdrop-blur-sm"
+            className="life-gallery-arrow grid h-9 w-9 place-items-center rounded-full border border-color-border bg-color-bg/60 backdrop-blur-sm"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -10,6 +10,7 @@ export type ProjectConfig = {
   label?: string;
   title: string;
   href?: string;
+  category: "client" | "personal";
 
   // hero vizual – opcionalno za SVE projekte
   hero?: {
@@ -43,7 +44,7 @@ export const projectsConfig: ProjectConfig[] = [
     title:
       "Brand and web design for an AI platform engineer handling infra end-to-end.",
     href: "/projects/neptune",
-
+    category: "client",
     Page: ProjectPageNeptune,
     // hero i Page možeš dodati kasnije
   },
@@ -54,6 +55,7 @@ export const projectsConfig: ProjectConfig[] = [
     title:
       "Dev console redesign with a system that supports clarity, ease, and scale.",
     href: "/projects/shuttle",
+    category: "client",
     // zasad samo Page + placeholder hero (bez pravog URL-a)
     Page: ProjectPageShuttle,
     // kad dodaš pravi video:
@@ -68,6 +70,7 @@ export const projectsConfig: ProjectConfig[] = [
     label: "MixLodge",
     title: "Brand & MVP for a studio booking platform.",
     href: "/projects/mixlodge",
+    category: "client",
     Page: ProjectPageMixlodge,
   },
 
@@ -76,6 +79,7 @@ export const projectsConfig: ProjectConfig[] = [
     label: "Portfolio",
     title: "Figma to Prod: How I built this",
     href: "/contact",
+    category: "personal",
     Page: ProjectPagePortfolio,
   },
 ];

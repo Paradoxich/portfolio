@@ -127,26 +127,24 @@ export default function Page() {
                     title: "Neptune",
                     tag: "Brand/Web",
                     desc: "AI platform engineer handling infra end-to-end.",
-                    href: "/projects/neptune",
+                    href: "/projects/neptune-console",
                   },
                   {
                     title: "Shuttle",
                     tag: "Console redesign",
                     desc: "Created a system that supports clarity, ease, and scale.",
-                    href: "/projects/shuttle",
+                    href: "/projects/shuttle-console",
                   },
                   {
                     title: "MixLodge",
                     tag: "Brand/MVP",
                     desc: "Platform simplifying studio booking and producer hiring.",
-                    href: "/projects/mixlodge",
+                    href: "/projects/mixlodge-brand",
                   },
                 ].map((p) => (
                   <Link
                     key={p.title}
                     href={p.href}
-                    target="_blank"
-                    rel="noreferrer noopener"
                     className="card-cta flex flex-col justify-between  p-3 transition-colors hover:border-color-text-primary"
                   >
                     {/* TAG */}

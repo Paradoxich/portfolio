@@ -2,7 +2,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo } from "react";
+import { useState, useEffect } from "react";
 
 const ILLUSTRATION_IMAGES = [
   // UI illustrations
@@ -30,9 +30,16 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export function HomeIllustrationsPreview() {
-  const images = useMemo(() => {
+  // Use original order during SSR to avoid hydration mismatch
+  const [images, setImages] = useState(() => {
+    // Default to original order duplicated for SSR
+    return [...ILLUSTRATION_IMAGES, ...ILLUSTRATION_IMAGES];
+  });
+
+  // Shuffle only on client side after mount
+  useEffect(() => {
     const shuffled = shuffle(ILLUSTRATION_IMAGES);
-    return [...shuffled, ...shuffled]; // dupli strip za smooth loop
+    setImages([...shuffled, ...shuffled]); // dupli strip za smooth loop
   }, []);
 
   return (
