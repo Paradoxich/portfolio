@@ -255,6 +255,14 @@
     padding: var(--space-xl);
   }
 
+  .project-card-link {
+    transition: border-color 0.2s ease;
+  }
+
+  .project-card-link:hover {
+    border-color: var(--color-60);
+  }
+
   /* Muted card surface */
   .card-muted {
     @apply bg-color-bg-muted border border-color-border;
@@ -574,10 +582,10 @@
    ========================================= */
 @layer components {
   .project-modal-scroll {
-    /* Extend scrollable area 20px into card padding (24px - 4px = 20px) */
-    /* This positions scrollbar 4px from modal edge instead of 24px */
-    margin-right: -20px;
-    padding-right: 20px;
+    /* Extend scrollable area 16px into card padding (24px - 8px = 16px) */
+    /* This positions scrollbar 8px from modal edge instead of 24px */
+    margin-right: -16px;
+    padding-right: 16px;
   }
 }
 

@@ -3,6 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import CTAWithIcon from "../components/CTAWithIcon";
 import { PotAnimation } from "../components/home/PotAnimation";
 import LifeGallery from "../components/home/LifeGallery";
@@ -142,20 +143,35 @@ export default function Page() {
                     href: "/projects/mixlodge-brand",
                   },
                 ].map((p) => (
-                  <Link
+                  <motion.div
                     key={p.title}
-                    href={p.href}
-                    className="card-cta flex flex-col justify-between  p-3 transition-colors hover:border-color-text-primary"
+                    className="relative inline-flex rounded-[var(--radius-md)]"
+                    style={{
+                      outline: "1px solid transparent",
+                      outlineOffset: "2px",
+                    }}
+                    whileHover={{
+                      outlineColor: "#2E3027", // color-40
+                    }}
+                    transition={{
+                      duration: 0.2,
+                      ease: [0.25, 0.1, 0.25, 1],
+                    }}
                   >
-                    {/* TAG */}
-                    <p className="type-body-xs mb-2">{p.tag}</p>
+                    <Link
+                      href={p.href}
+                      className="card-cta project-card-link flex flex-col justify-between p-3"
+                    >
+                      {/* TAG */}
+                      <p className="type-body-xs mb-2">{p.tag}</p>
 
-                    {/* TITLE + DESC */}
-                    <div className="flex-1">
-                      <p className="type-body-sm-strong mb-1">{p.title}</p>
-                      <p className="type-body-sm">{p.desc}</p>
-                    </div>
-                  </Link>
+                      {/* TITLE + DESC */}
+                      <div className="flex-1">
+                        <p className="type-body-sm-strong mb-1">{p.title}</p>
+                        <p className="type-body-sm">{p.desc}</p>
+                      </div>
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
 

@@ -38,7 +38,7 @@ export function ProjectCard({
         <div className="panel h-[400px]" />
 
         {/* Footer link */}
-        <CTAWithIcon label="Check it out" href={href} />
+        <CTAWithIcon label="Check it out" />
       </motion.article>
     </Link>
   );

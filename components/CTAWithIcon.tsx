@@ -57,11 +57,19 @@ export default function CTAWithIcon({
   }
 
   return (
-    <button 
-      onClick={onClick} 
-      className="btn-cta-wrapper relative inline-flex items-center"
+    <div 
+      onClick={onClick}
+      className="btn-cta-wrapper relative inline-flex items-center cursor-pointer"
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      } : undefined}
     >
       {content}
-    </button>
+    </div>
   );
 }
