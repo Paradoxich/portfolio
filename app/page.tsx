@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import CTAWithIcon from "../components/CTAWithIcon";
@@ -7,6 +8,7 @@ import { PotAnimation } from "../components/home/PotAnimation";
 import LifeGallery from "../components/home/LifeGallery";
 import TestimonialsSection from "../components/home/TestimonialsSection";
 import { HomeIllustrationsPreview } from "../components/illustrations/HomeIllustrationsPreview";
+import { ExperienceModal } from "../components/home/ExperienceModal";
 
 type Testimonial = {
   name: string;
@@ -53,8 +55,31 @@ const TESTIMONIALS: Testimonial[] = [
 ];
 
 export default function Page() {
+  const [isExperienceModalOpen, setIsExperienceModalOpen] = React.useState(false);
+
+  const openExperienceModal = React.useCallback(() => {
+    setIsExperienceModalOpen(true);
+  }, []);
+
+  const closeExperienceModal = React.useCallback(() => {
+    setIsExperienceModalOpen(false);
+  }, []);
+
+  // keyboard shortcuts
+  React.useEffect(() => {
+    if (!isExperienceModalOpen) return;
+
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") closeExperienceModal();
+    }
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [isExperienceModalOpen, closeExperienceModal]);
+
   return (
-    <main className="page-shell">
+    <>
+      <main className="page-shell">
       {/* ================= HERO TITLE (4/12, not boxed) ================= */}
       <div className="layout-grid hero-gap">
         <section className="col-span-12 md:col-span-5">
@@ -185,7 +210,7 @@ export default function Page() {
               </div>
 
               {/* CTA ostaje čist dolje */}
-              <CTAWithIcon label="See Experience" href="/experience" />
+              <CTAWithIcon label="See Experience" onClick={openExperienceModal} />
             </section>
           </div>
         </aside>
@@ -365,5 +390,11 @@ export default function Page() {
         <TestimonialsSection testimonials={TESTIMONIALS} />
       </div>
     </main>
+
+    <ExperienceModal
+      isOpen={isExperienceModalOpen}
+      onClose={closeExperienceModal}
+    />
+    </>
   );
 }
