@@ -258,6 +258,11 @@
 
   .nav-link {
     @apply type-cta text-color-text-secondary;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    @apply text-color-text-primary;
   }
 
   .nav-link-active {
