@@ -85,7 +85,13 @@ export function ProjectCard({
               className="w-full h-full object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-          
+            {/* Gradient overlay */}
+            {/* <div 
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: "linear-gradient(180deg, rgba(16, 17, 16, 0.00) 0%, rgba(16, 17, 16, 0.81) 61.07%, #101110 100%);",
+              }}
+            /> */}
           </div>
         ) : hero?.type === "video" ? (
           <div 
@@ -100,7 +106,13 @@ export function ProjectCard({
               loop
               playsInline
             />
-            
+            {/* Gradient overlay */}
+            {/* <div 
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: "linear-gradient(180deg, rgba(16, 17, 16, 0.00) 0%, rgba(16, 17, 16, 0.81) 61.07%, #101110 100%);",
+              }}
+            /> */}
           </div>
         ) : (
           <div className="panel h-[400px]" />

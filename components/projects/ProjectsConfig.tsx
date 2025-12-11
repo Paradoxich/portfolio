@@ -56,12 +56,6 @@ export const themes = {
     bg: "#0B1016",
     border: "rgba(39, 52, 67, 0.50)",
     
-    // Card colors (project card on projects page)
-    // Use CSS variables for design system colors: var(--color-10), var(--color-20), etc.
-    // Or use hex/rgba values directly: "#191813", "rgba(39, 52, 67, 0.50)"
-   // cardBg: "var(--color-10)", // references design system color-10 (#191813)
-    //cardBg: "#0B1016", // defaults to bg if not provided
-    //cardBorder: "rgba(39, 52, 67, 0.50)", // defaults to border if not provided
     
     // Shared colors
     bgSurface: "#1a1a1a",
@@ -85,7 +79,7 @@ export const themes = {
     bgMuted: "#151515",
     borderSecondary: "rgba(39, 52, 67, 0.50)",
     textPrimary: "#f0f0f0",
-    textSecondary: "#A4AFC0",
+    textSecondary: "#ADB5C0",
     accent: "#4a9eff",
     scrollbarColor: "rgba(39, 52, 67, 0.50)",
     scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
@@ -104,14 +98,13 @@ export const themes = {
     textPrimary: "#F2F0EF",
     textSecondary: "#B1B1B1",
     accent: "#4a9eff",
-    scrollbarColor: "rgba(39, 52, 67, 0.50)",
+    scrollbarColor: "rgba(255, 255, 255, 0.1)",
     scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
     closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
   } as Theme,
   
   
-  // "shuttle-console": { ... },
-  // "mixlodge-brand": { ... },
+  
 } as const;
 
 export type ProjectConfig = {
