@@ -128,7 +128,7 @@ export default function Page() {
                     title: "Neptune",
                     tag: "Brand/Web",
                     desc: "AI platform engineer handling infra end-to-end.",
-                    href: "/projects/neptune-console",
+                    href: "/projects/neptune-lp",
                   },
                   {
                     title: "Shuttle",
@@ -159,7 +159,7 @@ export default function Page() {
                     }}
                   >
                     <Link
-                      href={p.href}
+                      href={`${p.href}?return=/`}
                       className="card-cta project-card-link flex flex-col justify-between p-3"
                     >
                       {/* TAG */}

@@ -1,14 +1,15 @@
 "use client";
 
 import * as React from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter, useParams, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { projectsConfig, type ProjectConfig } from "@/components/projects/ProjectsConfig";
 import { ThemeProvider } from "@/components/projects/ThemeProvider";
 
-export default function ProjectPage() {
+function ProjectPageContent() {
   const router = useRouter();
   const params = useParams();
+  const searchParams = useSearchParams();
   const slug = params.slug as string;
 
   // Find project by key
@@ -36,16 +37,28 @@ export default function ProjectPage() {
       : null;
 
   // Track original entry point (persist across navigation)
-  const [entryPoint] = React.useState(() => {
-    if (typeof window === "undefined") return "/projects";
+  const [entryPoint, setEntryPoint] = React.useState<string>("/projects");
+
+  // Update entry point from URL params or sessionStorage
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
     
-    // Check if we already stored the entry point
-    const stored = sessionStorage.getItem("project-entry-point");
-    if (stored) {
-      return stored;
+    // First, check URL search params (most reliable)
+    const returnParam = searchParams.get("return");
+    if (returnParam) {
+      sessionStorage.setItem("project-entry-point", returnParam);
+      setEntryPoint(returnParam);
+      return;
     }
     
-    // Determine entry point from referrer
+    // Then check if we already stored the entry point
+    const stored = sessionStorage.getItem("project-entry-point");
+    if (stored) {
+      setEntryPoint(stored);
+      return;
+    }
+    
+    // Fallback: determine entry point from referrer
     const referrer = document.referrer;
     const origin = window.location.origin;
     let point = "/projects"; // default
@@ -59,8 +72,8 @@ export default function ProjectPage() {
     
     // Store for future navigation
     sessionStorage.setItem("project-entry-point", point);
-    return point;
-  });
+    setEntryPoint(point);
+  }, [searchParams]);
 
   // Scroll state
   const [hasScrolled, setHasScrolled] = React.useState(false);
@@ -81,28 +94,32 @@ export default function ProjectPage() {
     }
   };
 
+  // Close navigation - always go to original entry point
+  const handleClose = React.useCallback(() => {
+    router.push(entryPoint || "/projects");
+  }, [router, entryPoint]);
+
   // Keyboard shortcuts
   React.useEffect(() => {
     function handleKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
         handleClose();
       } else if (e.key === "ArrowLeft" && prevProject) {
-        // Use replace to avoid stacking in history
-        router.replace(`/projects/${prevProject.key}`);
+        // Use replace to avoid stacking in history, preserve return param
+        const returnParam = searchParams.get("return");
+        const returnQuery = returnParam ? `?return=${encodeURIComponent(returnParam)}` : "";
+        router.replace(`/projects/${prevProject.key}${returnQuery}`);
       } else if (e.key === "ArrowRight" && nextProject) {
-        // Use replace to avoid stacking in history
-        router.replace(`/projects/${nextProject.key}`);
+        // Use replace to avoid stacking in history, preserve return param
+        const returnParam = searchParams.get("return");
+        const returnQuery = returnParam ? `?return=${encodeURIComponent(returnParam)}` : "";
+        router.replace(`/projects/${nextProject.key}${returnQuery}`);
       }
     }
 
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [prevProject, nextProject, router]);
-
-  // Close navigation - always go to original entry point
-  const handleClose = () => {
-    router.push(entryPoint || "/projects");
-  };
+  }, [prevProject, nextProject, router, searchParams, handleClose]);
 
   // Helper to convert color to rgba with alpha
   const colorToRgba = (color: string, alpha: number) => {
@@ -123,6 +140,8 @@ export default function ProjectPage() {
     // Fallback: try to use the color as-is
     return color;
   };
+
+  if (!project) return null;
 
   // Get gradient color from theme or default
   const gradientColor = project.theme?.scrollGradient || project.theme?.bg || "#111010";
@@ -177,8 +196,6 @@ export default function ProjectPage() {
       </div>
     );
   };
-
-  if (!project) return null;
 
   return (
     <>
@@ -266,5 +283,13 @@ export default function ProjectPage() {
         </p>
       </div>
     </>
+  );
+}
+
+export default function ProjectPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <ProjectPageContent />
+    </React.Suspense>
   );
 }

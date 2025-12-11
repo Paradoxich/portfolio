@@ -29,7 +29,7 @@ export default function ProjectsPage() {
                   key={p.key}
                   label={p.label}
                   title={p.title}
-                  href={`/projects/${p.key}`}
+                  href={`/projects/${p.key}?return=/projects`}
                   hero={p.hero}
                   theme={p.theme}
                 />
