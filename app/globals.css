@@ -8,7 +8,7 @@
 
 :root {
   /* Color scale – neutral ramp */
-  --color-0: #100f0c;
+  --color-0: #111010;
   --color-10: #191813;
   --color-20: #23221b;
   --color-30: #23251e;
@@ -357,7 +357,7 @@
   }
 
   .project-close-button:hover {
-    border-color: var(--color-40);
+    border-color: var(--color-border, var(--color-40));
     @apply text-color-text-primary;
     transform: scale(1.02);
   }
@@ -416,7 +416,7 @@
     background: linear-gradient(
       to right,
       var(--color-bg) 0%,
-      rgba(16, 15, 12, 0) 55%
+      rgba(17, 16, 16, 0) 55%
     );
     pointer-events: none;
     z-index: 1;
@@ -538,7 +538,7 @@
   /* ===== MODAL OVERLAY S NOISE-OM ===== */
   .overlay-noise {
     /* isto kao Figma: fill + blur */
-    background-color: rgba(16, 15, 12, 0.3);
+    background-color: rgba(17, 16, 16, 0.3);
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(25px);
 
@@ -554,7 +554,7 @@
     @apply pointer-events-none absolute inset-x-0 bottom-0 h-12;
     background: linear-gradient(
       to bottom,
-      rgba(16, 15, 12, 0),
+      rgba(17, 16, 16, 0),
       var(--color-bg)
     );
   }
@@ -563,8 +563,8 @@
     position: absolute;
     inset: 0;
     z-index: 10;
-    background: linear-gradient(90deg, rgba(16, 15, 12, 0) 39.69%, #100f0c 100%),
-      linear-gradient(270deg, rgba(16, 15, 12, 0) 43.41%, #100f0c 100%);
+    background: linear-gradient(90deg, rgba(17, 16, 16, 0) 39.69%, #111010 100%),
+      linear-gradient(270deg, rgba(17, 16, 16, 0) 43.41%, #111010 100%);
   }
 }
 

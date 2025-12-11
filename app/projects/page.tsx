@@ -30,6 +30,8 @@ export default function ProjectsPage() {
                   label={p.label}
                   title={p.title}
                   href={`/projects/${p.key}`}
+                  hero={p.hero}
+                  theme={p.theme}
                 />
               ))}
             </div>

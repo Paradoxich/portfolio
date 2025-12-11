@@ -154,7 +154,7 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
               top-[12px] right-[12px]
               inline-flex h-8 w-8 items-center justify-center
               rounded-full
-              bg-[#100F0C]
+              bg-[#111010]
               border border-color-border
               text-color-text-secondary
               hover:text-color-text-primary hover:border-color-text-primary
@@ -171,7 +171,7 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
               pointer-events-none
               absolute inset-x-0 top-0
               h-16
-              bg-[linear-gradient(180deg,#100F0C_9.26%,rgba(16,15,12,0.80)_47.88%,rgba(16,15,12,0.00)_100%)]
+              bg-[linear-gradient(180deg,#111010_9.26%,rgba(17,16,16,0.80)_47.88%,rgba(17,16,16,0.00)_100%)]
               transition-opacity duration-200
               z-10
               ${hasScrolled ? "opacity-100" : "opacity-0"}
@@ -186,7 +186,7 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
             {/* PROFILE HEADER */}
             <div className="pt-[var(--space-xl)] mb-[var(--space-5xl)]">
               {/* Profile Picture and Info */}
-              <div className="flex gap-6 mb-[var(--space-2xl)]">
+              <div className="flex items-center gap-6 mb-[var(--space-2xl)]">
                 {/* Profile Picture */}
                 <div className="flex-shrink-0">
                   <div className="w-24 h-24 rounded-full overflow-hidden bg-color-bg-muted border border-color-border">
@@ -292,8 +292,8 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
                     type="button"
                     onClick={() => {
                       const link = document.createElement('a');
-                      link.href = '/cv.pdf';
-                      link.download = 'cv.pdf';
+                      link.href = '/docs/CV-Beverin-2026.pdf';
+                      link.download = 'CV-Beverin-2026.pdf';
                       link.click();
                     }}
                     className="relative inline-flex h-8 items-center justify-center gap-2 overflow-hidden rounded-full border border-[var(--color-60)] bg-transparent type-body-xs px-4"

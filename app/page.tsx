@@ -314,7 +314,7 @@ export default function Page() {
                 className="object-cover"
                 sizes="480px"
               />
-             <div className="absolute inset-0 bg-[linear-gradient(270deg,rgba(16,15,12,0)_-1.36%,rgba(16,15,12,0.92)_45.22%,#100F0C_79.37%)]" />
+             <div className="absolute inset-0 bg-[linear-gradient(270deg,rgba(17,16,16,0)_-1.36%,rgba(17,16,16,0.92)_45.22%,#111010_79.37%)]" />
             </div>
 
             {/* Foreground sadržaj – identičan layoutu, samo klikabilan */}

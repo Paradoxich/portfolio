@@ -4,6 +4,7 @@ import * as React from "react";
 import { useRouter, useParams } from "next/navigation";
 import Image from "next/image";
 import { projectsConfig, type ProjectConfig } from "@/components/projects/ProjectsConfig";
+import { ThemeProvider } from "@/components/projects/ThemeProvider";
 
 export default function ProjectPage() {
   const router = useRouter();
@@ -103,6 +104,32 @@ export default function ProjectPage() {
     router.push(entryPoint || "/projects");
   };
 
+  // Helper to convert color to rgba with alpha
+  const colorToRgba = (color: string, alpha: number) => {
+    // If already rgba, extract RGB values
+    if (color.startsWith("rgba")) {
+      const match = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+      if (match) {
+        return `rgba(${match[1]}, ${match[2]}, ${match[3]}, ${alpha})`;
+      }
+    }
+    // If hex, convert to rgba
+    if (color.startsWith("#")) {
+      const r = parseInt(color.slice(1, 3), 16);
+      const g = parseInt(color.slice(3, 5), 16);
+      const b = parseInt(color.slice(5, 7), 16);
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+    // Fallback: try to use the color as-is
+    return color;
+  };
+
+  // Get gradient color from theme or default
+  const gradientColor = project.theme?.scrollGradient || project.theme?.bg || "#111010";
+  const gradientStyle = {
+    background: `linear-gradient(180deg, ${gradientColor} 9.26%, ${colorToRgba(gradientColor, 0.80)} 47.88%, ${colorToRgba(gradientColor, 0.00)} 100%)`,
+  };
+
   // Render hero
   const renderHero = () => {
     if (!project) return null;
@@ -168,56 +195,68 @@ export default function ProjectPage() {
         onClick={handleClose}
       >
         {/* MODAL CARD */}
-        <div
-          onClick={(e) => e.stopPropagation()}
-          className={`
-            card relative
-            w-[80vw] max-w-5xl
-            flex flex-col gap-[var(--space-2xl)]
-            overflow-hidden
-            transition-[height,border-radius] duration-300
-            pb-0
-            ${
-              atEnd
-                ? "h-[calc(100vh-40px-40px)] rounded-b-[var(--radius-lg)] border-b border-color-border-secondary"
-                : "h-[calc(100vh-40px)] rounded-b-none border-b-0"
-            }
-          `}
-        >
-          {/* CLOSE BUTTON */}
-          <button
-            onClick={handleClose}
-            className="project-close-button absolute z-20 top-[12px] right-[12px] inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#100F0C] border border-color-border text-color-text-secondary"
-            aria-label="Close project"
-          >
-            ✕
-          </button>
-
-          {/* TOP GRADIENT */}
+        <ThemeProvider theme={project.theme}>
           <div
+            onClick={(e) => e.stopPropagation()}
             className={`
-              pointer-events-none
-              absolute inset-x-0 top-0
-              h-16
-              bg-[linear-gradient(180deg,#100F0C_9.26%,rgba(16,15,12,0.80)_47.88%,rgba(16,15,12,0.00)_100%)]
-              transition-opacity duration-200
-              z-10
-              ${hasScrolled ? "opacity-100" : "opacity-0"}
+              relative
+              w-[80vw] max-w-5xl
+              flex flex-col gap-[var(--space-2xl)]
+              overflow-hidden
+              transition-[height,border-radius] duration-300
+              pb-0
+              rounded-[var(--radius-lg)]
+              border
+              ${
+                atEnd
+                  ? "h-[calc(100vh-40px-40px)] rounded-b-[var(--radius-lg)] border-b"
+                  : "h-[calc(100vh-40px)] rounded-b-none border-b-0"
+              }
             `}
-          />
-
-          {/* SCROLLABLE CONTENT */}
-          <div
-            className="project-modal-scroll relative flex-1 overflow-auto pb-40"
-            onScroll={handleScroll}
+            style={{
+              backgroundColor: project.theme?.bg || project.theme?.cardBg || "var(--color-bg)",
+              borderColor: project.theme?.border || project.theme?.cardBorder || "var(--color-border)",
+              padding: "var(--space-xl)",
+            }}
           >
-            {/* HERO */}
-            {renderHero()}
+            {/* CLOSE BUTTON */}
+            <button
+              onClick={handleClose}
+              className="project-close-button absolute z-20 top-[12px] right-[12px] inline-flex h-8 w-8 items-center justify-center rounded-full border border-color-border text-color-text-secondary"
+              style={{
+                backgroundColor: project.theme?.closeButtonBg || project.theme?.bg || "#111010",
+              }}
+              aria-label="Close project"
+            >
+              ✕
+            </button>
 
-            {/* PAGE CONTENT */}
-            {project.Page && <project.Page />}
+            {/* TOP GRADIENT */}
+            <div
+              className={`
+                pointer-events-none
+                absolute inset-x-0 top-0
+                h-16
+                transition-opacity duration-200
+                z-10
+                ${hasScrolled ? "opacity-100" : "opacity-0"}
+              `}
+              style={gradientStyle}
+            />
+
+            {/* SCROLLABLE CONTENT */}
+            <div
+              className="project-modal-scroll relative flex-1 overflow-auto pb-40"
+              onScroll={handleScroll}
+            >
+              {/* HERO */}
+              {renderHero()}
+
+              {/* PAGE CONTENT */}
+              {project.Page && <project.Page />}
+            </div>
           </div>
-        </div>
+        </ThemeProvider>
       </div>
 
       {/* HINT */}

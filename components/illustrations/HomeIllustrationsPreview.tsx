@@ -43,7 +43,7 @@ export function HomeIllustrationsPreview() {
   }, []);
 
   return (
-    <div className="group relative h-[200px] overflow-hidden border border-[#100F0C]">
+    <div className="group relative h-[200px] overflow-hidden border border-[#111010]">
       <div className="absolute inset-0">
         <div
           className="flex h-full items-center gap-[8px] min-w-max will-change-transform animate-illustration-pan [animation-play-state:paused] group-hover:[animation-play-state:running]"
@@ -70,7 +70,7 @@ export function HomeIllustrationsPreview() {
       
 
       {/* Gradient overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#100F0C_0%,rgba(16,15,12,0)_50.48%,#100F0C_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#111010_0%,rgba(17,16,16,0)_50.48%,#111010_100%)]" />
    
     </div>
   );

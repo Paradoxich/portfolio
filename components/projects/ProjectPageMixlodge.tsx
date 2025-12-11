@@ -30,9 +30,7 @@ export function ProjectPageMixlodge() {
       {/* 1. CONTEXT */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">
-            The context
-          </h3>
+         
           <p className="type-body">
             MixLodge approached me with a simple ask: “We want a platform for
             musicians and producers.” What they actually had was a vague list of

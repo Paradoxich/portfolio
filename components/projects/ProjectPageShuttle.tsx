@@ -43,9 +43,7 @@ export function ProjectPageShuttle() {
       {/* 1. CONTEXT */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">
-            Context
-          </h3>
+         
           <p className="type-body">
             Shuttle is a deployment platform where your infra lives in code, but
             the console is where you actually see what&apos;s running. Over

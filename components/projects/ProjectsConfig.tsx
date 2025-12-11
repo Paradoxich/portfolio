@@ -4,6 +4,115 @@ import { ProjectPageShuttle } from "./ProjectPageShuttle";
 import { ProjectPageMixlodge } from "./ProjectPageMixlodge";
 import { ProjectPagePortfolio } from "./ProjectPagePortfolio";
 import { ProjectPageNeptune } from "./ProjectPageNeptune";
+import { ProjectPageNeptuneChat } from "./ProjectPageNeptuneChat";
+
+export type Theme = {
+  // Case study colors (modal/page)
+  bg?: string; // case study background color (defaults to cardBg if not provided)
+  border?: string; // case study border color (defaults to cardBorder if not provided)
+  
+  // Card colors (project card on projects page)
+  cardBg?: string; // card background color (defaults to bg if not provided)
+  cardBorder?: string; // card border color (defaults to border if not provided)
+  
+  // Shared colors
+  bgSurface?: string; // card/surface background
+  bgMuted?: string; // muted background
+  borderSecondary?: string; // secondary border (used for images/videos)
+  imageBorder?: string; // specific border color for images/videos (defaults to borderSecondary)
+  textPrimary?: string; // primary text color
+  textSecondary?: string; // secondary text color
+  accent?: string; // accent color (optional)
+  scrollbarColor?: string; // scrollbar thumb color
+  scrollGradient?: string; // top scroll gradient color (defaults to bg if not provided)
+  closeButtonBg?: string; // close button circle fill color (defaults to bg if not provided)
+};
+
+// Define themes here - change colors in one place per case study
+export const themes = {
+  "neptune-chat": {
+    // Case study colors (modal/page)
+    bg: "#0B1016",
+    border: "rgba(39, 52, 67, 0.50)",
+    
+    // Card colors (project card on projects page)
+    // Omit cardBg and cardBorder to use default colors on the card
+    // Only bg and border above will apply to the case study page
+    
+    // Shared colors
+    bgSurface: "#1a1a1a",
+    bgMuted: "#151515",
+    borderSecondary: "rgba(39, 52, 67, 0.50)",
+    textPrimary: "#f0f0f0",
+    textSecondary: "#B1BDC8",
+    accent: "#4a9eff",
+    scrollbarColor: "rgba(39, 52, 67, 0.50)",
+    scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
+    closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
+  } as Theme,
+
+  "neptune-lp": {
+    // Case study colors (modal/page)
+    bg: "#0B1016",
+    border: "rgba(39, 52, 67, 0.50)",
+    
+    // Card colors (project card on projects page)
+    // Use CSS variables for design system colors: var(--color-10), var(--color-20), etc.
+    // Or use hex/rgba values directly: "#191813", "rgba(39, 52, 67, 0.50)"
+   // cardBg: "var(--color-10)", // references design system color-10 (#191813)
+    //cardBg: "#0B1016", // defaults to bg if not provided
+    //cardBorder: "rgba(39, 52, 67, 0.50)", // defaults to border if not provided
+    
+    // Shared colors
+    bgSurface: "#1a1a1a",
+    bgMuted: "#151515",
+    borderSecondary: "rgba(39, 52, 67, 0.50)",
+    textPrimary: "#f0f0f0",
+    textSecondary: "#B1BDC8",
+    accent: "#4a9eff",
+    scrollbarColor: "rgba(39, 52, 67, 0.50)",
+    scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
+    closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
+  } as Theme,
+
+  "shuttle-console": {
+    // Case study colors (modal/page)
+    bg: "#0E1115",
+    border: "#1E242B",
+    
+    // Shared colors
+    bgSurface: "#1a1a1a",
+    bgMuted: "#151515",
+    borderSecondary: "rgba(39, 52, 67, 0.50)",
+    textPrimary: "#f0f0f0",
+    textSecondary: "#A4AFC0",
+    accent: "#4a9eff",
+    scrollbarColor: "rgba(39, 52, 67, 0.50)",
+    scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
+    closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
+  } as Theme,
+
+  "mixlodge-mvp": {
+    // Case study colors (modal/page)
+    bg: "#121212",
+    border: "#232323",
+    
+    // Shared colors
+    bgSurface: "#1a1a1a",
+    bgMuted: "#151515",
+    borderSecondary: "#232323",
+    textPrimary: "#F2F0EF",
+    textSecondary: "#B1B1B1",
+    accent: "#4a9eff",
+    scrollbarColor: "rgba(39, 52, 67, 0.50)",
+    scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
+    closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
+  } as Theme,
+  
+  
+  // "shuttle-console": { ... },
+  // "mixlodge-brand": { ... },
+} as const;
 
 export type ProjectConfig = {
   key: string;
@@ -19,34 +128,44 @@ export type ProjectConfig = {
     alt?: string;
   };
 
+  // theme – opcionalno za custom boje po projektu
+  theme?: Theme;
+
   // case-study content komponenta – opcionalno
   Page?: React.ComponentType;
 };
 
 export const projectsConfig: ProjectConfig[] = [
-  // 👇 primjer: kasnije dodaš svoj portfolio project ovdje
-  // {
-  //   key: "portfolio",
-  //   label: "Portfolio",
-  //   title: "This very portfolio – from structure to tiny peppers.",
-  //   href: "/projects/portfolio",
-  //   hero: {
-  //     type: "image",
-  //     src: "/images/portfolio-hero.png",
-  //     alt: "Portfolio overview",
-  //   },
-  //   Page: ProjectPagePortfolio,
-  // },
+  
 
   {
-    key: "neptune-console",
+    key: "neptune-lp",
     label: "Neptune",
     title:
       "Brand and web design for an AI platform engineer handling infra end-to-end.",
     href: "/projects/neptune",
     category: "client",
+    hero: {
+      type: "video",
+      src: "/case-studies/neptune-lp-hero.mp4",
+    },
+    theme: themes["neptune-lp"],
     Page: ProjectPageNeptune,
     // hero i Page možeš dodati kasnije
+  },
+
+  {
+    key: "neptune-chat",
+    label: "Neptune Chat",
+    title: "Building a hero graphic animation that accidentally became a product prototype.",
+    href: "/projects/neptune-chat",
+    category: "client",
+    hero: {
+      type: "video",
+      src: "/case-studies/neptune-chat.mp4",
+    },
+    theme: themes["neptune-chat"],
+    Page: ProjectPageNeptuneChat,
   },
 
   {
@@ -56,13 +175,14 @@ export const projectsConfig: ProjectConfig[] = [
       "Dev console redesign with a system that supports clarity, ease, and scale.",
     href: "/projects/shuttle",
     category: "client",
-    // zasad samo Page + placeholder hero (bez pravog URL-a)
+    hero: {
+      type: "image",
+      src: "/case-studies/shuttle-console-hero.png",
+    },
+    theme: themes["shuttle-console"],
     Page: ProjectPageShuttle,
-    // kad dodaš pravi video:
-    // hero: {
-    //   type: "video",
-    //   src: "https://www.shuttle.dev/images/blog/new-console/new-console-main.mp4",
-    // },
+  
+   
   },
 
   {
@@ -71,6 +191,11 @@ export const projectsConfig: ProjectConfig[] = [
     title: "Brand & MVP for a studio booking platform.",
     href: "/projects/mixlodge",
     category: "client",
+    hero: {
+      type: "image",
+      src: "/case-studies/mixlodge-hero.png",
+    },
+    theme: themes["mixlodge-mvp"],
     Page: ProjectPageMixlodge,
   },
 

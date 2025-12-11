@@ -61,7 +61,7 @@ export const fontWeightTokens = [
 
 // Color scale – neutral ramp
 export const colorTokens = [
-  { token: "color-0", value: "#100F0C" },
+  { token: "color-0", value: "#111010" },
   { token: "color-10", value: "#191813" },
   { token: "color-20", value: "#23221B" },
   { token: "color-30", value: "#23251E" },

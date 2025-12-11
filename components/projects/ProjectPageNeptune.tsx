@@ -17,9 +17,7 @@ export function ProjectPageNeptune() {
       {/* 1. CONTEXT */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">
-            Context
-          </h3>
+         
           <p className="type-body">
             Neptune didn’t arrive as a clear brief. It arrived as a vibe.
           </p>

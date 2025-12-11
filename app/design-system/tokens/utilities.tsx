@@ -131,7 +131,7 @@ export const colorUtilityTokens = [
     token: "color.bg",
     mapsTo: "color-0",
     role: "Main page background",
-    preview: "#100F0C",
+    preview: "#111010",
   },
   {
     token: "color.bg.surface",
