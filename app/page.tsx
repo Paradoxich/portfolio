@@ -138,7 +138,7 @@ export default function Page() {
                   </div>
                   <div className="flex justify-between items-baseline">
                     <span className="type-body-sm text-color-text-primary">Collaboration</span>
-                    <span className="type-body-sm">Close with engineering & product</span>
+                    <span className="type-body-sm">Engineering & product</span>
                   </div>
                   <div className="flex justify-between items-baseline">
                     <span className="type-body-sm text-color-text-primary">Complexity handling</span>
@@ -285,7 +285,7 @@ export default function Page() {
 
                           {/* Link button with eye icon */}
                           <div 
-                            className="flex items-center gap-2 px-3 py-1.5 group-hover:border-color-border-secondary transition-colors"
+                            className="hidden md:flex items-center gap-2 px-3 py-1.5 group-hover:border-color-border-secondary transition-colors"
                             style={{
                               borderRadius: "100px",
                               border: "1px solid #2E3027",

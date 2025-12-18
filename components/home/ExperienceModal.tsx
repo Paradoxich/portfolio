@@ -120,7 +120,7 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
     flex items-start justify-center
     bg-[rgba(2,2,2,0.50)]
     backdrop-blur-[16px]
-    pt-[40px]
+    pt-3 md:pt-[40px]
     overflow-hidden
   "
         onClick={onClose}
@@ -130,15 +130,15 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
           onClick={(e) => e.stopPropagation()}
           className={`
             card relative
-            w-[80vw] max-w-5xl
+            w-[calc(100vw-24px)] md:w-[80vw] max-w-5xl
             flex flex-col gap-[var(--space-2xl)]
             overflow-hidden
             transition-[height,border-radius] duration-300
             pb-0
             ${
               atEnd
-                ? "h-[calc(100vh-40px-40px)] rounded-b-[var(--radius-lg)] border-b border-color-border-secondary"
-                : "h-[calc(100vh-40px)] rounded-b-none border-b-0"
+                ? "h-[calc(100vh-12px-12px)] md:h-[calc(100vh-40px-40px)] rounded-b-[var(--radius-lg)] border-b border-color-border-secondary"
+                : "h-[calc(100vh-12px)] md:h-[calc(100vh-40px)] rounded-b-none border-b-0"
             }
           `}
           initial={{ opacity: 0, scale: 0.9, y: 200 }}
