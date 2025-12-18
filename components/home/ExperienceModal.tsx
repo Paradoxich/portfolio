@@ -129,18 +129,25 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
         <motion.div
           onClick={(e) => e.stopPropagation()}
           className={`
-            card relative
+            relative
             w-[calc(100vw-24px)] md:w-[80vw] max-w-5xl
             flex flex-col gap-[var(--space-2xl)]
             overflow-hidden
             transition-[height,border-radius] duration-300
             pb-0
+            rounded-[var(--radius-lg)]
+            border border-color-border
+            bg-color-bg
+            md:card
             ${
               atEnd
                 ? "h-[calc(100vh-12px-12px)] md:h-[calc(100vh-40px-40px)] rounded-b-[var(--radius-lg)] border-b border-color-border-secondary"
                 : "h-[calc(100vh-12px)] md:h-[calc(100vh-40px)] rounded-b-none border-b-0"
             }
           `}
+          style={{
+            padding: "var(--space-xl)",
+          }}
           initial={{ opacity: 0, scale: 0.9, y: 200 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: 200 }}
@@ -180,7 +187,7 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
 
           {/* SCROLLABLE CONTENT */}
           <div
-            className="project-modal-scroll relative flex-1 overflow-auto pb-40 px-[var(--space-xl)]"
+            className="project-modal-scroll relative flex-1 overflow-auto pb-40"
             onScroll={handleScroll}
           >
             {/* PROFILE HEADER */}
@@ -200,7 +207,7 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
                   <h1 className="type-h2 mb-2">Ana Beverin</h1>
                   
                   {/* Contact Info */}
-                  <div className="flex flex-wrap gap-6">
+                  <div className="flex flex-wrap gap-2 md:gap-6">
                     <a
                       href="mailto:ana.beverin@gmail.com"
                       className="flex items-center gap-2 type-body-sm hover:text-color-text-primary transition-colors"

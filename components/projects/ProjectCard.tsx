@@ -74,7 +74,7 @@ export function ProjectCard({
         {/* Preview area – hero image or video */}
         {hero?.type === "image" ? (
           <div 
-            className={`relative border rounded-[var(--radius-md)] h-[400px] overflow-hidden ${!hasCardTheme ? "bg-color-bg border-color-border" : ""}`}
+            className={`relative border rounded-[var(--radius-md)] aspect-[2/1] overflow-hidden ${!hasCardTheme ? "bg-color-bg border-color-border" : ""}`}
             style={heroStyle}
           >
             <Image
@@ -95,7 +95,7 @@ export function ProjectCard({
           </div>
         ) : hero?.type === "video" ? (
           <div 
-            className={`relative border rounded-[var(--radius-md)] h-[400px] overflow-hidden ${!hasCardTheme ? "bg-color-bg border-color-border" : ""}`}
+            className={`relative border rounded-[var(--radius-md)] aspect-[2/1] overflow-hidden ${!hasCardTheme ? "bg-color-bg border-color-border" : ""}`}
             style={heroStyle}
           >
             <video
@@ -115,7 +115,7 @@ export function ProjectCard({
             /> */}
           </div>
         ) : (
-          <div className="panel h-[400px]" />
+          <div className="panel aspect-[2/1]" />
         )}
       </motion.article>
     </Link>
