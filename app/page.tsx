@@ -363,7 +363,7 @@ export default function Page() {
                     <div
                       key={job.company}
                       className="grid grid-cols-[1.4fr,1.4fr,1.4fr] items-baseline gap-4 py-3"
-                      style={{ fontFamily: '"Geist Mono"', fontSize: "13px" }}
+                      style={{ fontFamily: '"Geist Mono", "Courier New", Courier, "Lucida Console", Monaco, monospace', fontSize: "13px" }}
                     >
                       {/* Company */}
                       <span className=" text-color-text-primary">
