@@ -121,6 +121,9 @@ export type ProjectConfig = {
     alt?: string;
   };
 
+  // thumbnail image for list icons (if hero is video, use this for list display)
+  thumbnail?: string;
+
   // theme – opcionalno za custom boje po projektu
   theme?: Theme;
 

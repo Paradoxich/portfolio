@@ -247,8 +247,16 @@ export default function Page() {
                           className="flex items-center gap-4 py-3 px-3 group"
                         >
                           {/* Icon - circular with hero image or placeholder */}
-                          <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden bg-color-bg">
-                            {project.hero && project.hero.type === "image" ? (
+                          <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden bg-color-bg relative">
+                            {project.thumbnail ? (
+                              <Image
+                                src={project.thumbnail}
+                                alt={project.label || project.title}
+                                width={40}
+                                height={40}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : project.hero && project.hero.type === "image" ? (
                               <Image
                                 src={project.hero.src}
                                 alt={project.label || project.title}
@@ -257,11 +265,25 @@ export default function Page() {
                                 className="w-full h-full object-cover"
                               />
                             ) : project.hero && project.hero.type === "video" ? (
-                              <div className="w-full h-full bg-color-bg flex items-center justify-center">
-                                <span className="text-color-text-secondary text-xs font-medium">
-                                  {project.label?.charAt(0) || project.title.charAt(0)}
-                                </span>
-                              </div>
+                              <>
+                                <video
+                                  src={project.hero.src}
+                                  className="w-full h-full object-cover"
+                                  muted
+                                  playsInline
+                                  preload="auto"
+                                  onLoadedData={(e) => {
+                                    const video = e.currentTarget;
+                                    video.currentTime = 0.1;
+                                  }}
+                                />
+                                {/* Fallback placeholder in case video doesn't load */}
+                                <div className="absolute inset-0 bg-color-bg flex items-center justify-center">
+                                  <span className="text-color-text-secondary text-xs font-medium">
+                                    {project.label?.charAt(0) || project.title.charAt(0)}
+                                  </span>
+                                </div>
+                              </>
                             ) : project.key === "portfolio" ? (
                               <span className="text-color-text-secondary text-sm font-medium">
                                 Hi
@@ -553,17 +575,44 @@ export default function Page() {
 
       {/* Text overlay */}
       <div className="relative flex h-full flex-col justify-end gap-1 p-3">
-        <p className="type-body-strong text-color-text-primary">
-          /design-system
-        </p>
-        <p className="type-body-sm text-color-text-secondary">
-          Drafting structure for future builds.
-        </p>
+        <div className="flex items-center justify-between gap-2">
+          <div>
+            <p className="type-body-sm-strong text-color-text-primary">
+              The foundations
+            </p>
+           
+          </div>
+          {/* Pill button with eye icon */}
+          <div 
+            className="hidden md:flex items-center gap-2 px-3 py-1.5 transition-colors"
+            style={{
+              borderRadius: "100px",
+              border: "1px solid #2E3027",
+              background: "rgba(16, 15, 12, 0.10)"
+            }}
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="flex-shrink-0"
+            >
+              <path
+                d="M8 3C4.667 3 2.073 5.073 1 8c1.073 2.927 3.667 5 7 5s5.927-2.073 7-5c-1.073-2.927-3.667-5-7-5zm0 8.5c-1.933 0-3.5-1.567-3.5-3.5S6.067 4.5 8 4.5 11.5 6.067 11.5 8 9.933 11.5 8 11.5zm0-5.5c-.828 0-1.5.672-1.5 1.5S7.172 9 8 9s1.5-.672 1.5-1.5S8.828 6 8 6z"
+                fill="currentColor"
+                className="text-color-text-secondary"
+              />
+            </svg>
+            <span className="type-body-xs text-color-text-secondary">
+              /design-system
+            </span>
+          </div>
+        </div>
       </div>
     </a>
 
-    {/* CTA row below card */}
-    <CTAWithIcon label="See Experiments" href="/#experiments" />
   </div>
 </div>
         </section>

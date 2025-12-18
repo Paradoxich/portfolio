@@ -29,7 +29,12 @@ export default function Navigation() {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 py-5">
+    <nav 
+      className="sticky top-0 z-50 py-5 transition-all duration-200"
+      style={hasScrolled ? {
+        background: "linear-gradient(180deg, #100F0C 0%, rgba(16, 15, 12, 0.81) 61.07%, rgba(16, 15, 12, 0.00) 100%)"
+      } : {}}
+    >
       <div className="layout-container flex items-center justify-center md:justify-between">
         <Link 
           href="/" 

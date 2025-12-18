@@ -310,7 +310,7 @@
 
   /* TEXT CTA */
   .btn-cta {
-    @apply type-cta leading-[20px] text-color-text-secondary pr-10 inline-flex items-center;
+    @apply type-cta leading-[16px] text-color-text-secondary pr-10 inline-flex items-center;
     transition: color 0.2s ease;
   }
 
