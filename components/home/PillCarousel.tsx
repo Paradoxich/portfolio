@@ -4,7 +4,7 @@ import { designPills } from "@/lib/data";
 export default function PillCarousel() {
   return (
     <div className="panel overflow-hidden stack-md">
-      <p className="type-body-sm-strong">I design</p>
+      <p className="type-body-sm-strong">Commits</p>
       <motion.div
         drag="x"
         dragConstraints={{ left: -400, right: 0 }}

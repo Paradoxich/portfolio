@@ -67,6 +67,37 @@ export default function Page() {
     setIsExperienceModalOpen(false);
   }, []);
 
+  // Refs for timeline line positioning
+  const firstCircleRef = React.useRef<HTMLDivElement>(null);
+  const lastCircleRef = React.useRef<HTMLDivElement>(null);
+  const lineRef = React.useRef<HTMLDivElement>(null);
+  const commitListContainerRef = React.useRef<HTMLDivElement>(null);
+
+  // Update timeline line position based on first and last circle centers
+  React.useEffect(() => {
+    const updateLinePosition = () => {
+      if (firstCircleRef.current && lastCircleRef.current && lineRef.current && commitListContainerRef.current) {
+        const containerRect = commitListContainerRef.current.getBoundingClientRect();
+        const firstCircleRect = firstCircleRef.current.getBoundingClientRect();
+        const lastCircleRect = lastCircleRef.current.getBoundingClientRect();
+        
+        const firstCircleCenter = firstCircleRect.top - containerRect.top + firstCircleRect.height / 2;
+        const lastCircleCenter = lastCircleRect.top - containerRect.top + lastCircleRect.height / 2;
+        
+        lineRef.current.style.top = `${firstCircleCenter}px`;
+        lineRef.current.style.height = `${lastCircleCenter - firstCircleCenter}px`;
+      }
+    };
+
+    // Use setTimeout to ensure DOM is rendered
+    const timeoutId = setTimeout(updateLinePosition, 0);
+    window.addEventListener('resize', updateLinePosition);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', updateLinePosition);
+    };
+  }, []);
+
   // keyboard shortcuts
   React.useEffect(() => {
     if (!isExperienceModalOpen) return;
@@ -454,19 +485,83 @@ export default function Page() {
 
         {/* MID COL 3/12: Pills → Water plant → Song */}
         <section className="flex flex-col col-span-12 md:col-span-3 stack-gutter">
-          {/* I DESIGN */}
-          <section className="card-i-design h-[112px] card">
-            <div className="flex h-full items-start justify-between">
-              {/* LEFT LABEL */}
-              <p className="type-label">I DESIGN</p>
+          {/* CHANGELOG */}
+          <section className="card-i-design h-[112px] card pb-0 relative flex flex-col">
+            {/* Gradient overlay - covers full box */}
+            <div 
+              className="pointer-events-none absolute inset-0 z-10"
+              style={{
+                background: "linear-gradient(180deg,rgba(17, 16, 16, 0.00) 50.48%, #111010 100%)",
+              }}
+            />
+            {/* LABEL - above gradient */}
+            <p className="type-label relative z-20">Changelog</p>
+            {/* COMMIT LIST CONTAINER - above horizontal gradient */}
+            <div className="flex-1 min-h-0 relative z-[2] pt-3">
+              {/* COMMIT LIST */}
+              {(() => {
+                const commits = [
+                  "added scroll-aware navigation behavior",
+                  "improved mobile UX across layouts and modals",
+                  "refactored case studies from modals to routes",
+                  "reduced navigation complexity",
+                ];
 
-              {/* RIGHT — PILLS, VERTICAL */}
-              <div className="flex flex-col gap-2">
-                <span className="pill-filled">Digital products</span>
-                <span className="pill-filled">Websites</span>
-                <span className="pill-filled">Design systems</span>
-                <span className="pill-filled">Dev tools</span>
-              </div>
+                return (
+                  <div ref={commitListContainerRef} className="flex flex-col gap-2 overflow-hidden h-full pb-0 relative z-0 pl-6">
+                    {/* Timeline line - dynamically positioned between first and last circle centers */}
+                    <div
+                      ref={lineRef}
+                      className="absolute"
+                      style={{
+                        left: "3.5px",
+                        width: "1px",
+                        backgroundColor: "#555A4B",
+                      }}
+                    />
+                    {commits.map((commit, index) => (
+                      <div 
+                        key={index} 
+                        className="flex items-center gap-2 relative" 
+                        ref={index === 0 ? firstCircleRef : index === commits.length - 1 ? lastCircleRef : undefined}
+                      >
+                        {/* Circle on timeline - positioned at line center (4px from container left, accounting for pl-6) */}
+                        <svg
+                          className="absolute"
+                          width="7"
+                          height="7"
+                          viewBox="0 0 7 7"
+                          style={{
+                            left: "-20px", // 4px - 24px (pl-6) = -20px to align with container's 4px
+                            top: "50%",
+                            transform: "translate(-50%, -50%)",
+                            pointerEvents: "none"
+                          }}
+                        >
+                          <circle
+                            cx="3.5"
+                            cy="3.5"
+                            r="3"
+                            fill="#111010"
+                            stroke="#555A4B"
+                            strokeWidth="1"
+                          />
+                        </svg>
+                        {/* Commit content */}
+                        <span 
+                          className="type-body-xs text-color-text-secondary"
+                          style={{ 
+                            fontWeight: "normal",
+                            lineHeight: "130%"
+                          }}
+                        >
+                          {commit}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
           </section>
           {/* WATER PLANT */}

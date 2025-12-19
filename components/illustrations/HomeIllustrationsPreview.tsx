@@ -67,7 +67,14 @@ export function HomeIllustrationsPreview() {
         </div>
       </div>
 
-      
+      {/* Color blend overlay */}
+      <div 
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundColor: "#43402C",
+          mixBlendMode: "color"
+        }}
+      />
 
       {/* Gradient overlay */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#111010_0%,rgba(17,16,16,0)_50.48%,#111010_100%)]" />
