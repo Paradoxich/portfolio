@@ -373,11 +373,21 @@
     @apply inline-flex w-full items-center
            rounded-full border border-color-border-secondary
            bg-color-bg
-           h-12 pl-3 pr-12 text-left;
+           h-12 pl-3 pr-12 text-left
+           cursor-pointer
+           transition-all duration-300 ease-out;
+  }
+
+  .btn-input:hover {
+    border-color: rgba(85, 90, 75, 0.6);
   }
 
   .btn-input-text {
-    @apply type-body-sm text-color-60;
+    @apply type-body-sm text-color-60 transition-colors duration-300 ease-out;
+  }
+
+  .btn-input:hover .btn-input-text {
+    @apply text-color-text-secondary;
   }
 
   /* Circle icon inside input */
@@ -385,7 +395,10 @@
     @apply w-8 h-8 grid place-items-center 
            rounded-[20px] border border-color-border-secondary
            bg-color-bg-surface
-           absolute right-2 top-1/2 -translate-y-1/2;
+           absolute right-2 top-1/2 -translate-y-1/2
+           cursor-pointer
+           transition-colors
+           hover:border-color-border hover:bg-color-bg-muted;
   }
 }
 

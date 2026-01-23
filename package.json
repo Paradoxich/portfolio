@@ -15,7 +15,8 @@
     "geist": "1.5.1",
     "next": "15.2.6",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "resend": "^6.8.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

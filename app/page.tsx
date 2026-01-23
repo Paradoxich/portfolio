@@ -10,6 +10,7 @@ import LifeGallery from "../components/home/LifeGallery";
 import TestimonialsSection from "../components/home/TestimonialsSection";
 import { HomeIllustrationsPreview } from "../components/illustrations/HomeIllustrationsPreview";
 import { ExperienceModal } from "../components/home/ExperienceModal";
+import { HireDrawer } from "../components/home/HireDrawer";
 import { projectsConfig } from "../components/projects/ProjectsConfig";
 
 type Testimonial = {
@@ -58,6 +59,7 @@ const TESTIMONIALS: Testimonial[] = [
 
 export default function Page() {
   const [isExperienceModalOpen, setIsExperienceModalOpen] = React.useState(false);
+  const [isHireDrawerOpen, setIsHireDrawerOpen] = React.useState(false);
 
   const openExperienceModal = React.useCallback(() => {
     setIsExperienceModalOpen(true);
@@ -65,6 +67,14 @@ export default function Page() {
 
   const closeExperienceModal = React.useCallback(() => {
     setIsExperienceModalOpen(false);
+  }, []);
+
+  const openHireDrawer = React.useCallback(() => {
+    setIsHireDrawerOpen(true);
+  }, []);
+
+  const closeHireDrawer = React.useCallback(() => {
+    setIsHireDrawerOpen(false);
   }, []);
 
   // Refs for timeline line positioning
@@ -252,7 +262,7 @@ export default function Page() {
               </div>
 
               {/* Projects list */}
-              <div className="mt-6 card-cta p-0">
+              <div className="mt-6 card-cta p-0 overflow-hidden">
                 <div className="divide-y divide-color-border-secondary">
                   {projectsConfig
                     .filter((p) => 
@@ -275,7 +285,7 @@ export default function Page() {
                         <Link
                           key={project.key}
                           href={`/projects/${project.key}?return=/`}
-                          className="flex items-center gap-4 py-3 px-3 group"
+                          className="flex items-center gap-4 py-3 px-3 group transition-all duration-200 hover:bg-[rgba(0,0,0,0.15)]"
                         >
                           {/* Icon - circular with hero image or placeholder */}
                           <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden bg-color-bg relative">
@@ -460,13 +470,17 @@ export default function Page() {
 
             {/* INPUT WRAPPER */}
             <div className="relative w-full">
-              <button className="btn-input">
+              <button className="btn-input" onClick={openHireDrawer}>
                 <span className="btn-input-text">
                   Tell me about your project…
                 </span>
               </button>
 
-              <button aria-hidden="true" className="btn-input-icon">
+              <button 
+                className="btn-input-icon"
+                onClick={openHireDrawer}
+                aria-label="Open contact form"
+              >
                 <svg width="16" height="16" viewBox="0 0 24 24">
                   <path
                     fill="currentColor"
@@ -720,6 +734,11 @@ export default function Page() {
     <ExperienceModal
       isOpen={isExperienceModalOpen}
       onClose={closeExperienceModal}
+    />
+
+    <HireDrawer
+      isOpen={isHireDrawerOpen}
+      onClose={closeHireDrawer}
     />
     </>
   );
