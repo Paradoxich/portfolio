@@ -501,6 +501,23 @@
   animation: bubbleIn 0.32s ease-out;
 }
 
+/* ========== SLIDE IN (subtle, for mobile testimonials) ========== */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.4s ease-out forwards;
+  opacity: 0;
+}
+
 /* ========== TYPING DOTS (3 bouncing dots) ========== */
 @keyframes typingDot {
   0%,

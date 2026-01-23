@@ -35,7 +35,7 @@ export default function TestimonialsSection({
           </h2>
 
           {/* RIGHT on mobile: painting + chat bubbles - shown after heading on mobile only */}
-          <div className="relative overflow-hidden min-h-[320px] md:hidden">
+          <div className="relative overflow-hidden min-h-[368px] md:hidden">
             <Image
               src="https://images.unsplash.com/photo-1759741787685-9643b191d643?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Landscape background"

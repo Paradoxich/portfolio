@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 const DEFAULT_MESSAGES = [
   "I love working with Ana!",
-  "She has an incredible ability to quickly grasp what you’re looking for and translate it into thoughtful, practical options.",
+  "She has an incredible ability to quickly grasp what you're looking for and translate it into thoughtful, practical options.",
   "She has a true gift for bringing ideas to life – even the wildest ones. Her attention to detail is outstanding, and she works efficiently while maintaining great flexibility in her approach.",
-  "I also appreciate how she leverages her experience to refine designs for a better user experience. Ana isn’t afraid to experiment, even when faced with ambiguous tasks – she’s fantastic to work with.",
+  "I also appreciate how she leverages her experience to refine designs for a better user experience. Ana isn't afraid to experiment, even when faced with ambiguous tasks – she's fantastic to work with.",
 ];
 
 const MIN_TYPING = 400;
@@ -20,17 +20,27 @@ function getTypingTime(text: string) {
 
 type ChatAnimationProps = {
   messages?: string[];
+  disableTypingAnimation?: boolean;
 };
 
-export default function ChatAnimation({ messages }: ChatAnimationProps) {
+export default function ChatAnimation({ messages, disableTypingAnimation }: ChatAnimationProps) {
   const MESSAGES =
     messages && messages.length > 0 ? messages : DEFAULT_MESSAGES;
 
   const [visibleMessages, setVisibleMessages] = useState(0);
   const [dotsVisible, setDotsVisible] = useState(true);
   const [isInView, setIsInView] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
+
+  // Check if mobile on mount
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // ✅ Observer – startaj animaciju tek kad je blok u viewu
   useEffect(() => {
@@ -57,6 +67,13 @@ export default function ChatAnimation({ messages }: ChatAnimationProps) {
   // ✅ Animacija poruka – restart kad se promijeni MESSAGES ili kad dođe u view
   useEffect(() => {
     if (!isInView) return;
+
+    // On mobile or when typing animation is disabled, show all messages immediately
+    if (isMobile || disableTypingAnimation) {
+      setVisibleMessages(MESSAGES.length);
+      setDotsVisible(false);
+      return;
+    }
 
     setVisibleMessages(0);
     setDotsVisible(true);
@@ -91,7 +108,9 @@ export default function ChatAnimation({ messages }: ChatAnimationProps) {
     return () => {
       timers.forEach((id) => clearTimeout(id));
     };
-  }, [isInView, MESSAGES]);
+  }, [isInView, MESSAGES, isMobile, disableTypingAnimation]);
+
+  const skipAnimation = isMobile || disableTypingAnimation;
 
   return (
     <div
@@ -104,14 +123,15 @@ export default function ChatAnimation({ messages }: ChatAnimationProps) {
         {MESSAGES.slice(0, visibleMessages).map((msg, index) => (
           <div
             key={index}
-            className="inline-flex max-w-full rounded-surface bg-color-bg px-3 py-2 animate-bubble"
+            className={`inline-flex max-w-full rounded-surface bg-color-bg px-3 py-2 ${skipAnimation ? 'animate-slide-in' : 'animate-bubble'}`}
+            style={skipAnimation ? { animationDelay: `${index * 50}ms` } : undefined}
           >
             <p className="type-body-sm">{msg}</p>
           </div>
         ))}
 
-        {/* Typing dots – uvijek lijevo, bez teksta */}
-        {dotsVisible && (
+        {/* Typing dots – uvijek lijevo, bez teksta (hidden on mobile) */}
+        {dotsVisible && !skipAnimation && (
           <div className="inline-flex items-center gap-1 rounded-surface bg-color-bg px-3 py-2 animate-bubble">
             <span className="typing-dot" />
             <span className="typing-dot typing-dot-delay-1" />
