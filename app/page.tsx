@@ -654,7 +654,7 @@ export default function Page() {
       href="/design-system"
       target="_blank"
       rel="noreferrer noopener"
-      className="relative flex-1 overflow-hidden rounded-surface border border-color-border-secondary bg-color-bg-muted"
+      className="relative flex-1 min-h-[140px] overflow-hidden rounded-surface border border-color-border-secondary bg-color-bg-muted"
     >
       {/* Background image + gradient overlay */}
       <div className="pointer-events-none absolute inset-0">
@@ -679,7 +679,7 @@ export default function Page() {
           </div>
           {/* Pill button with eye icon */}
           <div 
-            className="hidden md:flex items-center gap-2 px-3 py-1.5 transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 transition-colors"
             style={{
               borderRadius: "100px",
               border: "1px solid #2E3027",

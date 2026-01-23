@@ -34,6 +34,23 @@ export default function TestimonialsSection({
             </span>{" "}
           </h2>
 
+          {/* RIGHT on mobile: painting + chat bubbles - shown after heading on mobile only */}
+          <div className="relative overflow-hidden min-h-[320px] md:hidden">
+            <Image
+              src="https://images.unsplash.com/photo-1759741787685-9643b191d643?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Landscape background"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="testimonials-overlay" />
+            <div className="absolute inset-0 z-20 flex items-center justify-center">
+              <ChatAnimation
+                messages={testimonials[activeTestimonial].messages}
+              />
+            </div>
+          </div>
+
           {/* People list */}
           <div className="stack-md">
             {testimonials.map((t, index) => {
@@ -88,9 +105,8 @@ export default function TestimonialsSection({
           </div>
         </div>
 
-        {/* RIGHT: painting + chat bubbles (animated) */}
-        <div className="relative overflow-hidden">
-          {/* Slika u pozadini – NE DIRAMO */}
+        {/* RIGHT: painting + chat bubbles (animated) - desktop only */}
+        <div className="relative overflow-hidden min-h-[320px] hidden md:block">
           <Image
             src="https://images.unsplash.com/photo-1759741787685-9643b191d643?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Landscape background"
