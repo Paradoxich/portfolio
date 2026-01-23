@@ -256,19 +256,19 @@ export default function Page() {
                 <div className="divide-y divide-color-border-secondary">
                   {projectsConfig
                     .filter((p) => 
-                      ["neptune-lp", "neptune-chat", "mixlodge-brand"].includes(p.key)
+                      ["neptune-lp", "shuttle-console", "mixlodge-brand"].includes(p.key)
                     )
                     .map((project) => {
                       // Map project keys to descriptions
                       const descriptions: Record<string, string> = {
                         "neptune-lp": "Brand/Web",
-                        "neptune-chat": "Agent interface prototype",
+                        "shuttle-console": "Dev console",
                         "mixlodge-brand": "Brand/MVP",
                       };
 
                       const description = descriptions[project.key] || project.title;
                       const projectPath = project.key === "neptune-lp" ? "/neptune" :
-                                         project.key === "neptune-chat" ? "/neptune-chat" :
+                                         project.key === "shuttle-console" ? "/shuttle" :
                                          "/mixlodge";
 
                       return (

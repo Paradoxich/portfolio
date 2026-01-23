@@ -4,7 +4,6 @@ import { ProjectPageShuttle } from "./ProjectPageShuttle";
 import { ProjectPageMixlodge } from "./ProjectPageMixlodge";
 import { ProjectPagePortfolio } from "./ProjectPagePortfolio";
 import { ProjectPageNeptune } from "./ProjectPageNeptune";
-import { ProjectPageNeptuneChat } from "./ProjectPageNeptuneChat";
 
 export type Theme = {
   // Case study colors (modal/page)
@@ -26,31 +25,14 @@ export type Theme = {
   scrollbarColor?: string; // scrollbar thumb color
   scrollGradient?: string; // top scroll gradient color (defaults to bg if not provided)
   closeButtonBg?: string; // close button circle fill color (defaults to bg if not provided)
+  linkPillBg?: string; // link pill background color (defaults to bgSurface if not provided)
+  linkPillText?: string; // link pill text color (defaults to textPrimary if not provided)
+  linkPillHoverBg?: string; // link pill hover background color (defaults to bgSurface if not provided)
+  tldrBg?: string; // TL;DR section background color (defaults to bgMuted if not provided)
 };
 
 // Define themes here - change colors in one place per case study
 export const themes = {
-  "neptune-chat": {
-    // Case study colors (modal/page)
-    bg: "#0B1016",
-    border: "rgba(39, 52, 67, 0.50)",
-    
-    // Card colors (project card on projects page)
-    // Omit cardBg and cardBorder to use default colors on the card
-    // Only bg and border above will apply to the case study page
-    
-    // Shared colors
-    bgSurface: "#1a1a1a",
-    bgMuted: "#151515",
-    borderSecondary: "rgba(39, 52, 67, 0.50)",
-    textPrimary: "#f0f0f0",
-    textSecondary: "#B1BDC8",
-    accent: "#4a9eff",
-    scrollbarColor: "rgba(39, 52, 67, 0.50)",
-    scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
-    closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
-  } as Theme,
-
   "neptune-lp": {
     // Case study colors (modal/page)
     bg: "#0B1016",
@@ -59,14 +41,18 @@ export const themes = {
     
     // Shared colors
     bgSurface: "#1a1a1a",
-    bgMuted: "#151515",
+    bgMuted: "#10161D",
     borderSecondary: "rgba(39, 52, 67, 0.50)",
     textPrimary: "#f0f0f0",
     textSecondary: "#B1BDC8",
     accent: "#4a9eff",
     scrollbarColor: "rgba(39, 52, 67, 0.50)",
-    scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
+    scrollGradient: "#0B1016", // top scroll gradient color (defaults to bg if not provided)
     closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
+    linkPillBg: "#10161D", // link pill background color
+    linkPillText: "#f0f0f0", // link pill text color
+    linkPillHoverBg: "#121921", // link pill hover background color
+    tldrBg: "#10161D", // TL;DR section background color
   } as Theme,
 
   "shuttle-console": {
@@ -84,6 +70,11 @@ export const themes = {
     scrollbarColor: "rgba(39, 52, 67, 0.50)",
     scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
     closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
+
+    linkPillBg: "#14191F", // link pill background color
+    linkPillText: "#ADB5C0", // link pill text color
+    linkPillHoverBg: "#181D24", // link pill hover background color
+    tldrBg: "#14191F", // TL;DR section background color
   } as Theme,
 
   "mixlodge-mvp": {
@@ -101,6 +92,7 @@ export const themes = {
     scrollbarColor: "rgba(255, 255, 255, 0.1)",
     scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
     closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
+    tldrBg: "#151515", // TL;DR section background color
   } as Theme,
   
   
@@ -148,20 +140,6 @@ export const projectsConfig: ProjectConfig[] = [
     theme: themes["neptune-lp"],
     Page: ProjectPageNeptune,
     // hero i Page možeš dodati kasnije
-  },
-
-  {
-    key: "neptune-chat",
-    label: "Neptune Chat",
-    title: "Building a hero graphic animation that accidentally became a product prototype.",
-    href: "/projects/neptune-chat",
-    category: "client",
-    hero: {
-      type: "video",
-      src: "/case-studies/neptune-chat.mp4",
-    },
-    theme: themes["neptune-chat"],
-    Page: ProjectPageNeptuneChat,
   },
 
   {

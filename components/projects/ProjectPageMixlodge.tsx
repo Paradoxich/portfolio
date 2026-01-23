@@ -18,12 +18,26 @@ export function ProjectPageMixlodge() {
           </h1>
 
           <div className="flex items-center gap-4">
-            <p className="type-body-sm">2024</p>
+            <p className="type-body-sm">2024 • Not yet launched</p>
 
-            <a href="#" className="pill-filled h-8">
-              Private case study
-            </a>
+            
           </div>
+        </div>
+      </section>
+
+      {/* TL;DR */}
+      <section className="stack-md">
+        <div 
+          className="text-column stack-md rounded-[var(--radius-md)]"
+          style={{
+            backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
+            padding: "12px",
+          }}
+        >
+          <h3 className="type-label text-color-text-primary">TL;DR</h3>
+          <p className="type-body-sm leading-loose tracking-normal">
+            Designed brand identity and MVP for a studio booking platform, leading product definition through design when requirements were vague and resources limited.
+          </p>
         </div>
       </section>
 

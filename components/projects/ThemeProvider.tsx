@@ -98,6 +98,20 @@ export function ThemeProvider({ theme, children }: ThemeProviderProps) {
     ...(theme.closeButtonBg
       ? { "--color-close-button-bg": theme.closeButtonBg }
       : (theme.bg || theme.cardBg) && { "--color-close-button-bg": theme.bg || theme.cardBg }),
+    // Link pill colors
+    ...(theme.linkPillBg
+      ? { "--color-link-pill-bg": theme.linkPillBg }
+      : theme.bgSurface && { "--color-link-pill-bg": theme.bgSurface }),
+    ...(theme.linkPillText
+      ? { "--color-link-pill-text": theme.linkPillText }
+      : theme.textPrimary && { "--color-link-pill-text": theme.textPrimary }),
+    ...(theme.linkPillHoverBg
+      ? { "--color-link-pill-hover-bg": theme.linkPillHoverBg }
+      : theme.bgSurface && { "--color-link-pill-hover-bg": theme.bgSurface }),
+    // TL;DR section background
+    ...(theme.tldrBg
+      ? { "--color-tldr-bg": theme.tldrBg }
+      : theme.bgMuted && { "--color-tldr-bg": theme.bgMuted }),
   } as React.CSSProperties;
 
   return (

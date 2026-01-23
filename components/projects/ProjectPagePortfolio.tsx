@@ -21,6 +21,22 @@ export function ProjectPagePortfolio() {
         </div>
       </section>
 
+      {/* TL;DR */}
+      <section className="stack-md">
+        <div 
+          className="text-column stack-md rounded-[var(--radius-md)]"
+          style={{
+            backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
+            padding: "12px",
+          }}
+        >
+          <h3 className="type-label text-color-text-primary">TL;DR</h3>
+          <p className="type-body-sm leading-loose tracking-normal">
+            Designed and built my own portfolio as a fully custom system — using design systems, code, and AI-assisted workflows to create a space that reflects how I think, iterate, and build products end-to-end.
+          </p>
+        </div>
+      </section>
+
       {/* 1. INTRO */}
       <section className="stack-md">
         <div className="text-column stack-md">

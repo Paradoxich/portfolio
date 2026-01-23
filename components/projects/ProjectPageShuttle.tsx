@@ -32,11 +32,40 @@ export function ProjectPageShuttle() {
               href="https://www.shuttle.dev"
               target="_blank"
               rel="noreferrer"
-              className="pill-filled h-8"
+              className="h-8 px-4 rounded-full flex items-center justify-center gap-2 type-body-sm transition-colors link-pill"
+              style={{
+                backgroundColor: "var(--color-link-pill-bg, var(--color-bg-surface))",
+                color: "var(--color-link-pill-text, var(--color-text-primary))",
+              }}
             >
               shuttle.dev
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="16" 
+                height="16" 
+                viewBox="0 0 24 24"
+                style={{ flexShrink: 0 }}
+              >
+                <path fill="currentColor" d="m16.004 9.414l-8.607 8.607l-1.414-1.414L14.59 8H7.003V6h11v11h-2z"/>
+              </svg>
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* TL;DR */}
+      <section className="stack-md">
+        <div 
+          className="text-column stack-md rounded-[var(--radius-md)]"
+          style={{
+            backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
+            padding: "12px",
+          }}
+        >
+          <h3 className="type-label text-color-text-primary">TL;DR</h3>
+          <p className="type-body-sm leading-loose tracking-normal">
+          Redesigned Shuttle’s console to make core workflows clearer and more consistent — replacing ad-hoc UI patterns with a cohesive, scalable system.
+          </p>
         </div>
       </section>
 
@@ -45,18 +74,9 @@ export function ProjectPageShuttle() {
         <div className="text-column stack-md">
          
           <p className="type-body">
-            Shuttle is a deployment platform where your infra lives in code, but
-            the console is where you actually see what&apos;s running. Over
-            time, the old console became a bit of a Frankenstein — features
-            bolted on, states handled ad-hoc, and a UI that didn&apos;t really
-            match how production-ready the platform actually was.
+          Shuttle is a deployment platform where your infra lives in code, but the console is where you actually see what’s running. Over time, the old console became a bit of a Frankenstein — features bolted on, states handled ad-hoc, and a UI that didn’t really match the maturity of the platform itself. Design work meant constantly asking: “Which of these 62 slightly different styles is the least wrong?”
           </p>
-          <p className="type-body">
-            By the time we started this redesign, we had more users, more
-            features, and a console that was… let&apos;s say very creative with
-            borders, radii and text colors. Design work meant constantly asking:
-            “Which of these 62 slightly different styles is the least wrong?”
-          </p>
+          
         </div>
       </section>
 
