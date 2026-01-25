@@ -125,43 +125,56 @@ export const typeUtilities = [
   },
 ];
 
-// Color utilities
+// Color utilities (both themes)
 export const colorUtilityTokens = [
   {
     token: "color.bg",
     mapsTo: "color-0",
     role: "Main page background",
-    preview: "#111010",
+    warm: "#100F0C",
+    cool: "#0a0a0a",
   },
   {
     token: "color.bg.surface",
     mapsTo: "color-20",
     role: "Primary card surface",
-    preview: "#23221B",
+    warm: "#23221B",
+    cool: "#1f1f1f",
   },
   {
     token: "color.bg.muted",
     mapsTo: "color-10",
     role: "Muted / secondary surface",
-    preview: "#191813",
+    warm: "#191813",
+    cool: "#141414",
   },
   {
     token: "color.border",
     mapsTo: "color-30",
     role: "Default border / divider",
-    preview: "#23251E",
+    warm: "#23251E",
+    cool: "#262626",
+  },
+  {
+    token: "color.border.secondary",
+    mapsTo: "color-40",
+    role: "Secondary / hover border",
+    warm: "#2E3027",
+    cool: "#333333",
   },
   {
     token: "color.text.primary",
     mapsTo: "color-90",
     role: "Primary text color",
-    preview: "#F3F0E9",
+    warm: "#F3F0E9",
+    cool: "#e5e5e5",
   },
   {
     token: "color.text.secondary",
     mapsTo: "color-80",
     role: "Secondary text color",
-    preview: "#C5BFAB",
+    warm: "#C5BFAB",
+    cool: "#a3a3a3",
   },
 ];
 

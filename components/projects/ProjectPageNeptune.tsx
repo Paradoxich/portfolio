@@ -52,7 +52,7 @@ export function ProjectPageNeptune() {
         >
           <h3 className="type-label text-color-text-primary">TL;DR</h3>
           <p className="type-body-sm leading-loose tracking-normal">
-            I shaped Neptune's identity and landing page, then built an animated chat prototype to make an AI infra workflow understandable. The work turned an abstract idea into something the team could reason about, test, and build on.
+          I shaped Neptune’s product identity and landing page, then built an animated, script-driven chat prototype to make an AI infra workflow legible and discussable. The work turned an abstract, evolving idea into something the team could reason about, test, and build against.
           </p>
         </div>
       </section>
@@ -62,197 +62,134 @@ export function ProjectPageNeptune() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Context</h3>
           <p className="type-body">
-            Neptune didn't arrive as a clear brief. It arrived as a vibe.
+            Neptune didn&apos;t arrive as a clear brief. It emerged somewhere between an AI platform engineer, an agentic infra copilot, and a CLI-first tool. What was clear early on was the problem: AI could generate code quickly, but deployment and infrastructure still felt fragile and hard to trust.
           </p>
           <p className="type-body">
-            Half "AI platform engineer," half "agentic infra copilot," and a little bit "Shuttle's cousin who spent too much time around LLMs." The team knew the problem was real — the gap between AI-generated code and actual deployment.
-          </p>
-          <p className="type-body">
-            Neptune kept changing shape — part CLI, part agent, sometimes both. I built a brand and landing page that could keep up.
+            As the product evolved, Neptune kept changing shape. My role was to design an identity and surface area that could stay coherent while the definition underneath it was still in motion.
           </p>
         </div>
       </section>
 
-      {/* 2. USERS & DISCOVERY */}
+      {/* 2. USERS & POSITIONING */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">
-            AI-native users, not "traditional devs"
-          </h3>
+          <h3 className="type-h4">Users & positioning</h3>
           <p className="type-body">
-            Before we designed anything, we listened. Three key insights emerged:
+            Before designing anything, we talked to early users and tested assumptions. Three constraints surfaced quickly:
           </p>
           <ul className="list-disc pl-5 stack-xs type-body">
             <li>
-              Users already lived inside AI tools — Cursor, Copilot, Claude Projects, and agent workflows.
+              Users already lived inside AI-native tools like Cursor, Copilot, and agent workflows
             </li>
             <li>
-              They trusted AI to write code but hesitated to trust it with deployment. Infra felt spooky.
+              They trusted AI to write code, but hesitated to let it touch infrastructure
             </li>
             <li>
-              They wanted an AI engineer with guardrails — power combined with clarity and automation.
+              They wanted power with guardrails — automation paired with clarity and control
             </li>
           </ul>
           <p className="type-body">
-            Neptune's personality landed as calm, precise, and quietly smart — a deliberate contrast to hype-driven AI branding.
+            This pushed us away from hype-heavy AI branding. Neptune&apos;s tone became calm, precise, and quietly capable — an AI engineer that earns trust by explaining itself and staying out of the way unless needed.
           </p>
         </div>
       </section>
 
-      {/* 3. PRODUCT FUZZINESS */}
+      {/* 3. DEFINING VISIBILITY */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">
-            Making sense of a moving target
-          </h3>
+          <h3 className="type-h4">Defining how visible Neptune should be</h3>
           <p className="type-body">
-            As the team refined what Neptune should be, the real question wasn't "console or IDE?" — it was how much UI it needed at all.
+            As the product took form, the core question wasn&apos;t console vs IDE. It was how much UI Neptune needed at all.
           </p>
           <p className="type-body">
-            Neptune is a hybrid: you install a CLI, but most interaction flows through natural language in your IDE agent. Some commands return simple output; others write new files directly into your project — generating the agent file, adding infra specs, wiring services.
+            Neptune became a hybrid:
           </p>
+          <ul className="list-disc pl-5 stack-xs type-body">
+            <li>Installed via CLI</li>
+            <li>Operated mostly through natural language inside an IDE agent</li>
+            <li>Capable of both returning output and writing files directly into the project</li>
+          </ul>
           <p className="type-body">
-            My work had to support that ambiguity. I focused on brand positioning and landing page design that stayed coherent whether Neptune showed up as a light-touch agent, a richer console, or something between.
+            That ambiguity worked conceptually — but it made explaining the workflow extremely difficult. The brand and landing page needed to support multiple futures without overcommitting too early.
           </p>
         </div>
       </section>
 
-      {/* 4. VISUAL DIRECTION */}
+      {/* 4. WHEN BRANDING WASN'T ENOUGH */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">
-            Making infra feel human
-          </h3>
+          <h3 className="type-h4">When branding wasn&apos;t enough</h3>
           <p className="type-body">
-            The landing page became our first real artifact, because Neptune is hard to explain without drifting into sci-fi. We needed to talk about agentic workflows, infra wiring, and code-to-cloud automation without turning it into a space opera.
+            Even with a clear identity and landing page, it was still hard to explain how Neptune actually worked. Static visuals failed to capture the core experience — the moment where you describe intent and Neptune plans and executes it.
           </p>
           <p className="type-body">
-            So the starting point wasn't visuals — it was a flexible layout we could use to test messaging, tone, and structure together. While the team refined the story, I explored visual directions inside that framework: different backdrops, glow levels, orbit patterns, and how much "AI energy" felt right before things tipped into chaos.
-          </p>
-          <p className="type-body">
-            The final aesthetic hits the balance we wanted: dark but not dramatic, technical but not neon-matrix. Clean typography, measured spacing, subtle gradients, and small pulses of color that act like signals rather than decoration. Orbit graphics help communicate how Neptune connects things behind the scenes, while the restrained palette keeps the page calm and confident.
-          </p>
-          <p className="type-body">
-            It's a visual language that makes complex infra feel surprisingly understandable — modern, trustworthy, and quietly powerful.
+            Instead of pushing another illustration, I built a fully animated chat prototype that demonstrated the workflow end-to-end: planning, generating configs, deploying infrastructure, and surfacing results through conversation.
           </p>
         </div>
       </section>
 
-      {/* 5. HERO GRAPHIC */}
+      {/* 5. A PROTOTYPE THAT CHANGED THE CONVERSATION */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">
-            When a hero graphic wasn't enough
-          </h3>
+          <h3 className="type-h4">A prototype that changed the conversation</h3>
           <p className="type-body">
-            We had a great landing page layout, a strong brand direction, a confident tone — and absolutely no good way to explain how Neptune actually works.
+            Seeing the workflow animated made the product click internally. The prototype became a shared reference for:
           </p>
+          <ul className="list-disc pl-5 stack-xs type-body">
+            <li>Tone and pacing of the agent</li>
+            <li>Where automation should pause for confirmation</li>
+            <li>How much work happens implicitly vs explicitly</li>
+          </ul>
           <p className="type-body">
-            The product manager and I kept circling the same hole: the workflow was real, but not finished. The agent existed, but only in fragments. We explored a few early graphics. They were okay, but they weren't telling the story. Nothing captured the feeling of:
-          </p>
-          <p className="type-body">
-            "Describe what you want → Neptune takes it from here."
-          </p>
-          <p className="type-body">
-            At the same time, I was knee-deep in building my portfolio with the help of LLMs. And a thought appeared:
-          </p>
-          <p className="type-body">
-            If I can design and animate complex interactions for my portfolio… why can't I just build the Neptune workflow as a real animated prototype?
+            It stopped being a marketing artifact and started functioning as a real product design tool the team could react to and refine together.
           </p>
         </div>
       </section>
 
-      {/* 6. THE TURNING POINT */}
+      {/* 6. REFACTORING FOR ITERATION */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">The turning point</h3>
+          <h3 className="type-h4">Refactoring for iteration</h3>
           <p className="type-body">
-            That question changed everything. Instead of creating another static graphic, I built a full animated chat sequence — one that showed what Neptune is capable of.
+            Once the prototype became a shared design tool, its limitations became obvious. The first version worked, but it was hard to change — small edits required digging through timing logic, states, and transitions.
           </p>
           <p className="type-body">
-            It typed. It planned. It generated commands, created config files, deployed projects, surfaced logs.
-          </p>
-          <p className="type-body">
-            A believable code-to-cloud workflow, shown through a simple conversation.
+            To make iteration easier, I refactored the system into a simple, human-readable script format that defines what happens, not how it animates. The animation engine handles orchestration on its own. The team edits the script to test new workflows, messages, or interaction patterns without touching internal logic.
           </p>
         </div>
       </section>
 
-      {/* 7. A PROTOTYPE HIDING IN PLAIN SIGHT */}
-      <section className="stack-md">
-        <div className="text-column stack-md">
-          <h3 className="type-h4">A prototype hiding in plain sight</h3>
-          <p className="type-body">
-            The moment the team saw it, everything clicked. Neptune finally felt like an AI platform engineer — calm, precise, quietly doing work behind the scenes.
-          </p>
-          <p className="type-body">
-            We realised we could actually test the workflow and shape how Neptune should work with it. The tone, pacing, states, approvals, decision points — we could test it all and see how the experience felt rather than imagining it abstractly.
-          </p>
-          <p className="type-body">
-            The animation became a design tool. A product tool. A shared reference for how Neptune should think. It wasn't decoration anymore. It was shaping the actual product.
-          </p>
-          <p className="type-body">
-            So a "project within the project" started.
-          </p>
-        </div>
-      </section>
-
-      {/* 8. WHERE THINGS GOT COMPLICATED */}
-      <section className="stack-md">
-        <div className="text-column stack-md">
-          <h3 className="type-h4">Where things got complicated</h3>
-          <p className="type-body">
-            Building the first version was exciting. Editing it afterwards… not so much. It worked — but every small change meant digging through long chains of events, timings, states, and transitions.
-          </p>
-          <p className="type-body">
-            I wanted the team to be able to experiment with the workflow without touching the internals. If we wanted to test a new interaction pattern, a different message, or a different sequence, it shouldn't require rewriting half the animation.
-          </p>
-          <p className="type-body">
-            So with Agent's help, I tore the structure apart and rebuilt it around a small scripting format. Nothing fancy — just a clean, human-readable way to say:
-          </p>
-          <p className="type-body">
-            "At this point, show this message. Then show this block. Then simulate this action. Then continue."
-          </p>
-          <p className="type-body">
-            The animation now reads the script and handles the details on its own. No one needs to think about timing logic, state transitions, or what message unlocks what. Sonnet even generated a guide for non-developers explaining how to write new scripts. Honestly, that part still makes me laugh.
-          </p>
-        </div>
-      </section>
-
-      {/* 9. OUTCOME */}
+      {/* 7. OUTCOME */}
       <section className="stack-md">
         <div className="text-column stack-md">
           <h3 className="type-h4">Outcome</h3>
           <p className="type-body">
-            The brand and landing page gave Neptune a clear, calm identity — one that could explain a complex, evolving product without hype and stay coherent through pivots.
+            The identity and landing page gave Neptune a calm, durable presence that could survive ongoing definition without drifting into hype. The animated chat prototype solved what branding alone couldn&apos;t: it made Neptune&apos;s workflow tangible and discussable.
           </p>
           <p className="type-body">
-            The animated chat experience solved what the brand alone couldn't: it made Neptune's workflow tangible. By showing how an AI platform engineer plans, executes, and deploys through conversation, the animation became a shared reference for tone, pacing, and interaction — not just a hero graphic.
-          </p>
-          <p className="type-body">
-            Together, the work turned an abstract idea into something understandable and discussable. Neptune finally felt like a product with intent: confident in how it presents itself, and clear enough in how it works for the team to keep building forward.
+            Together, the work turned a vague idea into something concrete enough for the team to align on, critique, and build forward with confidence.
           </p>
         </div>
       </section>
 
-      {/* 10. BUILT WITH */}
+      {/* 8. BUILT WITH */}
       <section className="stack-md">
         <div className="text-column stack-md">
           <h3 className="type-h4">Built with</h3>
           <p className="type-body">
-            Interaction prototype: custom animation system (script-driven), React / TypeScript
+            <strong>Interaction prototype:</strong> custom animation system (script-driven), React / TypeScript
           </p>
           <p className="type-body">
-            Sequencing & logic: React state machine + timed orchestration
+            <strong>Sequencing & logic:</strong> React state machine + timed orchestration
           </p>
           <p className="type-body">
-            Motion: GSAP (SVG step indicators), CSS keyframe animations
+            <strong>Motion:</strong> GSAP (SVG step indicators), CSS keyframe animations
           </p>
           <p className="type-body">
-            Design & iteration: Figma
+            <strong>Design & iteration:</strong> Figma
           </p>
           <p className="type-body">
-            Tooling: Cursor, LLM-assisted workflows
+            <strong>Tooling:</strong> Cursor, LLM-assisted workflows
           </p>
         </div>
       </section>

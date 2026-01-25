@@ -129,7 +129,7 @@ export function PotAnimation() {
           {/* dome */}
           <path
             d="M30.998 4.5C39.4147 4.5 46.9514 9.7128 49.9219 17.5879L51.7754 22.5H10.2207L12.0742 17.5879C15.0446 9.7128 22.5814 4.5 30.998 4.5Z"
-            fill="#111010"
+            fill="var(--color-0)"
             stroke="var(--color-60)"
           />
           {/* bottom bar */}
@@ -139,7 +139,7 @@ export function PotAnimation() {
             width="44"
             height="2"
             rx="1"
-            fill="#111010"
+            fill="var(--color-0)"
             stroke="var(--color-60)"
           />
 
@@ -214,7 +214,7 @@ export function PotAnimation() {
             isRaining
               ? {}
               : {
-                  outlineColor: "#2E3027", // ⭐ animiramo samo boju, bez flickera
+                  outlineColor: "var(--color-40)", // ⭐ animiramo samo boju, bez flickera
                 }
           }
           transition={{

@@ -188,7 +188,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                         placeholder:text-color-60
                         focus:outline-none focus:border-color-border-secondary
                         transition-all duration-300 ease-out
-                        hover:border-[rgba(85,90,75,0.6)]
+                        input-hover
                         type-body-sm
                         disabled:opacity-50
                       "
@@ -217,7 +217,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                         placeholder:text-color-60
                         focus:outline-none focus:border-color-border-secondary
                         transition-all duration-300 ease-out
-                        hover:border-[rgba(85,90,75,0.6)]
+                        input-hover
                         type-body-sm
                         disabled:opacity-50
                       "
@@ -245,7 +245,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                         placeholder:text-color-60
                         focus:outline-none focus:border-color-border-secondary
                         transition-all duration-300 ease-out
-                        hover:border-[rgba(85,90,75,0.6)]
+                        input-hover
                         type-body-sm
                         resize-none
                         disabled:opacity-50

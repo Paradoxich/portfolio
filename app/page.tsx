@@ -213,8 +213,8 @@ export default function Page() {
                         padding: "4px 8px 4px 10px",
                         gap: "8px",
                         borderRadius: "100px",
-                        border: "1px solid #2E3027",
-                        backgroundColor: "#23221B",
+                        border: "1px solid var(--color-40)",
+                        backgroundColor: "var(--color-20)",
                         color: "#C5BFAB",
                         
                       }}
@@ -351,7 +351,7 @@ export default function Page() {
                             className="hidden md:flex items-center gap-2 px-3 py-1.5 group-hover:border-color-border-secondary transition-colors"
                             style={{
                               borderRadius: "100px",
-                              border: "1px solid #2E3027",
+                              border: "1px solid var(--color-40)",
                               background: "rgba(16, 15, 12, 0.10)"
                             }}
                           >
@@ -505,7 +505,7 @@ export default function Page() {
             <div 
               className="pointer-events-none absolute inset-0 z-10"
               style={{
-                background: "linear-gradient(180deg,rgba(17, 16, 16, 0.00) 50.48%, #111010 100%)",
+                background: "linear-gradient(180deg, rgba(var(--color-0-rgb), 0) 50.48%, var(--color-0) 100%)",
               }}
             />
             {/* LABEL - above gradient */}
@@ -556,8 +556,8 @@ export default function Page() {
                             cx="3.5"
                             cy="3.5"
                             r="3"
-                            fill="#111010"
-                            stroke="#555A4B"
+                            fill="var(--color-0)"
+                            stroke="var(--color-60)"
                             strokeWidth="1"
                           />
                         </svg>
@@ -613,7 +613,12 @@ export default function Page() {
                 className="object-cover"
                 sizes="480px"
               />
-             <div className="absolute inset-0 bg-[linear-gradient(270deg,rgba(17,16,16,0)_-1.36%,rgba(17,16,16,0.92)_45.22%,#111010_79.37%)]" />
+             <div 
+               className="absolute inset-0"
+               style={{
+                 background: "linear-gradient(270deg, rgba(var(--color-0-rgb), 0) -1.36%, rgba(var(--color-0-rgb), 0.92) 45.22%, var(--color-0) 79.37%)"
+               }}
+             />
             </div>
 
             {/* Foreground sadržaj – identičan layoutu, samo klikabilan */}
@@ -676,10 +681,16 @@ export default function Page() {
           src="/design-system.png"
           alt="Design system foundations preview"
           fill
-          className="object-cover object-left-top"
+          className="object-cover object-left-top transition-[filter] duration-500"
+          style={{ filter: "var(--image-filter)" }}
           sizes="(min-width: 1024px) 900px, 100vw"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(35,34,27,0)_0%,rgba(35,34,27,0.81)_61.07%,#23221B_100%)]" />
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, rgba(var(--color-20-rgb), 0) 0%, rgba(var(--color-20-rgb), 0.81) 61.07%, var(--color-20) 100%)"
+          }}
+        />
       </div>
 
       {/* Text overlay */}
@@ -696,8 +707,8 @@ export default function Page() {
             className="flex items-center gap-2 px-3 py-1.5 transition-colors"
             style={{
               borderRadius: "100px",
-              border: "1px solid #2E3027",
-              background: "rgba(16, 15, 12, 0.10)"
+              border: "1px solid var(--color-40)",
+              background: "rgba(var(--color-0-rgb), 0.10)"
             }}
           >
             <svg

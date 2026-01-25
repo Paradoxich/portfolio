@@ -8,7 +8,7 @@
 
 :root {
   /* Color scale – neutral ramp */
-  --color-0: #111010;
+  --color-0: #100F0C;
   --color-10: #191813;
   --color-20: #23221b;
   --color-30: #23251e;
@@ -17,6 +17,22 @@
   --color-80: #c5bfab;
   --color-90: #f3f0e9;
   --color-100: #ffffff;
+  
+  /* RGB helpers for gradients */
+  --color-0-rgb: 16, 15, 12;
+  --color-20-rgb: 35, 34, 27;
+  
+  /* Color blend overlay */
+  --color-blend: #43402C;
+  
+  /* Hover states (rgb for opacity variants) */
+  --color-60-rgb: 85, 90, 75;
+  
+  /* Accent/button fill */
+  --color-accent: #84873d;
+  
+  /* Image filter for theme */
+  --image-filter: none;
 
   /* Usage aliases */
   --color-bg: var(--color-0); /* page background / outline card bg */
@@ -379,7 +395,7 @@
   }
 
   .btn-input:hover {
-    border-color: rgba(85, 90, 75, 0.6);
+    border-color: rgba(var(--color-60-rgb), 0.6);
   }
 
   .btn-input-text {
@@ -399,6 +415,19 @@
            cursor-pointer
            transition-colors
            hover:border-color-border hover:bg-color-bg-muted;
+  }
+
+  /* Hover border highlight for cards (uses dynamic theme color) */
+  .hover-border-highlight {
+    transition: border-color 0.3s ease-out;
+  }
+  .group:hover .hover-border-highlight {
+    border-color: rgba(var(--color-60-rgb), 0.6);
+  }
+
+  /* Input hover effect (uses dynamic theme color) */
+  .input-hover:hover {
+    border-color: rgba(var(--color-60-rgb), 0.6);
   }
 }
 
@@ -429,7 +458,7 @@
     background: linear-gradient(
       to right,
       var(--color-bg) 0%,
-      rgba(17, 16, 16, 0) 55%
+      rgba(var(--color-0-rgb), 0) 55%
     );
     pointer-events: none;
     z-index: 1;
@@ -574,7 +603,7 @@
   /* ===== MODAL OVERLAY S NOISE-OM ===== */
   .overlay-noise {
     /* isto kao Figma: fill + blur */
-    background-color: rgba(17, 16, 16, 0.3);
+    background-color: rgba(var(--color-0-rgb), 0.3);
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(25px);
 
@@ -590,7 +619,7 @@
     @apply pointer-events-none absolute inset-x-0 bottom-0 h-12;
     background: linear-gradient(
       to bottom,
-      rgba(17, 16, 16, 0),
+      rgba(var(--color-0-rgb), 0),
       var(--color-bg)
     );
   }
@@ -599,8 +628,8 @@
     position: absolute;
     inset: 0;
     z-index: 10;
-    background: linear-gradient(90deg, rgba(17, 16, 16, 0) 39.69%, #111010 100%),
-      linear-gradient(270deg, rgba(17, 16, 16, 0) 43.41%, #111010 100%);
+    background: linear-gradient(90deg, rgba(var(--color-0-rgb), 0) 39.69%, var(--color-0) 100%),
+      linear-gradient(270deg, rgba(var(--color-0-rgb), 0) 43.41%, var(--color-0) 100%);
   }
 }
 

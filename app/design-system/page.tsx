@@ -13,6 +13,7 @@ import {
   radiusTokens,
   layoutGridTokens,
   layoutContainerTokens,
+  themingTokens,
   // utilities
   typeUtilities,
   colorUtilityTokens,
@@ -26,12 +27,11 @@ import {
  * Tabs
  * ============================== */
 
-type TabId = "foundations" | "utilities" | "components";
+type TabId = "foundations" | "utilities";
 
 const tabs: { id: TabId; label: string }[] = [
   { id: "foundations", label: "Foundations" },
-  { id: "utilities", label: "Utility" },
-  { id: "components", label: "Components" },
+  { id: "utilities", label: "Utilities" },
 ];
 
 /* ================================
@@ -77,7 +77,6 @@ export default function DesignSystemPage() {
         {/* Tab content */}
         {activeTab === "foundations" && <FoundationsTab />}
         {activeTab === "utilities" && <UtilitiesTab />}
-        {activeTab === "components" && <ComponentsTab />}
       </div>
     </main>
   );
@@ -132,7 +131,7 @@ function FoundationsTab() {
         />
 
         <div className="grid md:grid-cols-2 gap-gutter">
-          {/* COLORS */}
+          {/* COLORS - Side by side themes */}
           <div className="panel stack-lg">
             <p className="type-body-sm-strong">Color</p>
             <div className="overflow-x-auto">
@@ -140,8 +139,8 @@ function FoundationsTab() {
                 <thead>
                   <tr className="border-b border-color-border">
                     <Th>Token</Th>
-                    <Th>Value</Th>
-                    <Th align="right">Swatch</Th>
+                    <Th>Warm</Th>
+                    <Th>Cool</Th>
                   </tr>
                 </thead>
                 <tbody>
@@ -151,12 +150,23 @@ function FoundationsTab() {
                       className="border-b border-color-border last:border-0"
                     >
                       <Td>{c.token}</Td>
-                      <Td>{c.value}</Td>
-                      <Td align="right">
-                        <span
-                          className="inline-block h-4 w-4 rounded-full border border-color-border align-middle"
-                          style={{ backgroundColor: c.value }}
-                        />
+                      <Td>
+                        <div className="flex items-center gap-2">
+                          <span
+                            className="inline-block h-4 w-4 rounded-full border border-color-border"
+                            style={{ backgroundColor: c.warm }}
+                          />
+                          <span className="type-body-xs">{c.warm}</span>
+                        </div>
+                      </Td>
+                      <Td>
+                        <div className="flex items-center gap-2">
+                          <span
+                            className="inline-block h-4 w-4 rounded-full border border-color-border"
+                            style={{ backgroundColor: c.cool }}
+                          />
+                          <span className="type-body-xs">{c.cool}</span>
+                        </div>
                       </Td>
                     </tr>
                   ))}
@@ -196,6 +206,69 @@ function FoundationsTab() {
                 </tbody>
               </table>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================
+          THEMING (dynamic tokens)
+      ========================== */}
+      <section className="card stack-xl">
+        <SectionHeader
+          label="Theming"
+          description="Dynamic tokens for color scheme switching"
+        />
+
+        <div className="panel stack-lg">
+          <p className="type-body-sm-strong">Theme-aware tokens</p>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-left">
+              <thead>
+                <tr className="border-b border-color-border">
+                  <Th>Token</Th>
+                  <Th>Warm</Th>
+                  <Th>Cool</Th>
+                  <Th>Role</Th>
+                </tr>
+              </thead>
+              <tbody>
+                {themingTokens.map((t) => (
+                  <tr
+                    key={t.token}
+                    className="border-b border-color-border last:border-0"
+                  >
+                    <Td>{t.token}</Td>
+                    <Td>
+                      {t.warm.startsWith("#") ? (
+                        <div className="flex items-center gap-2">
+                          <span
+                            className="inline-block h-4 w-4 rounded-full border border-color-border"
+                            style={{ backgroundColor: t.warm }}
+                          />
+                          <span className="type-body-xs">{t.warm}</span>
+                        </div>
+                      ) : (
+                        <span className="type-body-xs">{t.warm}</span>
+                      )}
+                    </Td>
+                    <Td>
+                      {t.cool.startsWith("#") ? (
+                        <div className="flex items-center gap-2">
+                          <span
+                            className="inline-block h-4 w-4 rounded-full border border-color-border"
+                            style={{ backgroundColor: t.cool }}
+                          />
+                          <span className="type-body-xs">{t.cool}</span>
+                        </div>
+                      ) : (
+                        <span className="type-body-xs">{t.cool}</span>
+                      )}
+                    </Td>
+                    <Td>{t.role}</Td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -332,7 +405,8 @@ function UtilitiesTab() {
               <tr className="border-b border-color-border">
                 <Th>Token</Th>
                 <Th>Maps to</Th>
-                <Th align="right">Preview</Th>
+                <Th>Warm</Th>
+                <Th>Cool</Th>
               </tr>
             </thead>
             <tbody>
@@ -343,11 +417,23 @@ function UtilitiesTab() {
                 >
                   <Td>{c.token}</Td>
                   <Td>{c.mapsTo}</Td>
-                  <Td align="right">
-                    <span
-                      className="inline-block h-4 w-4 rounded-full border border-color-border align-middle"
-                      style={{ backgroundColor: c.preview }}
-                    />
+                  <Td>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="inline-block h-4 w-4 rounded-full border border-color-border"
+                        style={{ backgroundColor: c.warm }}
+                      />
+                      <span className="type-body-xs">{c.warm}</span>
+                    </div>
+                  </Td>
+                  <Td>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="inline-block h-4 w-4 rounded-full border border-color-border"
+                        style={{ backgroundColor: c.cool }}
+                      />
+                      <span className="type-body-xs">{c.cool}</span>
+                    </div>
                   </Td>
                 </tr>
               ))}
@@ -505,26 +591,6 @@ function UtilitiesTab() {
   );
 }
 
-/* ================================
- * Components (placeholder)
- * ============================== */
-
-function ComponentsTab() {
-  return (
-    <section className="card stack-lg">
-      <p className="type-label">Components</p>
-      <p className="type-body-sm max-w-lg">
-        This section will eventually list higher-level components built from the
-        utilities and tokens above – things like project cards, testimonial
-        stack, pill carousel, and the “water the plant” interaction.
-      </p>
-      <p className="type-body-xs text-color-text-secondary">
-        For now, this is a placeholder to show the structure of the design
-        system.
-      </p>
-    </section>
-  );
-}
 
 /* ================================
  * Small helpers

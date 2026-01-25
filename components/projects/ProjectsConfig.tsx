@@ -48,7 +48,7 @@ export const themes = {
     accent: "#4a9eff",
     scrollbarColor: "rgba(39, 52, 67, 0.50)",
     scrollGradient: "#0B1016", // top scroll gradient color (defaults to bg if not provided)
-    closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
+    closeButtonBg: "#0B1016", // close button circle fill color (defaults to bg if not provided)
     linkPillBg: "#10161D", // link pill background color
     linkPillText: "#f0f0f0", // link pill text color
     linkPillHoverBg: "#121921", // link pill hover background color
@@ -68,8 +68,8 @@ export const themes = {
     textSecondary: "#ADB5C0",
     accent: "#4a9eff",
     scrollbarColor: "rgba(39, 52, 67, 0.50)",
-    scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
-    closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
+    scrollGradient: "#0E1115", // top scroll gradient color (defaults to bg if not provided)
+    closeButtonBg: "#0E1115", // close button circle fill color (defaults to bg if not provided)
 
     linkPillBg: "#14191F", // link pill background color
     linkPillText: "#ADB5C0", // link pill text color
@@ -90,9 +90,9 @@ export const themes = {
     textSecondary: "#B1B1B1",
     accent: "#4a9eff",
     scrollbarColor: "rgba(255, 255, 255, 0.1)",
-    scrollGradient: "#060A0F", // top scroll gradient color (defaults to bg if not provided)
-    closeButtonBg: "#060A0F", // close button circle fill color (defaults to bg if not provided)
-    tldrBg: "#151515", // TL;DR section background color
+    scrollGradient: "#121212", // top scroll gradient color (defaults to bg if not provided)
+    closeButtonBg: "#121212", // close button circle fill color (defaults to bg if not provided)
+    tldrBg: "#181818", // TL;DR section background color
   } as Theme,
   
   

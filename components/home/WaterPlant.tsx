@@ -58,12 +58,13 @@ export default function WaterPlant() {
       >
         {/* Fill sloj koji se “prazni” dok zalijevamo */}
         <motion.div
-          className="absolute inset-0 bg-olive"
+          className="absolute inset-0"
           initial={false}
           animate={{ scaleX: isWatering ? 0 : 1 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
           style={{
             originX: 1, // prazni se zdesna ulijevo
+            backgroundColor: "var(--color-accent)",
           }}
         />
 

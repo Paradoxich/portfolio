@@ -43,7 +43,7 @@ export function HomeIllustrationsPreview() {
   }, []);
 
   return (
-    <div className="group relative h-[200px] overflow-hidden border border-[#111010]">
+    <div className="group relative h-[200px] overflow-hidden border border-[var(--color-0)]">
       <div className="absolute inset-0">
         <div
           className="flex h-full items-center gap-[8px] min-w-max will-change-transform animate-illustration-pan [animation-play-state:paused] group-hover:[animation-play-state:running]"
@@ -71,13 +71,18 @@ export function HomeIllustrationsPreview() {
       <div 
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundColor: "#43402C",
+          backgroundColor: "var(--color-blend)",
           mixBlendMode: "color"
         }}
       />
 
       {/* Gradient overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#111010_0%,rgba(17,16,16,0)_50.48%,#111010_100%)]" />
+      <div 
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: "linear-gradient(90deg, var(--color-0) 0%, rgba(var(--color-0-rgb), 0) 50.48%, var(--color-0) 100%)"
+        }}
+      />
    
     </div>
   );

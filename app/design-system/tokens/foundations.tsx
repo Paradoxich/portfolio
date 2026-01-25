@@ -59,17 +59,27 @@ export const fontWeightTokens = [
   { token: "font-weight.medium", value: "500" },
 ];
 
-// Color scale – neutral ramp
+// Color scale – neutral ramp (both themes)
 export const colorTokens = [
-  { token: "color-0", value: "#111010" },
-  { token: "color-10", value: "#191813" },
-  { token: "color-20", value: "#23221B" },
-  { token: "color-30", value: "#23251E" },
-  { token: "color-40", value: "#2E3027" },
-  { token: "color-60", value: "#555A4B" },
-  { token: "color-80", value: "#C5BFAB" },
-  { token: "color-90", value: "#F3F0E9" },
-  { token: "color-100", value: "#FFFFFF" },
+  { token: "color-0", warm: "#100F0C", cool: "#0a0a0a" },
+  { token: "color-10", warm: "#191813", cool: "#141414" },
+  { token: "color-20", warm: "#23221B", cool: "#1f1f1f" },
+  { token: "color-30", warm: "#23251E", cool: "#262626" },
+  { token: "color-40", warm: "#2E3027", cool: "#333333" },
+  { token: "color-60", warm: "#555A4B", cool: "#5c5c5c" },
+  { token: "color-80", warm: "#C5BFAB", cool: "#a3a3a3" },
+  { token: "color-90", warm: "#F3F0E9", cool: "#e5e5e5" },
+  { token: "color-100", warm: "#FFFFFF", cool: "#ffffff" },
+];
+
+// Theming tokens – dynamic values that change with color scheme
+export const themingTokens = [
+  { token: "color-0-rgb", warm: "16, 15, 12", cool: "10, 10, 10", role: "RGB for gradient opacity" },
+  { token: "color-20-rgb", warm: "35, 34, 27", cool: "31, 31, 31", role: "RGB for gradient opacity" },
+  { token: "color-60-rgb", warm: "85, 90, 75", cool: "92, 92, 92", role: "RGB for hover opacity" },
+  { token: "color-blend", warm: "#43402C", cool: "#3a3a3a", role: "Illustration color overlay" },
+  { token: "color-accent", warm: "#84873d", cool: "#6b6b6b", role: "Button fill (e.g. Water button)" },
+  { token: "image-filter", warm: "none", cool: "grayscale(100%)", role: "Theme-based image filter" },
 ];
 
 // Border-radius scale

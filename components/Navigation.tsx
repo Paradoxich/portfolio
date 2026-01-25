@@ -32,7 +32,7 @@ export default function Navigation() {
     <nav 
       className="sticky top-0 z-50 py-5 transition-all duration-200"
       style={hasScrolled ? {
-        background: "linear-gradient(180deg, #100F0C 0%, rgba(16, 15, 12, 0.81) 61.07%, rgba(16, 15, 12, 0.00) 100%)"
+        background: "linear-gradient(180deg, var(--color-0) 0%, rgba(var(--color-0-rgb), 0.81) 61.07%, rgba(var(--color-0-rgb), 0) 100%)"
       } : {}}
     >
       <div className="layout-container flex items-center justify-center md:justify-between">

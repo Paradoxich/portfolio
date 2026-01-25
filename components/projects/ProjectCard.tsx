@@ -54,70 +54,72 @@ export function ProjectCard({
       : undefined;
 
   return (
-    <Link href={href} className="md:even:translate-y-5">
-      <motion.article
-        transition={{ duration: 0.18, ease: [0.25, 0.1, 0.25, 1] }}
-        className={hasCardTheme 
-          ? "flex flex-col gap-gutter cursor-pointer rounded-[var(--radius-lg)] border"
-          : "card flex flex-col gap-gutter cursor-pointer"
-        }
-        style={hasCardTheme ? cardStyle : undefined}
+    <Link href={href} className="md:even:translate-y-5 group">
+      {/* Outer wrapper with double-border hover effect */}
+      <motion.div
+        className="relative rounded-[var(--radius-lg)]"
+        style={{
+          outline: "1px solid transparent",
+          outlineOffset: "2px",
+        }}
+        whileHover={{
+          outlineColor: "var(--color-40)",
+        }}
+        transition={{
+          duration: 0.2,
+          ease: [0.25, 0.1, 0.25, 1],
+        }}
       >
-        {/* Top: label + short title */}
-        <header className="stack-xs">
-          {label && (
-            <div className="type-body-strong">{label}</div>
-          )}
-          <p className="type-body-sm">{title}</p>
-        </header>
+        <motion.article
+          transition={{ duration: 0.18, ease: [0.25, 0.1, 0.25, 1] }}
+          className={hasCardTheme 
+            ? "flex flex-col gap-gutter cursor-pointer rounded-[var(--radius-lg)] border transition-all duration-300 ease-out hover-border-highlight group-hover:bg-[var(--color-20)]"
+            : "card flex flex-col gap-gutter cursor-pointer transition-all duration-300 ease-out hover-border-highlight group-hover:bg-[var(--color-20)]"
+          }
+          style={hasCardTheme ? cardStyle : undefined}
+        >
+          {/* Top: label + short title */}
+          <header className="stack-xs">
+            {label && (
+              <div className="type-body-strong">{label}</div>
+            )}
+            <p className="type-body-sm">{title}</p>
+          </header>
 
-        {/* Preview area – hero image or video */}
-        {hero?.type === "image" ? (
-          <div 
-            className={`relative border rounded-[var(--radius-md)] aspect-[16/10] overflow-hidden ${!hasCardTheme ? "bg-color-bg border-color-border" : ""}`}
-            style={heroStyle}
-          >
-            <Image
-              src={hero.src}
-              alt={hero.alt ?? ""}
-              width={800}
-              height={500}
-              className="w-full h-full object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            {/* Gradient overlay */}
-            {/* <div 
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: "linear-gradient(180deg, rgba(16, 17, 16, 0.00) 0%, rgba(16, 17, 16, 0.81) 61.07%, #101110 100%);",
-              }}
-            /> */}
-          </div>
-        ) : hero?.type === "video" ? (
-          <div 
-            className={`relative border rounded-[var(--radius-md)] aspect-[16/10] overflow-hidden ${!hasCardTheme ? "bg-color-bg border-color-border" : ""}`}
-            style={heroStyle}
-          >
-            <video
-              src={hero.src}
-              className="w-full h-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-            {/* Gradient overlay */}
-            {/* <div 
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: "linear-gradient(180deg, rgba(16, 17, 16, 0.00) 0%, rgba(16, 17, 16, 0.81) 61.07%, #101110 100%);",
-              }}
-            /> */}
-          </div>
-        ) : (
-          <div className="panel aspect-[16/10]" />
-        )}
-      </motion.article>
+          {/* Preview area – hero image or video */}
+          {hero?.type === "image" ? (
+            <div 
+              className={`relative border rounded-[var(--radius-md)] aspect-[16/10] overflow-hidden transition-all duration-300 ease-out hover-border-highlight ${!hasCardTheme ? "bg-color-bg border-color-border" : ""}`}
+              style={heroStyle}
+            >
+              <Image
+                src={hero.src}
+                alt={hero.alt ?? ""}
+                width={800}
+                height={500}
+                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          ) : hero?.type === "video" ? (
+            <div 
+              className={`relative border rounded-[var(--radius-md)] aspect-[16/10] overflow-hidden transition-all duration-300 ease-out hover-border-highlight ${!hasCardTheme ? "bg-color-bg border-color-border" : ""}`}
+              style={heroStyle}
+            >
+              <video
+                src={hero.src}
+                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+          ) : (
+            <div className="panel aspect-[16/10]" />
+          )}
+        </motion.article>
+      </motion.div>
     </Link>
   );
 }

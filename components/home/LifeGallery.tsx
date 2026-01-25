@@ -99,7 +99,7 @@ export default function LifeGallery() {
             className="absolute inset-x-0 top-0 h-1/3"
             style={{
               background:
-                "linear-gradient(180deg, #111010 0%, rgba(17, 16, 16, 0.81) 40%, rgba(17, 16, 16, 0) 100%)",
+                "linear-gradient(180deg, var(--color-0) 0%, rgba(var(--color-0-rgb), 0.81) 40%, rgba(var(--color-0-rgb), 0) 100%)",
             }}
           />
 
@@ -108,7 +108,7 @@ export default function LifeGallery() {
             className="absolute inset-x-0 bottom-0 h-1/3"
             style={{
               background:
-                "linear-gradient(0deg, #111010 0%, rgba(17, 16, 16, 0.81) 40%, rgba(17, 16, 16, 0) 100%)",
+                "linear-gradient(0deg, var(--color-0) 0%, rgba(var(--color-0-rgb), 0.81) 40%, rgba(var(--color-0-rgb), 0) 100%)",
             }}
           />
         </div>

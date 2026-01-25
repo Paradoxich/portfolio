@@ -135,7 +135,7 @@ export function ProjectModal({ isOpen, project, onClose }: ProjectModalProps) {
               top-[12px] right-[12px]
               inline-flex h-8 w-8 items-center justify-center
               rounded-full
-              bg-[#111010]
+              bg-[var(--color-0)]
               border border-color-border
               text-color-text-secondary
               hover:text-color-text-primary hover:border-color-text-primary
@@ -152,7 +152,7 @@ export function ProjectModal({ isOpen, project, onClose }: ProjectModalProps) {
               pointer-events-none
               absolute inset-x-0 top-0
               h-16
-              bg-[linear-gradient(180deg,#111010_9.26%,rgba(17,16,16,0.80)_47.88%,rgba(17,16,16,0.00)_100%)]
+              [background:linear-gradient(180deg,var(--color-0)_9.26%,rgba(var(--color-0-rgb),0.80)_47.88%,rgba(var(--color-0-rgb),0.00)_100%)]
               transition-opacity duration-200
               z-10
               ${hasScrolled ? "opacity-100" : "opacity-0"}
