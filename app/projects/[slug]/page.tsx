@@ -189,31 +189,36 @@ function ProjectPageContent() {
     if (!project) return null;
 
     if (project.hero?.type === "image") {
+      const positionClass = project.hero.position === "top" ? "object-top" : project.hero.position === "bottom" ? "object-bottom" : "object-center";
       return (
         <div className="w-full mb-[var(--space-2xl)]">
-          <Image
-            src={project.hero.src}
-            alt={project.hero.alt ?? ""}
-            width={1600}
-            height={900}
-            className="w-full h-auto rounded-[var(--radius-md)] border border-color-border-secondary"
-            sizes="(max-width: 1024px) 100vw, 960px"
-          />
+          <div className="relative aspect-video rounded-[var(--radius-md)] border border-color-border-secondary overflow-hidden">
+            <Image
+              src={project.hero.src}
+              alt={project.hero.alt ?? ""}
+              fill
+              className={`object-cover ${positionClass}`}
+              sizes="(max-width: 1024px) 100vw, 960px"
+            />
+          </div>
         </div>
       );
     }
 
     if (project.hero?.type === "video") {
+      const positionClass = project.hero.position === "top" ? "object-top" : project.hero.position === "bottom" ? "object-bottom" : "object-center";
       return (
         <div className="w-full mb-[var(--space-2xl)]">
-          <video
-            src={project.hero.src}
-            className="w-full h-auto rounded-[var(--radius-md)] border border-color-border-secondary"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+          <div className="relative aspect-video rounded-[var(--radius-md)] border border-color-border-secondary overflow-hidden">
+            <video
+              src={project.hero.src}
+              className={`w-full h-full object-cover ${positionClass}`}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
         </div>
       );
     }

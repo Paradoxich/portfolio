@@ -16,6 +16,7 @@ type ProjectCardProps = {
     type: "image" | "video";
     src: string;
     alt?: string;
+    position?: "top" | "center" | "bottom";
   };
   theme?: Theme;
 };
@@ -97,7 +98,7 @@ export function ProjectCard({
                 alt={hero.alt ?? ""}
                 width={800}
                 height={500}
-                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                className={`w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] ${hero.position === "top" ? "object-top" : hero.position === "bottom" ? "object-bottom" : "object-center"}`}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
@@ -108,7 +109,7 @@ export function ProjectCard({
             >
               <video
                 src={hero.src}
-                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                className={`w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] ${hero.position === "top" ? "object-top" : hero.position === "bottom" ? "object-bottom" : "object-center"}`}
                 autoPlay
                 muted
                 loop

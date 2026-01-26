@@ -111,6 +111,7 @@ export type ProjectConfig = {
     type: "image" | "video";
     src: string;
     alt?: string;
+    position?: "top" | "center" | "bottom"; // focal point for cropping (default: center)
   };
 
   // thumbnail image for list icons (if hero is video, use this for list display)
@@ -152,6 +153,7 @@ export const projectsConfig: ProjectConfig[] = [
     hero: {
       type: "image",
       src: "/case-studies/shuttle-console-hero.png",
+      position: "top",
     },
     theme: themes["shuttle-console"],
     Page: ProjectPageShuttle,

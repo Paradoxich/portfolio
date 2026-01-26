@@ -2,6 +2,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 
 export function ProjectPageMixlodge() {
   return (
@@ -72,6 +73,35 @@ export function ProjectPageMixlodge() {
         </div>
       </section>
 
+        {/* Discovery flow */}
+        <section className="stack-md pt-4 pb-4">
+        <div
+          className="
+            relative
+            w-full
+           aspect-[16/9]
+            overflow-hidden
+            rounded-surface
+            border border-color-border-secondary
+            bg-color-bg-muted
+          "
+        >
+          <Image
+            src="/case-studies/ml-disovery.png"
+            alt="The discovery flow was structured to identify the core needs of the product."
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        <div className="text-column">
+          <p className="type-body-sm">
+          The discovery flow was structured to identify the core needs of the product.
+          </p>
+        </div>
+      </section>
+
       {/* 3. DESIGNING TOWARD A WORKABLE MVP */}
       <section className="stack-md">
         <div className="text-column stack-md">
@@ -90,6 +120,35 @@ export function ProjectPageMixlodge() {
         </div>
       </section>
 
+       {/* Discovery flow */}
+       <section className="stack-md pt-4 pb-4">
+        <div
+          className="
+            relative
+            w-full
+           aspect-[16/9]
+            overflow-hidden
+            rounded-surface
+            border border-color-border-secondary
+            bg-color-bg-muted
+          "
+        >
+          <Image
+            src="/case-studies/ml-figma.png"
+            alt="Figma file used to structure the product."
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        <div className="text-column">
+          <p className="type-body-sm">
+          The Figma file was used to structure the product.
+          </p>
+        </div>
+      </section>
+
       {/* 4. PRODUCT CLARITY THROUGH DESIGN */}
       <section className="stack-md">
         <div className="text-column stack-md">
@@ -99,6 +158,34 @@ export function ProjectPageMixlodge() {
           </p>
           <p className="type-body">
             Rather than treating these as feature additions, they were framed as consequences of the underlying model. Design was used to test assumptions, surface inconsistencies, and converge on a product shape the team could reason about.
+          </p>
+        </div>
+      </section>
+
+       {/* Discovery flow */}
+       <section className="stack-md pt-4 pb-4">
+        <div
+          className="
+            relative
+            w-full
+           aspect-[16/10.5]
+            overflow-hidden
+            rounded-surface
+            border border-color-border-secondary
+            bg-color-bg-muted
+          "
+        >
+          <Image
+            src="/case-studies/ml-inbox.png"
+            alt="Inbox view of the product."
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="text-column">
+          <p className="type-body-sm">
+          Inbox view of the product.
           </p>
         </div>
       </section>
@@ -117,6 +204,34 @@ export function ProjectPageMixlodge() {
           </ul>
           <p className="type-body">
             The landing page was developed in parallel as the visual anchor for the product. Content, structure, and visual direction were defined together, then carried through the application to keep the system coherent.
+          </p>
+        </div>
+      </section>
+         {/* Tokens used in the console */}
+         <section className="stack-md pt-4 pb-4">
+        <div
+          className="
+            relative
+            w-full
+           aspect-[16/10]
+            overflow-hidden
+            rounded-surface
+            border border-color-border-secondary
+            bg-color-bg-muted
+          "
+        >
+          <Image
+            src="/case-studies/ml-style.png"
+            alt="A small set of tokens used in the MixLodge design system"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        <div className="text-column">
+          <p className="type-body-sm">
+          The design language was kept minimal and consistent across the product.
           </p>
         </div>
       </section>

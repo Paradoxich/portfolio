@@ -2,6 +2,8 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
+import { BeforeAfterToggle } from "@/components/media/BeforeAfterToggle";
 
 export function ProjectPageShuttle() {
   const videoRef = React.useRef<HTMLVideoElement>(null);
@@ -13,7 +15,6 @@ export function ProjectPageShuttle() {
   }, []);
 
   return (
-    // ⬅️ full-width, bez max-w na articleu
     <article className="w-full stack-5xl">
       {/* 0. PAGE TITLE BLOK */}
       <section className="stack-lg">
@@ -29,24 +30,28 @@ export function ProjectPageShuttle() {
             <p className="type-body-sm">2025</p>
 
             <a
-              href="https://www.shuttle.dev"
+              href="https://console.shuttle.dev"
               target="_blank"
               rel="noreferrer"
               className="h-8 px-4 rounded-full flex items-center justify-center gap-2 type-body-sm transition-colors link-pill"
               style={{
-                backgroundColor: "var(--color-link-pill-bg, var(--color-bg-surface))",
+                backgroundColor:
+                  "var(--color-link-pill-bg, var(--color-bg-surface))",
                 color: "var(--color-link-pill-text, var(--color-text-primary))",
               }}
             >
               shuttle.dev
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="16" 
-                height="16" 
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 style={{ flexShrink: 0 }}
               >
-                <path fill="currentColor" d="m16.004 9.414l-8.607 8.607l-1.414-1.414L14.59 8H7.003V6h11v11h-2z"/>
+                <path
+                  fill="currentColor"
+                  d="m16.004 9.414l-8.607 8.607l-1.414-1.414L14.59 8H7.003V6h11v11h-2z"
+                />
               </svg>
             </a>
           </div>
@@ -55,7 +60,7 @@ export function ProjectPageShuttle() {
 
       {/* TL;DR */}
       <section className="stack-md">
-        <div 
+        <div
           className="text-column stack-md rounded-[var(--radius-md)]"
           style={{
             backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
@@ -64,7 +69,9 @@ export function ProjectPageShuttle() {
         >
           <h3 className="type-label text-color-text-primary">TL;DR</h3>
           <p className="type-body-sm leading-loose tracking-normal">
-          Redesigned Shuttle’s console to make core workflows clearer and more consistent — replacing ad-hoc UI patterns with a cohesive, scalable system.
+            Redesigned Shuttle’s console to make core workflows clearer and more
+            consistent — replacing ad-hoc UI patterns with a cohesive, scalable
+            system.
           </p>
         </div>
       </section>
@@ -72,31 +79,41 @@ export function ProjectPageShuttle() {
       {/* 1. CONTEXT */}
       <section className="stack-md">
         <div className="text-column stack-md">
-         
           <p className="type-body">
-          Shuttle is a deployment platform where your infra lives in code, but the console is where you actually see what’s running. Over time, the old console became a bit of a Frankenstein — features bolted on, states handled ad-hoc, and a UI that didn’t really match the maturity of the platform itself. Design work meant constantly asking: “Which of these 62 slightly different styles is the least wrong?”
+            Shuttle is a deployment platform where your infra lives in code, but
+            the console is where you actually see what’s running. Over time, the
+            old console became a bit of a Frankenstein — features bolted on,
+            states handled ad-hoc, and a UI that didn’t really match the
+            maturity of the platform itself. Design work meant constantly
+            asking: “Which of these 62 slightly different styles is the least
+            wrong?”
           </p>
-          
         </div>
       </section>
 
-      {/* 2. BEFORE / AFTER – HERO VISUAL PLACEHOLDER */}
+      {/* 2. BEFORE / AFTER – HERO VISUAL */}
       <section className="stack-md pt-4 pb-4">
-        {/* FULL-WIDTH unutar modala */}
-        <div
-          className="
-            w-full
-            h-[420px]
-            rounded-surface
-            border border-color-border-secondary
-            bg-color-bg-muted
-            flex items-center justify-center
-          "
-        >
-          <span className="type-body-xs">
-            Before / after console screens placeholder
-          </span>
-        </div>
+
+
+<div
+  className="
+    relative
+    w-full
+    aspect-[16/10]
+    overflow-hidden
+    rounded-surface
+    border border-color-border-secondary
+    bg-color-bg-muted
+  "
+>
+  <BeforeAfterToggle
+    beforeSrc="/case-studies/shuttle-before.png"
+    afterSrc="/case-studies/shuttle-after.png"
+    altBefore="Shuttle console before redesign"
+    altAfter="Shuttle console after redesign"
+    defaultView="before"
+  />
+</div>
 
         <div className="text-column">
           <p className="type-body-sm">
@@ -109,18 +126,13 @@ export function ProjectPageShuttle() {
       {/* 3. WHAT WASN'T WORKING */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">
-            What wasn&apos;t working
-          </h3>
+          <h3 className="type-h4">What wasn&apos;t working</h3>
           <p className="type-body">
             From user feedback, support threads and internal dogfooding, a few
             themes kept repeating:
           </p>
           <ul className="list-disc pl-5 stack-xs type-body">
-            <li>
-              Important features (resources, domains, secrets) were hard to
-              find.
-            </li>
+            <li>Important features (resources, domains, secrets) were hard to find.</li>
             <li>
               Workflows felt different from page to page — a sign of features
               being added without a stable design system underneath.
@@ -147,9 +159,7 @@ export function ProjectPageShuttle() {
       {/* 4. PRODUCT MOVES */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">
-            Product moves
-          </h3>
+          <h3 className="type-h4">Product moves</h3>
           <p className="type-body">
             The redesign wasn&apos;t just about fresh paint — it was about
             making key workflows obvious and predictable:
@@ -192,9 +202,7 @@ export function ProjectPageShuttle() {
       {/* 5. DESIGN SYSTEM WORK */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">
-            Taming the UI (a.k.a. 62 borders later)
-          </h3>
+          <h3 className="type-h4">Taming the UI (a.k.a. 62 borders later)</h3>
           <p className="type-body">
             The first step wasn&apos;t drawing screens — it was deciding what
             should even exist in the UI toolkit. We aligned on a small set of
@@ -202,23 +210,36 @@ export function ProjectPageShuttle() {
           </p>
         </div>
 
-        {/* FULL-WIDTH MEDIA */}
-        <section className="pt-4 pb-4">
-          <div
-            className="
+         {/* Tokens used in the console */}
+      <section className="stack-md pt-4 pb-4">
+        <div
+          className="
+            relative
             w-full
-            h-[420px]
+            h-[540px]
+            overflow-hidden
             rounded-surface
             border border-color-border-secondary
             bg-color-bg-muted
-            flex items-center justify-center
           "
-          >
-            <span className="type-body-xs">
-              Design system / components overview placeholder
-            </span>
-          </div>
-        </section>
+        >
+          <Image
+            src="/case-studies/shuttle-tokens.png"
+            alt="Tokens used in the console"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        <div className="text-column">
+          <p className="type-body-sm">
+            Before / after: The old console technically did the job, but
+            didn&apos;t scale.
+          </p>
+        </div>
+      </section>
+
         <div className="text-column stack-md">
           <ul className="list-disc pl-5 stack-xs type-body">
             <li>
@@ -247,7 +268,6 @@ export function ProjectPageShuttle() {
 
       {/* 6. VIDEO WALKTHROUGH */}
       <section className="stack-md">
-        {/* FULL-WIDTH MEDIA */}
         <div
           className="
             w-full
@@ -286,9 +306,7 @@ export function ProjectPageShuttle() {
       {/* 7. OUTCOME */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">
-            What it unlocked
-          </h3>
+          <h3 className="type-h4">What it unlocked</h3>
           <p className="type-body">
             For smaller teams, the console now feels calmer and more direct.
             You&apos;re never more than a click away from the things you

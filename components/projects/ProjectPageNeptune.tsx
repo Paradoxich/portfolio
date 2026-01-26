@@ -4,6 +4,13 @@ import * as React from "react";
 import Image from "next/image";
 
 export function ProjectPageNeptune() {
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.75;
+    }
+  }, []);
   return (
     <article className="w-full stack-5xl">
       {/* 0. PAGE TITLE BLOCK */}
@@ -94,26 +101,7 @@ export function ProjectPageNeptune() {
         </div>
       </section>
 
-      {/* 3. DEFINING VISIBILITY */}
-      <section className="stack-md">
-        <div className="text-column stack-md">
-          <h3 className="type-h4">Defining how visible Neptune should be</h3>
-          <p className="type-body">
-            As the product took form, the core question wasn&apos;t console vs IDE. It was how much UI Neptune needed at all.
-          </p>
-          <p className="type-body">
-            Neptune became a hybrid:
-          </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
-            <li>Installed via CLI</li>
-            <li>Operated mostly through natural language inside an IDE agent</li>
-            <li>Capable of both returning output and writing files directly into the project</li>
-          </ul>
-          <p className="type-body">
-            That ambiguity worked conceptually — but it made explaining the workflow extremely difficult. The brand and landing page needed to support multiple futures without overcommitting too early.
-          </p>
-        </div>
-      </section>
+  
 
       {/* 4. WHEN BRANDING WASN'T ENOUGH */}
       <section className="stack-md">
@@ -124,6 +112,43 @@ export function ProjectPageNeptune() {
           </p>
           <p className="type-body">
             Instead of pushing another illustration, I built a fully animated chat prototype that demonstrated the workflow end-to-end: planning, generating configs, deploying infrastructure, and surfacing results through conversation.
+          </p>
+        </div>
+      </section>
+
+        {/* CHAT VIDEO */}
+        <section className="stack-md">
+        <div
+          className="
+            w-full
+            aspect-[16/9]
+            overflow-hidden
+            rounded-surface
+            border border-color-border-secondary
+            bg-color-bg-muted
+          "
+        >
+          <video
+            ref={videoRef}
+            loop
+            autoPlay
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+            poster="/projects/shuttle-console-poster.png"
+          >
+            <source
+              src="/case-studies/neptune-chat-section.mp4"
+              type="video/mp4"
+            />
+            Your browser doesn&apos;t support the video tag.
+          </video>
+        </div>
+
+        <div className="text-column">
+          <p className="type-body-xs">
+            See it in motion: Perfect for getting a feel for the flows in under
+            a minute.
           </p>
         </div>
       </section>
@@ -146,6 +171,8 @@ export function ProjectPageNeptune() {
         </div>
       </section>
 
+       
+
       {/* 6. REFACTORING FOR ITERATION */}
       <section className="stack-md">
         <div className="text-column stack-md">
@@ -155,6 +182,35 @@ export function ProjectPageNeptune() {
           </p>
           <p className="type-body">
             To make iteration easier, I refactored the system into a simple, human-readable script format that defines what happens, not how it animates. The animation engine handles orchestration on its own. The team edits the script to test new workflows, messages, or interaction patterns without touching internal logic.
+          </p>
+        </div>
+      </section>
+
+       {/* Tokens used in the console */}
+       <section className="stack-md pt-4 pb-4">
+        <div
+          className="
+            relative
+            w-full
+            h-[540px]
+            overflow-hidden
+            rounded-surface
+            border border-color-border-secondary
+            bg-color-bg-muted
+          "
+        >
+          <Image
+            src="/case-studies/nc-refactor.png"
+            alt="Script-driven chat prototype"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        <div className="text-column">
+          <p className="type-body-sm">
+            The script-driven chat prototype made it easy to iterate on the workflow.
           </p>
         </div>
       </section>
