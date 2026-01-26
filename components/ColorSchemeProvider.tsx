@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { usePathname } from "next/navigation";
 
 type ColorScheme = "warm" | "cool";
 
@@ -20,6 +21,7 @@ const colorSchemes = {
     "--color-20": "#23221b",
     "--color-30": "#23251e",
     "--color-40": "#2e3027",
+    "--color-50": "#424539",
     "--color-60": "#555a4b",
     "--color-80": "#c5bfab",
     "--color-90": "#f3f0e9",
@@ -42,6 +44,7 @@ const colorSchemes = {
     "--color-20": "#1f1f1f",
     "--color-30": "#262626",
     "--color-40": "#333333",
+    "--color-50": "#484848",
     "--color-60": "#5c5c5c",
     "--color-80": "#a3a3a3",
     "--color-90": "#e5e5e5",
@@ -97,10 +100,14 @@ export function ColorSchemeSwitcher() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
   const [isDocked, setIsDocked] = React.useState(false);
   const footerRef = React.useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  // Hide on case study pages (they have their own themes)
+  const isOnCaseStudy = pathname.startsWith("/projects/") && pathname !== "/projects";
 
   React.useEffect(() => {
     const footer = footerRef.current;
-    if (!footer) return;
+    if (!footer || isOnCaseStudy) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -111,7 +118,7 @@ export function ColorSchemeSwitcher() {
 
     observer.observe(footer);
     return () => observer.disconnect();
-  }, []);
+  }, [isOnCaseStudy]);
 
   const icon = colorScheme === "warm" ? (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="flex-shrink-0">
@@ -125,6 +132,9 @@ export function ColorSchemeSwitcher() {
   );
 
   const nextTheme = colorScheme === "warm" ? "cool" : "warm";
+
+  // Don't render on case study pages
+  if (isOnCaseStudy) return null;
 
   return (
     <>

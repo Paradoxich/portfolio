@@ -111,7 +111,7 @@ export function ProjectPagePortfolio() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Why the &quot;extra&quot; work existed</h3>
           <p className="type-body">
-            Custom animations — like the plant-watering interaction, testimonial transitions, and more complex motion systems — weren&apos;t added for polish alone. They were deliberate stress tests.
+            Custom interactions — like the plant-watering button with state-driven growth animation, testimonial typing effects that adapt for mobile, and a theme toggle that transforms from floating button to footer pill — weren&apos;t added for polish alone. They were deliberate stress tests.
           </p>
           <p className="type-body">
             Each one forced me to:
@@ -136,6 +136,9 @@ export function ProjectPagePortfolio() {
             To keep things from collapsing, I defined a compact design language: tokens for color, type, spacing, radii, shared card patterns, and a restrained motion vocabulary.
           </p>
           <p className="type-body">
+            This evolved into a theme switching system — warm and cool palettes propagated through CSS variables, with dynamic gradients and image filters that respond to the active theme. A self-documenting design system page displays tokens side-by-side for both themes.
+          </p>
+          <p className="type-body">
             The system stayed intentionally small. New elements were only introduced when existing patterns failed — keeping exploration bounded and the site coherent.
           </p>
         </div>
@@ -150,7 +153,9 @@ export function ProjectPagePortfolio() {
           </p>
           <ul className="list-disc pl-5 stack-xs type-body">
             <li>Custom layouts that support long-form case studies</li>
-            <li>A small, extensible design language</li>
+            <li>A theme system with warm/cool palettes and a self-documenting design system page</li>
+            <li>Interactive elements: plant animation, testimonial typing, floating theme toggle</li>
+            <li>A working contact form with real email delivery</li>
             <li>A realistic AI-assisted workflow from design to deployment</li>
             <li>A codebase that has survived refactors rather than avoiding them</li>
           </ul>

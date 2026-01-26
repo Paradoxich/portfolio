@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as React from "react";
+import { useHireDrawer } from "./HireDrawerContext";
 
 export default function Navigation() {
   const pathname = usePathname();
+  const { openHireDrawer } = useHireDrawer();
   const [hasScrolled, setHasScrolled] = React.useState(false);
 
   const isActive = (path: string) => {
@@ -76,9 +78,9 @@ export default function Navigation() {
             Graphics
           </Link>
 
-          <Link href="/#contact" className="nav-link">
+          <button onClick={openHireDrawer} className="nav-link">
             Contact
-          </Link>
+          </button>
         </div>
       </div>
     </nav>

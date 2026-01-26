@@ -13,6 +13,7 @@
   --color-20: #23221b;
   --color-30: #23251e;
   --color-40: #2e3027;
+  --color-50: #424539;
   --color-60: #555a4b;
   --color-80: #c5bfab;
   --color-90: #f3f0e9;
@@ -344,7 +345,7 @@
     @apply text-color-text-primary;
   }
   .btn-cta-wrapper:hover .btn-cta-icon {
-    border-color: var(--color-40);
+    border-color: var(--color-50);
     @apply text-color-text-primary;
     transform: translateY(-50%) scale(1.02);
   }
@@ -359,7 +360,7 @@
   }
 
   .life-gallery-arrow:hover {
-    border-color: var(--color-40);
+    border-color: var(--color-50);
     transform: scale(1.02);
   }
 
@@ -425,8 +426,8 @@
     border-color: rgba(var(--color-60-rgb), 0.6);
   }
 
-  /* Input hover effect (uses dynamic theme color) */
-  .input-hover:hover {
+  /* Input hover effect (uses dynamic theme color, not when focused) */
+  .input-hover:hover:not(:focus) {
     border-color: rgba(var(--color-60-rgb), 0.6);
   }
 }

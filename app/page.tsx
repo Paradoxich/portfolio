@@ -10,7 +10,7 @@ import LifeGallery from "../components/home/LifeGallery";
 import TestimonialsSection from "../components/home/TestimonialsSection";
 import { HomeIllustrationsPreview } from "../components/illustrations/HomeIllustrationsPreview";
 import { ExperienceModal } from "../components/home/ExperienceModal";
-import { HireDrawer } from "../components/home/HireDrawer";
+import { useHireDrawer } from "../components/HireDrawerContext";
 import { projectsConfig } from "../components/projects/ProjectsConfig";
 
 type Testimonial = {
@@ -59,7 +59,7 @@ const TESTIMONIALS: Testimonial[] = [
 
 export default function Page() {
   const [isExperienceModalOpen, setIsExperienceModalOpen] = React.useState(false);
-  const [isHireDrawerOpen, setIsHireDrawerOpen] = React.useState(false);
+  const { openHireDrawer } = useHireDrawer();
 
   const openExperienceModal = React.useCallback(() => {
     setIsExperienceModalOpen(true);
@@ -67,14 +67,6 @@ export default function Page() {
 
   const closeExperienceModal = React.useCallback(() => {
     setIsExperienceModalOpen(false);
-  }, []);
-
-  const openHireDrawer = React.useCallback(() => {
-    setIsHireDrawerOpen(true);
-  }, []);
-
-  const closeHireDrawer = React.useCallback(() => {
-    setIsHireDrawerOpen(false);
   }, []);
 
   // Refs for timeline line positioning
@@ -603,12 +595,12 @@ export default function Page() {
           </section>
 
           {/* SONG CARD */}
-                    <div className="card relative overflow-hidden flex flex-col">
+                    <div className="card relative overflow-hidden flex flex-col group">
             {/* Background image + overlay */}
             <div className="pointer-events-none absolute inset-0">
               <Image
-                src="/music/oboe-cover.png" 
-                alt="Oboe by Camel Power Club"
+                src="/music/moi-retro.png" 
+                alt="Design Jam playlist by Paradoxich"
                 fill
                 className="object-cover"
                 sizes="480px"
@@ -623,14 +615,13 @@ export default function Page() {
 
             {/* Foreground sadržaj – identičan layoutu, samo klikabilan */}
             <a
-              href="https://open.spotify.com/track/3IRON3rRIf2WJwejIbaehd?si=7ccc6d205ee04257"
+              href="https://open.spotify.com/playlist/02uN4latPfLbwTInTnpQUY?si=RcicjAcAT6KaJd_z8E2Bkg"
               target="_blank"
               rel="noreferrer noopener"
               className="relative flex items-center  gap-5"
             >
-              <button
-                type="button"
-                className="grid h-10 w-10 place-items-center rounded-full bg-color-bg-surface border border-color-border-secondary type-body-xs"
+              <span
+                className="grid h-10 w-10 place-items-center rounded-full bg-color-bg-surface border border-color-border-secondary type-body-xs transition-all duration-200 group-hover:border-[var(--color-50)] group-hover:scale-105"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -644,10 +635,10 @@ export default function Page() {
                     d="m7.752 5.439 10.508 6.13a.5.5 0 0 1 0 .863l-10.508 6.13A.5.5 0 0 1 7 18.13V5.87a.5.5 0 0 1 .752-.431"
                   />
                 </svg>
-              </button>
+              </span>
               <div>
-                <p className="type-body leading-relaxed text-color-text-primary">Oboe</p>
-                <p className="type-body-sm">By Camel Power Club</p>
+                <p className="type-body leading-relaxed text-color-text-primary">Design Jam</p>
+                <p className="type-body-sm">By Paradoxich</p>
               </div>
               
             </a>
@@ -673,7 +664,7 @@ export default function Page() {
       href="/design-system"
       target="_blank"
       rel="noreferrer noopener"
-      className="relative flex-1 min-h-[140px] overflow-hidden rounded-surface border border-color-border-secondary bg-color-bg-muted"
+      className="group relative flex-1 min-h-[140px] overflow-hidden rounded-surface border border-color-border-secondary bg-color-bg-muted transition-colors duration-200 hover:border-[var(--color-50)]"
     >
       {/* Background image + gradient overlay */}
       <div className="pointer-events-none absolute inset-0">
@@ -681,7 +672,7 @@ export default function Page() {
           src="/design-system.png"
           alt="Design system foundations preview"
           fill
-          className="object-cover object-left-top transition-[filter] duration-500"
+          className="object-cover object-left-top transition-all duration-500 group-hover:scale-[1.02]"
           style={{ filter: "var(--image-filter)" }}
           sizes="(min-width: 1024px) 900px, 100vw"
         />
@@ -745,11 +736,6 @@ export default function Page() {
     <ExperienceModal
       isOpen={isExperienceModalOpen}
       onClose={closeExperienceModal}
-    />
-
-    <HireDrawer
-      isOpen={isHireDrawerOpen}
-      onClose={closeHireDrawer}
     />
     </>
   );

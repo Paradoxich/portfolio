@@ -135,7 +135,7 @@ export const projectsConfig: ProjectConfig[] = [
     category: "client",
     hero: {
       type: "video",
-      src: "/case-studies/neptune-lp-hero.mp4",
+      src: "/case-studies/neptune-chat.mp4",
     },
     theme: themes["neptune-lp"],
     Page: ProjectPageNeptune,
@@ -179,6 +179,10 @@ export const projectsConfig: ProjectConfig[] = [
     title: "Figma to Prod: How I built this",
     href: "/contact",
     category: "personal",
+    hero: {
+      type: "image",
+      src: "/case-studies/portfolio-hero.png",
+    },
     Page: ProjectPagePortfolio,
   },
 ];

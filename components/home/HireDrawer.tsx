@@ -16,6 +16,31 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
   const [message, setMessage] = React.useState("");
   const [formState, setFormState] = React.useState<FormState>("idle");
   const [errorMessage, setErrorMessage] = React.useState("");
+  const [emailCopied, setEmailCopied] = React.useState(false);
+  const copyTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  
+  // Validation errors
+  const [errors, setErrors] = React.useState<{ name?: string; email?: string; message?: string }>({});
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("ana.beverin@gmail.com");
+      
+      // Clear any existing timeout
+      if (copyTimeoutRef.current) {
+        clearTimeout(copyTimeoutRef.current);
+      }
+      
+      // Brief flash to icon then back to "Copied" for visual feedback on re-click
+      setEmailCopied(false);
+      requestAnimationFrame(() => {
+        setEmailCopied(true);
+        copyTimeoutRef.current = setTimeout(() => setEmailCopied(false), 1200);
+      });
+    } catch (err) {
+      console.error("Failed to copy email:", err);
+    }
+  };
 
   // scroll lock
   React.useEffect(() => {
@@ -37,6 +62,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
         setMessage("");
         setFormState("idle");
         setErrorMessage("");
+        setErrors({});
       }, 300);
       return () => clearTimeout(timeout);
     }
@@ -55,6 +81,22 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Validate fields
+    const newErrors: { name?: string; email?: string; message?: string } = {};
+    if (!name.trim()) newErrors.name = "Please enter your name";
+    if (!email.trim()) {
+      newErrors.email = "Please enter your email";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Please enter a valid email";
+    }
+    if (!message.trim()) newErrors.message = "Please enter a message";
+    
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    
+    setErrors({});
     setFormState("loading");
     setErrorMessage("");
 
@@ -113,25 +155,69 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
             transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
           >
             {/* HEADER */}
-            <div className="flex items-center justify-between p-6 border-b border-color-border">
-              <h2 className="type-h4">Let&apos;s work together</h2>
-              <button
-                onClick={handleClose}
-                className="
-                  inline-flex h-8 w-8 items-center justify-center
-                  rounded-full
-                  bg-color-bg-surface
-                  border border-color-border
-                  text-color-text-secondary
-                  hover:text-color-text-primary hover:border-color-border-secondary
-                  transition-colors
-                "
-                aria-label="Close drawer"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              </button>
+            <div className="flex flex-col gap-2 p-6 border-b border-color-border">
+              <div className="flex items-center justify-between">
+                <h2 className="type-h4">Let&apos;s work together</h2>
+                <button
+                  onClick={handleClose}
+                  className="
+                    inline-flex h-8 w-8 items-center justify-center
+                    rounded-full
+                    bg-color-bg-surface
+                    border border-color-border
+                    text-color-text-secondary
+                    hover:text-color-text-primary hover:border-color-border-secondary
+                    transition-colors
+                  "
+                  aria-label="Close drawer"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <p className="type-body-sm text-color-text-secondary">
+                Fill out the form below, or drop me an email at{" "}
+                <button
+                  onClick={handleCopyEmail}
+                  className="inline-flex items-center gap-2 text-color-text-primary transition-colors group"
+                >
+                  <span className="group-hover:underline">ana.beverin@gmail.com</span>
+                  {/* Tooltip hint */}
+                  <span
+                    className={`
+                      ${emailCopied ? "h-5 px-1" : "h-5 w-5"}
+                      rounded
+                      bg-color-bg-surface
+                      border border-color-border
+                      text-color-text-secondary
+                      type-body-xs
+                      whitespace-nowrap
+                      transition-all duration-200
+                      flex items-center justify-center
+                      ${emailCopied 
+                        ? "opacity-100" 
+                        : "opacity-0 group-hover:opacity-100"
+                      }
+                    `}
+                    style={{ textDecoration: "none" }}
+                  >
+                    {emailCopied ? (
+                      <span className="flex items-center gap-1" style={{ textDecoration: "none" }}>
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        Copied
+                      </span>
+                    ) : (
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" />
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                      </svg>
+                    )}
+                  </span>
+                </button>
+              </p>
             </div>
 
             {/* CONTENT */}
@@ -166,9 +252,9 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                 </div>
               ) : (
                 /* FORM */
-                <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-6">
+                <form onSubmit={handleSubmit} noValidate className="flex-1 flex flex-col gap-6">
                   {/* Name Input */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1.5">
                     <label htmlFor="hire-name" className="type-label">
                       Name
                     </label>
@@ -176,28 +262,34 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                       id="hire-name"
                       type="text"
                       value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => {
+                        setName(e.target.value);
+                        if (errors.name) setErrors(prev => ({ ...prev, name: undefined }));
+                      }}
                       placeholder="Your name"
                       disabled={formState === "loading"}
-                      className="
+                      className={`
                         w-full px-4 py-3
                         rounded-lg
                         bg-transparent
-                        border border-color-border
+                        border ${errors.name ? "border-red-400" : "border-[var(--color-40)]"}
+                        ring-0 ring-transparent ring-offset-0
                         text-color-text-primary
                         placeholder:text-color-60
-                        focus:outline-none focus:border-color-border-secondary
-                        transition-all duration-300 ease-out
-                        input-hover
+                        focus:outline-none focus:border-[var(--color-50)] focus:ring-1 focus:ring-[var(--color-40)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
+                        hover:border-[var(--color-50)]
+                        transition-[border-color] duration-300 ease-out
                         type-body-sm
                         disabled:opacity-50
-                      "
-                      required
+                      `}
                     />
+                    {errors.name && (
+                      <p className="type-body-xs text-red-400">{errors.name}</p>
+                    )}
                   </div>
 
                   {/* Email Input */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1.5">
                     <label htmlFor="hire-email" className="type-label">
                       Your email
                     </label>
@@ -205,53 +297,65 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                       id="hire-email"
                       type="email"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        if (errors.email) setErrors(prev => ({ ...prev, email: undefined }));
+                      }}
                       placeholder="you@example.com"
                       disabled={formState === "loading"}
-                      className="
+                      className={`
                         w-full px-4 py-3
                         rounded-lg
                         bg-transparent
-                        border border-color-border
+                        border ${errors.email ? "border-red-400" : "border-[var(--color-40)]"}
+                        ring-0 ring-transparent ring-offset-0
                         text-color-text-primary
                         placeholder:text-color-60
-                        focus:outline-none focus:border-color-border-secondary
-                        transition-all duration-300 ease-out
-                        input-hover
+                        focus:outline-none focus:border-[var(--color-50)] focus:ring-1 focus:ring-[var(--color-40)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
+                        hover:border-[var(--color-50)]
+                        transition-[border-color] duration-300 ease-out
                         type-body-sm
                         disabled:opacity-50
-                      "
-                      required
+                      `}
                     />
+                    {errors.email && (
+                      <p className="type-body-xs text-red-400">{errors.email}</p>
+                    )}
                   </div>
 
                   {/* Message Input */}
-                  <div className="flex flex-col gap-2 flex-1">
+                  <div className="flex flex-col gap-1.5 flex-1">
                     <label htmlFor="hire-message" className="type-label">
                       Message
                     </label>
                     <textarea
                       id="hire-message"
                       value={message}
-                      onChange={(e) => setMessage(e.target.value)}
+                      onChange={(e) => {
+                        setMessage(e.target.value);
+                        if (errors.message) setErrors(prev => ({ ...prev, message: undefined }));
+                      }}
                       placeholder="Tell me about your project..."
                       disabled={formState === "loading"}
-                      className="
+                      className={`
                         w-full px-4 py-3 flex-1 min-h-[160px]
                         rounded-lg
                         bg-transparent
-                        border border-color-border
+                        border ${errors.message ? "border-red-400" : "border-[var(--color-40)]"}
+                        ring-0 ring-transparent ring-offset-0
                         text-color-text-primary
                         placeholder:text-color-60
-                        focus:outline-none focus:border-color-border-secondary
-                        transition-all duration-300 ease-out
-                        input-hover
+                        focus:outline-none focus:border-[var(--color-50)] focus:ring-1 focus:ring-[var(--color-40)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
+                        hover:border-[var(--color-50)]
+                        transition-[border-color] duration-300 ease-out
                         type-body-sm
                         resize-none
                         disabled:opacity-50
-                      "
-                      required
+                      `}
                     />
+                    {errors.message && (
+                      <p className="type-body-xs text-red-400">{errors.message}</p>
+                    )}
                   </div>
 
                   {/* Error Message */}
