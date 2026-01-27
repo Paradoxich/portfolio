@@ -9,6 +9,11 @@ import { HireDrawerProvider } from "@/components/HireDrawerContext";
 export const metadata = {
   title: "Ana — Product Designer",
   description: "Portfolio & experiments",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+  },
 };
 
 export default function RootLayout({
