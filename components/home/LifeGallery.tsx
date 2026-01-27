@@ -67,9 +67,9 @@ export default function LifeGallery() {
   };
 
   return (
-    <div className="card flex flex-1 flex-col gap-3 pb-4">
+    <div className="card flex flex-col md:flex-1 gap-3 pb-4">
       {/* FOTO BLOK */}
-      <div className="flex-1 border-0  overflow-hidden relative">
+      <div className="aspect-[4/3] md:aspect-auto md:flex-1 md:min-h-[240px] border-0 overflow-hidden relative">
         {active.videoSrc ? (
           <video
             src={active.videoSrc}

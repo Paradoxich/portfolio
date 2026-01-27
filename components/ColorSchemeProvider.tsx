@@ -9,6 +9,8 @@ type ColorSchemeContextType = {
   colorScheme: ColorScheme;
   setColorScheme: (scheme: ColorScheme) => void;
   toggleColorScheme: () => void;
+  hideSwitcher: boolean;
+  setHideSwitcher: (hide: boolean) => void;
 };
 
 const ColorSchemeContext = React.createContext<ColorSchemeContextType | null>(null);
@@ -65,6 +67,7 @@ const colorSchemes = {
 
 export function ColorSchemeProvider({ children }: { children: React.ReactNode }) {
   const [colorScheme, setColorScheme] = React.useState<ColorScheme>("warm");
+  const [hideSwitcher, setHideSwitcher] = React.useState(false);
 
   // Apply color scheme to document
   React.useEffect(() => {
@@ -81,7 +84,7 @@ export function ColorSchemeProvider({ children }: { children: React.ReactNode })
   }, []);
 
   return (
-    <ColorSchemeContext.Provider value={{ colorScheme, setColorScheme, toggleColorScheme }}>
+    <ColorSchemeContext.Provider value={{ colorScheme, setColorScheme, toggleColorScheme, hideSwitcher, setHideSwitcher }}>
       {children}
     </ColorSchemeContext.Provider>
   );
@@ -97,7 +100,7 @@ export function useColorScheme() {
 
 // Theme toggle button with floating → pill transformation
 export function ColorSchemeSwitcher() {
-  const { colorScheme, toggleColorScheme } = useColorScheme();
+  const { colorScheme, toggleColorScheme, hideSwitcher } = useColorScheme();
   const [isDocked, setIsDocked] = React.useState(false);
   const footerRef = React.useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -105,9 +108,12 @@ export function ColorSchemeSwitcher() {
   // Hide on case study pages (they have their own themes)
   const isOnCaseStudy = pathname.startsWith("/projects/") && pathname !== "/projects";
 
+  // Hide when modals are open or on case study pages
+  const shouldHide = isOnCaseStudy || hideSwitcher;
+
   React.useEffect(() => {
     const footer = footerRef.current;
-    if (!footer || isOnCaseStudy) return;
+    if (!footer || shouldHide) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -118,7 +124,7 @@ export function ColorSchemeSwitcher() {
 
     observer.observe(footer);
     return () => observer.disconnect();
-  }, [isOnCaseStudy]);
+  }, [shouldHide]);
 
   const icon = colorScheme === "warm" ? (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="flex-shrink-0">
@@ -133,8 +139,8 @@ export function ColorSchemeSwitcher() {
 
   const nextTheme = colorScheme === "warm" ? "cool" : "warm";
 
-  // Don't render on case study pages
-  if (isOnCaseStudy) return null;
+  // Don't render when hidden
+  if (shouldHide) return null;
 
   return (
     <>

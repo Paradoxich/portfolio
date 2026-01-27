@@ -5,6 +5,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { useColorScheme } from "../ColorSchemeProvider";
 
 type WorkExperience = {
   company: string;
@@ -84,6 +85,13 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
   const [hasScrolled, setHasScrolled] = React.useState(false);
   // flag za "card se digne od dna"
   const [atEnd, setAtEnd] = React.useState(false);
+  const { setHideSwitcher } = useColorScheme();
+
+  // Hide theme switcher when modal is open
+  React.useEffect(() => {
+    setHideSwitcher(isOpen);
+    return () => setHideSwitcher(false);
+  }, [isOpen, setHideSwitcher]);
 
   // scroll lock
   React.useEffect(() => {
