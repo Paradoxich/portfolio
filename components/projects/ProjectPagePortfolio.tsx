@@ -3,6 +3,7 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function ProjectPagePortfolio() {
   return (
@@ -45,7 +46,7 @@ export function ProjectPagePortfolio() {
             I wanted a custom portfolio built from scratch, without templates. At the same time, I wanted to understand how AI-assisted workflows actually behave when turning design intent into working interfaces.
           </p>
           <p className="type-body">
-            Instead of treating AI as a shortcut, I used the portfolio as a low-risk environment to see where it helps, where it breaks down, and what kind of setup is needed to keep control.
+            Instead of treating AI as a shortcut, I used the portfolio as a playground.
           </p>
         </div>
       </section>
@@ -57,8 +58,32 @@ export function ProjectPagePortfolio() {
           <p className="type-body">
             I began in Figma and designed the portfolio first, without worrying about implementation. I focused on layout, hierarchy, pacing, and how long-form case studies should read.
           </p>
+           {/* Figma */}
+      <section className="stack-md pt-4 pb-4">
+        <div className="text-column">
+          <div
+            className="
+              relative
+              w-full
+              aspect-[16/8]
+              overflow-hidden
+              rounded-surface
+              border border-color-border-secondary
+              bg-color-bg-muted
+            "
+          >
+            <Image
+              src="/case-studies/portfolio-figma.png"
+              alt="Figma design"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </section>
           <p className="type-body">
-            From the start, I defined a small design language and a design system page so both the site and the agents had a shared point of reference.
+            From the start, I defined a small design language and a <Link href="/design-system" target="_blank" rel="noopener noreferrer" className="underline text-color-text-primary hover:text-color-text-secondary transition-colors">design system page</Link> so both the site and the agents had a shared point of reference.
           </p>
         </div>
       </section>
@@ -93,7 +118,7 @@ export function ProjectPagePortfolio() {
             className="
               relative
               w-full
-              aspect-[16/8]
+              aspect-[16/7]
               overflow-hidden
               rounded-surface
               border border-color-border-secondary
@@ -139,6 +164,30 @@ export function ProjectPagePortfolio() {
           <p className="type-body">
             Theming, custom interactions for case studies, and layout refinements could be added without rewriting large parts of the site. Design and implementation stayed aligned as the project evolved.
           </p>
+           {/* System */}
+      <section className="stack-md pt-4 pb-4">
+        <div className="text-column">
+          <div
+            className="
+              relative
+              w-full
+              aspect-[16/10.7]
+              overflow-hidden
+              rounded-surface
+              border border-color-border-secondary
+              bg-color-bg-muted
+            "
+          >
+            <Image
+              src="/case-studies/portfolio-system.png"
+              alt="Theming change"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </section>
         </div>
       </section>
 
