@@ -3,8 +3,16 @@
 import * as React from "react";
 import Image from "next/image";
 
+const deckImages = [
+  "/case-studies/neptune-deck-1.png",
+  "/case-studies/neptune-deck-2.png",
+  "/case-studies/neptune-deck-3.png",
+  "/case-studies/neptune-deck-4.png",
+];
+
 export function ProjectPageNeptune() {
   const videoRef = React.useRef<HTMLVideoElement>(null);
+  const [currentSlide, setCurrentSlide] = React.useState(0);
 
   React.useEffect(() => {
     if (videoRef.current) {
@@ -59,7 +67,7 @@ export function ProjectPageNeptune() {
         >
           <h3 className="type-label text-color-text-primary">TL;DR</h3>
           <p className="type-body-sm leading-loose tracking-normal">
-          I shaped Neptune’s product identity and landing page, then built an animated, script-driven chat prototype to make an AI infra workflow legible and discussable. The work turned an abstract, evolving idea into something the team could reason about, test, and build against.
+          I shaped Neptune’s product identity and landing page, then built an animated, script-driven chat prototype to make an AI infra workflow legible and discussable. 
           </p>
         </div>
       </section>
@@ -69,10 +77,10 @@ export function ProjectPageNeptune() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Context</h3>
           <p className="type-body">
-            Neptune didn&apos;t arrive as a clear brief. It emerged somewhere between an AI platform engineer, an agentic infra copilot, and a CLI-first tool. What was clear early on was the problem: AI could generate code quickly, but deployment and infrastructure still felt fragile and hard to trust.
+          Neptune didn’t arrive as a clear brief. Its scope and form evolved as the team explored how AI-assisted infrastructure workflows should actually work. 
           </p>
           <p className="type-body">
-            As the product evolved, Neptune kept changing shape. My role was to design an identity and surface area that could stay coherent while the definition underneath it was still in motion.
+          My role was to design an identity and interaction surface that could remain stable while the product definition underneath continued to evolve.
           </p>
         </div>
       </section>
@@ -80,35 +88,87 @@ export function ProjectPageNeptune() {
       {/* 2. USERS & POSITIONING */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">Users & positioning</h3>
+          <h3 className="type-h4">Audience, trust, and tone </h3>
           <p className="type-body">
-            Before designing anything, we talked to early users and tested assumptions. Three constraints surfaced quickly:
+          What became clear early on was the core problem Neptune needed to solve: while AI made writing code faster, deployment and infrastructure still felt fragile and hard to trust. 
           </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
-            <li>
-              Users already lived inside AI-native tools like Cursor, Copilot, and agent workflows
-            </li>
-            <li>
-              They trusted AI to write code, but hesitated to let it touch infrastructure
-            </li>
-            <li>
-              They wanted power with guardrails — automation paired with clarity and control
-            </li>
-          </ul>
+         
           <p className="type-body">
-            This pushed us away from hype-heavy AI branding. Neptune&apos;s tone became calm, precise, and quietly capable — an AI engineer that earns trust by explaining itself and staying out of the way unless needed.
+          That tension shaped both the product framing and the brand. Neptune emerged as a calm, conversational co-pilot behaving like an AI Platform Engineer that handles complex infrastructure work while keeping actions visible, reviewable, and predictable.
+</p>
+
+<p className="type-body">
+This pushed the visual and verbal direction away from hype-driven AI language and toward something calmer, more precise, and deliberately understated.
           </p>
+          
         </div>
       </section>
 
-  
+      {/* Brand deck carousel */}
+      <section className="stack-md pt-4 pb-4">
+        <div
+          className="
+            relative
+            w-full
+            aspect-video
+            overflow-hidden
+            rounded-surface
+            border border-color-border-secondary
+            bg-color-bg-muted
+          "
+        >
+          {deckImages.map((src, index) => (
+            <Image
+              key={src}
+              src={src}
+              alt={`Neptune brand deck slide ${index + 1}`}
+              fill
+              className={`object-cover transition-opacity duration-300 ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+              priority={index === 0}
+            />
+          ))}
+
+          {/* Navigation controls */}
+          <div className="absolute left-4 right-4 bottom-4 flex items-center justify-center pointer-events-none">
+            <div className="pointer-events-auto inline-flex items-center gap-2 p-1.5 rounded-full bg-color-bg-surface/95 border border-color-border backdrop-blur-md shadow-lg">
+              <button
+                type="button"
+                onClick={() => setCurrentSlide((prev) => (prev === 0 ? deckImages.length - 1 : prev - 1))}
+                className="w-8 h-8 rounded-full flex items-center justify-center text-color-text-secondary hover:text-color-text-primary hover:bg-color-bg-muted transition-colors"
+                aria-label="Previous slide"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              
+              <span className="px-2 type-body-sm text-color-text-secondary tabular-nums">
+                {currentSlide + 1}/{deckImages.length}
+              </span>
+
+              <button
+                type="button"
+                onClick={() => setCurrentSlide((prev) => (prev === deckImages.length - 1 ? 0 : prev + 1))}
+                className="w-8 h-8 rounded-full flex items-center justify-center text-color-text-secondary hover:text-color-text-primary hover:bg-color-bg-muted transition-colors"
+                aria-label="Next slide"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 4. WHEN BRANDING WASN'T ENOUGH */}
       <section className="stack-md">
         <div className="text-column stack-md">
           <h3 className="type-h4">When branding wasn&apos;t enough</h3>
           <p className="type-body">
-            Even with a clear identity and landing page, it was still hard to explain how Neptune actually worked. Static visuals failed to capture the core experience — the moment where you describe intent and Neptune plans and executes it.
+          The brand gave Neptune a voice and tone, but it still didn’t show how the product actually behaved. Static visuals failed to capture the core experience — the moment where you describe intent and Neptune plans and executes it.
           </p>
           <p className="type-body">
             Instead of pushing another illustration, I built a fully animated chat prototype that demonstrated the workflow end-to-end: planning, generating configs, deploying infrastructure, and surfacing results through conversation.
@@ -121,7 +181,7 @@ export function ProjectPageNeptune() {
         <div
           className="
             w-full
-            aspect-[16/9]
+            aspect-[16/8]
             overflow-hidden
             rounded-surface
             border border-color-border-secondary
@@ -145,12 +205,7 @@ export function ProjectPageNeptune() {
           </video>
         </div>
 
-        <div className="text-column">
-          <p className="type-body-xs">
-            See it in motion: Perfect for getting a feel for the flows in under
-            a minute.
-          </p>
-        </div>
+      
       </section>
 
       {/* 5. A PROTOTYPE THAT CHANGED THE CONVERSATION */}
@@ -158,41 +213,31 @@ export function ProjectPageNeptune() {
         <div className="text-column stack-md">
           <h3 className="type-h4">A prototype that changed the conversation</h3>
           <p className="type-body">
-            Seeing the workflow animated made the product click internally. The prototype became a shared reference for:
+          Animating the workflow turned the prototype into a way to reason about how Neptune should function inside an agent-based environment. 
           </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
-            <li>Tone and pacing of the agent</li>
-            <li>Where automation should pause for confirmation</li>
-            <li>How much work happens implicitly vs explicitly</li>
-          </ul>
           <p className="type-body">
-            It stopped being a marketing artifact and started functioning as a real product design tool the team could react to and refine together.
+          Walking through real scenarios made it possible to compare how Neptune currently works (often requiring explicit CLI interaction) with what a more seamless, agent-assisted flow could look like. The prototype surfaced where steps felt unnecessarily manual, where context was lost, and which parts of the workflow didn’t naturally map to a chat-based interaction model.
           </p>
+          
+      
         </div>
       </section>
 
-       
-
-      {/* 6. REFACTORING FOR ITERATION */}
+      {/* 5. A PROTOTYPE THAT CHANGED THE CONVERSATION */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">Refactoring for iteration</h3>
+          <h3 className="type-h4">Making the prototype editable</h3>
+         
           <p className="type-body">
-            Once the prototype became a shared design tool, its limitations became obvious. The first version worked, but it was hard to change — small edits required digging through timing logic, states, and transitions.
+          Once the prototype became a shared tool for testing these flows, its limitations became obvious. The initial version worked, but it was difficult to iterate on — even small changes required digging through timing logic, states, and transitions. 
           </p>
-          <p className="type-body">
-            To make iteration easier, I refactored the system into a simple, human-readable script format that defines what happens, not how it animates. The animation engine handles orchestration on its own. The team edits the script to test new workflows, messages, or interaction patterns without touching internal logic.
-          </p>
-        </div>
-      </section>
-
-       {/* Tokens used in the console */}
+             {/* Agent refactoring */}
        <section className="stack-md pt-4 pb-4">
         <div
           className="
             relative
             w-full
-            h-[540px]
+            aspect-[16/8]
             overflow-hidden
             rounded-surface
             border border-color-border-secondary
@@ -207,13 +252,40 @@ export function ProjectPageNeptune() {
             priority
           />
         </div>
-
-        <div className="text-column">
-          <p className="type-body-sm">
-            The script-driven chat prototype made it easy to iterate on the workflow.
+      </section>
+          <p className="type-body">
+         To make experimentation easier, I refactored the system into a simple, human-readable script that defines what happens, not how it animates. The animation engine handles orchestration independently, allowing the team to edit the script to test new workflows, messages, and interaction patterns without touching the underlying logic.
           </p>
+             {/* Agent refactoring */}
+       <section className="stack-md pt-4 pb-4">
+        <div
+          className="
+            relative
+            w-full
+            aspect-[16/8]
+            overflow-hidden
+            rounded-surface
+            border border-color-border-secondary
+            bg-color-bg-muted
+          "
+        >
+          <Image
+            src="/case-studies/nc-script.png"
+            alt="Script-guide"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
       </section>
+        </div>
+
+       
+      </section>
+
+      
+
+    
 
       {/* 7. OUTCOME */}
       <section className="stack-md">
@@ -222,9 +294,7 @@ export function ProjectPageNeptune() {
           <p className="type-body">
             The identity and landing page gave Neptune a calm, durable presence that could survive ongoing definition without drifting into hype. The animated chat prototype solved what branding alone couldn&apos;t: it made Neptune&apos;s workflow tangible and discussable.
           </p>
-          <p className="type-body">
-            Together, the work turned a vague idea into something concrete enough for the team to align on, critique, and build forward with confidence.
-          </p>
+         
         </div>
       </section>
 

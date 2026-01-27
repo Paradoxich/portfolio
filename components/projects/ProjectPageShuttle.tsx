@@ -154,6 +154,29 @@ export function ProjectPageShuttle() {
             going to pretend was “the real one”.
           </p>
         </div>
+        <section className="stack-md pt-4 pb-4">
+        <div className="text-column">
+          <div
+            className="
+              relative
+              w-full
+              aspect-[16/9]
+              overflow-hidden
+              rounded-surface
+              border border-color-border-secondary
+              bg-color-bg-muted
+            "
+          >
+            <Image
+              src="/case-studies/shuttle-problems.png"
+              alt="Visual debt"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </section>
       </section>
 
       {/* 4. PRODUCT MOVES */}
@@ -212,31 +235,26 @@ export function ProjectPageShuttle() {
 
          {/* Tokens used in the console */}
       <section className="stack-md pt-4 pb-4">
-        <div
-          className="
-            relative
-            w-full
-            h-[540px]
-            overflow-hidden
-            rounded-surface
-            border border-color-border-secondary
-            bg-color-bg-muted
-          "
-        >
-          <Image
-            src="/case-studies/shuttle-tokens.png"
-            alt="Tokens used in the console"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-
         <div className="text-column">
-          <p className="type-body-sm">
-            Before / after: The old console technically did the job, but
-            didn&apos;t scale.
-          </p>
+          <div
+            className="
+              relative
+              w-full
+              aspect-[16/9]
+              overflow-hidden
+              rounded-surface
+              border border-color-border-secondary
+              bg-color-bg-muted
+            "
+          >
+            <Image
+              src="/case-studies/shuttle-tokens.png"
+              alt="Tokens used in the console"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
       </section>
 

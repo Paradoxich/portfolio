@@ -35,7 +35,7 @@ export function ProjectPageMixlodge() {
         >
           <h3 className="type-label text-color-text-primary">TL;DR</h3>
           <p className="type-body-sm leading-loose tracking-normal">
-            I designed the brand and MVP for MixLodge, using design to give structure to a loosely defined product. With no PM, vague requirements, and limited resources, the work focused on making the system legible enough for the team to build and iterate on.
+          Shaping an early idea into a clear, buildable product.
           </p>
         </div>
       </section>
@@ -45,11 +45,9 @@ export function ProjectPageMixlodge() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Context</h3>
           <p className="type-body">
-            MixLodge started as an idea for "a platform for musicians and producers." In practice, that meant a broad set of loosely defined features, minimal prioritization, and many open questions. There was no product manager and no existing structure to build from.
+            MixLodge started as an idea for &quot;a platform for musicians and producers.&quot; In practice, that meant a broad set of loosely defined features, minimal prioritization, and many open questions. There was no existing product structure to build from, and the first task was figuring out what the platform needed to be in order to work.
           </p>
-          <p className="type-body">
-            From the outset, the challenge wasn&apos;t visual polish — it was turning an unstructured concept into something coherent and buildable.
-          </p>
+          
         </div>
       </section>
 
@@ -57,47 +55,43 @@ export function ProjectPageMixlodge() {
       <section className="stack-md">
         <div className="text-column stack-md">
           <h3 className="type-h4">Discovery &amp; framing</h3>
+
           <p className="type-body">
-            Before designing UI, I ran a short discovery phase to identify constraints, gaps, and dependencies. The goal wasn&apos;t to finalize everything, but to create enough structure to move forward without locking in premature decisions.
+            Before designing UI, I ran a short discovery phase to clarify constraints, identify gaps, and map dependencies between different parts of the product. The goal wasn&apos;t to lock down every decision, but to establish a clear frame that would support design and development without overcommitting too early.
           </p>
+
+          {/* Discovery flow */}
+          <section className="stack-md pt-4 pb-4">
+            <div
+              className="
+                relative
+                w-full
+                aspect-[16/9]
+                overflow-hidden
+                rounded-surface
+                border border-color-border-secondary
+                bg-color-bg-muted
+              "
+            >
+              <Image
+                src="/case-studies/ml-disovery.png"
+                alt="The discovery."
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </section>
+
           <p className="type-body">
-            One insight shaped the rest of the work: MixLodge wasn&apos;t a single workflow. It needed to support two distinct modes of use:
+            One decision shaped the rest of the work: MixLodge wasn&apos;t a single workflow. It needed to support two distinct modes of use:
           </p>
           <ul className="list-disc pl-5 stack-xs type-body">
-            <li>Musicians booking studios</li>
-            <li>Producers collaborating remotely on projects</li>
+            <li>musicians searching for and booking studios</li>
+            <li>producers collaborating remotely once a booking happened</li>
           </ul>
           <p className="type-body">
-            These workflows had very different needs, but had to coexist within one system without fragmenting the product.
-          </p>
-        </div>
-      </section>
-
-        {/* Discovery flow */}
-        <section className="stack-md pt-4 pb-4">
-        <div
-          className="
-            relative
-            w-full
-           aspect-[16/9]
-            overflow-hidden
-            rounded-surface
-            border border-color-border-secondary
-            bg-color-bg-muted
-          "
-        >
-          <Image
-            src="/case-studies/ml-disovery.png"
-            alt="The discovery flow was structured to identify the core needs of the product."
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-
-        <div className="text-column">
-          <p className="type-body-sm">
-          The discovery flow was structured to identify the core needs of the product.
+            These workflows had different needs and priorities, but they had to coexist within one system without fragmenting the product.
           </p>
         </div>
       </section>
@@ -107,26 +101,23 @@ export function ProjectPageMixlodge() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Designing toward a workable MVP</h3>
           <p className="type-body">
-            To manage scope and reduce risk, the work was structured in phases, each ending with dev-ready designs and clear interaction logic. Instead of attempting a complete marketplace upfront, the focus was on establishing:
+          Instead of attempting a full marketplace upfront, the MVP was shaped around a small set of structural decisions:
           </p>
           <ul className="list-disc pl-5 stack-xs type-body">
-            <li>Clear roles and access patterns</li>
-            <li>Core booking and discovery flows</li>
-            <li>A minimal collaboration model that completed the product loop</li>
+            <li>clear roles and access patterns</li>
+            <li>a focused discovery and booking flow</li>
+            <li>a concrete answer to what happens after a booking</li>
           </ul>
           <p className="type-body">
-            Because there was no PM layer, design artifacts needed to carry intent directly — flows, states, and edge cases were made explicit in the UI rather than deferred to documentation.
+            The product was intentionally scoped around a single loop: discovery → booking → collaboration. Anything that didn&apos;t support that loop was deprioritized or left out. The work was structured in phases, each resolving a specific part of the loop and ending with dev-ready designs, defined states, and explicit interaction logic.
           </p>
-        </div>
-      </section>
-
-       {/* Discovery flow */}
-       <section className="stack-md pt-4 pb-4">
+          {/* Figma file */}
+      <section className="stack-md pt-4 pb-4">
         <div
           className="
             relative
             w-full
-           aspect-[16/9]
+            aspect-[16/9]
             overflow-hidden
             rounded-surface
             border border-color-border-secondary
@@ -142,33 +133,38 @@ export function ProjectPageMixlodge() {
           />
         </div>
 
-        <div className="text-column">
-          <p className="type-body-sm">
-          The Figma file was used to structure the product.
+      </section>
+
+          <p className="type-body">
+            Design artifacts carried intent directly. Flows, edge cases, and role-specific behavior were resolved in the UI itself, allowing the team to discuss concrete product behavior rather than abstract feature lists.
           </p>
         </div>
       </section>
 
+      
       {/* 4. PRODUCT CLARITY THROUGH DESIGN */}
       <section className="stack-md">
         <div className="text-column stack-md">
           <h3 className="type-h4">Product clarity through design</h3>
           <p className="type-body">
-            Several important features only emerged once the system was mapped. In particular, a lightweight remote collaboration space for producers (chat, files, tasks, updates) became necessary for the platform to make sense as a whole.
+            As the core workflows were designed in detail, it became clear that booking alone wasn&apos;t enough. Once a session was booked, users needed a shared place to actually work together.
           </p>
           <p className="type-body">
-            Rather than treating these as feature additions, they were framed as consequences of the underlying model. Design was used to test assumptions, surface inconsistencies, and converge on a product shape the team could reason about.
+            Instead of introducing a separate &quot;project&quot; area, collaboration was anchored in the inbox. Each booking creates a dedicated conversation that becomes the workspace for everything that follows — chat, file sharing, tasks, and ongoing updates. 
+          </p>
+          <p className="type-body">
+            This wasn&apos;t treated as an add-on feature. It emerged naturally from designing real scenarios end to end. Working through concrete flows — from first contact to final delivery — clarified what the product needed in order to function as a complete system.
           </p>
         </div>
       </section>
 
-       {/* Discovery flow */}
-       <section className="stack-md pt-4 pb-4">
+      {/* Inbox */}
+      <section className="stack-md pt-4 pb-4">
         <div
           className="
             relative
             w-full
-           aspect-[16/10.5]
+            aspect-[16/10.5]
             overflow-hidden
             rounded-surface
             border border-color-border-secondary
@@ -185,7 +181,7 @@ export function ProjectPageMixlodge() {
         </div>
         <div className="text-column">
           <p className="type-body-sm">
-          Inbox view of the product.
+            Collaboration workspace.
           </p>
         </div>
       </section>
@@ -195,25 +191,26 @@ export function ProjectPageMixlodge() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Design system &amp; visual direction</h3>
           <p className="type-body">
-            Given time and budget constraints, I focused on a small, resilient design language rather than a full component library:
+            Given the scope and constraints, the focus wasn&apos;t on building a comprehensive component library. Instead, the goal was to establish a small, resilient design language that could support the product without slowing development:
           </p>
           <ul className="list-disc pl-5 stack-xs type-body">
-            <li>A minimal token set for color, type, spacing, and radii</li>
-            <li>A single flexible card pattern reused across most surfaces</li>
-            <li>Consistent interaction patterns across both roles</li>
+            <li>a minimal token set for color, type, spacing, and radii</li>
+            <li>a single flexible card pattern reused across most surfaces</li>
+            <li>consistent interaction patterns across both roles</li>
           </ul>
           <p className="type-body">
-            The landing page was developed in parallel as the visual anchor for the product. Content, structure, and visual direction were defined together, then carried through the application to keep the system coherent.
+            The landing page was developed in parallel and used as the visual anchor. Content, structure, and visual direction were defined together, then carried into the product to keep everything aligned.
           </p>
         </div>
       </section>
-         {/* Tokens used in the console */}
-         <section className="stack-md pt-4 pb-4">
+
+      {/* Design system */}
+      <section className="stack-md pt-4 pb-4">
         <div
           className="
             relative
             w-full
-           aspect-[16/10]
+            aspect-[16/8]
             overflow-hidden
             rounded-surface
             border border-color-border-secondary
@@ -221,8 +218,8 @@ export function ProjectPageMixlodge() {
           "
         >
           <Image
-            src="/case-studies/ml-style.png"
-            alt="A small set of tokens used in the MixLodge design system"
+            src="/case-studies/ml-design.png"
+            alt="A coherent design system"
             fill
             className="object-cover"
             priority
@@ -231,7 +228,7 @@ export function ProjectPageMixlodge() {
 
         <div className="text-column">
           <p className="type-body-sm">
-          The design language was kept minimal and consistent across the product.
+            The design language was kept minimal and consistent across the product.
           </p>
         </div>
       </section>
@@ -241,15 +238,15 @@ export function ProjectPageMixlodge() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Outcome</h3>
           <p className="type-body">
-            The result was a clearly structured MVP ready for development:
+            The result was a clearly defined MVP ready for development:
           </p>
           <ul className="list-disc pl-5 stack-xs type-body">
-            <li>A responsive platform covering studio discovery, booking, payments, and collaboration</li>
-            <li>Defined user flows and interaction logic across all major surfaces</li>
-            <li>A stable visual identity and lightweight system the team could extend</li>
+            <li>a responsive platform covering discovery, booking, payments, and collaboration</li>
+            <li>explicit user flows and interaction logic across all core scenarios</li>
+            <li>a stable visual identity and lightweight system the team could extend</li>
           </ul>
           <p className="type-body">
-            The work turned a loosely framed idea into a product shape that could be built, discussed, and iterated on — without overengineering or premature complexity.
+            The work turned a loosely framed idea into a product structure the team could build, discuss, and iterate on.
           </p>
         </div>
       </section>

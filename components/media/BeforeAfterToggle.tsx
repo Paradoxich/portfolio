@@ -47,20 +47,32 @@ export function BeforeAfterToggle({
       </div>
 
       {/* Bottom controls */}
-      <div className="absolute left-3 right-3 bottom-3 flex items-center justify-between pointer-events-none">
-        {/* Small state label */}
-        <div className="px-2 py-0.5 rounded-full bg-color-bg-surface/80 text-[11px] leading-none text-color-text-secondary border border-color-border-secondary backdrop-blur-sm">
-          {view === "before" ? "Before" : "After"}
+      <div className="absolute left-4 right-4 bottom-4 flex items-center justify-center pointer-events-none">
+        {/* Toggle pill */}
+        <div className="pointer-events-auto inline-flex items-center gap-1 p-1 rounded-full bg-color-bg-surface/95 border border-color-border backdrop-blur-md shadow-lg">
+          <button
+            type="button"
+            onClick={() => setView("before")}
+            className={`px-4 py-2 rounded-full type-body-sm font-medium transition-all ${
+              view === "before"
+                ? "bg-color-text-primary text-color-bg"
+                : "text-color-text-secondary hover:text-color-text-primary"
+            }`}
+          >
+            Before
+          </button>
+          <button
+            type="button"
+            onClick={() => setView("after")}
+            className={`px-4 py-2 rounded-full type-body-sm font-medium transition-all ${
+              view === "after"
+                ? "bg-color-text-primary text-color-bg"
+                : "text-color-text-secondary hover:text-color-text-primary"
+            }`}
+          >
+            After
+          </button>
         </div>
-
-        {/* Action button */}
-        <button
-          type="button"
-          onClick={() => setView((v) => (v === "before" ? "after" : "before"))}
-          className="pointer-events-auto h-8 px-3 rounded-full border border-color-border-secondary bg-color-bg-surface type-body-xs transition-colors hover:bg-color-bg-muted"
-        >
-          {view === "before" ? "See after" : "See before"}
-        </button>
       </div>
     </div>
   );

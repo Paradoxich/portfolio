@@ -2,6 +2,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 
 export function ProjectPagePortfolio() {
   return (
@@ -41,105 +42,102 @@ export function ProjectPagePortfolio() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Context</h3>
           <p className="type-body">
-            The initial goal was simple: build a custom portfolio without templates. But there was a second, equally important motivation — to learn how AI-assisted workflows could realistically support turning designs into working interfaces.
+            I wanted a custom portfolio built from scratch, without templates. At the same time, I wanted to understand how AI-assisted workflows actually behave when turning design intent into working interfaces.
           </p>
           <p className="type-body">
-            Rather than treating AI as a shortcut, I treated the portfolio as a low-risk environment to understand where AI accelerates execution, where it breaks down, and what kind of direction and correction it actually needs.
-          </p>
-          <p className="type-body">
-            What started as experimentation gradually turned into a real system.
+            Instead of treating AI as a shortcut, I used the portfolio as a low-risk environment to see where it helps, where it breaks down, and what kind of setup is needed to keep control.
           </p>
         </div>
       </section>
 
-      {/* 2. VISUAL-FIRST DESIGN */}
+      {/* 2. STARTING WITH DESIGN */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">Visual-first design</h3>
+          <h3 className="type-h4">Starting with design</h3>
           <p className="type-body">
-            I began in Figma, designing layouts directly as a visual system rather than isolated pages. I focused on hierarchy, density, pacing, and how long-form case studies should read — aiming for layouts that felt coherent, readable, and scalable.
+            I began in Figma and designed the portfolio first, without worrying about implementation. I focused on layout, hierarchy, pacing, and how long-form case studies should read.
           </p>
           <p className="type-body">
-            Once the layouts felt right, the goal became clear: could I reliably translate this visual intent into real, working UI using AI-assisted tooling, without losing quality or control?
+            From the start, I defined a small design language and a design system page so both the site and the agents had a shared point of reference.
           </p>
         </div>
       </section>
 
-      {/* 3. LEARNING THROUGH IMPLEMENTATION */}
+      {/* 3. EARLY EXPERIMENTS WITH AI */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">Learning through implementation</h3>
+          <h3 className="type-h4">Early experiments with AI</h3>
           <p className="type-body">
-            Early on, this looked very informal — long conversations with AI, quick experiments in CodeSandbox, and testing small ideas in isolation. That phase helped surface limitations quickly: context loss, fragile state, and difficulty scaling beyond small experiments.
+            I initially tried building through conversational AI and small experiments. CodeSandbox, long chats, and step-by-step generation.
           </p>
           <p className="type-body">
-            At that point, the workflow matured into something more realistic:
-          </p>
-          <p className="type-body font-mono text-color-text-secondary">
-            design → Cursor agents → GitHub → Vercel
-          </p>
-          <p className="type-body">
-            Moving into a proper repo and deployment flow made the work less playful, but far more useful. It exposed real concerns — component boundaries, state management, animation timing, refactors — and forced the system to hold up under change.
+            This worked for quick tests, but it did not scale. Context was easy to lose, changes broke earlier logic, and a lot of time went into re-explaining intent and fixing things that had already worked.
           </p>
         </div>
       </section>
 
-      {/* 4. ORCHESTRATION OVER AUTHORSHIP */}
+      {/* 4. MOVING TO A REAL WORKFLOW */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">Orchestration over authorship</h3>
+          <h3 className="type-h4">Moving to a real workflow</h3>
           <p className="type-body">
-            Most of the raw output — component scaffolding, animation logic, layout code, and copy drafts — was AI-generated. I wasn&apos;t hand-authoring code or text line by line.
+            Switching to a proper setup changed the process completely.
           </p>
           <p className="type-body">
-            My role was orchestration:
+            Using Cursor with a GitHub repository and Vercel introduced structure. Agents had file-level context. Changes were scoped. Pull requests made iteration safer. Refactors became possible instead of risky.
           </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
-            <li>translating visual intent into precise direction</li>
-            <li>deciding what belonged and what didn&apos;t</li>
-            <li>correcting abstractions when they broke down</li>
-            <li>refactoring structures so they could evolve</li>
-          </ul>
+           {/* Vercel */}
+      <section className="stack-md pt-4 pb-4">
+        <div className="text-column">
+          <div
+            className="
+              relative
+              w-full
+              aspect-[16/8]
+              overflow-hidden
+              rounded-surface
+              border border-color-border-secondary
+              bg-color-bg-muted
+            "
+          >
+            <Image
+              src="/case-studies/portfolio-vercel.png"
+              alt="Vercel deployment"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </section>
           <p className="type-body">
-            Responsibility for coherence and quality stayed human, even when execution was accelerated by tools.
+            This was the point where the work stopped feeling fragile and started feeling maintainable.
           </p>
         </div>
       </section>
 
-      {/* 5. WHY THE "EXTRA" WORK EXISTED */}
+      {/* 5. WORKING WITH AI IN PRACTICE */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">Why the &quot;extra&quot; work existed</h3>
+          <h3 className="type-h4">Working with AI in practice</h3>
           <p className="type-body">
-            Custom interactions — like the plant-watering button with state-driven growth animation, testimonial typing effects that adapt for mobile, and a theme toggle that transforms from floating button to footer pill — weren&apos;t added for polish alone. They were deliberate stress tests.
+            AI still generated much of the raw output, but the way I worked with it changed. Instead of long conversations, I worked directly with files, diffs, and focused edits.
           </p>
           <p className="type-body">
-            Each one forced me to:
-          </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
-            <li>articulate motion and interaction intent clearly</li>
-            <li>see where AI output degraded</li>
-            <li>refactor brittle logic into something reusable</li>
-            <li>learn what kinds of problems benefit from AI assistance and which don&apos;t</li>
-          </ul>
-          <p className="type-body">
-            The refactoring work was as valuable as the initial builds. This is where the project crossed from &quot;learning exercise&quot; into a real system.
+            I decided where AI helped and where it was faster to make changes manually. This balance mattered, especially when working on custom interactions and theming, where iteration speed and token usage become real constraints.
           </p>
         </div>
       </section>
 
-      {/* 6. A SMALL BUT RESILIENT SYSTEM */}
+      {/* 6. A SYSTEM THAT COULD GROW */}
       <section className="stack-md">
         <div className="text-column stack-md">
-          <h3 className="type-h4">A small but resilient system</h3>
+          <h3 className="type-h4">A system that could grow</h3>
           <p className="type-body">
-            To keep things from collapsing, I defined a compact design language: tokens for color, type, spacing, radii, shared card patterns, and a restrained motion vocabulary.
+            Because the design language and system page existed from the start, changes could build on what was already there.
           </p>
           <p className="type-body">
-            This evolved into a theme switching system — warm and cool palettes propagated through CSS variables, with dynamic gradients and image filters that respond to the active theme. A self-documenting design system page displays tokens side-by-side for both themes.
-          </p>
-          <p className="type-body">
-            The system stayed intentionally small. New elements were only introduced when existing patterns failed — keeping exploration bounded and the site coherent.
+            Theming, custom interactions for case studies, and layout refinements could be added without rewriting large parts of the site. Design and implementation stayed aligned as the project evolved.
           </p>
         </div>
       </section>
@@ -149,18 +147,10 @@ export function ProjectPagePortfolio() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Outcome</h3>
           <p className="type-body">
-            The result is a portfolio that functions as a system, not a demo:
+            The result is a portfolio that behaves like a real system rather than a static showcase.
           </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
-            <li>Custom layouts that support long-form case studies</li>
-            <li>A theme system with warm/cool palettes and a self-documenting design system page</li>
-            <li>Interactive elements: plant animation, testimonial typing, floating theme toggle</li>
-            <li>A working contact form with real email delivery</li>
-            <li>A realistic AI-assisted workflow from design to deployment</li>
-            <li>A codebase that has survived refactors rather than avoiding them</li>
-          </ul>
           <p className="type-body">
-            It started as a way to learn how to turn designs into working interfaces with AI. It ended up as a portfolio I can extend, break, and rebuild — with a much clearer understanding of where AI meaningfully helps and where judgment still matters most.
+            More importantly, it gave me a clearer sense of what it actually takes to work with AI tools without losing structure, intent, or control along the way.
           </p>
         </div>
       </section>
@@ -170,13 +160,13 @@ export function ProjectPagePortfolio() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Built with</h3>
           <p className="type-body">
-            Design and layout in Figma.
+            Design and layout in Figma
           </p>
           <p className="type-body">
-            Implementation via React, Next.js, Tailwind, and Framer Motion.
+            Implementation using React, Next.js, Tailwind, and Framer Motion
           </p>
           <p className="type-body">
-            AI-assisted workflows using Cursor agents, GitHub, and Vercel.
+            AI-assisted workflows using Cursor, GitHub, and Vercel
           </p>
         </div>
       </section>

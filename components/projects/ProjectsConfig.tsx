@@ -131,7 +131,7 @@ export const projectsConfig: ProjectConfig[] = [
     key: "neptune-lp",
     label: "Neptune",
     title:
-      "Brand and web design for an AI platform engineer handling infra end-to-end.",
+      "Shaping the identity of an AI infra platform engineer & building a chat prototype.",
     href: "/projects/neptune",
     category: "client",
     hero: {
