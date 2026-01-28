@@ -328,7 +328,18 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
               <div>
                 <h3 className="type-label mb-3">ABOUT</h3>
                 <p className="type-body mb-4">
-                  I'm a product designer who turns ambiguous problems into clear direction and designs easy-to-use, visually refined products. These days, I work mostly on developer tools and early-stage products from 0 → 1.
+                Hi, I’m Ana — a product designer with over 9 years of experience working on mobile and web apps, websites, and complex SaaS products. I love designing delightful experiences and translating ambiguity into clear direction. Alongside product work, I enjoy illustrating, exploring visual ideas, and designing things simply because they’re beautiful.
+
+                </p>
+
+                <p className="type-body mb-4">
+                In recent years, my work has focused mostly on developer tools and early-stage products. I’ve also started building more directly, using AI as part of my workflow to shorten the distance between ideas and real, working interfaces.
+
+                </p>
+
+                 <p className="type-body mb-4">
+                 Outside of work, I love good beer, good food, and good company. You can find me in Croatia, somewhere between the mountains and the sea, usually enjoying life and catering to my very spoiled dog.
+
                 </p>
                 
                 {/* DOWNLOAD CV BUTTON */}
