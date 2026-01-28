@@ -33,7 +33,7 @@ export function ProjectPagePortfolio() {
         >
           <h3 className="type-label text-color-text-primary">TL;DR</h3>
           <p className="type-body-sm leading-loose tracking-normal">
-            I designed and shipped my portfolio as a fully custom system, using visual design and AI-assisted workflows to translate designs into working code. The project started as a learning exercise in AI-driven execution and gradually evolved into a real, extensible portfolio.
+            I designed and shipped my portfolio as a fully custom system, using visual design and AI-assisted workflows to translate designs into working code.
           </p>
         </div>
       </section>
@@ -93,7 +93,7 @@ export function ProjectPagePortfolio() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Early experiments with AI</h3>
           <p className="type-body">
-            I initially tried building through conversational AI and small experiments. CodeSandbox, long chats, and step-by-step generation.
+          At first, I took the most obvious route: experimenting directly through conversational AI. Long chats, small isolated tests, and quick experiments in CodeSandbox helped me explore ideas fast.
           </p>
           <p className="type-body">
             This worked for quick tests, but it did not scale. Context was easy to lose, changes broke earlier logic, and a lot of time went into re-explaining intent and fixing things that had already worked.
@@ -149,7 +149,7 @@ export function ProjectPagePortfolio() {
             AI still generated much of the raw output, but the way I worked with it changed. Instead of long conversations, I worked directly with files, diffs, and focused edits.
           </p>
           <p className="type-body">
-            I decided where AI helped and where it was faster to make changes manually. This balance mattered, especially when working on custom interactions and theming, where iteration speed and token usage become real constraints.
+          I became more deliberate about where AI helped and where it was faster to make changes manually. This balance mattered, especially when working on custom interactions, where iteration speed and token usage become real constraints.
           </p>
         </div>
       </section>
@@ -162,7 +162,7 @@ export function ProjectPagePortfolio() {
             Because the design language and system page existed from the start, changes could build on what was already there.
           </p>
           <p className="type-body">
-            Theming, custom interactions for case studies, and layout refinements could be added without rewriting large parts of the site. Design and implementation stayed aligned as the project evolved.
+            Theming, custom components for case studies, and layout refinements could be added without rewriting large parts of the site. Design and implementation stayed aligned as the project evolved.
           </p>
            {/* System */}
       <section className="stack-md pt-4 pb-4">

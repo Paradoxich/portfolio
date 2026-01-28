@@ -86,6 +86,30 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
   // flag za "card se digne od dna"
   const [atEnd, setAtEnd] = React.useState(false);
   const { setHideSwitcher } = useColorScheme();
+  
+  // Email copy state
+  const [emailCopied, setEmailCopied] = React.useState(false);
+  const copyTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("ana.beverin@gmail.com");
+      
+      if (copyTimeoutRef.current) {
+        clearTimeout(copyTimeoutRef.current);
+      }
+      
+      setEmailCopied(false);
+      requestAnimationFrame(() => {
+        setEmailCopied(true);
+        copyTimeoutRef.current = setTimeout(() => {
+          setEmailCopied(false);
+        }, 1200);
+      });
+    } catch (err) {
+      console.error("Failed to copy email:", err);
+    }
+  };
 
   // Hide theme switcher when modal is open
   React.useEffect(() => {
@@ -205,8 +229,13 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
                 {/* Profile Picture */}
                 <div className="flex-shrink-0">
                   <div className="w-24 h-24 rounded-full overflow-hidden bg-color-bg-muted border border-color-border">
-                    {/* Placeholder - replace with actual image */}
-                    <div className="w-full h-full bg-color-bg-surface" />
+                    <Image
+                      src="/music/moi-retro.png"
+                      alt="Ana Beverin"
+                      width={96}
+                      height={96}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
 
@@ -216,9 +245,10 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
                   
                   {/* Contact Info */}
                   <div className="flex flex-wrap gap-2 md:gap-6">
-                    <a
-                      href="mailto:ana.beverin@gmail.com"
-                      className="flex items-center gap-2 type-body-sm hover:text-color-text-primary transition-colors"
+                    <button
+                      type="button"
+                      onClick={handleCopyEmail}
+                      className="flex items-center gap-2 type-body-sm transition-colors group"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -234,31 +264,44 @@ export function ExperienceModal({ isOpen, onClose }: ExperienceModalProps) {
                         <rect width="20" height="16" x="2" y="4" rx="2" />
                         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                       </svg>
-                      <span>ana.beverin@gmail.com</span>
-                    </a>
+                      <span className="group-hover:underline">ana.beverin@gmail.com</span>
+                      {/* Copy tooltip */}
+                      <span
+                        className={`
+                          ${emailCopied ? "h-5 px-1" : "h-5 w-5"}
+                          rounded
+                          bg-color-bg-surface
+                          border border-color-border
+                          text-color-text-secondary
+                          type-body-xs
+                          whitespace-nowrap
+                          transition-all duration-200
+                          flex items-center justify-center
+                          ${emailCopied 
+                            ? "opacity-100" 
+                            : "opacity-0 group-hover:opacity-100"
+                          }
+                        `}
+                        style={{ textDecoration: "none" }}
+                      >
+                        {emailCopied ? (
+                          <span className="flex items-center gap-1" style={{ textDecoration: "none" }}>
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                              <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                            Copied
+                          </span>
+                        ) : (
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" />
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                          </svg>
+                        )}
+                      </span>
+                    </button>
                     
                   
                     
-                    <a
-                      href="#"
-                      className="flex items-center gap-2 type-body-sm hover:text-color-text-primary transition-colors"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                      </svg>
-                      <span>anabeverin.com</span>
-                    </a>
                     
                     <a
                       href="https://linkedin.com/in/paradoxich/"

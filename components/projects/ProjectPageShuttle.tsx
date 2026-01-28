@@ -70,8 +70,7 @@ export function ProjectPageShuttle() {
           <h3 className="type-label text-color-text-primary">TL;DR</h3>
           <p className="type-body-sm leading-loose tracking-normal">
             Redesigned Shuttle’s console to make core workflows clearer and more
-            consistent — replacing ad-hoc UI patterns with a cohesive, scalable
-            system.
+            consistent with a cohesive, scalable design system.
           </p>
         </div>
       </section>
@@ -82,7 +81,7 @@ export function ProjectPageShuttle() {
           <p className="type-body">
             Shuttle is a deployment platform where your infra lives in code, but
             the console is where you actually see what’s running. Over time, the
-            old console became a bit of a Frankenstein — features bolted on,
+            old console became a bit of a Frankenstein with features bolted on,
             states handled ad-hoc, and a UI that didn’t really match the
             maturity of the platform itself. Design work meant constantly
             asking: “Which of these 62 slightly different styles is the least
@@ -148,7 +147,7 @@ export function ProjectPageShuttle() {
           </ul>
           <p className="type-body">
             On the design side, there was another quiet villain: visual debt. No
-            single catastrophic decision — just years of small, slightly
+            single catastrophic decision, just years of small, slightly
             different choices. Every time you touched a screen, you had to
             decide which button, which border, which gray, which radius you were
             going to pretend was “the real one”.
@@ -184,7 +183,7 @@ export function ProjectPageShuttle() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Product moves</h3>
           <p className="type-body">
-            The redesign wasn&apos;t just about fresh paint — it was about
+            The redesign wasn&apos;t just about fresh paint, it was about
             making key workflows obvious and predictable:
           </p>
           <ul className="list-disc pl-5 stack-xs type-body">
@@ -227,7 +226,7 @@ export function ProjectPageShuttle() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Taming the UI (a.k.a. 62 borders later)</h3>
           <p className="type-body">
-            The first step wasn&apos;t drawing screens — it was deciding what
+            The first step was deciding what
             should even exist in the UI toolkit. We aligned on a small set of
             primitives and forced everything through that lens:
           </p>

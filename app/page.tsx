@@ -120,7 +120,7 @@ export default function Page() {
         <section className="col-span-12 md:col-span-5">
           <h1 className="type-h1 text-balance">
             <span className="text-color-text-secondary font-normal">
-              Senior designer crafting delightful digital products{" "}
+              Product designer crafting delightful experiences{" "}
             </span>
             from the ground up.
           </h1>
