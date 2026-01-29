@@ -2,6 +2,7 @@
 import "./globals.css";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Analytics } from "@vercel/analytics/react";
 import Navigation from "@/components/Navigation";
 import { ColorSchemeProvider, ColorSchemeSwitcher } from "@/components/ColorSchemeProvider";
 import { HireDrawerProvider } from "@/components/HireDrawerContext";
@@ -36,6 +37,7 @@ export default function RootLayout({
             </div>
           </HireDrawerProvider>
         </ColorSchemeProvider>
+        <Analytics />
       </body>
     </html>
   );
