@@ -93,10 +93,10 @@ export function ProjectPagePortfolio() {
         <div className="text-column stack-md">
           <h3 className="type-h4">Early experiments with AI</h3>
           <p className="type-body">
-          At first, I took the most obvious route: experimenting directly through conversational AI. Long chats, small isolated tests, and quick experiments in CodeSandbox helped me explore ideas fast.
+          At first, I took the most obvious route and experimented directly through conversational AI. The idea was simple: explain my intent, let the AI generate the code, and preview it quickly in CodeSandbox.
           </p>
           <p className="type-body">
-            This worked for quick tests, but it did not scale. Context was easy to lose, changes broke earlier logic, and a lot of time went into re-explaining intent and fixing things that had already worked.
+            Turns out those quick experiments were not so quick after all. Context was easy to lose, changes broke earlier logic, and a lot of time went into re-explaining intent and fixing things that had already worked.
           </p>
         </div>
       </section>
@@ -199,7 +199,7 @@ export function ProjectPagePortfolio() {
             The result is a portfolio that behaves like a real system rather than a static showcase.
           </p>
           <p className="type-body">
-            More importantly, it gave me a clearer sense of what it actually takes to work with AI tools without losing structure, intent, or control along the way.
+            More importantly, it gave me a clearer sense of what it actually takes to work with AI tools without losing control along the way.
           </p>
         </div>
       </section>

@@ -69,8 +69,7 @@ export function ProjectPageShuttle() {
         >
           <h3 className="type-label text-color-text-primary">TL;DR</h3>
           <p className="type-body-sm leading-loose tracking-normal">
-            Redesigned Shuttle’s console to make core workflows clearer and more
-            consistent with a cohesive, scalable design system.
+          Defined a new UI foundation for Shuttle’s console by standardizing patterns, states, and layouts that had previously grown ad-hoc.
           </p>
         </div>
       </section>
@@ -78,6 +77,7 @@ export function ProjectPageShuttle() {
       {/* 1. CONTEXT */}
       <section className="stack-md">
         <div className="text-column stack-md">
+          <h3 className="type-h4">Context</h3>
           <p className="type-body">
             Shuttle is a deployment platform where your infra lives in code, but
             the console is where you actually see what’s running. Over time, the
@@ -133,8 +133,7 @@ export function ProjectPageShuttle() {
           <ul className="list-disc pl-5 stack-xs type-body">
             <li>Important features (resources, domains, secrets) were hard to find.</li>
             <li>
-              Workflows felt different from page to page — a sign of features
-              being added without a stable design system underneath.
+              Workflows felt different from page to page.
             </li>
             <li>
               For teams running many projects, the console didn&apos;t really
@@ -142,7 +141,7 @@ export function ProjectPageShuttle() {
             </li>
             <li>
               Visually, the UI didn&apos;t match the maturity of the platform
-              itself — it looked more “early beta” than “production ready”.
+              itself, it looked more “early beta” than “production ready”.
             </li>
           </ul>
           <p className="type-body">
@@ -221,69 +220,7 @@ export function ProjectPageShuttle() {
         </div>
       </section>
 
-      {/* 5. DESIGN SYSTEM WORK */}
-      <section className="stack-md">
-        <div className="text-column stack-md">
-          <h3 className="type-h4">Taming the UI (a.k.a. 62 borders later)</h3>
-          <p className="type-body">
-            The first step was deciding what
-            should even exist in the UI toolkit. We aligned on a small set of
-            primitives and forced everything through that lens:
-          </p>
-        </div>
-
-         {/* Tokens used in the console */}
-      <section className="stack-md pt-4 pb-4">
-        <div className="text-column">
-          <div
-            className="
-              relative
-              w-full
-              aspect-[16/9]
-              overflow-hidden
-              rounded-surface
-              border border-color-border-secondary
-              bg-color-bg-muted
-            "
-          >
-            <Image
-              src="/case-studies/shuttle-tokens.png"
-              alt="Tokens used in the console"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        </div>
-      </section>
-
-        <div className="text-column stack-md">
-          <ul className="list-disc pl-5 stack-xs type-body">
-            <li>
-              A tighter <strong>token set</strong> for colors, radii, spacing
-              and typography. Enough to express hierarchy, not enough to
-              improvise a new card style every Tuesday.
-            </li>
-            <li>
-              A single <strong>card language</strong> for panels, tables and
-              detail views, so new features “snap into” the existing layout
-              instead of inventing their own.
-            </li>
-            <li>
-              <strong>Navigation and page headers</strong> that follow the same
-              pattern across the console — you always know where you are and
-              what you can do from there.
-            </li>
-          </ul>
-
-          <p className="type-body">
-            The result: less time deciding which gray to use, more time actually
-            designing workflows.
-          </p>
-        </div>
-      </section>
-
-      {/* 6. VIDEO WALKTHROUGH */}
+      {/* VIDEO WALKTHROUGH */}
       <section className="stack-md">
         <div
           className="
@@ -319,6 +256,70 @@ export function ProjectPageShuttle() {
           </p>
         </div>
       </section>
+
+      {/* 5. DESIGN SYSTEM WORK */}
+      <section className="stack-md">
+        <div className="text-column stack-md">
+          <h3 className="type-h4">Taming the UI (a.k.a. 62 borders later)</h3>
+          <p className="type-body">
+            The first step was deciding what
+            should even exist in the UI toolkit. We aligned on a small set of
+            primitives and forced everything through that lens:
+          </p>
+        </div>
+
+
+        <div className="text-column stack-md">
+          <ul className="list-disc pl-5 stack-xs type-body">
+            <li>
+              A tighter <strong>token set</strong> for colors, radii, spacing
+              and typography. Enough to express hierarchy, not enough to
+              improvise a new card style every Tuesday.
+            </li>
+            <li>
+              A single <strong>card language</strong> for panels, tables and
+              detail views, so new features “snap into” the existing layout
+              instead of inventing their own.
+            </li>
+            <li>
+              <strong>Navigation and page headers</strong> that follow the same
+              pattern across the console — you always know where you are and
+              what you can do from there.
+            </li>
+          </ul>
+
+          <p className="type-body">
+            The result: less time deciding which gray to use, more time actually
+            designing workflows.
+          </p>
+           {/* Tokens used in the console */}
+      <section className="stack-md pt-4 pb-4">
+        <div className="text-column">
+          <div
+            className="
+              relative
+              w-full
+              aspect-[16/9]
+              overflow-hidden
+              rounded-surface
+              border border-color-border-secondary
+              bg-color-bg-muted
+            "
+          >
+            <Image
+              src="/case-studies/shuttle-tokens.png"
+              alt="Tokens used in the console"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+        </div>
+      </section>
+
+      
 
       {/* 7. OUTCOME */}
       <section className="stack-md">

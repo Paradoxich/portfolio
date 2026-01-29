@@ -147,7 +147,7 @@ export const projectsConfig: ProjectConfig[] = [
     key: "shuttle-console",
     label: "Shuttle",
     title:
-      "Dev console redesign with a system that supports clarity, ease, and scale.",
+      "Dev console redesign with a system that supports scale.",
     href: "/projects/shuttle",
     category: "client",
     hero: {
@@ -164,7 +164,7 @@ export const projectsConfig: ProjectConfig[] = [
   {
     key: "mixlodge-brand",
     label: "MixLodge",
-    title: "Brand & MVP for a studio booking platform.",
+    title: "MVP for a studio booking platform: translating a vague idea into a structured product foundation.",
     href: "/projects/mixlodge",
     category: "client",
     hero: {
@@ -178,7 +178,7 @@ export const projectsConfig: ProjectConfig[] = [
   {
     key: "portfolio",
     label: "Portfolio",
-    title: "Figma to Prod: How I built this",
+    title: "Figma to Prod: Designing and building a custom portfolio as a real system.",
     href: "/contact",
     category: "personal",
     hero: {

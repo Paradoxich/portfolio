@@ -94,7 +94,7 @@ export function ProjectPageNeptune() {
           </p>
          
           <p className="type-body">
-          That tension shaped both the product framing and the brand. Neptune emerged as a calm, conversational co-pilot behaving like an AI Platform Engineer that handles complex infrastructure work while keeping actions visible, reviewable, and predictable.
+          That tension shaped both the product framing and the brand. Neptune emerged as a calm, conversational co-pilot behaving like an AI Platform Engineer that handles complex infrastructure work while keeping actions visible.
 </p>
 
 <p className="type-body">

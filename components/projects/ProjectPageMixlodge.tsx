@@ -12,7 +12,7 @@ export function ProjectPageMixlodge() {
       <section className="stack-lg">
         <div className="text-column stack-lg">
           <h1 className="type-h3">
-            MixLodge: Brand &amp; MVP for a studio booking platform{" "}
+            MixLodge: MVP for a studio booking platform{" "}
             <span className="text-color-text-secondary font-normal">
               that connects musicians, studios, and remote producers.
             </span>
@@ -35,7 +35,7 @@ export function ProjectPageMixlodge() {
         >
           <h3 className="type-label text-color-text-primary">TL;DR</h3>
           <p className="type-body-sm leading-loose tracking-normal">
-          Shaping an early idea into a clear, buildable product.
+          Structured a loosely defined product by mapping requirements into clear workflows and a single end-to-end system.
           </p>
         </div>
       </section>
@@ -246,7 +246,7 @@ export function ProjectPageMixlodge() {
             <li>a stable visual identity and lightweight system the team could extend</li>
           </ul>
           <p className="type-body">
-            The work turned a loosely framed idea into a product structure the team could build, discuss, and iterate on.
+            The work turned a loosely framed idea into a product structure the team could build upon.
           </p>
         </div>
       </section>
