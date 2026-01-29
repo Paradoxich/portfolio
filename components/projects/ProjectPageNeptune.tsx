@@ -25,7 +25,7 @@ export function ProjectPageNeptune() {
       <section className="stack-lg">
         <div className="text-column stack-lg">
           <h1 className="type-h3">
-            Neptune: shaping the identity of an AI infra platform engineer
+            Neptune: shaping the identity <span className="text-color-text-secondary font-normal">of an AI infra platform engineer</span>
           </h1>
 
           <div className="flex items-center gap-4">
