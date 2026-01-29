@@ -13,7 +13,7 @@ export function ProjectPagePortfolio() {
       <section className="stack-lg">
         <div className="text-column stack-lg">
           <h1 className="type-h3">
-            Portfolio Rebuild — learning AI-assisted workflows through a custom system
+            Portfolio Rebuild: learning AI-assisted workflows through a custom system
           </h1>
 
           <div className="flex items-center gap-4">
