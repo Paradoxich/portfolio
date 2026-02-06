@@ -42,8 +42,8 @@ export default function DesignSystemPage() {
   const [activeTab, setActiveTab] = useState<TabId>("foundations");
 
   return (
-    <main className="min-h-screen">
-      <div className="page-shell stack-xl">
+    <main className="min-h-screen min-w-0">
+      <div className="page-shell stack-xl w-full min-w-0">
         {/* Header */}
         <header className="stack-md">
           <h1 className="type-h1">Design System</h1>
@@ -639,9 +639,9 @@ function SectionHeader({
   description: string;
 }) {
   return (
-    <div className="flex items-baseline justify-between">
+    <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
       <p className="type-label">{label}</p>
-      <p className="type-body-xs text-color-text-secondary">{description}</p>
+      <p className="type-body-xs text-color-text-secondary sm:text-right">{description}</p>
     </div>
   );
 }

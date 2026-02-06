@@ -117,12 +117,12 @@ export default function Page() {
       <main className="page-shell">
       {/* ================= HERO TITLE (4/12, not boxed) ================= */}
       <div className="layout-grid hero-gap">
-        <section className="col-span-12 md:col-span-5">
+        <section className="col-span-12 md:col-span-6">
           <h1 className="type-h1 text-balance">
             <span className="text-color-text-secondary font-normal">
-            Senior designer crafting delightful digital products{" "}
+            I design with taste, make decisions with structure, {" "}
             </span>
-            from the ground up.
+            and ship work that holds up. 
           </h1>
         </section>
       </div>
@@ -153,7 +153,7 @@ export default function Page() {
               <div className="card-muted p-4 rounded-xl flex flex-col gap-2" >
                 <p className="type-body-xs uppercase tracking-expanded text-color-text-secondary">OVERVIEW</p>
                 <p className="type-body-sm max-w-3xl text-color-text-primary">
-                  Turning complex problems into clear direction and easy to use products.
+                I’m the kind of designer who helps teams get unstuck and make things feel finished.
                 </p>
               </div>
 
@@ -163,7 +163,7 @@ export default function Page() {
                 <div className="flex flex-col gap-2 w-full">
                   <div className="flex justify-between items-baseline">
                     <span className="type-body-sm text-color-text-primary">Domain</span>
-                    <span className="type-body-sm">DevTools, early-stage products</span>
+                    <span className="type-body-sm">DevTools, Early-stage products</span>
                   </div>
                   <div className="flex justify-between items-baseline">
                     <span className="type-body-sm text-color-text-primary">Primary focus</span>
@@ -174,12 +174,12 @@ export default function Page() {
                     <span className="type-body-sm">Engineering & product</span>
                   </div>
                   <div className="flex justify-between items-baseline">
-                    <span className="type-body-sm text-color-text-primary">Complexity handling</span>
-                    <span className="type-body-sm">Simplify, don't hide</span>
+                    <span className="type-body-sm text-color-text-primary">Ownership</span>
+                    <span className="type-body-sm">End-to-end</span>
                   </div>
                   <div className="flex justify-between items-baseline">
-                    <span className="type-body-sm text-color-text-primary">Iteration</span>
-                    <span className="type-body-sm">Continuous</span>
+                    <span className="type-body-sm text-color-text-primary">Working style</span>
+                    <span className="type-body-sm">High standards, low drama</span>
                   </div>
                 </div>
               </div>

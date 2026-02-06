@@ -30,7 +30,7 @@ export default function RootLayout({
           <HireDrawerProvider>
             <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
               <Navigation />
-              <main className="flex flex-col">
+              <main className="flex flex-col min-w-0">
                 {children}
               </main>
               <ColorSchemeSwitcher />
