@@ -131,7 +131,7 @@ export const projectsConfig: ProjectConfig[] = [
     key: "neptune-lp",
     label: "Neptune",
     title:
-      "Shaping the identity of an AI infra platform engineer & building a chat prototype.",
+      "Visual direction and early workflow exploration for an AI infra platform.",
     href: "/projects/neptune",
     category: "client",
     hero: {
@@ -147,7 +147,7 @@ export const projectsConfig: ProjectConfig[] = [
     key: "shuttle-console",
     label: "Shuttle",
     title:
-      "Dev console redesign with a system that supports scale.",
+      "Establishing a scalable product system for a growing dev platform.",
     href: "/projects/shuttle",
     category: "client",
     hero: {
@@ -164,7 +164,7 @@ export const projectsConfig: ProjectConfig[] = [
   {
     key: "mixlodge-brand",
     label: "MixLodge",
-    title: "MVP for a studio booking platform: translating a vague idea into a structured product foundation.",
+    title: "Defining the product foundations for an early-stage booking tool.",
     href: "/projects/mixlodge",
     category: "client",
     hero: {
@@ -178,7 +178,7 @@ export const projectsConfig: ProjectConfig[] = [
   {
     key: "portfolio",
     label: "Portfolio",
-    title: "Figma to Prod: Designing and building a custom portfolio as a real system.",
+    title: "Designing and building this portfolio as a real product.",
     href: "/contact",
     category: "personal",
     hero: {

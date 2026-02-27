@@ -20,9 +20,9 @@ export function ProjectPageShuttle() {
       <section className="stack-lg">
         <div className="text-column stack-lg">
           <h1 className="type-h3">
-            Shuttle: Dev console redesign{" "}
+            Shuttle:{" "}
             <span className="text-color-text-secondary font-normal">
-              with a system that supports real-world workloads.
+            Establishing a scalable product system for a growing dev platform.
             </span>
           </h1>
 
@@ -58,19 +58,40 @@ export function ProjectPageShuttle() {
         </div>
       </section>
 
-      {/* TL;DR */}
-      <section className="stack-md">
-        <div
+     {/* TL;DR */}
+     <section className="stack-md">
+        <div 
           className="text-column stack-md rounded-[var(--radius-md)]"
           style={{
             backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
-            padding: "12px",
+            padding: "20px",
           }}
         >
-          <h3 className="type-label text-color-text-primary">TL;DR</h3>
-          <p className="type-body-sm leading-loose tracking-normal">
-          Defined a new UI foundation for Shuttle’s console by standardizing patterns, states, and layouts that had previously grown ad-hoc.
-          </p>
+          <h3 className="type-label text-color-text-secondary">Summary</h3>
+          <ul
+            className="type-body-sm leading-loose tracking-normal list-none space-y-1 text-color-text-primary"
+            role="list"
+           
+          >
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+              Lead product designer responsible for a full console redesign.
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+              Over time, inconsistent implementation and shifting priorities fragmented the original system, creating design debt and UX inconsistencies.
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+              The redesign restored clarity and consistency across the console, making it calmer for smaller teams, scalable for power users, and easier for the team to ship against.
+              </span>
+            </li>
+          </ul>
         </div>
       </section>
 

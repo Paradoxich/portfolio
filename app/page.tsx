@@ -117,12 +117,12 @@ export default function Page() {
       <main className="page-shell">
       {/* ================= HERO TITLE (4/12, not boxed) ================= */}
       <div className="layout-grid hero-gap">
-        <section className="col-span-12 md:col-span-6">
+        <section className="col-span-12 md:col-span-7">
           <h1 className="type-h1 text-balance">
-            <span className="text-color-text-secondary font-normal">
-            I design with taste, make decisions with structure, {" "}
-            </span>
-            and ship work that holds up. 
+            
+           I define direction, <span className="text-color-text-secondary font-normal">shape flows, build visual systems, 
+         
+          and stay close to implementation. </span> {" "}
           </h1>
         </section>
       </div>
@@ -153,7 +153,7 @@ export default function Page() {
               <div className="card-muted p-4 rounded-xl flex flex-col gap-2" >
                 <p className="type-body-xs uppercase tracking-expanded text-color-text-secondary">OVERVIEW</p>
                 <p className="type-body-sm max-w-3xl text-color-text-primary">
-                I’m the kind of designer who helps teams get unstuck and make things feel finished.
+                I work closely with founders and engineers to take products from ambiguity to something ready to ship.
                 </p>
               </div>
 
