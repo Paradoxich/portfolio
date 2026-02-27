@@ -25,7 +25,7 @@ export function ProjectPageNeptune() {
       <section className="stack-lg">
         <div className="text-column stack-lg">
           <h1 className="type-h3">
-            Neptune: shaping the identity <span className="text-color-text-secondary font-normal">of an AI infra platform engineer</span>
+          Neptune: <span className="text-color-text-secondary font-normal">Visual direction and early workflow exploration for an AI infra platform. </span>
           </h1>
 
           <div className="flex items-center gap-4">
@@ -62,13 +62,37 @@ export function ProjectPageNeptune() {
           className="text-column stack-md rounded-[var(--radius-md)]"
           style={{
             backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
-            padding: "12px",
+            padding: "20px",
           }}
         >
-          <h3 className="type-label text-color-text-primary">TL;DR</h3>
-          <p className="type-body-sm leading-loose tracking-normal">
-          I shaped Neptune’s product identity and landing page, then built an animated, script-driven chat prototype to make an AI infra workflow legible and discussable. 
-          </p>
+          <h3 className="type-label text-color-text-secondary">Summary</h3>
+          <ul
+            className="type-body-sm leading-loose tracking-normal list-none space-y-1 text-color-text-primary"
+            role="list"
+           
+          >
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+                Sole product designer responsible for visual direction and early
+                interaction concepts.
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+                The product was still undefined, with workflows being actively
+                explored.
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+                Defined a coherent visual system and created a concrete
+                interaction example to support product discussions.
+              </span>
+            </li>
+          </ul>
         </div>
       </section>
 

@@ -10,7 +10,7 @@ export default function ProjectsPage() {
       <div className="page-shell stack-xl">
         {/* HEADER */}
         <header className="layout-grid hero-gap">
-          <section className="col-span-12 md:col-span-5">
+          <section className="col-span-12 md:col-span-6">
             <h1 className="type-h1 text-balance">
               A look at the work I do{" "}
               <span className="text-color-text-secondary font-normal">

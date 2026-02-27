@@ -12,9 +12,9 @@ export function ProjectPageMixlodge() {
       <section className="stack-lg">
         <div className="text-column stack-lg">
           <h1 className="type-h3">
-            MixLodge: MVP for a studio booking platform{" "}
+            MixLodge: {" "}
             <span className="text-color-text-secondary font-normal">
-              that connects musicians, studios, and remote producers.
+            Defining the product foundations for an early-stage booking tool.
             </span>
           </h1>
 
@@ -24,19 +24,41 @@ export function ProjectPageMixlodge() {
         </div>
       </section>
 
+      
       {/* TL;DR */}
       <section className="stack-md">
         <div 
           className="text-column stack-md rounded-[var(--radius-md)]"
           style={{
             backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
-            padding: "12px",
+            padding: "20px",
           }}
         >
-          <h3 className="type-label text-color-text-primary">TL;DR</h3>
-          <p className="type-body-sm leading-loose tracking-normal">
-          Structured a loosely defined product by mapping requirements into clear workflows and a single end-to-end system.
-          </p>
+          <h3 className="type-label text-color-text-secondary">Summary</h3>
+          <ul
+            className="type-body-sm leading-loose tracking-normal list-none space-y-1 text-color-text-primary"
+            role="list"
+           
+          >
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+              Lead product designer across discovery, product definition, visual direction and end-to-end MVP design.
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+              The initial scope was a broad feature list filled with open questions, without clear prioritisation, structure, or a defined core workflow.
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+              Defined the full journey from from studio search and booking to post-booking collaboration and delivered complete, implementation-ready flows and a consistent visual system.
+              </span>
+            </li>
+          </ul>
         </div>
       </section>
 

@@ -13,7 +13,8 @@ export function ProjectPagePortfolio() {
       <section className="stack-lg">
         <div className="text-column stack-lg">
           <h1 className="type-h3">
-            Portfolio Rebuild: <span className="text-color-text-secondary font-normal">learning AI-assisted workflows through a custom system</span>
+            Portfolio: <span className="text-color-text-secondary font-normal">Designing and building this portfolio as a real product.
+            </span>
           </h1>
 
           <div className="flex items-center gap-4">
@@ -22,19 +23,41 @@ export function ProjectPagePortfolio() {
         </div>
       </section>
 
-      {/* TL;DR */}
-      <section className="stack-md">
+     {/* TL;DR */}
+     <section className="stack-md">
         <div 
           className="text-column stack-md rounded-[var(--radius-md)]"
           style={{
             backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
-            padding: "12px",
+            padding: "20px",
           }}
         >
-          <h3 className="type-label text-color-text-primary">TL;DR</h3>
-          <p className="type-body-sm leading-loose tracking-normal">
-            I designed and shipped my portfolio as a fully custom system, using visual design and AI-assisted workflows to translate designs into working code.
-          </p>
+          <h3 className="type-label text-color-text-secondary">Summary</h3>
+          <ul
+            className="type-body-sm leading-loose tracking-normal list-none space-y-1 text-color-text-primary"
+            role="list"
+           
+          >
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+              Designed and implemented a custom portfolio as a structured system rather than a static site.
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+              I wanted to understand how to integrate AI tools into a real design-to-code workflow without losing control over structure and quality.
+
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span aria-hidden="true">→</span>
+              <span>
+              Built a repository-based AI workflow to maintain control over design intent, code quality, and long-term extensibility.
+              </span>
+            </li>
+          </ul>
         </div>
       </section>
 
