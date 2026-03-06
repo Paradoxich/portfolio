@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { IllustrationBlocks } from "../../components/illustrations/IllustrationBlocks";
+import { PageShell } from "@/components/layout/PageShell";
+import { IllustrationBlocks } from "@/components/illustrations/IllustrationBlocks";
 import {
   personalIllustrationBlocks,
   uiCopyTexts,
   uiIllustrationBlocks,
-} from "../../components/illustrations/illustrationsData";
+} from "@/components/illustrations/illustrationsData";
 
 type TabId = "ui" | "personal";
 
@@ -30,8 +31,7 @@ export default function IllustrationsPage() {
     activeTab === "ui" ? uiCopyTexts : activeTab === "personal" ? personalCopyTexts : undefined;
 
   return (
-    <main className="min-h-screen">
-      <div className="page-shell stack-xl ">
+    <PageShell className="stack-xl">
         <header className="layout-grid hero-gap">
           <section className="col-span-12 md:col-span-5 stack-md">
             <h1 className="type-h1">
@@ -67,8 +67,7 @@ export default function IllustrationsPage() {
           variant={activeVariant}
           copyTexts={activeCopyTexts}
         />
-      </div>
-    </main>
+    </PageShell>
   );
 }
 

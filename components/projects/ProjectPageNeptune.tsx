@@ -2,12 +2,19 @@
 
 import * as React from "react";
 import Image from "next/image";
+import { CaseStudyLayout } from "./CaseStudyLayout";
 
 const deckImages = [
   "/case-studies/neptune-deck-1.png",
   "/case-studies/neptune-deck-2.png",
   "/case-studies/neptune-deck-3.png",
   "/case-studies/neptune-deck-4.png",
+];
+
+const NEPTUNE_TLDR = [
+  "Sole product designer responsible for visual direction and early interaction concepts.",
+  "The product was still undefined, with workflows being actively explored.",
+  "Defined a coherent visual system and created a concrete interaction example to support product discussions.",
 ];
 
 export function ProjectPageNeptune() {
@@ -19,83 +26,15 @@ export function ProjectPageNeptune() {
       videoRef.current.playbackRate = 0.75;
     }
   }, []);
+
   return (
-    <article className="w-full stack-5xl">
-      {/* 0. PAGE TITLE BLOCK */}
-      <section className="stack-lg">
-        <div className="text-column stack-lg">
-          <h1 className="type-h3">
-          Neptune: <span className="text-color-text-secondary font-normal">Visual direction and early workflow exploration for an AI infra platform. </span>
-          </h1>
-
-          <div className="flex items-center gap-4">
-            <p className="type-body-sm">2025</p>
-
-            <a
-              href="https://www.neptune.dev"
-              target="_blank"
-              rel="noreferrer"
-              className="h-8 px-4 rounded-full flex items-center justify-center gap-2 type-body-sm transition-colors link-pill"
-              style={{
-                backgroundColor: "var(--color-link-pill-bg, var(--color-bg-surface))",
-                color: "var(--color-link-pill-text, var(--color-text-primary))",
-              }}
-            >
-              neptune.dev
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="16" 
-                height="16" 
-                viewBox="0 0 24 24"
-                style={{ flexShrink: 0 }}
-              >
-                <path fill="currentColor" d="m16.004 9.414l-8.607 8.607l-1.414-1.414L14.59 8H7.003V6h11v11h-2z"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* TL;DR */}
-      <section className="stack-md">
-        <div 
-          className="text-column stack-md rounded-[var(--radius-md)]"
-          style={{
-            backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
-            padding: "20px",
-          }}
-        >
-          <h3 className="type-label text-color-text-secondary">Summary</h3>
-          <ul
-            className="type-body-sm leading-loose tracking-normal list-none space-y-1 text-color-text-primary"
-            role="list"
-           
-          >
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-                Sole product designer responsible for visual direction and early
-                interaction concepts.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-                The product was still undefined, with workflows being actively
-                explored.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-                Defined a coherent visual system and created a concrete
-                interaction example to support product discussions.
-              </span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
+    <CaseStudyLayout
+      title="Neptune"
+      subtitle="Visual direction and early workflow exploration for an AI infra platform."
+      meta="2025"
+      links={[{ href: "https://www.neptune.dev", label: "neptune.dev" }]}
+      tldrItems={NEPTUNE_TLDR}
+    >
       {/* 1. CONTEXT */}
       <section className="stack-md">
         <div className="text-column stack-md">
@@ -343,6 +282,6 @@ This pushed the visual and verbal direction away from hype-driven AI language an
           </p>
         </div>
       </section>
-    </article>
+    </CaseStudyLayout>
   );
 }

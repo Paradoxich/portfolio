@@ -78,6 +78,22 @@ export default function Navigation() {
             Graphics
           </Link>
 
+          <Link
+            href="/experiments"
+            className={
+              isActive("/experiments") ? "nav-link-active" : "nav-link"
+            }
+          >
+            Experiments
+          </Link>
+
+          <Link
+            href="/notes"
+            className={isActive("/notes") ? "nav-link-active" : "nav-link"}
+          >
+            Notes
+          </Link>
+
           <button onClick={openHireDrawer} className="nav-link">
             Contact
           </button>

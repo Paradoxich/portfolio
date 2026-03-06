@@ -4,63 +4,22 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { CaseStudyLayout } from "./CaseStudyLayout";
+
+const PORTFOLIO_TLDR = [
+  "Designed and implemented a custom portfolio as a structured system rather than a static site.",
+  "I wanted to understand how to integrate AI tools into a real design-to-code workflow without losing control over structure and quality.",
+  "Built a repository-based AI workflow to maintain control over design intent, code quality, and long-term extensibility.",
+];
 
 export function ProjectPagePortfolio() {
   return (
-    // full-width, text centered in 640px column
-    <article className="w-full stack-5xl">
-      {/* 0. PAGE TITLE BLOCK */}
-      <section className="stack-lg">
-        <div className="text-column stack-lg">
-          <h1 className="type-h3">
-            Portfolio: <span className="text-color-text-secondary font-normal">Designing and building this portfolio as a real product.
-            </span>
-          </h1>
-
-          <div className="flex items-center gap-4">
-            <p className="type-body-sm">2025</p>
-          </div>
-        </div>
-      </section>
-
-     {/* TL;DR */}
-     <section className="stack-md">
-        <div 
-          className="text-column stack-md rounded-[var(--radius-md)]"
-          style={{
-            backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
-            padding: "20px",
-          }}
-        >
-          <h3 className="type-label text-color-text-secondary">Summary</h3>
-          <ul
-            className="type-body-sm leading-loose tracking-normal list-none space-y-1 text-color-text-primary"
-            role="list"
-           
-          >
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-              Designed and implemented a custom portfolio as a structured system rather than a static site.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-              I wanted to understand how to integrate AI tools into a real design-to-code workflow without losing control over structure and quality.
-
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-              Built a repository-based AI workflow to maintain control over design intent, code quality, and long-term extensibility.
-              </span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
+    <CaseStudyLayout
+      title="Portfolio"
+      subtitle="Designing and building this portfolio as a real product."
+      meta="2025"
+      tldrItems={PORTFOLIO_TLDR}
+    >
       {/* 1. CONTEXT */}
       <section className="stack-md">
         <div className="text-column stack-md">
@@ -242,6 +201,6 @@ export function ProjectPagePortfolio() {
           </p>
         </div>
       </section>
-    </article>
+    </CaseStudyLayout>
   );
 }

@@ -43,6 +43,7 @@ export const lineHeightTokens = [
   { token: "line-height.tight", value: "1.2" },
   { token: "line-height.snug", value: "1.4" },
   { token: "line-height.relaxed", value: "1.5" },
+  { token: "line-height.body", value: "1.6" },
   { token: "line-height.loose", value: "1.7" },
 ];
 

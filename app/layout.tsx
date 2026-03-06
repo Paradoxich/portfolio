@@ -3,8 +3,10 @@ import "./globals.css";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/react";
-import Navigation from "@/components/Navigation";
-import { ColorSchemeProvider, ColorSchemeSwitcher } from "@/components/ColorSchemeProvider";
+import { Sidebar } from "@/components/layout/Sidebar";
+import { MobileNav } from "@/components/layout/MobileNav";
+import { TopStickyBar } from "@/components/layout/TopStickyBar";
+import { ColorSchemeProvider } from "@/components/ColorSchemeProvider";
 import { HireDrawerProvider } from "@/components/HireDrawerContext";
 
 export const metadata = {
@@ -23,17 +25,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // GeistSans već nosi font-family + varijacije
-    <html lang="en" className={GeistSans.className}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistSans.className}`}>
       <body className={GeistMono.variable}>
         <ColorSchemeProvider>
           <HireDrawerProvider>
-            <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
-              <Navigation />
-              <main className="flex flex-col min-w-0">
+            <div className="flex h-screen flex-col overflow-hidden">
+              <Sidebar />
+              <MobileNav />
+              <main className="flex min-h-0 flex-1 flex-col min-w-0 overflow-y-auto with-sidebar">
+                <TopStickyBar />
                 {children}
               </main>
-              <ColorSchemeSwitcher />
             </div>
           </HireDrawerProvider>
         </ColorSchemeProvider>

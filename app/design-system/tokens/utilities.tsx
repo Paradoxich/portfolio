@@ -1,7 +1,17 @@
 // app/design-system/tokens/utilities.tsx
 
-// Typography utilities
+// Typography utilities (semantic, reusable)
 export const typeUtilities = [
+  {
+    name: "type-hero",
+    role: "Hero / landing headline",
+    tokens:
+      "font-size.3xl · line-height.compact · letter-spacing -1.44px",
+    css: `font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -1.44px;`,
+    previewClass: "type-hero",
+  },
   {
     name: "type-h1",
     role: "Display / main heading",
@@ -70,7 +80,7 @@ export const typeUtilities = [
   },
   {
     name: "type-body-sm",
-    role: "Body small",
+    role: "Body small (compact)",
     tokens:
       "font-size.xs · line-height.snug · tracking.tight · font-weight.regular",
     css: `font-size: 14px;
@@ -78,6 +88,16 @@ export const typeUtilities = [
   letter-spacing: -0.03em;
   font-weight: 400;`,
     previewClass: "type-body-sm",
+  },
+  {
+    name: "type-caption",
+    role: "Caption / secondary small text",
+    tokens:
+      "font-size.xs · line-height.body · font-weight.regular",
+    css: `font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;`,
+    previewClass: "type-caption",
   },
   {
     name: "type-body-sm-strong",
@@ -320,6 +340,31 @@ export const surfaceUtilities = [
     description:
       "Compact nested surface used inside cards (design-system token tables).",
     className: "panel",
+  },
+];
+
+// Button utilities (reusable system)
+export const buttonUtilities = [
+  {
+    name: "btn-primary",
+    role: "Primary CTA",
+    tokens: "color.accent · color-40 border · 40px h · 8 16 padding",
+    description: "Accent-filled button for primary actions.",
+    className: "btn-primary",
+  },
+  {
+    name: "btn-secondary",
+    role: "Secondary CTA",
+    tokens: "color-20 fill · color-40 border · hover color-10",
+    description: "Muted filled button (e.g. View CV).",
+    className: "btn-secondary",
+  },
+  {
+    name: "btn-ghost",
+    role: "Ghost / tertiary",
+    tokens: "transparent · color-80 text · hover color-10 bg",
+    description: "Low-emphasis button, transparent until hover.",
+    className: "btn-ghost",
   },
 ];
 

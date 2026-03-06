@@ -13,6 +13,6 @@ type PageShellProps = {
 export function PageShell({ children, className }: PageShellProps) {
   const classes = ["page-shell", className].filter(Boolean).join(" ");
 
-  return <main className={classes}>{children}</main>;
+  return <div className={classes}>{children}</div>;
 }
 

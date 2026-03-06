@@ -4,6 +4,13 @@
 import * as React from "react";
 import Image from "next/image";
 import { BeforeAfterToggle } from "@/components/media/BeforeAfterToggle";
+import { CaseStudyLayout } from "./CaseStudyLayout";
+
+const SHUTTLE_TLDR = [
+  "Lead product designer responsible for a full console redesign.",
+  "Over time, inconsistent implementation and shifting priorities fragmented the original system, creating design debt and UX inconsistencies.",
+  "The redesign restored clarity and consistency across the console, making it calmer for smaller teams, scalable for power users, and easier for the team to ship against.",
+];
 
 export function ProjectPageShuttle() {
   const videoRef = React.useRef<HTMLVideoElement>(null);
@@ -15,86 +22,13 @@ export function ProjectPageShuttle() {
   }, []);
 
   return (
-    <article className="w-full stack-5xl">
-      {/* 0. PAGE TITLE BLOK */}
-      <section className="stack-lg">
-        <div className="text-column stack-lg">
-          <h1 className="type-h3">
-            Shuttle:{" "}
-            <span className="text-color-text-secondary font-normal">
-            Establishing a scalable product system for a growing dev platform.
-            </span>
-          </h1>
-
-          <div className="flex items-center gap-4">
-            <p className="type-body-sm">2025</p>
-
-            <a
-              href="https://console.shuttle.dev"
-              target="_blank"
-              rel="noreferrer"
-              className="h-8 px-4 rounded-full flex items-center justify-center gap-2 type-body-sm transition-colors link-pill"
-              style={{
-                backgroundColor:
-                  "var(--color-link-pill-bg, var(--color-bg-surface))",
-                color: "var(--color-link-pill-text, var(--color-text-primary))",
-              }}
-            >
-              shuttle.dev
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                style={{ flexShrink: 0 }}
-              >
-                <path
-                  fill="currentColor"
-                  d="m16.004 9.414l-8.607 8.607l-1.414-1.414L14.59 8H7.003V6h11v11h-2z"
-                />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
-
-     {/* TL;DR */}
-     <section className="stack-md">
-        <div 
-          className="text-column stack-md rounded-[var(--radius-md)]"
-          style={{
-            backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
-            padding: "20px",
-          }}
-        >
-          <h3 className="type-label text-color-text-secondary">Summary</h3>
-          <ul
-            className="type-body-sm leading-loose tracking-normal list-none space-y-1 text-color-text-primary"
-            role="list"
-           
-          >
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-              Lead product designer responsible for a full console redesign.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-              Over time, inconsistent implementation and shifting priorities fragmented the original system, creating design debt and UX inconsistencies.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-              The redesign restored clarity and consistency across the console, making it calmer for smaller teams, scalable for power users, and easier for the team to ship against.
-              </span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
+    <CaseStudyLayout
+      title="Shuttle"
+      subtitle="Establishing a scalable product system for a growing dev platform."
+      meta="2025"
+      links={[{ href: "https://console.shuttle.dev", label: "shuttle.dev" }]}
+      tldrItems={SHUTTLE_TLDR}
+    >
       {/* 1. CONTEXT */}
       <section className="stack-md">
         <div className="text-column stack-md">
@@ -362,6 +296,6 @@ export function ProjectPageShuttle() {
           </p>
         </div>
       </section>
-    </article>
+    </CaseStudyLayout>
   );
 }

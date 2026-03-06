@@ -1,7 +1,9 @@
 "use client";
 
 import * as React from "react";
-import type { Theme } from "./ProjectsConfig";
+
+/** @deprecated Case studies now use design system tokens. Kept for backwards compatibility. */
+type Theme = Record<string, string | undefined>;
 
 type ThemeProviderProps = {
   theme?: Theme;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { PageShell } from "@/components/layout/PageShell";
 import {
   // foundations
   fontSizeTokens,
@@ -20,6 +21,7 @@ import {
   spacingUtilityTokens,
   radiusUtilityTokens,
   surfaceUtilities,
+  buttonUtilities,
   layoutUtilities,
 } from "./tokens/index";
 
@@ -42,8 +44,7 @@ export default function DesignSystemPage() {
   const [activeTab, setActiveTab] = useState<TabId>("foundations");
 
   return (
-    <main className="min-h-screen min-w-0">
-      <div className="page-shell stack-xl w-full min-w-0">
+    <PageShell className="stack-xl w-full min-w-0">
         {/* Header */}
         <header className="stack-md">
           <h1 className="type-h1">Design System</h1>
@@ -77,8 +78,7 @@ export default function DesignSystemPage() {
         {/* Tab content */}
         {activeTab === "foundations" && <FoundationsTab />}
         {activeTab === "utilities" && <UtilitiesTab />}
-      </div>
-    </main>
+    </PageShell>
   );
 }
 
@@ -384,6 +384,46 @@ function UtilitiesTab() {
                   <Td className="whitespace-pre-line">{u.css}</Td>
                   <Td align="right">
                     <p className={u.previewClass}>Lazy dog.</p>
+                  </Td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Button utilities */}
+      <section className="card stack-lg">
+        <SectionHeader
+          label="Buttons · utilities"
+          description="Reusable button system (btn-primary, btn-secondary, btn-ghost)"
+        />
+
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-left">
+            <thead>
+              <tr className="border-b border-color-border">
+                <Th>Name</Th>
+                <Th>Role</Th>
+                <Th>Uses tokens</Th>
+                <Th>Description</Th>
+                <Th align="right">Preview</Th>
+              </tr>
+            </thead>
+            <tbody>
+              {buttonUtilities.map((b) => (
+                <tr
+                  key={b.name}
+                  className="border-b border-color-border last:border-0 align-top"
+                >
+                  <Td>{b.name}</Td>
+                  <Td>{b.role}</Td>
+                  <Td className="whitespace-pre-line">{b.tokens}</Td>
+                  <Td>{b.description}</Td>
+                  <Td align="right">
+                    <button type="button" className={b.className}>
+                      {b.name.replace("btn-", "")}
+                    </button>
                   </Td>
                 </tr>
               ))}

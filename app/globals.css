@@ -19,8 +19,9 @@
   --color-90: #f3f0e9;
   --color-100: #ffffff;
   
-  /* RGB helpers for gradients */
+  /* RGB helpers for gradients/opacity */
   --color-0-rgb: 16, 15, 12;
+  --color-10-rgb: 25, 24, 19;
   --color-20-rgb: 35, 34, 27;
   
   /* Color blend overlay */
@@ -31,6 +32,9 @@
   
   /* Accent/button fill */
   --color-accent: #84873d;
+
+  /* Decorative graphic accent (dots, highlights in illustrations) */
+  --color-graphic-muted: #6F6B5F;
   
   /* Image filter for theme */
   --image-filter: none;
@@ -80,6 +84,7 @@
   --line-height-tight: 1.2;
   --line-height-snug: 1.4;
   --line-height-relaxed: 1.5;
+  --line-height-body: 1.6; /* 160% for hero/capability body */
   --line-height-loose: 1.7;
 
   /* Tracking scale */
@@ -100,7 +105,7 @@
   html {
     @apply bg-color-bg text-color-text-primary antialiased overflow-x-hidden;
 
-    font-family: var(--font-geist), system-ui, -apple-system, BlinkMacSystemFont,
+    font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
       "Segoe UI", sans-serif;
 
     /* GLOBAL GEIST OPENTYPE FEATURES */
@@ -190,10 +195,22 @@
   .gap-feature {
     gap: calc(var(--space-3xl) * 2);
   }
+
+  /* Layout with sidebar */
+  .with-sidebar {
+    margin-left: 0;
+  }
+  @media (min-width: 768px) {
+    .with-sidebar {
+      margin-left: 230px;
+    }
+  }
 }
 
 /* =========================================
    TYPE STYLES (utility / “type-*”)
+   Used by Projects, Illustrations, Notes, design-system.
+   For new Figma Home/Overview, prefer type-hero, type-capability-*.
    ========================================= */
 
 @layer components {
@@ -253,6 +270,75 @@
     @apply text-[12px] tracking-expanded font-medium uppercase text-color-text-secondary;
     line-height: var(--line-height-none);
   }
+
+  /* Caption — 14 / 160% / regular (secondary small text) */
+  .type-caption {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+
+  /* Hero — 48 / 110% / -1.44px (landing/hero sections) */
+  .type-hero {
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.44px;
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+}
+
+/* =========================================
+   BUTTONS (reusable system)
+   ========================================= */
+
+@layer components {
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    height: 40px;
+    padding: 8px 16px;
+    gap: 4px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    transition: background-color 0.2s ease, border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .btn-primary {
+    border: 1px solid var(--color-40);
+    background-color: var(--color-accent);
+    color: var(--color-90);
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.1);
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--color-40);
+    background-color: var(--color-20);
+    color: var(--color-90);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-10);
+  }
+
+  .btn-ghost {
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: var(--color-80);
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--color-10);
+    color: var(--color-90);
+  }
 }
 
 /* =========================================
@@ -280,6 +366,57 @@
 
   .project-card-link:hover {
     border-color: var(--color-60);
+  }
+
+  /* Project card – projects index (design system tokens, theme-switcher aware) */
+  .project-card {
+    position: relative;
+    background-color: rgba(var(--color-10-rgb), 0.5);
+    border: 1px solid var(--color-20);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+
+  /* Background graphic – separate layer so we can apply theme image-filter (e.g. grayscale for cool) */
+  .project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/bg-project-placeholder.svg");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: var(--image-filter);
+    pointer-events: none;
+  }
+
+  .project-card-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 1000px;
+    background: var(--color-bg-muted);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--color-text-secondary);
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+
+  .project-card-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 130%;
+    letter-spacing: -0.24px;
+    color: var(--color-text-primary);
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+    max-width: 420px;
   }
 
   /* Muted card surface */
@@ -481,9 +618,12 @@
            type-body-sm-strong;
   }
 
-  /* Link pill hover */
+  /* Link pill — design system tokens */
+  .link-pill {
+    @apply bg-color-bg-surface border border-color-border-secondary text-color-text-primary;
+  }
   .link-pill:hover {
-    background-color: var(--color-link-pill-hover-bg, var(--color-bg-surface)) !important;
+    @apply bg-color-bg-muted;
     text-decoration: underline;
   }
 }

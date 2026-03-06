@@ -3,65 +3,22 @@
 
 import * as React from "react";
 import Image from "next/image";
+import { CaseStudyLayout } from "./CaseStudyLayout";
+
+const MIXLODGE_TLDR = [
+  "Lead product designer across discovery, product definition, visual direction and end-to-end MVP design.",
+  "The initial scope was a broad feature list filled with open questions, without clear prioritisation, structure, or a defined core workflow.",
+  "Defined the full journey from studio search and booking to post-booking collaboration and delivered complete, implementation-ready flows and a consistent visual system.",
+];
 
 export function ProjectPageMixlodge() {
   return (
-    // full-width, kao Shuttle
-    <article className="w-full stack-5xl">
-      {/* 0. PAGE TITLE BLOK */}
-      <section className="stack-lg">
-        <div className="text-column stack-lg">
-          <h1 className="type-h3">
-            MixLodge: {" "}
-            <span className="text-color-text-secondary font-normal">
-            Defining the product foundations for an early-stage booking tool.
-            </span>
-          </h1>
-
-          <div className="flex items-center gap-4">
-            <p className="type-body-sm">2025 • Not yet launched</p>
-          </div>
-        </div>
-      </section>
-
-      
-      {/* TL;DR */}
-      <section className="stack-md">
-        <div 
-          className="text-column stack-md rounded-[var(--radius-md)]"
-          style={{
-            backgroundColor: "var(--color-tldr-bg, var(--color-bg-muted))",
-            padding: "20px",
-          }}
-        >
-          <h3 className="type-label text-color-text-secondary">Summary</h3>
-          <ul
-            className="type-body-sm leading-loose tracking-normal list-none space-y-1 text-color-text-primary"
-            role="list"
-           
-          >
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-              Lead product designer across discovery, product definition, visual direction and end-to-end MVP design.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-              The initial scope was a broad feature list filled with open questions, without clear prioritisation, structure, or a defined core workflow.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span aria-hidden="true">→</span>
-              <span>
-              Defined the full journey from from studio search and booking to post-booking collaboration and delivered complete, implementation-ready flows and a consistent visual system.
-              </span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
+    <CaseStudyLayout
+      title="MixLodge"
+      subtitle="Defining the product foundations for an early-stage booking tool."
+      meta="2025 • Not yet launched"
+      tldrItems={MIXLODGE_TLDR}
+    >
       {/* 1. CONTEXT */}
       <section className="stack-md">
         <div className="text-column stack-md">
@@ -272,6 +229,6 @@ export function ProjectPageMixlodge() {
           </p>
         </div>
       </section>
-    </article>
+    </CaseStudyLayout>
   );
 }

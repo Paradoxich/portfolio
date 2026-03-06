@@ -49,14 +49,13 @@ const config: Config = {
       },
 
       borderRadius: {
-        // posebne radius util klase, bez konflikta s Tailwind defaultom
-        card: "var(--radius-lg)", // rounded-card
-        surface: "var(--radius-md)", // rounded-surface
-        pill: "var(--radius-full)", // rounded-pill
+        card: "var(--radius-lg)",
+        surface: "var(--radius-md)",
+        pill: "var(--radius-full)",
       },
 
       fontFamily: {
-        geist: ["var(--font-geist)", "system-ui", "sans-serif"],
+        geist: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
       },
 
       lineHeight: {
@@ -65,6 +64,7 @@ const config: Config = {
         tight: "var(--line-height-tight)",
         snug: "var(--line-height-snug)",
         relaxed: "var(--line-height-relaxed)",
+        body: "var(--line-height-body)",
         loose: "var(--line-height-loose)",
       },
 
