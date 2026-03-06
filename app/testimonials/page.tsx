@@ -31,7 +31,7 @@ const TESTIMONIALS = [
 ];
 
 function splitFirstSentence(text: string): [string, string] {
-  const match = text.match(/^([^.!?]+[.!?])\s*(.*)$/s);
+  const match = text.match(/^([^.!?]+[.!?])\s*([\s\S]*)$/);
   if (match) return [match[1], match[2].trim()];
   return [text, ""];
 }

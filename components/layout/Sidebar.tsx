@@ -207,16 +207,22 @@ export function Sidebar() {
                   <Link
                     key={href}
                     href={href}
-                    className={`flex items-center gap-0 w-full h-12 rounded-[8px] transition-colors ${
+                    className={`group flex items-center gap-0 w-full h-12 rounded-[8px] transition-colors ${
                       active
-                        ? "bg-color-bg-muted text-color-text-primary"
-                        : "text-color-text-secondary hover:bg-color-bg-muted hover:text-color-text-primary"
+                        ? "bg-color-bg-muted text-color-90"
+                        : "text-color-text-secondary hover:bg-color-bg-muted hover:text-color-90"
                     }`}
                   >
                     <span className="flex w-12 h-12 shrink-0 items-center justify-center [&>svg]:text-current">
                       <Icon size={20} />
                     </span>
-                    <span className="type-body-sm truncate flex-1 min-w-0">
+                    <span
+                      className={`type-body-sm truncate flex-1 min-w-0 ${
+                        active
+                          ? "text-color-90"
+                          : "text-color-text-secondary group-hover:text-color-90"
+                      }`}
+                    >
                       {label}
                     </span>
                   </Link>

@@ -33,7 +33,7 @@ export type ProjectConfig = {
   thumbnail?: string;
 
   // case-study content komponenta – opcionalno
-  Page?: React.ComponentType;
+  Page?: React.ComponentType<{ heroSlot?: React.ReactNode }>;
 };
 
 export const projectsConfig: ProjectConfig[] = [
