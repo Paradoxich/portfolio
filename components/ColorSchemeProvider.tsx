@@ -3,20 +3,8 @@
 import * as React from "react";
 import { usePathname } from "next/navigation";
 
-type ColorScheme = "warm" | "cool";
-
-type ColorSchemeContextType = {
-  colorScheme: ColorScheme;
-  setColorScheme: (scheme: ColorScheme) => void;
-  toggleColorScheme: () => void;
-  hideSwitcher: boolean;
-  setHideSwitcher: (hide: boolean) => void;
-};
-
-const ColorSchemeContext = React.createContext<ColorSchemeContextType | null>(null);
-
-// Color palettes with gradient helpers
 const colorSchemes = {
+  // Current \"green\" / warm theme
   warm: {
     "--color-0": "#100F0C",
     "--color-10": "#191813",
@@ -40,6 +28,7 @@ const colorSchemes = {
     // Image filter (none for warm)
     "--image-filter": "none",
   },
+  // Current \"black\" / cool theme
   cool: {
     "--color-0": "#0a0a0a",
     "--color-10": "#141414",
@@ -63,7 +52,38 @@ const colorSchemes = {
     // Image filter (grayscale for cool)
     "--image-filter": "grayscale(100%)",
   },
+  // Placeholder for future light/color theme – values to be tuned
+  light: {
+    "--color-0": "#f5f3f0",
+    "--color-10": "#f8f6f2",
+    "--color-20": "#ffffff",
+    "--color-30": "#e0ded7",
+    "--color-40": "#cdc8bc",
+    "--color-50": "#bcb5a2",
+    "--color-60": "#a59d86",
+    "--color-80": "#5c5540",
+    "--color-90": "#1e1a11",
+    "--color-100": "#000000",
+    "--color-0-rgb": "245, 243, 240",
+    "--color-20-rgb": "255, 255, 255",
+    "--color-blend": "#e3dccd",
+    "--color-60-rgb": "165, 157, 134",
+    "--color-accent": "#7f8250",
+    "--image-filter": "none",
+  },
+} as const;
+
+type ColorScheme = keyof typeof colorSchemes;
+
+type ColorSchemeContextType = {
+  colorScheme: ColorScheme;
+  setColorScheme: (scheme: ColorScheme) => void;
+  toggleColorScheme: () => void;
+  hideSwitcher: boolean;
+  setHideSwitcher: (hide: boolean) => void;
 };
+
+const ColorSchemeContext = React.createContext<ColorSchemeContextType | null>(null);
 
 export function ColorSchemeProvider({ children }: { children: React.ReactNode }) {
   const [colorScheme, setColorScheme] = React.useState<ColorScheme>("warm");
@@ -80,7 +100,12 @@ export function ColorSchemeProvider({ children }: { children: React.ReactNode })
   }, [colorScheme]);
 
   const toggleColorScheme = React.useCallback(() => {
-    setColorScheme((prev) => (prev === "warm" ? "cool" : "warm"));
+    const schemeKeys = Object.keys(colorSchemes) as ColorScheme[];
+    setColorScheme((prev) => {
+      const currentIndex = schemeKeys.indexOf(prev);
+      const nextIndex = (currentIndex + 1) % schemeKeys.length;
+      return schemeKeys[nextIndex];
+    });
   }, []);
 
   return (
