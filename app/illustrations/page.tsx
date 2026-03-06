@@ -31,26 +31,28 @@ export default function IllustrationsPage() {
     activeTab === "ui" ? uiCopyTexts : activeTab === "personal" ? personalCopyTexts : undefined;
 
   return (
-    <PageShell className="stack-xl">
-        <header className="layout-grid hero-gap">
-          <section className="col-span-12 md:col-span-5 stack-md">
-            <h1 className="type-h1">
-              Bits of color, characters and odd ideas{" "}
-              <span className="font-normal text-color-text-secondary">
+    <PageShell className="px-4xl stack-xl">
+        <header className="layout-grid hero-gap mt-4xl">
+          <section className="col-span-12 md:col-span-7 stack-md">
+            <h1 className="type-hero text-balance">
+              <span className="text-color-text-primary font-medium">
+                Bits of color, characters and odd ideas{" "}
+              </span>
+              <span className="text-color-text-secondary font-normal">
                 I draw for fun and for work.
               </span>
             </h1>
           </section>
         </header>
 
-        <div className="inline-flex items-center gap-1 rounded-full border border-color-border bg-color-bg-muted p-1">
+        <div className="inline-flex items-center gap-xs rounded-pill border border-color-border bg-color-bg-muted p-xs">
           {tabs.map((tab) => {
             const isActive = tab.id === activeTab;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`type-body-xs px-4 py-2 rounded-full transition ${
+                className={`type-body-xs px-base py-sm rounded-pill transition-colors ${
                   isActive
                     ? "bg-color-bg-surface text-color-text-primary"
                     : "text-color-text-secondary hover:text-color-text-primary hover:bg-color-bg"

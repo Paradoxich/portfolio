@@ -73,10 +73,16 @@
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 12px;
+  --space-base: 16px;
   --space-lg: 20px;
   --space-xl: 24px; /* card padding */
   --space-2xl: 32px;
   --space-3xl: 40px;
+  --space-4xl: 64px;
+
+  /* Sizes (case study / UI) */
+  --size-nav-icon: 40px;
+  --size-hero-placeholder: 500px;
 
   /* Line-height scale */
   --line-height-none: 1;
@@ -85,6 +91,7 @@
   --line-height-snug: 1.4;
   --line-height-relaxed: 1.5;
   --line-height-body: 1.6; /* 160% for hero/capability body */
+  --line-height-summary: 1.7; /* 170% for summary label */
   --line-height-loose: 1.7;
 
   /* Tracking scale */
@@ -182,7 +189,7 @@
   }
 
   .text-column {
-    max-width: 640px;
+    max-width: 720px;
     width: 100%;
     margin-inline: auto;
   }
@@ -271,6 +278,16 @@
     line-height: var(--line-height-none);
   }
 
+  /* Summary label — 12 / 170% / medium / uppercase */
+  .type-summary-label {
+    font-size: var(--font-size-xxxs);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-summary);
+    text-transform: uppercase;
+    color: var(--color-90);
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+
   /* Caption — 14 / 160% / regular (secondary small text) */
   .type-caption {
     font-size: var(--font-size-xs);
@@ -284,6 +301,60 @@
     font-size: var(--font-size-3xl);
     line-height: var(--line-height-compact);
     letter-spacing: -1.44px;
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+
+  /* Notes quote — 32 / 150% / regular */
+  .type-notes-quote {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-80);
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+
+  /* Notes footnote — 14 / 150% / regular */
+  .type-notes-note {
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-40);
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+
+  /* Testimonial card quote — 20 / 150% (other text) */
+  .type-testimonial-quote {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-80);
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+
+  /* Testimonial card quote — highlighted first sentence */
+  .type-testimonial-quote-highlight {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-90);
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+
+  /* Testimonial author name — 14 / 150% / medium */
+  .type-testimonial-author {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-90);
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+
+  /* Testimonial author role — 14 / 150% / regular */
+  .type-testimonial-role {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-80);
     font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
   }
 }
@@ -625,6 +696,26 @@
   .link-pill:hover {
     @apply bg-color-bg-muted;
     text-decoration: underline;
+  }
+
+  /* Case study nav — 40px icon buttons (prev/next/all projects) */
+  .case-study-nav-btn {
+    width: var(--size-nav-icon);
+    height: var(--size-nav-icon);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    @apply flex items-center justify-center text-color-text-secondary transition-colors;
+  }
+  .case-study-nav-btn:hover {
+    @apply text-color-text-primary;
+    border-color: var(--color-border-secondary);
+  }
+  .case-study-nav-btn-disabled {
+    width: var(--size-nav-icon);
+    height: var(--size-nav-icon);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    @apply flex items-center justify-center text-color-text-secondary opacity-50;
   }
 }
 

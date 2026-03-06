@@ -12,13 +12,16 @@ const PORTFOLIO_TLDR = [
   "Built a repository-based AI workflow to maintain control over design intent, code quality, and long-term extensibility.",
 ];
 
-export function ProjectPagePortfolio() {
+type ProjectPageProps = { heroSlot?: React.ReactNode };
+
+export function ProjectPagePortfolio({ heroSlot }: ProjectPageProps) {
   return (
     <CaseStudyLayout
       title="Portfolio"
       subtitle="Designing and building this portfolio as a real product."
       meta="2025"
       tldrItems={PORTFOLIO_TLDR}
+      heroSlot={heroSlot}
     >
       {/* 1. CONTEXT */}
       <section className="stack-md">
@@ -41,7 +44,7 @@ export function ProjectPagePortfolio() {
             I began in Figma and designed the portfolio first, without worrying about implementation. I focused on layout, hierarchy, pacing, and how long-form case studies should read.
           </p>
            {/* Figma */}
-      <section className="stack-md pt-4 pb-4">
+      <section className="stack-md pt-base pb-base">
         <div className="text-column">
           <div
             className="
@@ -94,7 +97,7 @@ export function ProjectPagePortfolio() {
             Using Cursor with a GitHub repository and Vercel introduced structure. Agents had file-level context. Changes were scoped. Pull requests made iteration safer. Refactors became possible instead of risky.
           </p>
            {/* Vercel */}
-      <section className="stack-md pt-4 pb-4">
+      <section className="stack-md pt-base pb-base">
         <div className="text-column">
           <div
             className="
@@ -147,7 +150,7 @@ export function ProjectPagePortfolio() {
             Theming, custom components for case studies, and layout refinements could be added without rewriting large parts of the site. Design and implementation stayed aligned as the project evolved.
           </p>
            {/* System */}
-      <section className="stack-md pt-4 pb-4">
+      <section className="stack-md pt-base pb-base">
         <div className="text-column">
           <div
             className="

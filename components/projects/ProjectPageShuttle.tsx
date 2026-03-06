@@ -12,7 +12,9 @@ const SHUTTLE_TLDR = [
   "The redesign restored clarity and consistency across the console, making it calmer for smaller teams, scalable for power users, and easier for the team to ship against.",
 ];
 
-export function ProjectPageShuttle() {
+type ProjectPageProps = { heroSlot?: React.ReactNode };
+
+export function ProjectPageShuttle({ heroSlot }: ProjectPageProps) {
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   React.useEffect(() => {
@@ -28,6 +30,7 @@ export function ProjectPageShuttle() {
       meta="2025"
       links={[{ href: "https://console.shuttle.dev", label: "shuttle.dev" }]}
       tldrItems={SHUTTLE_TLDR}
+      heroSlot={heroSlot}
     >
       {/* 1. CONTEXT */}
       <section className="stack-md">
@@ -46,7 +49,7 @@ export function ProjectPageShuttle() {
       </section>
 
       {/* 2. BEFORE / AFTER – HERO VISUAL */}
-      <section className="stack-md pt-4 pb-4">
+      <section className="stack-md pt-base pb-base">
 
 
 <div
@@ -85,7 +88,7 @@ export function ProjectPageShuttle() {
             From user feedback, support threads and internal dogfooding, a few
             themes kept repeating:
           </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
+          <ul className="list-disc pl-lg stack-xs type-body">
             <li>Important features (resources, domains, secrets) were hard to find.</li>
             <li>
               Workflows felt different from page to page.
@@ -107,7 +110,7 @@ export function ProjectPageShuttle() {
             going to pretend was “the real one”.
           </p>
         </div>
-        <section className="stack-md pt-4 pb-4">
+        <section className="stack-md pt-base pb-base">
         <div className="text-column">
           <div
             className="
@@ -140,7 +143,7 @@ export function ProjectPageShuttle() {
             The redesign wasn&apos;t just about fresh paint, it was about
             making key workflows obvious and predictable:
           </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
+          <ul className="list-disc pl-lg stack-xs type-body">
             <li>
               <strong>Project overview</strong> became the home base:
               deployments, resources, domains and quick actions all live in one
@@ -225,7 +228,7 @@ export function ProjectPageShuttle() {
 
 
         <div className="text-column stack-md">
-          <ul className="list-disc pl-5 stack-xs type-body">
+          <ul className="list-disc pl-lg stack-xs type-body">
             <li>
               A tighter <strong>token set</strong> for colors, radii, spacing
               and typography. Enough to express hierarchy, not enough to
@@ -248,7 +251,7 @@ export function ProjectPageShuttle() {
             designing workflows.
           </p>
            {/* Tokens used in the console */}
-      <section className="stack-md pt-4 pb-4">
+      <section className="stack-md pt-base pb-base">
         <div className="text-column">
           <div
             className="

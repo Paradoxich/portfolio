@@ -26,20 +26,20 @@ export function IllustrationBlocks({
   copyTexts,
 }: IllustrationBlocksProps) {
   return (
-    <div className="flex flex-col gap-14">
+    <div className="flex flex-col gap-4xl">
       {blocks.map((block, index) => {
         const isReversed = index % 2 === 1;
         const triptychImages = [block.hero, ...block.stack];
         const copyText = copyTexts?.[index];
 
         return (
-          <div key={block.id} className="flex flex-col gap-14">
+          <div key={block.id} className="flex flex-col gap-4xl">
             {variant === "triptych" ? (
               <div className="grid gap-gutter md:grid-cols-3">
                 {triptychImages.map((image, imageIndex) => (
                   <div
                     key={`${block.id}-triptych-${imageIndex}`}
-                    className="relative h-[280px] w-full overflow-hidden rounded-[var(--radius-lg)] md:h-[340px] lg:h-[593px]"
+                    className="relative h-[280px] w-full overflow-hidden rounded-card md:h-[340px] lg:h-[593px]"
                   >
                     <Image
                       src={image.src}
@@ -56,7 +56,7 @@ export function IllustrationBlocks({
                 <div
                   className={`col-span-12 ${
                     isReversed ? "lg:order-2" : "lg:order-1"
-                  } order-1 relative h-[320px] w-full overflow-hidden rounded-[var(--radius-lg)] lg:col-span-8 lg:h-full`}
+                  } order-1 relative h-[320px] w-full overflow-hidden rounded-card lg:col-span-8 lg:h-full`}
                 >
                   <Image
                     src={block.hero.src}
@@ -76,7 +76,7 @@ export function IllustrationBlocks({
                   {block.stack.map((image, stackIndex) => (
                     <div
                       key={`${block.id}-stack-${stackIndex}`}
-                      className="relative h-[240px] w-full overflow-hidden rounded-[var(--radius-lg)] lg:h-[300px]"
+                      className="relative h-[240px] w-full overflow-hidden rounded-card lg:h-[300px]"
                     >
                       <Image
                         src={image.src}
@@ -93,14 +93,14 @@ export function IllustrationBlocks({
 
             {copyText ? (
               <div className="layout-grid">
-                <div className="col-span-12 md:col-span-6 md:col-start-4 py-14">
+                <div className="col-span-12 md:col-span-6 md:col-start-4 py-4xl">
                   <p className="type-body text-color-text-secondary">
                     {copyText}
                   </p>
                 </div>
               </div>
             ) : index < blocks.length - 1 ? (
-              <div className="py-14">
+              <div className="py-4xl">
                 <p className="type-body text-color-text-secondary">
                   {block.description ?? "Block description…"}
                 </p>

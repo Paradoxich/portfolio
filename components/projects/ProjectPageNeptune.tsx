@@ -11,13 +11,24 @@ const deckImages = [
   "/case-studies/neptune-deck-4.png",
 ];
 
-const NEPTUNE_TLDR = [
-  "Sole product designer responsible for visual direction and early interaction concepts.",
-  "The product was still undefined, with workflows being actively explored.",
-  "Defined a coherent visual system and created a concrete interaction example to support product discussions.",
+const NEPTUNE_TLDR: React.ReactNode[] = [
+  <>
+    Sole <strong className="font-medium text-color-text-primary">product designer</strong> shaping
+    positioning, visual identity, and a concrete interaction model
+  </>,
+  <>
+    Clarified audience and <strong className="font-medium text-color-text-primary">product narrative</strong> while
+    the workflow model was still evolving.
+  </>,
+  <>
+    Aligned <strong className="font-medium text-color-text-primary">product, brand, and engineering discussions</strong> with
+    animated interaction model and delivered a scalable visual identity.
+  </>,
 ];
 
-export function ProjectPageNeptune() {
+type ProjectPageProps = { heroSlot?: React.ReactNode };
+
+export function ProjectPageNeptune({ heroSlot }: ProjectPageProps) {
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [currentSlide, setCurrentSlide] = React.useState(0);
 
@@ -29,11 +40,13 @@ export function ProjectPageNeptune() {
 
   return (
     <CaseStudyLayout
-      title="Neptune"
-      subtitle="Visual direction and early workflow exploration for an AI infra platform."
+      title="Defining Neptune's positioning and"
+      subtitle="visual foundation"
+      titleSeparator=" "
       meta="2025"
       links={[{ href: "https://www.neptune.dev", label: "neptune.dev" }]}
       tldrItems={NEPTUNE_TLDR}
+      heroSlot={heroSlot}
     >
       {/* 1. CONTEXT */}
       <section className="stack-md">
@@ -68,7 +81,7 @@ This pushed the visual and verbal direction away from hype-driven AI language an
       </section>
 
       {/* Brand deck carousel */}
-      <section className="stack-md pt-4 pb-4">
+      <section className="stack-md pt-base pb-base">
         <div
           className="
             relative
@@ -94,12 +107,12 @@ This pushed the visual and verbal direction away from hype-driven AI language an
           ))}
 
           {/* Navigation controls */}
-          <div className="absolute left-4 right-4 bottom-4 flex items-center justify-center pointer-events-none">
-            <div className="pointer-events-auto inline-flex items-center gap-2 p-1.5 rounded-full bg-color-bg-surface/95 border border-color-border backdrop-blur-md shadow-lg">
+          <div className="absolute left-base right-base bottom-base flex items-center justify-center pointer-events-none">
+            <div className="pointer-events-auto inline-flex items-center gap-sm p-sm rounded-pill bg-color-bg-surface/95 border border-color-border backdrop-blur-md shadow-lg">
               <button
                 type="button"
                 onClick={() => setCurrentSlide((prev) => (prev === 0 ? deckImages.length - 1 : prev - 1))}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-color-text-secondary hover:text-color-text-primary hover:bg-color-bg-muted transition-colors"
+                className="w-2xl h-2xl rounded-pill flex items-center justify-center text-color-text-secondary hover:text-color-text-primary hover:bg-color-bg-muted transition-colors"
                 aria-label="Previous slide"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -107,14 +120,14 @@ This pushed the visual and verbal direction away from hype-driven AI language an
                 </svg>
               </button>
               
-              <span className="px-2 type-body-sm text-color-text-secondary tabular-nums">
+              <span className="px-sm type-body-sm text-color-text-secondary tabular-nums">
                 {currentSlide + 1}/{deckImages.length}
               </span>
 
               <button
                 type="button"
                 onClick={() => setCurrentSlide((prev) => (prev === deckImages.length - 1 ? 0 : prev + 1))}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-color-text-secondary hover:text-color-text-primary hover:bg-color-bg-muted transition-colors"
+                className="w-2xl h-2xl rounded-pill flex items-center justify-center text-color-text-secondary hover:text-color-text-primary hover:bg-color-bg-muted transition-colors"
                 aria-label="Next slide"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -195,7 +208,7 @@ This pushed the visual and verbal direction away from hype-driven AI language an
           Once the prototype became a shared tool for testing these flows, its limitations became obvious. The initial version worked, but it was difficult to iterate on — even small changes required digging through timing logic, states, and transitions. 
           </p>
              {/* Agent refactoring */}
-       <section className="stack-md pt-4 pb-4">
+       <section className="stack-md pt-base pb-base">
         <div
           className="
             relative
@@ -220,7 +233,7 @@ This pushed the visual and verbal direction away from hype-driven AI language an
          To make experimentation easier, I refactored the system into a simple, human-readable script that defines what happens, not how it animates. The animation engine handles orchestration independently, allowing the team to edit the script to test new workflows, messages, and interaction patterns without touching the underlying logic.
           </p>
              {/* Agent refactoring */}
-       <section className="stack-md pt-4 pb-4">
+       <section className="stack-md pt-base pb-base">
         <div
           className="
             relative

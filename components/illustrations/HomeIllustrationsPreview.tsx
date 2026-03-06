@@ -43,10 +43,10 @@ export function HomeIllustrationsPreview() {
   }, []);
 
   return (
-    <div className="group relative h-[200px] overflow-hidden border border-[var(--color-0)]">
+    <div className="group relative h-[200px] overflow-hidden border border-color-bg">
       <div className="absolute inset-0">
         <div
-          className="flex h-full items-center gap-[8px] min-w-max will-change-transform animate-illustration-pan [animation-play-state:paused] group-hover:[animation-play-state:running]"
+          className="flex h-full items-center gap-sm min-w-max will-change-transform animate-illustration-pan [animation-play-state:paused] group-hover:[animation-play-state:running]"
         >
           {images.map((src, index) => (
             <div

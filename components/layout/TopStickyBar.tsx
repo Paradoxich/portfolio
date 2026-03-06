@@ -19,7 +19,7 @@ function getPageTitle(pathname: string): string {
   const projectsMatch = pathname.match(/^\/projects\/([^/]+)/);
   if (projectsMatch) {
     const slug = projectsMatch[1];
-    const project = projectsConfig.find((p) => p.key === slug);
+    const project = projectsConfig.find((p) => (p.slug ?? p.key) === slug);
     return project?.label ?? "Project";
   }
   return "Overview";

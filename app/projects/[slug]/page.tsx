@@ -3,6 +3,9 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowLeft } from "@/components/icons/ArrowLeft";
+import { ArrowRight } from "@/components/icons/ArrowRight";
+import { Projects } from "@/components/icons/Projects";
 import { useRouter, useParams } from "next/navigation";
 import { PageShell } from "@/components/layout/PageShell";
 import {
@@ -61,7 +64,7 @@ function ProjectPageContent() {
             ? "object-bottom"
             : "object-center";
       return (
-        <div className="w-full mb-[var(--space-2xl)]">
+        <div className="w-full mb-2xl">
           <div className="relative aspect-video rounded-[var(--radius-md)] border border-color-border-secondary overflow-hidden">
             <Image
               src={project.hero.src}
@@ -83,7 +86,7 @@ function ProjectPageContent() {
             ? "object-bottom"
             : "object-center";
       return (
-        <div className="w-full mb-[var(--space-2xl)]">
+        <div className="w-full mb-2xl">
           <div className="relative aspect-video rounded-[var(--radius-md)] border border-color-border-secondary overflow-hidden">
             <video
               src={project.hero.src}
@@ -99,7 +102,7 @@ function ProjectPageContent() {
     }
 
     return (
-      <div className="w-full h-[500px] mb-[var(--space-2xl)] rounded-[var(--radius-md)] border border-color-border-secondary bg-color-bg-muted flex items-center justify-center">
+      <div className="w-full h-hero-placeholder mb-2xl rounded-surface border border-color-border-secondary bg-color-bg-muted flex items-center justify-center">
         <span className="type-body-xs">Hero placeholder (500px tall)</span>
       </div>
     );
@@ -109,48 +112,49 @@ function ProjectPageContent() {
     <PageShell className="stack-xl">
       <div className="layout-grid">
         <section className="col-span-12">
-          {/* Back link */}
           <Link
             href="/projects"
-            className="type-body-sm text-color-text-secondary hover:text-color-text-primary transition-colors mb-8 inline-block"
+            className="md:hidden type-body-sm text-color-text-secondary hover:text-color-text-primary transition-colors mb-2xl inline-block"
           >
             ← Back to projects
           </Link>
 
-          {/* Hero */}
-          {renderHero()}
-
-          {/* Case study content */}
-          {project.Page && <project.Page />}
+          {/* Case study content (hero rendered inside layout, below summary) */}
+          {project.Page && <project.Page heroSlot={renderHero()} />}
 
           {/* Prev/Next navigation */}
-          <nav className="flex items-center justify-between mt-16 pt-8 border-t border-color-border">
-            {prevProject ? (
-              <Link
-                href={`/projects/${prevProject.slug ?? prevProject.key}`}
-                className="type-body-sm text-color-text-secondary hover:text-color-text-primary transition-colors"
-              >
-                ← {prevProject.label ?? prevProject.key}
+          <nav className="flex justify-center mt-4xl pt-2xl border-t border-color-10">
+            <div className="flex gap-sm">
+              {prevProject ? (
+                <Link
+                  href={`/projects/${prevProject.slug ?? prevProject.key}`}
+                  className="case-study-nav-btn"
+                  aria-label={`Previous: ${prevProject.label ?? prevProject.key}`}
+                >
+                  <ArrowLeft size={20} />
+                </Link>
+              ) : (
+                <span className="case-study-nav-btn-disabled" aria-hidden>
+                  <ArrowLeft size={20} />
+                </span>
+              )}
+              <Link href="/projects" className="case-study-nav-btn" aria-label="All projects">
+                <Projects size={20} />
               </Link>
-            ) : (
-              <span />
-            )}
-            <Link
-              href="/projects"
-              className="type-body-sm text-color-text-secondary hover:text-color-text-primary transition-colors"
-            >
-              All projects
-            </Link>
-            {nextProject ? (
-              <Link
-                href={`/projects/${nextProject.slug ?? nextProject.key}`}
-                className="type-body-sm text-color-text-secondary hover:text-color-text-primary transition-colors"
-              >
-                {nextProject.label ?? nextProject.key} →
-              </Link>
-            ) : (
-              <span />
-            )}
+              {nextProject ? (
+                <Link
+                  href={`/projects/${nextProject.slug ?? nextProject.key}`}
+                  className="case-study-nav-btn"
+                  aria-label={`Next: ${nextProject.label ?? nextProject.key}`}
+                >
+                  <ArrowRight size={20} />
+                </Link>
+              ) : (
+                <span className="case-study-nav-btn-disabled" aria-hidden>
+                  <ArrowRight size={20} />
+                </span>
+              )}
+            </div>
           </nav>
         </section>
       </div>

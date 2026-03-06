@@ -8,6 +8,8 @@ export { Dropdown } from "./Dropdown";
 export { ExternalLink } from "./ExternalLink";
 export { Download } from "./Download";
 export { Copy } from "./Copy";
+export { ArrowLeft } from "./ArrowLeft";
 export { ArrowRight } from "./ArrowRight";
 export { ArrowOutward } from "./ArrowOutward";
 export { ArrowDown } from "./ArrowDown";
+export { PixelQuote } from "./PixelQuote";

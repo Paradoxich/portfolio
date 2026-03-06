@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { ArrowRight } from "@/components/icons/ArrowRight";
 
 export type CaseStudyLink = {
   href: string;
@@ -10,9 +11,12 @@ export type CaseStudyLink = {
 type CaseStudyLayoutProps = {
   title: string;
   subtitle: string;
+  /** Separator between title and subtitle (default: ": ") */
+  titleSeparator?: string;
   meta?: string;
   links?: CaseStudyLink[];
-  tldrItems: string[];
+  tldrItems: React.ReactNode[];
+  heroSlot?: React.ReactNode;
   children: React.ReactNode;
 };
 
@@ -34,9 +38,11 @@ const externalLinkIcon = (
 export function CaseStudyLayout({
   title,
   subtitle,
+  titleSeparator = ": ",
   meta,
   links,
   tldrItems,
+  heroSlot,
   children,
 }: CaseStudyLayoutProps) {
   return (
@@ -44,14 +50,7 @@ export function CaseStudyLayout({
       {/* Title block */}
       <section className="stack-lg">
         <div className="text-column stack-lg">
-          <h1 className="type-h3">
-            {title}:{" "}
-            <span className="text-color-text-secondary font-normal">
-              {subtitle}
-            </span>
-          </h1>
-
-          <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex items-center gap-base flex-wrap">
             {meta && <p className="type-body-sm">{meta}</p>}
             {links?.map((link) => (
               <a
@@ -59,33 +58,47 @@ export function CaseStudyLayout({
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="link-pill h-8 px-4 rounded-full flex items-center justify-center gap-2 type-body-sm transition-colors"
+                className="link-pill h-2xl px-base rounded-pill flex items-center justify-center gap-sm type-body-sm transition-colors"
               >
                 {link.label}
                 {externalLinkIcon}
               </a>
             ))}
           </div>
+          <h1 className="type-hero text-balance">
+            <span className="text-color-text-primary font-medium">
+              {title}{titleSeparator}
+            </span>
+            <span className="text-color-text-secondary font-normal">
+              {subtitle}
+            </span>
+          </h1>
         </div>
       </section>
 
-      {/* TL;DR */}
+      {/* Summary */}
       <section className="stack-md">
-        <div className="text-column stack-md rounded-[var(--radius-md)] p-5 bg-color-bg-muted">
-          <h3 className="type-label text-color-text-secondary">Summary</h3>
+        <div className="text-column">
+          <h3 className="type-summary-label pb-md border-b border-color-border-secondary">
+            Summary
+          </h3>
           <ul
-            className="type-body-sm leading-loose tracking-normal list-none space-y-1 text-color-text-primary"
+            className="divide-y divide-color-border-secondary list-none text-color-text-primary"
             role="list"
           >
             {tldrItems.map((item, i) => (
-              <li key={i} className="flex gap-2">
-                <span aria-hidden>→</span>
+              <li key={i} className="flex gap-md py-md type-body leading-body">
+                <span className="text-color-text-secondary shrink-0 flex items-center" aria-hidden>
+                  <ArrowRight size={20} className="shrink-0" />
+                </span>
                 <span>{item}</span>
               </li>
             ))}
           </ul>
         </div>
       </section>
+
+      {heroSlot}
 
       {children}
     </article>

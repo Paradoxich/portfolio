@@ -396,9 +396,9 @@ export const layoutUtilities = [
   {
     name: "text-column",
     role: "Case study column",
-    tokens: "max-width: 640px; centered auto margins",
+    tokens: "max-width: 720px; centered auto margins",
     description:
-      "Constrains long-form narratives to a 640px column and centers them within the modal.",
+      "Constrains long-form narratives to a 720px column and centers them.",
     className: "text-column",
   },
   {

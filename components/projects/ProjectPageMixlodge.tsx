@@ -11,13 +11,16 @@ const MIXLODGE_TLDR = [
   "Defined the full journey from studio search and booking to post-booking collaboration and delivered complete, implementation-ready flows and a consistent visual system.",
 ];
 
-export function ProjectPageMixlodge() {
+type ProjectPageProps = { heroSlot?: React.ReactNode };
+
+export function ProjectPageMixlodge({ heroSlot }: ProjectPageProps) {
   return (
     <CaseStudyLayout
       title="MixLodge"
       subtitle="Defining the product foundations for an early-stage booking tool."
       meta="2025 • Not yet launched"
       tldrItems={MIXLODGE_TLDR}
+      heroSlot={heroSlot}
     >
       {/* 1. CONTEXT */}
       <section className="stack-md">
@@ -40,7 +43,7 @@ export function ProjectPageMixlodge() {
           </p>
 
           {/* Discovery flow */}
-          <section className="stack-md pt-4 pb-4">
+          <section className="stack-md pt-base pb-base">
             <div
               className="
                 relative
@@ -65,7 +68,7 @@ export function ProjectPageMixlodge() {
           <p className="type-body">
             One decision shaped the rest of the work: MixLodge wasn&apos;t a single workflow. It needed to support two distinct modes of use:
           </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
+          <ul className="list-disc pl-lg stack-xs type-body">
             <li>musicians searching for and booking studios</li>
             <li>producers collaborating remotely once a booking happened</li>
           </ul>
@@ -82,7 +85,7 @@ export function ProjectPageMixlodge() {
           <p className="type-body">
           Instead of attempting a full marketplace upfront, the MVP was shaped around a small set of structural decisions:
           </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
+          <ul className="list-disc pl-lg stack-xs type-body">
             <li>clear roles and access patterns</li>
             <li>a focused discovery and booking flow</li>
             <li>a concrete answer to what happens after a booking</li>
@@ -91,7 +94,7 @@ export function ProjectPageMixlodge() {
             The product was intentionally scoped around a single loop: discovery → booking → collaboration. Anything that didn&apos;t support that loop was deprioritized or left out. The work was structured in phases, each resolving a specific part of the loop and ending with dev-ready designs, defined states, and explicit interaction logic.
           </p>
           {/* Figma file */}
-      <section className="stack-md pt-4 pb-4">
+      <section className="stack-md pt-base pb-base">
         <div
           className="
             relative
@@ -138,7 +141,7 @@ export function ProjectPageMixlodge() {
       </section>
 
       {/* Inbox */}
-      <section className="stack-md pt-4 pb-4">
+      <section className="stack-md pt-base pb-base">
         <div
           className="
             relative
@@ -172,7 +175,7 @@ export function ProjectPageMixlodge() {
           <p className="type-body">
             Given the scope and constraints, the focus wasn&apos;t on building a comprehensive component library. Instead, the goal was to establish a small, resilient design language that could support the product without slowing development:
           </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
+          <ul className="list-disc pl-lg stack-xs type-body">
             <li>a minimal token set for color, type, spacing, and radii</li>
             <li>a single flexible card pattern reused across most surfaces</li>
             <li>consistent interaction patterns across both roles</li>
@@ -184,7 +187,7 @@ export function ProjectPageMixlodge() {
       </section>
 
       {/* Design system */}
-      <section className="stack-md pt-4 pb-4">
+      <section className="stack-md pt-base pb-base">
         <div
           className="
             relative
@@ -213,13 +216,13 @@ export function ProjectPageMixlodge() {
       </section>
 
       {/* 6. OUTCOME */}
-      <section className="stack-md pb-10">
+      <section className="stack-md pb-3xl">
         <div className="text-column stack-md">
           <h3 className="type-h4">Outcome</h3>
           <p className="type-body">
             The result was a clearly defined MVP ready for development:
           </p>
-          <ul className="list-disc pl-5 stack-xs type-body">
+          <ul className="list-disc pl-lg stack-xs type-body">
             <li>a responsive platform covering discovery, booking, payments, and collaboration</li>
             <li>explicit user flows and interaction logic across all core scenarios</li>
             <li>a stable visual identity and lightweight system the team could extend</li>

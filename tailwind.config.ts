@@ -38,17 +38,22 @@ const config: Config = {
         xs: "var(--space-xs)",
         sm: "var(--space-sm)",
         md: "var(--space-md)",
+        base: "var(--space-base)",
         lg: "var(--space-lg)",
         xl: "var(--space-xl)",
         "2xl": "var(--space-2xl)",
         "3xl": "var(--space-3xl)",
+        "4xl": "var(--space-4xl)",
 
         // layout helpers
         gutter: "var(--layout-gutter)", // koristiš kao gap-gutter
         card: "var(--space-xl)", // p-card → 24px (ako ga ikad poželiš)
+        "nav-icon": "var(--size-nav-icon)",
+        "hero-placeholder": "var(--size-hero-placeholder)",
       },
 
       borderRadius: {
+        sm: "var(--radius-sm)",
         card: "var(--radius-lg)",
         surface: "var(--radius-md)",
         pill: "var(--radius-full)",
