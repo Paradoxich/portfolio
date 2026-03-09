@@ -6,6 +6,7 @@ import {
   GraphicCollaboration,
   GraphicFocusAreas,
 } from "@/components/home/CapabilityGraphics";
+import { PageShell } from "@/components/layout/PageShell";
 
 const capabilities = [
   {
@@ -36,51 +37,39 @@ const capabilities = [
 
 export function OverviewContent() {
   return (
-    <div className="w-full max-w-3xl mx-auto px-6 md:px-12 py-12 md:py-16 font-geist">
-      <h1 className="type-hero text-balance mb-5">
-        <span className="text-color-text-primary font-medium">
-          I define products while{" "}
-        </span>
-        <span className="text-color-text-secondary font-normal">
-          they&apos;re still taking shape.
-        </span>
-      </h1>
+    <PageShell>
+      <div className="w-full max-w-3xl mx-auto mt-4xl font-geist">
+        <h1 className="type-hero text-balance mb-5 text-center">
+          I define products while they&apos;re still taking shape.
+        </h1>
 
-      <p className="type-body leading-body max-w-xl mb-12 text-color-text-secondary">
-        Hi, I&apos;m Ana. I work closely with founders and engineers to define
-        direction, shape flows, and build visual systems that are ready to
-        ship.
-      </p>
+        <p className="type-body leading-body max-w-xl mb-12 text-color-text-secondary mx-auto text-center">
+          Hi, I&apos;m Ana. I work closely with founders and engineers to define
+          direction, shape flows, and build visual systems that are ready to
+          ship.
+        </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 mb-12 border-t border-b border-color-10">
-        {capabilities.map(({ title, description, Graphic, borders }) => (
-          <div
-            key={title}
-            className={`relative h-[160px] p-4 ${borders}`}
-          >
-            <Graphic />
-            <div className="relative z-10 flex flex-col gap-1">
-              <h3 className="type-body-sm font-medium text-color-text-primary">
-                {title}
-              </h3>
-              {description && (
-                <p className="type-caption text-color-text-secondary max-w-[180px]">
-                  {description}
-                </p>
-              )}
+        <div className="grid grid-cols-1 md:grid-cols-2 mb-12 border-t border-b border-color-10">
+          {capabilities.map(({ title, description, Graphic, borders }) => (
+            <div
+              key={title}
+              className={`relative h-[160px] p-4 ${borders}`}
+            >
+              <Graphic />
+              <div className="relative z-10 flex flex-col gap-1 max-w-[200px]">
+                <h3 className="type-body-sm type-capability-text font-medium text-color-text-primary">
+                  {title}
+                </h3>
+                {description && (
+                  <p className="type-caption type-capability-text text-color-text-secondary">
+                    {description}
+                  </p>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-
-      <a
-        href="/docs/CV-Beverin-2026.pdf"
-        target="_blank"
-        rel="noreferrer"
-        className="btn-secondary"
-      >
-        View CV
-      </a>
-    </div>
+    </PageShell>
   );
 }

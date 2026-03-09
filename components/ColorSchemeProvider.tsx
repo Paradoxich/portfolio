@@ -7,13 +7,13 @@ const colorSchemes = {
   // Current \"green\" / warm theme
   warm: {
     "--color-0": "#100F0C",
-    "--color-10": "#191813",
+    "--color-10": "#1B1F17",
     "--color-20": "#23221b",
     "--color-30": "#23251e",
     "--color-40": "#2e3027",
     "--color-50": "#424539",
     "--color-60": "#555a4b",
-    "--color-80": "#c5bfab",
+    "--color-80": "#A39E8E",
     "--color-90": "#f3f0e9",
     "--color-100": "#ffffff",
     // Gradient helpers (rgba versions)
@@ -132,32 +132,85 @@ export function useColorScheme() {
 
 // Inline theme switcher for Experiments page
 export function ThemeSwitcherInline() {
-  const { colorScheme, toggleColorScheme } = useColorScheme();
+  const { colorScheme, setColorScheme } = useColorScheme();
 
-  const schemeKeys = Object.keys(colorSchemes) as ColorScheme[];
-  const currentIndex = schemeKeys.indexOf(colorScheme);
-  const nextScheme = schemeKeys[(currentIndex + 1) % schemeKeys.length];
-
-  const icon = colorScheme === "warm" ? (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="flex-shrink-0">
-      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
-    </svg>
-  ) : (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="flex-shrink-0">
-      <circle cx="12" cy="12" r="9" />
-    </svg>
-  );
+  const schemes: { key: ColorScheme; label: string; icon: React.ReactNode }[] = [
+    {
+      key: "warm",
+      label: "Warm theme",
+      icon: (
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+        </svg>
+      ),
+    },
+    {
+      key: "cool",
+      label: "Cool theme",
+      icon: (
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+        </svg>
+      ),
+    },
+    {
+      key: "light",
+      label: "Light theme",
+      icon: (
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
+          <path d="M12 3.5c1.8 0 3.25 1.46 3.25 3.25 0 1.06-.52 2.06-1.4 2.67L12 11l-1.85-1.58A3.25 3.25 0 0 1 8.75 6.75C8.75 4.96 10.2 3.5 12 3.5Z" />
+          <path d="M9.5 13.5h5L14 19l-2 1.5L10 19l-.5-5.5Z" />
+        </svg>
+      ),
+    },
+  ];
 
   return (
-    <button
-      onClick={toggleColorScheme}
-      className="inline-flex h-10 items-center gap-2 rounded-full border border-color-border-secondary bg-color-bg-surface px-4 type-body-xs text-color-text-secondary transition-colors input-hover hover:scale-[1.02]"
-      title={`Switch to ${nextScheme} theme`}
-      aria-label={`Current theme: ${colorScheme}. Click to switch.`}
-    >
-      {icon}
-      <span className="whitespace-nowrap">Switch to {nextScheme}</span>
-    </button>
+    <div className="experiment-card w-full h-full flex flex-col">
+      <div className="experiment-inner flex w-full flex-1 items-center justify-center gap-4 px-4 py-3">
+        {schemes.map((scheme) => {
+          const isActive = colorScheme === scheme.key;
+          return (
+            <button
+              key={scheme.key}
+              type="button"
+              onClick={() => setColorScheme(scheme.key)}
+              className={`flex h-12 w-12 items-center justify-center rounded-full border transition-colors ${
+                isActive
+                  ? "bg-color-bg-surface border-color-border-secondary text-color-text-primary"
+                  : "border-color-border-secondary text-color-text-secondary hover:bg-color-bg-surface"
+              }`}
+              aria-pressed={isActive}
+              aria-label={scheme.label}
+            >
+              {scheme.icon}
+            </button>
+          );
+        })}
+      </div>
+      <p className="type-experiment-label">Theme switcher</p>
+    </div>
   );
 }

@@ -9,13 +9,13 @@
 :root {
   /* Color scale – neutral ramp */
   --color-0: #100F0C;
-  --color-10: #191813;
+  --color-10: #1B1F17;
   --color-20: #23221b;
   --color-30: #23251e;
   --color-40: #2e3027;
   --color-50: #424539;
   --color-60: #555a4b;
-  --color-80: #c5bfab;
+  --color-80: #A39E8E;
   --color-90: #f3f0e9;
   --color-100: #ffffff;
   
@@ -159,17 +159,10 @@
     width: 100%;
     max-width: var(--layout-container);
     margin-inline: auto;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: var(--space-3xl);
+    padding-right: var(--space-3xl);
     padding-top: var(--space-3xl);
     padding-bottom: var(--space-3xl);
-  }
-
-  @media (min-width: 768px) {
-    .page-shell {
-      padding-top: calc(var(--space-2xl) * 2);
-      padding-bottom: calc(var(--space-2xl) * 2);
-    }
   }
 
   .layout-grid {
@@ -296,19 +289,29 @@
     font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
   }
 
+  /* Experiments label — 14 / 150% / regular */
+  .type-experiment-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.5;
+    color: var(--color-80);
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+
   /* Hero — 48 / 110% / -1.44px (landing/hero sections) */
   .type-hero {
     font-size: var(--font-size-3xl);
     line-height: var(--line-height-compact);
     letter-spacing: -1.44px;
+    font-weight: var(--font-weight-medium);
     font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
   }
 
-  /* Notes quote — 32 / 150% / regular */
+  /* Notes quote — 32 / 130% / regular */
   .type-notes-quote {
     font-size: 32px;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.3;
     color: var(--color-80);
     font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
   }
@@ -319,6 +322,23 @@
     font-weight: 400;
     line-height: 1.5;
     color: var(--color-40);
+    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  }
+
+  /* Home capability card title/body — 15 / 150% / 0 tracking */
+  .type-capability-text {
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  /* Illustration caption — 16 / 150% / 1% tracking */
+  .type-illustration-caption {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    color: var(--color-80);
     font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
   }
 
@@ -424,6 +444,23 @@
     padding: var(--space-xl); /* spacing scale token: 24px */
   }
 
+  /* Experiments page cards (Water plant / Theme switcher / Testimonials) */
+  .experiment-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl); /* 24px */
+    padding: var(--space-xl); /* 24px */
+    border-radius: var(--radius-lg); /* 20px */
+    border: 1px solid #23251E;
+    background: #151310;
+  }
+
+  .experiment-inner {
+    border-radius: var(--radius-md); /* 12px */
+    border: 1px solid #23251E;
+    background: #100F0C;
+  }
+
   /* CTA / filled surface */
   .card-cta {
     @apply bg-color-bg-surface border border-color-border-secondary;
@@ -443,7 +480,7 @@
   .project-card {
     position: relative;
     background-color: rgba(var(--color-10-rgb), 0.5);
-    border: 1px solid var(--color-20);
+    border: 1px solid #272921;
     border-radius: var(--radius-lg);
     padding: var(--space-2xl);
     height: 280px;

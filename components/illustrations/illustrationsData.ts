@@ -32,12 +32,13 @@ const uiProjects: { slug: string; label: string }[] = [
 ];
 
 export const uiCopyTexts = [
-  "Product/Marketing illustrations I create lean on controlled, thoughtful color — the kind that balances contrast with softness and lands in those warm, interesting harmonies that make a scene feel alive.",
-  "There’s a clear style running through the lines, shapes, and characters, but it never collapses into one formula; it stays varied without losing its identity.",
-  "The characters always carry a bit of personality, whether they’re simple, geometric, or intentionally odd — nothing generic, nothing stocky.",
-  "I like mixing flat simplicity with just enough depth to create atmosphere: soft shadows, subtle layering, small details that add dimension without clutter. ",
-  "And there’s always a tiny element that lifts the piece — a texture, a gesture, a strange proportion. ",
-  "The compositions stay warm and expressive, and the whole system works well across product, brand and narrative contexts without losing its charm.",
+  "Worldcoin illustration system.",
+  "Five Agency illustration system.",
+  "Audible illustration concept.",
+  "Worldcoin illustration system. ",
+  "For Dummies Guy concept ",
+  "Marriott Grow Game characters. ",
+  "OptimoRoutes’ Shaolin Dev illustration system.",
   
 ];
 

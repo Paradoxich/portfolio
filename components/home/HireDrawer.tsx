@@ -147,7 +147,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
               w-full max-w-md
               flex flex-col
               bg-color-bg
-              border-l border-color-border
+              border-l border-[#1B1F17]
             "
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -155,9 +155,9 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
             transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
           >
             {/* HEADER */}
-            <div className="flex flex-col gap-2 p-6 border-b border-color-border">
+            <div className="flex flex-col gap-2 p-6">
               <div className="flex items-center justify-between">
-                <h2 className="type-h4">Let&apos;s work together</h2>
+                <h2 className="project-card-title">Let&apos;s work together</h2>
                 <button
                   onClick={handleClose}
                   className="
@@ -220,6 +220,11 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
               </p>
             </div>
 
+            {/* SEPARATOR */}
+            <div className="px-6 py-2" role="separator">
+              <div className="h-px w-full bg-color-10" />
+            </div>
+
             {/* CONTENT */}
             <div className="flex-1 flex flex-col p-6">
               {formState === "success" ? (
@@ -255,7 +260,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                 <form onSubmit={handleSubmit} noValidate className="flex-1 flex flex-col gap-6">
                   {/* Name Input */}
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="hire-name" className="type-label">
+                    <label htmlFor="hire-name" className="type-body-sm text-color-text-secondary">
                       Name
                     </label>
                     <input
@@ -271,13 +276,13 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                       className={`
                         w-full px-4 py-3
                         rounded-lg
-                        bg-transparent
-                        border ${errors.name ? "border-red-400" : "border-[var(--color-40)]"}
+                        bg-[#151310]
+                        border ${errors.name ? "border-red-400" : "border-[#23251E]"}
                         ring-0 ring-transparent ring-offset-0
                         text-color-text-primary
-                        placeholder:text-color-60
-                        focus:outline-none focus:border-[var(--color-50)] focus:ring-1 focus:ring-[var(--color-40)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
-                        hover:border-[var(--color-50)]
+                        placeholder:text-[#565A4F]
+                        focus:outline-none focus:border-[#2E3027] focus:ring-1 focus:ring-[#23251E] focus:ring-offset-2 focus:ring-offset-[#100F0C]
+                        hover:border-[#2E3027]
                         transition-[border-color] duration-300 ease-out
                         type-body-sm
                         disabled:opacity-50
@@ -290,7 +295,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
 
                   {/* Email Input */}
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="hire-email" className="type-label">
+                    <label htmlFor="hire-email" className="type-body-sm text-color-text-secondary">
                       Your email
                     </label>
                     <input
@@ -306,13 +311,13 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                       className={`
                         w-full px-4 py-3
                         rounded-lg
-                        bg-transparent
-                        border ${errors.email ? "border-red-400" : "border-[var(--color-40)]"}
+                        bg-[#151310]
+                        border ${errors.email ? "border-red-400" : "border-[#23251E]"}
                         ring-0 ring-transparent ring-offset-0
                         text-color-text-primary
-                        placeholder:text-color-60
-                        focus:outline-none focus:border-[var(--color-50)] focus:ring-1 focus:ring-[var(--color-40)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
-                        hover:border-[var(--color-50)]
+                        placeholder:text-[#565A4F]
+                        focus:outline-none focus:border-[#2E3027] focus:ring-1 focus:ring-[#23251E] focus:ring-offset-2 focus:ring-offset-[#100F0C]
+                        hover:border-[#2E3027]
                         transition-[border-color] duration-300 ease-out
                         type-body-sm
                         disabled:opacity-50
@@ -325,7 +330,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
 
                   {/* Message Input */}
                   <div className="flex flex-col gap-1.5 flex-1">
-                    <label htmlFor="hire-message" className="type-label">
+                    <label htmlFor="hire-message" className="type-body-sm text-color-text-secondary">
                       Message
                     </label>
                     <textarea
@@ -340,13 +345,13 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                       className={`
                         w-full px-4 py-3 flex-1 min-h-[160px]
                         rounded-lg
-                        bg-transparent
-                        border ${errors.message ? "border-red-400" : "border-[var(--color-40)]"}
+                        bg-[#151310]
+                        border ${errors.message ? "border-red-400" : "border-[#23251E]"}
                         ring-0 ring-transparent ring-offset-0
                         text-color-text-primary
-                        placeholder:text-color-60
-                        focus:outline-none focus:border-[var(--color-50)] focus:ring-1 focus:ring-[var(--color-40)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
-                        hover:border-[var(--color-50)]
+                        placeholder:text-[#565A4F]
+                        focus:outline-none focus:border-[#2E3027] focus:ring-1 focus:ring-[#23251E] focus:ring-offset-2 focus:ring-offset-[#100F0C]
+                        hover:border-[#2E3027]
                         transition-[border-color] duration-300 ease-out
                         type-body-sm
                         resize-none
@@ -369,20 +374,15 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                   <button
                     type="submit"
                     disabled={formState === "loading"}
-                    className="
-                      w-full py-3 px-6
-                      rounded-full
-                      bg-color-text-primary
-                      text-color-bg
-                      type-body-sm-strong
-                      hover:opacity-90
-                      transition-opacity
-                      flex items-center justify-center gap-2
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    "
+                    className="group flex w-full items-center justify-between overflow-hidden rounded-full py-2 pl-4 pr-2 transition-colors duration-300 ease-in-out bg-color-bg hover:bg-color-bg-surface border border-color-border-secondary disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {formState === "loading" ? (
-                      <>
+                    <span className="shrink-0 truncate font-geist type-body-sm font-medium text-color-text-primary">
+                      {formState === "loading" ? "Sending..." : "Send message"}
+                    </span>
+                    <span
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-color-bg-surface border border-color-border-secondary text-color-text-primary transition-colors duration-300 ease-in-out group-hover:bg-color-bg"
+                    >
+                      {formState === "loading" ? (
                         <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
                           <circle
                             className="opacity-25"
@@ -399,19 +399,15 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                           />
                         </svg>
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>Send message</span>
+                      ) : (
                         <svg width="16" height="16" viewBox="0 0 24 24">
                           <path
                             fill="currentColor"
                             d="m16.172 11l-5.364-5.364l1.414-1.414L20 12l-7.778 7.778l-1.414-1.414L16.172 13H4v-2z"
                           />
                         </svg>
-                      </>
-                    )}
+                      )}
+                    </span>
                   </button>
                 </form>
               )}

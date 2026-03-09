@@ -117,14 +117,18 @@ export default function ChatAnimation({ messages, disableTypingAnimation }: Chat
       ref={containerRef}
       className="flex h-full w-full items-center justify-center"
     >
-      {/* Chat kolona – fiksna širina, poruke rastu iznad dotsa */}
-      <div className="flex min-h-[260px] w-[436px] max-w-full flex-col items-start justify-end gap-1 px-4 md:px-0">
+      {/* Chat kolona – punja širina unutar boxa */}
+      <div className="flex min-h-[260px] w-full flex-col items-start justify-end gap-1 px-4 md:px-0">
         {/* Poruke */}
         {MESSAGES.slice(0, visibleMessages).map((msg, index) => (
           <div
             key={index}
-            className={`inline-flex max-w-full rounded-surface bg-color-bg px-3 py-2 ${skipAnimation ? 'animate-slide-in' : 'animate-bubble'}`}
-            style={skipAnimation ? { animationDelay: `${index * 50}ms` } : undefined}
+            className={`inline-flex max-w-full rounded-surface bg-[#1C1F19] px-4 py-3 ${
+              skipAnimation ? "animate-slide-in" : "animate-bubble"
+            }`}
+            style={
+              skipAnimation ? { animationDelay: `${index * 50}ms` } : undefined
+            }
           >
             <p className="type-body-sm">{msg}</p>
           </div>
@@ -132,7 +136,7 @@ export default function ChatAnimation({ messages, disableTypingAnimation }: Chat
 
         {/* Typing dots – uvijek lijevo, bez teksta (hidden on mobile) */}
         {dotsVisible && !skipAnimation && (
-          <div className="inline-flex items-center gap-1 rounded-surface bg-color-bg px-3 py-2 animate-bubble">
+          <div className="inline-flex items-center gap-1 rounded-surface bg-color-20 px-3 py-2 animate-bubble">
             <span className="typing-dot" />
             <span className="typing-dot typing-dot-delay-1" />
             <span className="typing-dot typing-dot-delay-2" />

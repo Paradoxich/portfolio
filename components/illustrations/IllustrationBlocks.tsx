@@ -26,16 +26,16 @@ export function IllustrationBlocks({
   copyTexts,
 }: IllustrationBlocksProps) {
   return (
-    <div className="flex flex-col gap-4xl">
+    <div className="flex flex-col gap-[200px]">
       {blocks.map((block, index) => {
         const isReversed = index % 2 === 1;
         const triptychImages = [block.hero, ...block.stack];
-        const copyText = copyTexts?.[index];
+        const copyText = copyTexts?.[index] ?? block.description;
 
         return (
-          <div key={block.id} className="flex flex-col gap-4xl">
+          <div key={block.id} className="flex flex-col gap-2xl">
             {variant === "triptych" ? (
-              <div className="grid gap-gutter md:grid-cols-3">
+              <div className="grid gap-gutter md:grid-cols-3 mb-2xl">
                 {triptychImages.map((image, imageIndex) => (
                   <div
                     key={`${block.id}-triptych-${imageIndex}`}
@@ -52,7 +52,7 @@ export function IllustrationBlocks({
                 ))}
               </div>
             ) : (
-              <div className="grid gap-gutter lg:grid-cols-12 lg:h-[600px]">
+              <div className="grid gap-gutter lg:grid-cols-12 lg:h-full">
                 <div
                   className={`col-span-12 ${
                     isReversed ? "lg:order-2" : "lg:order-1"
@@ -76,7 +76,7 @@ export function IllustrationBlocks({
                   {block.stack.map((image, stackIndex) => (
                     <div
                       key={`${block.id}-stack-${stackIndex}`}
-                      className="relative h-[240px] w-full overflow-hidden rounded-card lg:h-[300px]"
+                      className="relative h-[240px] w-full overflow-hidden rounded-card lg:h-[310px]"
                     >
                       <Image
                         src={image.src}
@@ -93,17 +93,13 @@ export function IllustrationBlocks({
 
             {copyText ? (
               <div className="layout-grid">
-                <div className="col-span-12 md:col-span-6 md:col-start-4 py-4xl">
-                  <p className="type-body text-color-text-secondary">
-                    {copyText}
-                  </p>
+                <div
+                  className={`col-span-12 md:col-span-6 ${
+                    isReversed ? "md:col-start-7 md:text-right" : ""
+                  }`}
+                >
+                  <p className="type-illustration-caption">{copyText}</p>
                 </div>
-              </div>
-            ) : index < blocks.length - 1 ? (
-              <div className="py-4xl">
-                <p className="type-body text-color-text-secondary">
-                  {block.description ?? "Block description…"}
-                </p>
               </div>
             ) : null}
           </div>

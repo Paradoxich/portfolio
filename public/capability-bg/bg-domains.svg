@@ -33,14 +33,14 @@
 <path d="M283 32L283 72" stroke="#23221B" stroke-dasharray="4 4"/>
 <path d="M303 52L263 52" stroke="#23221B" stroke-dasharray="4 4"/>
 <circle cx="189" cy="127" r="8.5" fill="#100F0C" stroke="#1A1914"/>
-<circle cx="189" cy="127" r="5.5" fill="#191813" stroke="#2E3027"/>
-<path d="M189.504 126.5H191V127.5H189.504V129.005H188.504V127.5H187V126.5H188.504V125.005H189.504V126.5Z" fill="#C5BFAB" fill-opacity="0.5"/>
+<circle cx="189" cy="127" r="5.5" fill="#1B1F17" stroke="#2E3027"/>
+<path d="M189.504 126.5H191V127.5H189.504V129.005H188.504V127.5H187V126.5H188.504V125.005H189.504V126.5Z" fill="#A39E8E" fill-opacity="0.5"/>
 <circle cx="264" cy="109" r="13.5" fill="#100F0C" stroke="#1A1914"/>
-<circle cx="264" cy="109" r="8.75" fill="#191813" stroke="#2E3027" stroke-width="1.5"/>
-<path d="M264.504 108.495H266V109.495H264.504V111H263.504V109.495H262V108.495H263.504V107H264.504V108.495Z" fill="#C5BFAB" fill-opacity="0.5"/>
+<circle cx="264" cy="109" r="8.75" fill="#1B1F17" stroke="#2E3027" stroke-width="1.5"/>
+<path d="M264.504 108.495H266V109.495H264.504V111H263.504V109.495H262V108.495H263.504V107H264.504V108.495Z" fill="#A39E8E" fill-opacity="0.5"/>
 <circle cx="283" cy="52" r="8.5" fill="#100F0C" stroke="#1A1914"/>
-<circle cx="283" cy="52" r="5.5" fill="#191813" stroke="#2E3027"/>
-<path d="M283.504 51.4951H285V52.4951H283.504V54H282.504V52.4951H281V51.4951H282.504V50H283.504V51.4951Z" fill="#C5BFAB" fill-opacity="0.5"/>
+<circle cx="283" cy="52" r="5.5" fill="#1B1F17" stroke="#2E3027"/>
+<path d="M283.504 51.4951H285V52.4951H283.504V54H282.504V52.4951H281V51.4951H282.504V50H283.504V51.4951Z" fill="#A39E8E" fill-opacity="0.5"/>
 </g>
 <defs>
 <clipPath id="bgblur_1_637_15970_clip_path" transform="translate(12 12)"><rect width="320" height="160"/>

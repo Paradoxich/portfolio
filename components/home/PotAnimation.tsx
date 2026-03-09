@@ -205,7 +205,7 @@ export function PotAnimation() {
       <div className="mt-2 flex w-full justify-end">
         {/* HOVER WRAPPER – outline na hoveru */}
         <motion.div
-          className="relative inline-flex rounded-[8px]"
+          className="relative inline-flex rounded-full"
           style={{
             outline: "1px solid transparent", // ⭐ uvijek postoji, samo je nevidljiv
             outlineOffset: "2px",
@@ -230,8 +230,8 @@ export function PotAnimation() {
     relative inline-flex h-8 w-[88px]
     items-center justify-center
     overflow-hidden
-    rounded-[8px]
-    border border-[var(--color-60)]
+    rounded-full
+    border border-[#424539]
     bg-transparent
     type-body-xs
     disabled:cursor-default disabled:opacity-80
@@ -239,7 +239,7 @@ export function PotAnimation() {
           >
             {/* “voda” – vertikalni tank, prazni se OD GORE PREMA DOLJE */}
             <motion.span
-              className="absolute inset-x-0 bottom-0 z-0 bg-[var(--color-20)]"
+              className="absolute inset-x-0 bottom-0 z-0 bg-[#272921]"
               initial={false}
               animate={{
                 height: `${tankLevel * 100}%`,
@@ -247,7 +247,9 @@ export function PotAnimation() {
               transition={{ duration: 0.4 }}
             />
 
-            <span className="relative z-10 whitespace-nowrap">{label}</span>
+            <span className="relative z-10 whitespace-nowrap text-[#F3F0E9]">
+              {label}
+            </span>
           </button>
         </motion.div>
       </div>

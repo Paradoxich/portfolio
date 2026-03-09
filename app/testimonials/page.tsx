@@ -54,11 +54,11 @@ function TestimonialCard({
       <span className="shrink-0 text-[#1E201A]" aria-hidden>
         <PixelQuote size={24} />
       </span>
-      <p className="type-testimonial-quote mt-4 min-h-0 flex-1 w-full">
+      <p className="type-testimonial-quote mt-4 flex-1 w-full min-h-[96px]">
         <span className="type-testimonial-quote-highlight">{firstSentence}</span>
         {rest ? ` ${rest}` : null}
       </p>
-      <div className="w-full shrink-0 py-6" role="separator" aria-hidden>
+      <div className="w-full shrink-0 py-8" role="separator" aria-hidden>
         <div className="h-px w-full bg-color-10" />
       </div>
       <div className="flex shrink-0 items-center gap-md">
@@ -88,12 +88,9 @@ function PlaceholderCard() {
       <span className="shrink-0 text-[#1E201A]" aria-hidden>
         <PixelQuote size={24} />
       </span>
-      <p className="type-testimonial-quote mt-4 min-h-0 flex-1 w-full">
+      <p className="type-testimonial-quote mt-4 flex-1 w-full min-h-[96px]">
         I&apos;ve saved a place for your kind words.
       </p>
-      <div className="w-full shrink-0 py-6" role="separator" aria-hidden>
-        <div className="h-px w-full bg-color-10" />
-      </div>
       <div className="shrink-0 w-full">
         <button
           type="button"

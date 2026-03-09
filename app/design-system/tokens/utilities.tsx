@@ -165,7 +165,7 @@ export const colorUtilityTokens = [
     token: "color.bg.muted",
     mapsTo: "color-10",
     role: "Muted / secondary surface",
-    warm: "#191813",
+    warm: "#1B1F17",
     cool: "#141414",
   },
   {
@@ -193,7 +193,7 @@ export const colorUtilityTokens = [
     token: "color.text.secondary",
     mapsTo: "color-80",
     role: "Secondary text color",
-    warm: "#C5BFAB",
+    warm: "#A39E8E",
     cool: "#a3a3a3",
   },
 ];

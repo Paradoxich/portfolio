@@ -63,13 +63,13 @@ export const fontWeightTokens = [
 // Color scale – neutral ramp (both themes)
 export const colorTokens = [
   { token: "color-0", warm: "#100F0C", cool: "#0a0a0a" },
-  { token: "color-10", warm: "#191813", cool: "#141414" },
+  { token: "color-10", warm: "#1B1F17", cool: "#141414" },
   { token: "color-20", warm: "#23221B", cool: "#1f1f1f" },
   { token: "color-30", warm: "#23251E", cool: "#262626" },
   { token: "color-40", warm: "#2E3027", cool: "#333333" },
   { token: "color-50", warm: "#424539", cool: "#484848" },
   { token: "color-60", warm: "#555A4B", cool: "#5c5c5c" },
-  { token: "color-80", warm: "#C5BFAB", cool: "#a3a3a3" },
+  { token: "color-80", warm: "#A39E8E", cool: "#a3a3a3" },
   { token: "color-90", warm: "#F3F0E9", cool: "#e5e5e5" },
   { token: "color-100", warm: "#FFFFFF", cool: "#ffffff" },
 ];

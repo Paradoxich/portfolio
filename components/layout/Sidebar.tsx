@@ -83,7 +83,7 @@ function ProfileMenuItem({
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
       onClick={onClose}
-      className="flex items-center w-full h-8 pl-2 rounded-[8px] hover:bg-color-bg-muted transition-colors font-geist"
+      className="flex items-center w-full h-8 pl-2 rounded-[8px] hover:bg-[#191813] focus:bg-[#191813] focus-visible:bg-[#191813] transition-colors font-geist"
     >
       <span className="truncate flex-1 min-w-0 type-body-sm text-color-text-primary">
         {label}
@@ -127,7 +127,7 @@ export function Sidebar() {
     <aside
       className="sidebar hidden md:flex fixed left-0 top-0 bottom-0 w-[230px] flex-col z-40 bg-color-bg border-r border-color-10"
     >
-      <div className="flex flex-col h-full p-2 gap-4 overflow-y-auto">
+      <div className="flex flex-col h-full p-2 gap-4 overflow-visible">
         {/* Profile + dropdown */}
         <div className="relative shrink-0" ref={profileRef}>
           <button
@@ -142,8 +142,8 @@ export function Sidebar() {
               Ana Beverin
             </span>
             <span
-              className={`flex w-8 h-8 shrink-0 items-center justify-center rounded-[8px] text-color-text-secondary transition-colors hover:bg-color-bg-muted hover:text-color-text-primary ${
-                profileMenuOpen ? "bg-color-bg-muted text-color-text-primary" : ""
+              className={`flex w-8 h-8 shrink-0 items-center justify-center rounded-[8px] text-color-text-secondary transition-colors hover:bg-[#191813] hover:text-color-text-primary ${
+                profileMenuOpen ? "bg-[#191813] text-color-text-primary" : ""
               }`}
             >
               <Dropdown
@@ -153,10 +153,10 @@ export function Sidebar() {
             </span>
           </button>
 
-          {profileMenuOpen && (
-            <div
-              className="absolute left-0 top-full mt-1 flex flex-col items-stretch z-50 w-[226px] p-2 gap-0.5 rounded-surface border border-color-10 bg-color-bg"
-            >
+            {profileMenuOpen && (
+              <div
+                className="absolute left-0 top-full mt-1 flex flex-col items-stretch z-[60] w-[226px] p-2 gap-0.5 rounded-surface border border-[#272921] bg-color-bg"
+              >
               <ProfileMenuItem
                 href="https://www.linkedin.com/in/paradoxich/"
                 label="Linkedin"
@@ -183,7 +183,7 @@ export function Sidebar() {
               <button
                 type="button"
                 onClick={copyEmail}
-                className="flex items-center w-full h-8 pl-2 rounded-[8px] text-left hover:bg-color-bg-muted transition-colors font-geist"
+                className="flex items-center w-full h-8 pl-2 rounded-[8px] text-left hover:bg-[#191813] focus:bg-[#191813] focus-visible:bg-[#191813] transition-colors font-geist"
               >
                 <span className="truncate flex-1 min-w-0 type-body-sm text-color-text-primary">
                   ana.beverin@gmail.com
@@ -207,10 +207,10 @@ export function Sidebar() {
                   <Link
                     key={href}
                     href={href}
-                    className={`group flex items-center gap-0 w-full h-12 rounded-[8px] transition-colors ${
+                  className={`group flex items-center gap-0 w-full h-12 rounded-[8px] transition-colors ${
                       active
-                        ? "bg-color-bg-muted text-color-90"
-                        : "text-color-text-secondary hover:bg-color-bg-muted hover:text-color-90"
+                        ? "bg-[#191813] text-color-90"
+                        : "text-color-text-secondary hover:bg-[#191813] hover:text-color-90 focus:bg-[#191813] focus-visible:bg-[#191813]"
                     }`}
                   >
                     <span className="flex w-12 h-12 shrink-0 items-center justify-center [&>svg]:text-current">
