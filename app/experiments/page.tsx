@@ -1,6 +1,6 @@
 "use client";
 
-import { ExperimentsIndex } from "@/components/sections/experiments/ExperimentsIndex";
+import { ExperimentsIndex } from "@/components/experiments/ExperimentsIndex";
 
 export default function ExperimentsPage() {
   return <ExperimentsIndex />;

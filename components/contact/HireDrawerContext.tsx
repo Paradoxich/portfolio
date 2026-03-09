@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { HireDrawer } from "./home/HireDrawer";
+import { HireDrawer } from "./HireDrawer";
 
 type HireDrawerContextType = {
   openHireDrawer: () => void;
@@ -37,3 +37,4 @@ export function useHireDrawer() {
   }
   return context;
 }
+

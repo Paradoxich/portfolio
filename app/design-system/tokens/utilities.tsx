@@ -169,10 +169,17 @@ export const colorUtilityTokens = [
     cool: "#141414",
   },
   {
+    token: "color.border.subtle",
+    mapsTo: "color-20",
+    role: "Subtle border – experiment cards, inset surfaces",
+    warm: "#23221B",
+    cool: "#1f1f1f",
+  },
+  {
     token: "color.border",
     mapsTo: "color-30",
     role: "Default border / divider",
-    warm: "#23251E",
+    warm: "#272921",
     cool: "#262626",
   },
   {

@@ -9,9 +9,10 @@
 :root {
   /* Color scale – neutral ramp */
   --color-0: #100F0C;
+  --color-05: #151310;
   --color-10: #1B1F17;
   --color-20: #23221b;
-  --color-30: #23251e;
+  --color-30: #272921;
   --color-40: #2e3027;
   --color-50: #424539;
   --color-60: #555a4b;
@@ -30,6 +31,13 @@
   /* Hover states (rgb for opacity variants) */
   --color-60-rgb: 85, 90, 75;
   
+  /* Contact form & status accents */
+  --color-success: #18C340;
+  --color-input-bg: var(--color-05);
+  --color-input-border: var(--color-border);
+  --color-input-border-hover: #2E3027;
+  --color-input-placeholder: #565A4F;
+  
   /* Accent/button fill */
   --color-accent: #84873d;
 
@@ -43,8 +51,9 @@
   --color-bg: var(--color-0); /* page background / outline card bg */
   --color-bg-surface: var(--color-20); /* filled card bg */
   --color-bg-muted: var(--color-10); /* muted card bg */
+  --color-border-subtle: var(--color-20); /* subtle border – experiment cards, inset surfaces */
   --color-border: var(--color-30); /* main border */
-  --color-border-secondary: var(--color-40); /* secondary border */
+  --color-border-secondary: var(--color-40); /* secondary / hover border */
   --color-text-primary: var(--color-90);
   --color-text-secondary: var(--color-80);
 
@@ -451,14 +460,14 @@
     gap: var(--space-xl); /* 24px */
     padding: var(--space-xl); /* 24px */
     border-radius: var(--radius-lg); /* 20px */
-    border: 1px solid #23251E;
-    background: #151310;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-05);
   }
 
   .experiment-inner {
     border-radius: var(--radius-md); /* 12px */
-    border: 1px solid #23251E;
-    background: #100F0C;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg);
   }
 
   /* CTA / filled surface */
@@ -480,7 +489,7 @@
   .project-card {
     position: relative;
     background-color: rgba(var(--color-10-rgb), 0.5);
-    border: 1px solid #272921;
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: var(--space-2xl);
     height: 280px;

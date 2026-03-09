@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import * as React from "react";
-import { useHireDrawer } from "@/components/HireDrawerContext";
+import { useHireDrawer } from "@/components/contact/HireDrawerContext";
 
 export function MobileNav() {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);

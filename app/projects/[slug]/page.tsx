@@ -8,10 +8,7 @@ import { ArrowRight } from "@/components/icons/ArrowRight";
 import { Projects } from "@/components/icons/Projects";
 import { useRouter, useParams } from "next/navigation";
 import { PageShell } from "@/components/layout/PageShell";
-import {
-  projectsConfig,
-  type ProjectConfig,
-} from "@/components/projects/ProjectsConfig";
+import { projectsConfig } from "@/components/projects/ProjectsConfig";
 
 function ProjectPageContent() {
   const router = useRouter();

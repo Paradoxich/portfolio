@@ -22,9 +22,10 @@ const config: Config = {
         "color-bg": "var(--color-bg)",
         "color-bg-surface": "var(--color-bg-surface)",
         "color-bg-muted": "var(--color-bg-muted)",
+        "color-border-subtle": "var(--color-border-subtle)" /* subtle – inset / experiment */,
         "color-border": "var(--color-border)",
         "color-border-secondary":
-          "var(--color-border-secondary)" /* secondary border */,
+          "var(--color-border-secondary)" /* secondary / hover */,
         "color-text-primary": "var(--color-text-primary)",
         "color-text-secondary": "var(--color-text-secondary)",
       },

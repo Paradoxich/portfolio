@@ -1,15 +1,15 @@
 "use client";
 
 import * as React from "react";
-import { usePathname } from "next/navigation";
 
 const colorSchemes = {
-  // Current \"green\" / warm theme
+  // Current "green" / warm theme
   warm: {
     "--color-0": "#100F0C",
+    "--color-05": "#151310",
     "--color-10": "#1B1F17",
     "--color-20": "#23221b",
-    "--color-30": "#23251e",
+    "--color-30": "#272921",
     "--color-40": "#2e3027",
     "--color-50": "#424539",
     "--color-60": "#555a4b",
@@ -31,9 +31,10 @@ const colorSchemes = {
     // Image filter (none for warm)
     "--image-filter": "none",
   },
-  // Current \"black\" / cool theme
+  // Current "black" / cool theme
   cool: {
     "--color-0": "#0a0a0a",
+    "--color-05": "#0f0f0f",
     "--color-10": "#141414",
     "--color-20": "#1f1f1f",
     "--color-30": "#262626",
@@ -60,6 +61,7 @@ const colorSchemes = {
   // Placeholder for future light/color theme – values to be tuned
   light: {
     "--color-0": "#f5f3f0",
+    "--color-05": "#eeece8",
     "--color-10": "#f8f6f2",
     "--color-20": "#ffffff",
     "--color-10-rgb": "248, 246, 242",
@@ -214,3 +216,4 @@ export function ThemeSwitcherInline() {
     </div>
   );
 }
+

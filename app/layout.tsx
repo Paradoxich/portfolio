@@ -6,8 +6,8 @@ import { Analytics } from "@vercel/analytics/react";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { TopStickyBar } from "@/components/layout/TopStickyBar";
-import { ColorSchemeProvider } from "@/components/ColorSchemeProvider";
-import { HireDrawerProvider } from "@/components/HireDrawerContext";
+import { ColorSchemeProvider } from "@/components/theme/ColorSchemeProvider";
+import { HireDrawerProvider } from "@/components/contact/HireDrawerContext";
 
 export const metadata = {
   title: "Ana — Product Designer",

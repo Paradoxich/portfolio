@@ -9,7 +9,7 @@ export default function NotesPage() {
       <div className="mx-auto flex w-full max-w-[950px] flex-1 flex-col justify-between">
         {/* Quote group: icon + text */}
         <div className="flex flex-col gap-lg">
-          <span className="text-[#1E201A]" aria-hidden>
+          <span className="text-[var(--color-20)]" aria-hidden>
             <PixelQuote size={24} />
           </span>
           <p className="type-notes-quote">

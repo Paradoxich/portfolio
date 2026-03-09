@@ -231,7 +231,7 @@ export function PotAnimation() {
     items-center justify-center
     overflow-hidden
     rounded-full
-    border border-[#424539]
+    border border-[var(--color-50)]
     bg-transparent
     type-body-xs
     disabled:cursor-default disabled:opacity-80
@@ -239,7 +239,7 @@ export function PotAnimation() {
           >
             {/* “voda” – vertikalni tank, prazni se OD GORE PREMA DOLJE */}
             <motion.span
-              className="absolute inset-x-0 bottom-0 z-0 bg-[#272921]"
+              className="absolute inset-x-0 bottom-0 z-0 bg-[rgba(var(--color-10-rgb),0.85)]"
               initial={false}
               animate={{
                 height: `${tankLevel * 100}%`,
@@ -247,7 +247,7 @@ export function PotAnimation() {
               transition={{ duration: 0.4 }}
             />
 
-            <span className="relative z-10 whitespace-nowrap text-[#F3F0E9]">
+            <span className="relative z-10 whitespace-nowrap text-color-90">
               {label}
             </span>
           </button>
@@ -273,3 +273,4 @@ export function PotAnimation() {
     </div>
   );
 }
+

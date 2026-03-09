@@ -1,4 +1,4 @@
-import { PotAnimation } from "@/components/home/PotAnimation";
+import { PotAnimation } from "@/components/experiments/PotAnimation";
 
 export function WaterPlantSection() {
   return (
@@ -10,3 +10,4 @@ export function WaterPlantSection() {
     </section>
   );
 }
+

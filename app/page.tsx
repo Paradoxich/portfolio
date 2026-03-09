@@ -1,6 +1,6 @@
-"use client";
+ "use client";
 
-import { OverviewContent } from "@/components/sections/home/OverviewContent";
+import { OverviewContent } from "@/components/home/OverviewContent";
 
 export default function Page() {
   return <OverviewContent />;

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CTAWithIcon from "../CTAWithIcon";
 import ChatAnimation from "./ChatAnimation";
 
 type Testimonial = {
@@ -81,3 +80,4 @@ export default function TestimonialsSection({
     </section>
   );
 }
+

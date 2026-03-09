@@ -1,9 +1,9 @@
-"use client";
+ "use client";
 
 import { PageShell } from "@/components/layout/PageShell";
-import { WaterPlantSection } from "@/components/sections/home/WaterPlantSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
-import { ThemeSwitcherInline } from "@/components/ColorSchemeProvider";
+import { WaterPlantSection } from "@/components/experiments/WaterPlantSection";
+import TestimonialsSection from "@/components/experiments/TestimonialsSection";
+import { ThemeSwitcherInline } from "@/components/theme/ColorSchemeProvider";
 
 const EXPERIMENT_TESTIMONIALS = [
   {
@@ -24,10 +24,8 @@ const EXPERIMENT_TESTIMONIALS = [
     image:
       "https://images.unsplash.com/photo-1721622560183-4172c8ef8934?q=80&w=2414&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     messages: [
-   
       "My human lives here and performs several useful functions. ",
       "They refill the food bowl, maintain the heating surfaces, and operate the door when I decide the outside world requires inspection.",
-      
       "They also provide a stable lap and tolerate sudden 3 a.m. sprints across the apartment, which shows admirable dedication to their role. I will continue keeping them.",
     ],
   },
@@ -54,3 +52,4 @@ export function ExperimentsIndex() {
     </PageShell>
   );
 }
+

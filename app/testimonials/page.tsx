@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { PageShell } from "@/components/layout/PageShell";
 import { PixelQuote } from "@/components/icons/PixelQuote";
-import { useHireDrawer } from "@/components/HireDrawerContext";
+import { useHireDrawer } from "@/components/contact/HireDrawerContext";
 import { ArrowRight } from "@/components/icons";
 
 const TESTIMONIALS = [
@@ -51,7 +51,7 @@ function TestimonialCard({
 
   return (
     <div className="flex h-full min-h-0 flex-col items-start gap-0 rounded-card border border-color-10 bg-color-bg p-2xl">
-      <span className="shrink-0 text-[#1E201A]" aria-hidden>
+      <span className="shrink-0 text-[var(--color-20)]" aria-hidden>
         <PixelQuote size={24} />
       </span>
       <p className="type-testimonial-quote mt-4 flex-1 w-full min-h-[96px]">
@@ -85,7 +85,7 @@ function PlaceholderCard() {
 
   return (
     <div className="flex h-full min-h-0 flex-col items-start gap-0 rounded-card border border-dashed border-color-10 bg-color-bg p-2xl">
-      <span className="shrink-0 text-[#1E201A]" aria-hidden>
+      <span className="shrink-0 text-[var(--color-20)]" aria-hidden>
         <PixelQuote size={24} />
       </span>
       <p className="type-testimonial-quote mt-4 flex-1 w-full min-h-[96px]">

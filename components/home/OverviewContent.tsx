@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import {
   GraphicOwnership,
@@ -73,3 +73,4 @@ export function OverviewContent() {
     </PageShell>
   );
 }
+

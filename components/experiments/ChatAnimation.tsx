@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -123,7 +123,7 @@ export default function ChatAnimation({ messages, disableTypingAnimation }: Chat
         {MESSAGES.slice(0, visibleMessages).map((msg, index) => (
           <div
             key={index}
-            className={`inline-flex max-w-full rounded-surface bg-[#1C1F19] px-4 py-3 ${
+            className={`inline-flex max-w-full rounded-surface bg-color-20 px-4 py-3 ${
               skipAnimation ? "animate-slide-in" : "animate-bubble"
             }`}
             style={
@@ -146,3 +146,4 @@ export default function ChatAnimation({ messages, disableTypingAnimation }: Chat
     </div>
   );
 }
+

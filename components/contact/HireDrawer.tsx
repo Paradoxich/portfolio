@@ -142,12 +142,12 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
 
           {/* DRAWER */}
           <motion.div
-            className="
+          className="
               fixed z-50 top-0 right-0 bottom-0
               w-full max-w-md
               flex flex-col
               bg-color-bg
-              border-l border-[#1B1F17]
+              border-l border-color-10
             "
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -230,8 +230,8 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
               {formState === "success" ? (
                 /* SUCCESS STATE */
                 <div className="flex-1 flex flex-col items-center justify-center gap-4 text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#18C340]/20 flex items-center justify-center">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#18C340" strokeWidth="2">
+                <div className="w-16 h-16 rounded-full bg-[color:color-mix(in_oklab,var(--color-success)_20%,transparent)] flex items-center justify-center">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" strokeWidth="2">
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                   </div>
@@ -276,13 +276,13 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                       className={`
                         w-full px-4 py-3
                         rounded-lg
-                        bg-[#151310]
-                        border ${errors.name ? "border-red-400" : "border-[#23251E]"}
+                        bg-[var(--color-input-bg)]
+                        border ${errors.name ? "border-red-400" : "border-[var(--color-input-border)]"}
                         ring-0 ring-transparent ring-offset-0
                         text-color-text-primary
-                        placeholder:text-[#565A4F]
-                        focus:outline-none focus:border-[#2E3027] focus:ring-1 focus:ring-[#23251E] focus:ring-offset-2 focus:ring-offset-[#100F0C]
-                        hover:border-[#2E3027]
+                        placeholder:text-[var(--color-input-placeholder)]
+                        focus:outline-none focus:border-[var(--color-input-border-hover)] focus:ring-1 focus:ring-[var(--color-input-border)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
+                        hover:border-[var(--color-input-border-hover)]
                         transition-[border-color] duration-300 ease-out
                         type-body-sm
                         disabled:opacity-50
@@ -311,13 +311,13 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                       className={`
                         w-full px-4 py-3
                         rounded-lg
-                        bg-[#151310]
-                        border ${errors.email ? "border-red-400" : "border-[#23251E]"}
+                        bg-[var(--color-input-bg)]
+                        border ${errors.email ? "border-red-400" : "border-[var(--color-input-border)]"}
                         ring-0 ring-transparent ring-offset-0
                         text-color-text-primary
-                        placeholder:text-[#565A4F]
-                        focus:outline-none focus:border-[#2E3027] focus:ring-1 focus:ring-[#23251E] focus:ring-offset-2 focus:ring-offset-[#100F0C]
-                        hover:border-[#2E3027]
+                        placeholder:text-[var(--color-input-placeholder)]
+                        focus:outline-none focus:border-[var(--color-input-border-hover)] focus:ring-1 focus:ring-[var(--color-input-border)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
+                        hover:border-[var(--color-input-border-hover)]
                         transition-[border-color] duration-300 ease-out
                         type-body-sm
                         disabled:opacity-50
@@ -345,13 +345,13 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                       className={`
                         w-full px-4 py-3 flex-1 min-h-[160px]
                         rounded-lg
-                        bg-[#151310]
-                        border ${errors.message ? "border-red-400" : "border-[#23251E]"}
+                        bg-[var(--color-input-bg)]
+                        border ${errors.message ? "border-red-400" : "border-[var(--color-input-border)]"}
                         ring-0 ring-transparent ring-offset-0
                         text-color-text-primary
-                        placeholder:text-[#565A4F]
-                        focus:outline-none focus:border-[#2E3027] focus:ring-1 focus:ring-[#23251E] focus:ring-offset-2 focus:ring-offset-[#100F0C]
-                        hover:border-[#2E3027]
+                        placeholder:text-[var(--color-input-placeholder)]
+                        focus:outline-none focus:border-[var(--color-input-border-hover)] focus:ring-1 focus:ring-[var(--color-input-border)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
+                        hover:border-[var(--color-input-border-hover)]
                         transition-[border-color] duration-300 ease-out
                         type-body-sm
                         resize-none
@@ -418,3 +418,4 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
     </AnimatePresence>
   );
 }
+
