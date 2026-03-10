@@ -1,35 +1,15 @@
-import * as React from "react";
 import type { SectionData } from "../CaseStudyLayout";
 
 export const neptuneMeta = {
-  title: "Defining Neptune's positioning and",
-  subtitle: "visual foundation",
-  titleSeparator: " " as const,
+  title: "Defining Neptune’s positioning and visual foundation",
+  subtitle: "",
   meta: "2025",
   links: [{ href: "https://www.neptune.dev", label: "neptune.dev" }],
   tldrItems: [
-    <>
-      Sole{" "}
-      <strong className="font-medium text-color-text-primary">
-        product designer
-      </strong>{" "}
-      shaping positioning, visual identity, and a concrete interaction model
-    </>,
-    <>
-      Clarified audience and{" "}
-      <strong className="font-medium text-color-text-primary">
-        product narrative
-      </strong>{" "}
-      while the workflow model was still evolving.
-    </>,
-    <>
-      Aligned{" "}
-      <strong className="font-medium text-color-text-primary">
-        product, brand, and engineering discussions
-      </strong>{" "}
-      with animated interaction model and delivered a scalable visual identity.
-    </>,
-  ] as React.ReactNode[],
+    "Sole product designer shaping positioning, visual identity, and interaction model for an AI infra platform.",
+    "Clarified audience and product narrative while the product definition was still evolving.",
+    "Aligned product, brand, and engineering with an animated interaction model and a scalable visual identity.",
+  ],
 };
 
 export const deckImages = [
@@ -46,85 +26,110 @@ export const neptuneContext: SectionData = {
   blocks: [
     {
       type: "p",
-      text: "Neptune didn't arrive as a clear brief. Its scope and form evolved as the team explored how AI-assisted infrastructure workflows should actually work.",
-    },
-    {
-      type: "p",
-      text: "My role was to design an identity and interaction surface that could remain stable while the product definition underneath continued to evolve.",
+      text:
+        "The team from Shuttle, a Rust-based cloud deployment platform, was building an AI platform engineer. The idea sounded straightforward: you describe what you want, and the system provisions and wires your cloud infrastructure for you. In practice, translating that idea into a real product raised a number of open questions.",
     },
   ],
 };
 
 export const neptuneAudience: SectionData = {
-  heading: "Audience, trust, and tone",
+  heading: "The problem",
   blocks: [
     {
       type: "p",
-      text: "What became clear early on was the core problem Neptune needed to solve: while AI made writing code faster, deployment and infrastructure still felt fragile and hard to trust.",
+      text:
+        "There was no confirmed audience, no clear positioning, and no agreement on whether Neptune was meant to stand on its own or extend Shuttle. The interaction model was also unresolved. The product relied on CLI workflows, but it aspired to feel conversational. At the same time, there was pressure to launch quickly.",
     },
     {
       type: "p",
-      text: "That tension shaped both the product framing and the brand. Neptune emerged as a calm, conversational co-pilot behaving like an AI Platform Engineer that handles complex infrastructure work while keeping actions visible.",
+      text:
+        "My role wasn’t just to design a polished brand. I had to help define direction while the product itself was still taking shape.",
     },
     {
       type: "p",
-      text: "This pushed the visual and verbal direction away from hype-driven AI language and toward something calmer, more precise, and deliberately understated.",
+      text:
+        "If Neptune launched without a clear narrative, it would feel like another AI experiment—interesting, maybe even impressive, but hard to rely on. And trust was the real issue: AI can generate code instantly, but infrastructure is where mistakes get expensive. The brand and experience had to make that feel stable and intentional.",
     },
   ],
 };
 
 export const neptuneWhenBranding: SectionData = {
-  heading: "When branding wasn't enough",
+  heading: "Creating clarity before visuals",
   blocks: [
     {
       type: "p",
-      text: "The brand gave Neptune a voice and tone, but it still didn't show how the product actually behaved. Static visuals failed to capture the core experience — the moment where you describe intent and Neptune plans and executes it.",
+      text:
+        "Before designing the identity, I structured a lightweight discovery process to force alignment. I created a stakeholder survey and ran a positioning workshop to surface the real tensions in the room.",
+    },
+    {
+      type: "ul",
+      items: [
+        "Was Neptune a tool or a teammate?",
+        "Were we targeting AI-native builders or traditional DevOps engineers?",
+        "Should the brand feel experimental or authoritative?",
+      ],
     },
     {
       type: "p",
-      text: "Instead of pushing another illustration, I built a fully animated chat prototype that demonstrated the workflow end-to-end: planning, generating configs, deploying infrastructure, and surfacing results through conversation.",
+      text:
+        "The split was clear. Traditional infrastructure engineers wanted transparency and control. AI-native developers wanted a more agent-like experience. These are different products with different voices.",
+    },
+    {
+      type: "p",
+      text:
+        "We chose a direction: a calm expert who makes complex things feel effortless. Confident, controlled, conversational, but precise. The audience became AI-assisted developers already comfortable with AI tools—people frustrated that AI could write code but couldn’t deploy it.",
+    },
+    {
+      type: "p",
+      text:
+        "That decision resolved most downstream design questions. Once we knew who it was for and how it should behave, the visual direction followed.",
     },
   ],
 };
 
 export const neptunePrototypeChanged: SectionData = {
-  heading: "A prototype that changed the conversation",
+  heading: "Defining a stable visual system",
   blocks: [
     {
       type: "p",
-      text: "Animating the workflow turned the prototype into a way to reason about how Neptune should function inside an agent-based environment.",
+      text:
+        "The product itself was still evolving, so the identity needed to be stable even if features shifted. ",
     },
     {
       type: "p",
-      text: "Walking through real scenarios made it possible to compare how Neptune currently works (often requiring explicit CLI interaction) with what a more seamless, agent-assisted flow could look like. The prototype surfaced where steps felt unnecessarily manual, where context was lost, and which parts of the workflow didn't naturally map to a chat-based interaction model.",
+      text:
+        "The name Neptune introduced a space metaphor, but I deliberately avoided spectacle. Instead of dramatic sci-fi visuals, I defined a restrained aesthetic: subtle gradients, controlled contrast, disciplined use of highlight color, and generous negative space. I wanted it to signal control and clarity instead of just getting a cool, futuristic look.",
+    },
+    {
+      type: "p",
+      text:
+        "This gave the team a shared evaluation framework. Visual feedback could be discussed against principles rather than personal taste.",
     },
   ],
 };
 
 export const neptuneMakingEditable: SectionData = {
-  heading: "Making the prototype editable",
+  heading: "Where branding wasn’t enough",
   blocks: [
     {
       type: "p",
-      text: "Once the prototype became a shared tool for testing these flows, its limitations became obvious. The initial version worked, but it was difficult to iterate on — even small changes required digging through timing logic, states, and transitions.",
-    },
-    {
-      type: "img",
-      src: "/case-studies/nc-refactor.png",
-      alt: "Script-driven chat prototype",
-      aspect: "16/8",
-      priority: true,
+      text:
+        "The hardest problem wasn’t aesthetic. It was explaining how Neptune actually worked. Technically, the system relied on CLI-based workflows. Conceptually, it aimed to feel conversational and agent-driven. Showing raw CLI output felt underwhelming for the positioning. Showing a full chat interface risked misrepresenting the current implementation.",
     },
     {
       type: "p",
-      text: "To make experimentation easier, I refactored the system into a simple, human-readable script that defines what happens, not how it animates. The animation engine handles orchestration independently, allowing the team to edit the script to test new workflows, messages, and interaction patterns without touching the underlying logic.",
+      text:
+        "Instead of debating this abstractly, I built an animated chat prototype that simulated the end-to-end flow: describe intent, review generated infrastructure specs, approve configuration, deploy, and view logs.",
     },
     {
-      type: "img",
-      src: "/case-studies/nc-script.png",
-      alt: "Script guide",
-      aspect: "16/8",
-      priority: true,
+      type: "p",
+      text:
+        "What began as a landing page animation became a product thinking tool. Walking through the simulated workflow exposed friction points in the real implementation and surfaced gaps that hadn’t been fully mapped. The prototype shifted internal conversations from “how should this look?” to “what needs to exist for this to work?”",
+    },
+    {
+      type: "p",
+      text:
+        "To make iteration practical, I refactored the animation into a script-driven system, separating content from orchestration. This allowed the team to test alternative flows without rewriting interaction logic. It turned a marketing artefact into a reusable UX exploration asset.",
     },
   ],
 };
@@ -134,47 +139,26 @@ export const neptuneOutcome: SectionData = {
   blocks: [
     {
       type: "p",
-      text: "The identity and landing page gave Neptune a calm, durable presence that could survive ongoing definition without drifting into hype. The animated chat prototype solved what branding alone couldn't: it made Neptune's workflow tangible and discussable.",
+      text:
+        "Neptune launched with a defined positioning, a coherent visual identity, and a concrete way to explain how it works. The animated interaction made the experience tangible and helped align product and engineering discussions.",
     },
   ],
 };
 
-export const neptuneBuiltWith: SectionData = {
-  heading: "Built with",
+export const neptuneReflection: SectionData = {
+  heading: "Reflection",
   blocks: [
     {
       type: "p",
-      text: (
-        <>
-          <strong>Interaction prototype:</strong> custom animation system
-          (script-driven), React / TypeScript
-        </>
-      ),
+      text:
+        "The hardest part of this project wasn’t execution, it was making directional decisions while the product itself was still forming. Under ambiguity, the designer’s role is not to wait for clarity, but to create it.",
     },
     {
       type: "p",
-      text: (
-        <>
-          <strong>Sequencing &amp; logic:</strong> React state machine + timed
-          orchestration
-        </>
-      ),
-    },
-    {
-      type: "p",
-      text: (
-        <>
-          <strong>Motion:</strong> GSAP (SVG step indicators), CSS keyframe
-          animations
-        </>
-      ),
-    },
-    { type: "p", text: <><strong>Design &amp; iteration:</strong> Figma</> },
-    {
-      type: "p",
-      text: (
-        <><strong>Tooling:</strong> Cursor, LLM-assisted workflows</>
-      ),
+      text:
+        "Neptune reinforced a core principle in my work: when structure is missing, design becomes a decision-making tool. The survey created alignment. The identity created stability. The prototype revealed product gaps. Each artefact moved the product from abstraction to something concrete and discussable.",
     },
   ],
 };
+
+

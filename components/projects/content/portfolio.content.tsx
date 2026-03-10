@@ -3,8 +3,8 @@ import Link from "next/link";
 import type { SectionData } from "../CaseStudyLayout";
 
 export const portfolioMeta = {
-  title: "Portfolio",
-  subtitle: "Designing and building this portfolio as a real product.",
+  title: "Designing and building this portfolio as a real product",
+  subtitle: "",
   meta: "2025",
   tldrItems: [
     "Designed and implemented a custom portfolio as a structured system rather than a static site.",

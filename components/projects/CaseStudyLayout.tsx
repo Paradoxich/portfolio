@@ -57,7 +57,7 @@ export function CaseStudySection({ data }: { data: SectionData }) {
         <section key={i} className="stack-md pt-base pb-base">
           <div
             style={{ aspectRatio: block.aspect }}
-            className="relative w-full overflow-hidden rounded-surface border border-color-border-secondary bg-color-bg-muted"
+            className="relative w-full overflow-hidden rounded-surface border border-color-border-inset bg-color-bg"
           >
             <Image
               src={block.src}
@@ -101,8 +101,6 @@ export function CaseStudySection({ data }: { data: SectionData }) {
 type CaseStudyLayoutProps = {
   title: string;
   subtitle: string;
-  /** Separator between title and subtitle (default: ": ") */
-  titleSeparator?: string;
   meta?: string;
   links?: CaseStudyLink[];
   tldrItems: React.ReactNode[];
@@ -128,7 +126,6 @@ const externalLinkIcon = (
 export function CaseStudyLayout({
   title,
   subtitle,
-  titleSeparator = ": ",
   meta,
   links,
   tldrItems,
@@ -157,7 +154,7 @@ export function CaseStudyLayout({
           </div>
           <h1 className="type-h1 text-balance">
             <span className="text-color-text-primary font-medium">
-              {title}{titleSeparator}
+              {title}
             </span>
             <span className="text-color-text-secondary font-normal">
               {subtitle}
@@ -169,11 +166,11 @@ export function CaseStudyLayout({
       {/* Summary */}
       <section className="stack-md">
         <div className="text-column">
-          <h3 className="type-label pb-md border-b border-color-border-secondary">
+          <h3 className="type-label pb-md border-b border-color-border-inset">
             Summary
           </h3>
           <ul
-            className="divide-y divide-color-border-secondary list-none text-color-text-primary"
+            className="divide-y divide-color-border-inset list-none text-color-text-primary"
             role="list"
           >
             {tldrItems.map((item, i) => (

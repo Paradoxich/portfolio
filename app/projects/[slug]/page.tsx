@@ -63,7 +63,7 @@ function ProjectPageContent() {
             : "object-center";
       return (
         <div className="w-full mb-2xl">
-          <div className="relative aspect-video rounded-[var(--radius-md)] border border-color-border-secondary overflow-hidden">
+          <div className="relative aspect-video rounded-[var(--radius-md)] border border-color-border-inset overflow-hidden">
             <Image
               src={project.hero.src}
               alt={project.hero.alt ?? ""}

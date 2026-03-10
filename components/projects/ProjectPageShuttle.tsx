@@ -8,10 +8,12 @@ import {
   shuttleVideoSrc,
   shuttleBeforeAfter,
   shuttleContext,
+  shuttleEarlyDays,
   shuttleNotWorking,
   shuttleProductMoves,
   shuttleTaming,
   shuttleOutcome,
+  shuttleReflection,
 } from "./content/shuttle.content";
 
 type ProjectPageProps = { heroSlot?: React.ReactNode };
@@ -28,10 +30,11 @@ export function ProjectPageShuttle({ heroSlot }: ProjectPageProps) {
   return (
     <CaseStudyLayout {...shuttleMeta} heroSlot={heroSlot}>
       <CaseStudySection data={shuttleContext} />
+      <CaseStudySection data={shuttleEarlyDays} />
 
       {/* Before / after toggle — interactive */}
       <section className="stack-md pt-base pb-base">
-        <div className="relative w-full overflow-hidden rounded-surface border border-color-border-secondary bg-color-bg-muted" style={{ aspectRatio: "16/10" }}>
+        <div className="relative w-full overflow-hidden rounded-surface border border-color-border-inset bg-color-bg-muted" style={{ aspectRatio: "16/10" }}>
           <BeforeAfterToggle
             beforeSrc={shuttleBeforeAfter.beforeSrc}
             afterSrc={shuttleBeforeAfter.afterSrc}
@@ -72,6 +75,7 @@ export function ProjectPageShuttle({ heroSlot }: ProjectPageProps) {
 
       <CaseStudySection data={shuttleTaming} />
       <CaseStudySection data={shuttleOutcome} />
+      <CaseStudySection data={shuttleReflection} />
     </CaseStudyLayout>
   );
 }
