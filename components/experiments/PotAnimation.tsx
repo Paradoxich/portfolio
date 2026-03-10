@@ -34,14 +34,13 @@ export function PotAnimation() {
   }
 
   function handleClick() {
-    // ⛔ dok kiša pada – ignoriraj klik
-    if (isRaining) return;
+    if (isRaining) return; // ignore clicks while rain is animating
 
     if (stage < MAX_STAGE) {
       setStage((prev) => (prev + 1) as Stage);
       triggerRain();
     } else {
-      // reset kad je full grown
+      // reset when fully grown
       setStage(0);
       setIsRaining(false);
     }
@@ -63,8 +62,7 @@ export function PotAnimation() {
 
   const label = getButtonLabel(stage);
 
-  // sprinkler je vidljiv od prve kiše do kraja 2. stagea,
-  // i još dok pada zadnja kiša; nakon toga nestane
+  // sprinkler visible from first rain through end of stage 2, plus while last rain falls
   const showSprinkler = stage > 0 && stage < 3 ? true : isRaining;
 
   React.useEffect(() => {
@@ -73,13 +71,13 @@ export function PotAnimation() {
     }
   }, [showSprinkler, hasSprinklerShown]);
 
-  // dashed kiša (sve linije idu od tuša prema dolje)
+  // rain paths — all lines flow from the sprinkler downward
   const RAIN_PATHS = [
     "M30.498 25V128",
     "M22.4979 25L16.0756 128",
     "M38.498 25L44.9204 128",
     "M46.498 25.3026L60.5181 127.446",
-    // zadnju liniju okrećemo da start bude gore
+    // last line reversed so start is at top
     "M14.5181 25.3026L0.498047 127.446",
   ];
 
@@ -98,7 +96,7 @@ export function PotAnimation() {
           animate={
             showSprinkler
               ? {
-                  // ➜ ulaz: sklizne dolje
+                  // → entry: slides down
                   opacity: 1,
                   y: [-28, -16, 0],
                   transition: {
@@ -108,8 +106,8 @@ export function PotAnimation() {
                 }
               : hasSprinklerShown
               ? {
-                  // ➜ izlaz (tek nakon što je nekad bio vidljiv):
-                  // mali pop pa van gore
+                  // → exit (only after it has been shown once):
+                  // small pop then out upward
                   opacity: 1,
                   y: [0, -4, -28],
                   transition: {
@@ -118,19 +116,19 @@ export function PotAnimation() {
                   },
                 }
               : {
-                  // prvi load, dok ga još nitko nije pozvao:
+                  // initial load, before it has ever been triggered:
                   opacity: 0,
                   y: -28,
                 }
           }
         >
           {/* top pipe */}
-          <path d="M27.498 0V5H34.498V0" stroke="var(--color-60)" />
+          <path d="M27.498 0V5H34.498V0" stroke="var(--color-text-secondary)" />
           {/* dome */}
           <path
             d="M30.998 4.5C39.4147 4.5 46.9514 9.7128 49.9219 17.5879L51.7754 22.5H10.2207L12.0742 17.5879C15.0446 9.7128 22.5814 4.5 30.998 4.5Z"
-            fill="var(--color-0)"
-            stroke="var(--color-60)"
+            fill="var(--color-bg)"
+            stroke="var(--color-text-secondary)"
           />
           {/* bottom bar */}
           <rect
@@ -139,8 +137,8 @@ export function PotAnimation() {
             width="44"
             height="2"
             rx="1"
-            fill="var(--color-0)"
-            stroke="var(--color-60)"
+            fill="var(--color-bg)"
+            stroke="var(--color-text-secondary)"
           />
 
           {/* RAIN LINES – dashed + mask animacija */}
@@ -159,9 +157,9 @@ export function PotAnimation() {
                     animate={
                       isRaining
                         ? {
-                            // nema → full → nema
+                            // none → full → none
                             pathLength: [0, 1, 0],
-                            // tail ide prema dolje (nestane na dnu)
+                            // tail moves downward (disappears at bottom)
                             pathOffset: [0, 0, 1],
                             opacity: [0, 1, 0],
                           }
@@ -176,10 +174,10 @@ export function PotAnimation() {
                 </mask>
               </defs>
 
-              {/* vidljiva dashed voda kroz masku */}
+              {/* visible dashed water through mask */}
               <motion.path
                 d={d}
-                stroke="#3F3C35"
+                stroke="var(--color-text-tertiary)"
                 strokeWidth={1.5}
                 strokeLinecap="round"
                 strokeDasharray="4 6"
@@ -207,14 +205,14 @@ export function PotAnimation() {
         <motion.div
           className="relative inline-flex rounded-full"
           style={{
-            outline: "1px solid transparent", // ⭐ uvijek postoji, samo je nevidljiv
+            outline: "1px solid transparent", // always present, invisible until hover
             outlineOffset: "2px",
           }}
           whileHover={
             isRaining
               ? {}
               : {
-                  outlineColor: "var(--color-40)", // ⭐ animiramo samo boju, bez flickera
+                  outlineColor: "var(--color-border-secondary)",
                 }
           }
           transition={{
@@ -231,7 +229,7 @@ export function PotAnimation() {
     items-center justify-center
     overflow-hidden
     rounded-full
-    border border-[var(--color-50)]
+    border border-color-text-tertiary
     bg-transparent
     type-body-xs
     disabled:cursor-default disabled:opacity-80
@@ -239,7 +237,7 @@ export function PotAnimation() {
           >
             {/* “voda” – vertikalni tank, prazni se OD GORE PREMA DOLJE */}
             <motion.span
-              className="absolute inset-x-0 bottom-0 z-0 bg-[rgba(var(--color-10-rgb),0.85)]"
+              className="absolute inset-x-0 bottom-0 z-0 bg-color-border"
               initial={false}
               animate={{
                 height: `${tankLevel * 100}%`,
@@ -247,7 +245,7 @@ export function PotAnimation() {
               transition={{ duration: 0.4 }}
             />
 
-            <span className="relative z-10 whitespace-nowrap text-color-90">
+            <span className="relative z-10 whitespace-nowrap text-color-text-primary">
               {label}
             </span>
           </button>

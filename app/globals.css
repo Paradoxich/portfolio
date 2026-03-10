@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* =========================================
-   DESIGN TOKENS (jedini izvor istine)
+   DESIGN TOKENS
    ========================================= */
 
 :root {
@@ -18,55 +18,48 @@
   --color-60: #555a4b;
   --color-80: #A39E8E;
   --color-90: #f3f0e9;
-  --color-100: #ffffff;
-  
-  /* RGB helpers for gradients/opacity */
+  /* RGB helpers for opacity/gradient variants */
   --color-0-rgb: 16, 15, 12;
   --color-10-rgb: 25, 24, 19;
-  --color-20-rgb: 35, 34, 27;
-  
-  /* Color blend overlay */
-  --color-blend: #43402C;
-  
-  /* Hover states (rgb for opacity variants) */
   --color-60-rgb: 85, 90, 75;
-  
+
   /* Contact form & status accents */
   --color-success: #18C340;
   --color-input-bg: var(--color-05);
   --color-input-border: var(--color-border);
-  --color-input-border-hover: #2E3027;
-  --color-input-placeholder: #565A4F;
-  
-  /* Accent/button fill */
-  --color-accent: #84873d;
+  --color-input-border-hover: var(--color-40);
+  --color-input-placeholder: var(--color-60);
 
   /* Decorative graphic accent (dots, highlights in illustrations) */
   --color-graphic-muted: #6F6B5F;
-  
-  /* Image filter for theme */
+
+  /* Image filter for theme switching */
   --image-filter: none;
 
-  /* Usage aliases */
-  --color-bg: var(--color-0); /* page background / outline card bg */
-  --color-bg-surface: var(--color-20); /* filled card bg */
-  --color-bg-muted: var(--color-10); /* muted card bg */
-  --color-border-subtle: var(--color-20); /* subtle border – experiment cards, inset surfaces */
-  --color-border: var(--color-30); /* main border */
+  /* Semantic color aliases */
+  --color-bg: var(--color-0);              /* page background / outline card bg */
+  --color-bg-card: var(--color-05);        /* card surface bg (card-tinted, card-interactive) */
+  --color-bg-muted: var(--color-10);       /* hover / muted bg */
+  --color-bg-surface: var(--color-20);     /* raised / active surface bg */
+  --color-border-inset: var(--color-10);   /* structural dividers – nav, drawer, layout separators */
+  --color-border-subtle: var(--color-20);  /* subtle border – experiment cards, inset surfaces */
+  --color-border: var(--color-30);         /* main border */
   --color-border-secondary: var(--color-40); /* secondary / hover border */
   --color-text-primary: var(--color-90);
   --color-text-secondary: var(--color-80);
+  --color-text-tertiary: var(--color-60);  /* decorative / disabled / icon tint */
+  --color-interactive-hover: color-mix(in srgb, var(--color-30) 50%, transparent); /* nav item hover / active bg */
 
   /* Type scale */
-  --font-size-xxxs: 12px;
-  --font-size-xxs: 13px;
-  --font-size-xs: 14px;
-  --font-size-sm: 16px;
-  --font-size-md: 20px;
-  --font-size-lg: 24px;
-  --font-size-xl: 32px;
-  --font-size-2xl: 40px;
-  --font-size-3xl: 48px;
+  --font-size-xxxs: 12px;  /* labels, badges */
+  --font-size-xs: 14px;    /* UI text – body-sm, meta */
+  --font-size-base: 16px;  /* standard body, general UI */
+  --font-size-sm: 18px;    /* editorial / case-study body */
+  --font-size-md: 20px;    /* testimonial quotes */
+  --font-size-lg: 24px;    /* h4, card titles */
+  --font-size-xl: 32px;    /* h3, notes quote */
+  --font-size-2xl: 40px;   /* h2 */
+  --font-size-3xl: 48px;   /* h1, hero */
 
   /* Layout */
   --layout-container: 1400px; /* 1512 - 80 - 80 */
@@ -84,24 +77,23 @@
   --space-md: 12px;
   --space-base: 16px;
   --space-lg: 20px;
-  --space-xl: 24px; /* card padding */
+  --space-xl: 24px;    /* card padding */
   --space-2xl: 32px;
   --space-3xl: 40px;
   --space-4xl: 64px;
+  --space-5xl: 56px;   /* between 3xl and 4xl – stack-5xl / hero-gap */
+  --space-section: 120px; /* large section gap – page separators */
 
-  /* Sizes (case study / UI) */
+  /* Sizes */
   --size-nav-icon: 40px;
   --size-hero-placeholder: 500px;
 
   /* Line-height scale */
-  --line-height-none: 1;
-  --line-height-compact: 1.1;
-  --line-height-tight: 1.2;
-  --line-height-snug: 1.4;
-  --line-height-relaxed: 1.5;
-  --line-height-body: 1.6; /* 160% for hero/capability body */
-  --line-height-summary: 1.7; /* 170% for summary label */
-  --line-height-loose: 1.7;
+  --line-height-none: 1;      /* single-line labels, badges */
+  --line-height-heading: 1.1; /* display / all heading text */
+  --line-height-snug: 1.3;    /* card titles, medium content headings */
+  --line-height-ui: 1.45;     /* UI text, captions, short-form content */
+  --line-height-body: 1.6;    /* long-form body copy */
 
   /* Tracking scale */
   --tracking-tight: -0.03em;
@@ -124,12 +116,10 @@
     font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
       "Segoe UI", sans-serif;
 
-    /* GLOBAL GEIST OPENTYPE FEATURES */
     font-feature-settings: "ss02" 1, "ss03" 1;
 
-    /* GLOBAL SCROLLBAR STYLING */
     scrollbar-width: thin;
-    scrollbar-color: var(--color-40) transparent;
+    scrollbar-color: var(--color-border-secondary) transparent;
   }
 
   html::-webkit-scrollbar {
@@ -141,37 +131,36 @@
   }
 
   html::-webkit-scrollbar-thumb {
-    background-color: var(--color-40);
+    background-color: var(--color-border-secondary);
     border-radius: 4px;
   }
 
   html::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-60);
+    background-color: var(--color-text-tertiary);
   }
 
   body {
     margin: 0;
-    overflow-x: hidden;
   }
 
-  /* Layout container – koristiš className="layout-container" */
   .layout-container {
     max-width: var(--layout-container);
     margin-inline: auto;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
   }
 }
+
+/* =========================================
+   LAYOUT
+   ========================================= */
 
 @layer components {
   .page-shell {
     width: 100%;
     max-width: var(--layout-container);
     margin-inline: auto;
-    padding-left: var(--space-3xl);
-    padding-right: var(--space-3xl);
-    padding-top: var(--space-3xl);
-    padding-bottom: var(--space-3xl);
+    padding: var(--space-3xl);
   }
 
   .layout-grid {
@@ -186,7 +175,7 @@
 
   @media (min-width: 768px) {
     .hero-gap {
-      margin-bottom: calc(var(--space-2xl) + var(--space-xl));
+      margin-bottom: var(--space-5xl);
     }
   }
 
@@ -196,19 +185,10 @@
     margin-inline: auto;
   }
 
-  .section-offset {
-    margin-top: calc(var(--space-3xl) * 3);
-    margin-bottom: calc(var(--space-3xl) * 3);
-  }
-
-  .gap-feature {
-    gap: calc(var(--space-3xl) * 2);
-  }
-
-  /* Layout with sidebar */
   .with-sidebar {
     margin-left: 0;
   }
+
   @media (min-width: 768px) {
     .with-sidebar {
       margin-left: 230px;
@@ -217,720 +197,150 @@
 }
 
 /* =========================================
-   TYPE STYLES (utility / “type-*”)
-   Used by Projects, Illustrations, Notes, design-system.
-   For new Figma Home/Overview, prefer type-hero, type-capability-*.
+   TYPE STYLES (utility / "type-*")
+   Used by Projects, Illustrations, Notes, Experiments.
    ========================================= */
 
 @layer components {
-  /* Heading 1 — 48 / tight / tracking-tight / medium */
+  /* Heading 1 — 48 / heading(1.1) / tracking-tight / medium */
   .type-h1 {
-    @apply text-[48px] leading-tight tracking-tight font-medium text-color-text-primary;
+    font-size: var(--font-size-3xl);
+    @apply leading-heading tracking-tight font-medium text-color-text-primary;
   }
 
-  /* Heading 2 — 40 / 1.1 / tracking-tight / medium */
+  /* Heading 2 — 40 / heading(1.1) / tracking-tight / medium */
   .type-h2 {
-    @apply text-[40px] tracking-tight font-medium text-color-text-primary;
-    line-height: var(--line-height-compact);
+    font-size: var(--font-size-2xl);
+    @apply leading-heading tracking-tight font-medium text-color-text-primary;
   }
 
-  /* Heading 3 — 32 / tight / tracking-tight / medium */
+  /* Heading 3 — 32 / heading(1.1) / tracking-tight / medium */
   .type-h3 {
-    @apply text-[32px] leading-tight tracking-tight font-medium text-color-text-primary;
+    font-size: var(--font-size-xl);
+    @apply leading-heading tracking-tight font-medium text-color-text-primary;
   }
 
-  /* Heading 4 — 20 / snug / tracking-tight / medium */
+  /* Heading 4 — 24 / snug(1.3) / tracking-tight / medium */
   .type-h4 {
-    @apply text-[20px] leading-snug tracking-tight font-medium text-color-text-primary;
+    font-size: var(--font-size-lg);
+    @apply leading-snug tracking-tight font-medium text-color-text-primary;
   }
 
-  /* Body — 16 / loose / normal / regular */
+  /* Body — 16 / body(1.6) / normal / regular */
   .type-body {
-    @apply text-[16px] leading-loose tracking-normal font-normal text-color-text-secondary;
+    font-size: var(--font-size-base);
+    @apply leading-body tracking-normal font-normal text-color-text-secondary;
   }
 
-  /* Body strong — 16 / loose / normal / medium + primary color */
+  /* Body large — 18 / body(1.6) / normal / regular — editorial / case-study */
+  .type-body-lg {
+    font-size: var(--font-size-sm);
+    @apply leading-body tracking-normal font-normal text-color-text-secondary;
+  }
+
+  /* Body strong — 16 / body(1.6) / normal / medium */
   .type-body-strong {
-    @apply text-[16px] leading-loose tracking-normal font-medium text-color-text-primary;
+    font-size: var(--font-size-base);
+    @apply leading-body tracking-normal font-medium text-color-text-primary;
   }
 
-  /* Small body — 14 / snug / tight / regular */
+  /* Small body — 14 / ui(1.45) / tight / regular */
   .type-body-sm {
-    @apply text-[14px] leading-snug tracking-tight font-normal text-color-text-secondary;
+    font-size: var(--font-size-xs);
+    @apply leading-ui tracking-tight font-normal text-color-text-secondary;
   }
 
-  /* Small body strong — 14 / snug / tight / medium + primary color */
+  /* Small body strong — 14 / ui(1.45) / tight / medium */
   .type-body-sm-strong {
-    @apply text-[14px] leading-snug tracking-tight font-medium text-color-text-primary;
+    font-size: var(--font-size-xs);
+    @apply leading-ui tracking-tight font-medium text-color-text-primary;
   }
 
-  /* XS body — 12 / loose / normal / medium */
+  /* XS body — 12 / ui(1.45) / normal / medium */
   .type-body-xs {
-    @apply text-[12px] leading-loose tracking-normal font-medium text-color-text-secondary;
+    font-size: var(--font-size-xxxs);
+    @apply leading-ui tracking-normal font-medium text-color-text-secondary;
   }
 
-  /* CTA — 13 / relaxed / expanded / medium */
-  .type-cta {
-    @apply text-[13px] leading-relaxed tracking-expanded font-medium text-color-text-primary;
-  }
-
-  /* Label — 12 / relaxed / expanded / medium */
+  /* Label — 12 / none / expanded / medium / uppercase */
   .type-label {
-    @apply text-[12px] tracking-expanded font-medium uppercase text-color-text-secondary;
+    font-size: var(--font-size-xxxs);
+    @apply tracking-expanded font-medium uppercase text-color-text-secondary;
     line-height: var(--line-height-none);
   }
 
-  /* Summary label — 12 / 170% / medium / uppercase */
-  .type-summary-label {
-    font-size: var(--font-size-xxxs);
-    font-weight: var(--font-weight-medium);
-    line-height: var(--line-height-summary);
-    text-transform: uppercase;
-    color: var(--color-90);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
-
-  /* Caption — 14 / 160% / regular (secondary small text) */
-  .type-caption {
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-body);
-    font-weight: var(--font-weight-regular);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
-
-  /* Experiments label — 14 / 150% / regular */
-  .type-experiment-label {
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-regular);
-    line-height: 1.5;
-    color: var(--color-80);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
-
-  /* Hero — 48 / 110% / -1.44px (landing/hero sections) */
-  .type-hero {
-    font-size: var(--font-size-3xl);
-    line-height: var(--line-height-compact);
-    letter-spacing: -1.44px;
-    font-weight: var(--font-weight-medium);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
-
-  /* Notes quote — 32 / 130% / regular */
-  .type-notes-quote {
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 1.3;
-    color: var(--color-80);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
-
-  /* Notes footnote — 14 / 150% / regular */
-  .type-notes-note {
-    font-size: var(--font-size-xs);
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--color-40);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
-
-  /* Home capability card title/body — 15 / 150% / 0 tracking */
-  .type-capability-text {
-    font-size: 15px;
-    line-height: 1.5;
-    letter-spacing: 0;
-  }
-
-  /* Illustration caption — 16 / 150% / 1% tracking */
-  .type-illustration-caption {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0.01em;
-    color: var(--color-80);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
-
-  /* Testimonial card quote — 20 / 150% (other text) */
-  .type-testimonial-quote {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--color-80);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
-
-  /* Testimonial card quote — highlighted first sentence */
-  .type-testimonial-quote-highlight {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.5;
-    color: var(--color-90);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
-
-  /* Testimonial author name — 14 / 150% / medium */
-  .type-testimonial-author {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.5;
-    color: var(--color-90);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
-
-  /* Testimonial author role — 14 / 150% / regular */
-  .type-testimonial-role {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--color-80);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
+  /* Testimonial quote — 20 / ui(1.45) / regular — page-scoped, see app/testimonials/page.module.css */
+  /* Testimonial quote-highlight — 20 / ui(1.45) / medium — page-scoped, see app/testimonials/page.module.css */
+  /* Notes quote — 32 / snug / regular — page-scoped, see app/notes/page.module.css */
+  /* Notes note — 14 / ui / very muted (color-40) — page-scoped, see app/notes/page.module.css */
+  /* Link pill — surface with hover — component-scoped, see components/projects/CaseStudyLayout.module.css */
 }
 
 /* =========================================
-   BUTTONS (reusable system)
+   SURFACES
    ========================================= */
 
 @layer components {
-  .btn-primary,
-  .btn-secondary,
-  .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    height: 40px;
-    padding: 8px 16px;
-    gap: 4px;
-    border-radius: var(--radius-full);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    transition: background-color 0.2s ease, border-color 0.2s ease,
-      color 0.2s ease;
+  /* Interactive card surface token — card-bg + secondary border. Full implementation in ProjectCard.module.css. */
+  .card-interactive {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    transition: background-color 0.18s ease;
   }
 
-  .btn-primary {
-    border: 1px solid var(--color-40);
-    background-color: var(--color-accent);
-    color: var(--color-90);
+  .card-interactive:hover {
+    background-color: var(--color-bg-muted);
   }
 
-  .btn-primary:hover {
-    filter: brightness(1.1);
+  /* Ghost / outline card — page bg + hairline inset border. Non-interactive. */
+  .card-ghost {
+    @apply bg-color-bg border border-color-border-inset;
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
   }
 
-  .btn-secondary {
-    border: 1px solid var(--color-40);
-    background-color: var(--color-20);
-    color: var(--color-90);
-  }
-
-  .btn-secondary:hover {
-    background-color: var(--color-10);
-  }
-
-  .btn-ghost {
-    border: 1px solid transparent;
-    background-color: transparent;
-    color: var(--color-80);
-  }
-
-  .btn-ghost:hover {
-    background-color: var(--color-10);
-    color: var(--color-90);
-  }
-}
-
-/* =========================================
-   SURFACES (card utilities)
-   ========================================= */
-
-@layer components {
-  /* Primary outline card – glavna kartica u layoutu */
-  .card {
-    @apply bg-color-bg border border-color-border;
-    border-radius: var(--radius-lg); /* radius scale token */
-    padding: var(--space-xl); /* spacing scale token: 24px */
-  }
-
-  /* Experiments page cards (Water plant / Theme switcher / Testimonials) */
-  .experiment-card {
+  /*
+   * Tinted non-clickable card surface. Uses --color-bg-card (color-05, one
+   * step above pure bg) with a subtle border. Not interactive.
+   *
+   * Card surface hierarchy:
+   *   1. card-interactive  — clickable, prominent bg (ProjectCard.module.css)
+   *   2. .card-tinted      — non-clickable, lightly tinted bg  ← this one
+   *   3. .card-ghost       — non-clickable, outline/ghost
+   *
+   * .card-tinted-inner is the recessed content well used inside .card-tinted.
+   */
+  .card-tinted {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xl); /* 24px */
-    padding: var(--space-xl); /* 24px */
-    border-radius: var(--radius-lg); /* 20px */
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
     border: 1px solid var(--color-border-subtle);
-    background: var(--color-05);
+    background: var(--color-bg-card);
   }
 
-  .experiment-inner {
-    border-radius: var(--radius-md); /* 12px */
+  .card-tinted-inner {
+    border-radius: var(--radius-md);
     border: 1px solid var(--color-border-subtle);
     background: var(--color-bg);
   }
 
-  /* CTA / filled surface */
-  .card-cta {
-    @apply bg-color-bg-surface border border-color-border-secondary;
-    border-radius: var(--radius-md);
-    padding: var(--space-xl);
-  }
-
-  .project-card-link {
-    transition: border-color 0.2s ease;
-  }
-
-  .project-card-link:hover {
-    border-color: var(--color-60);
-  }
-
-  /* Project card – projects index (design system tokens, theme-switcher aware) */
-  .project-card {
-    position: relative;
-    background-color: rgba(var(--color-10-rgb), 0.5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-2xl);
-    height: 280px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    overflow: hidden;
-  }
-
-  /* Background graphic – separate layer so we can apply theme image-filter (e.g. grayscale for cool) */
-  .project-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("/bg-project-placeholder.svg");
-    background-position: right center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: var(--image-filter);
-    pointer-events: none;
-  }
-
-  .project-card-label {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 12px;
-    border-radius: 1000px;
-    background: var(--color-bg-muted);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 150%;
-    color: var(--color-text-secondary);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-  }
-
-  .project-card-title {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 130%;
-    letter-spacing: -0.24px;
-    color: var(--color-text-primary);
-    font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
-    max-width: 420px;
-  }
-
-  /* Muted card surface */
-  .card-muted {
-    @apply bg-color-bg-muted border border-color-border;
-   border-radius: var(--radius-lg);
-   padding: var(--space-xl);
-  }
-
-  /* Compact inner surface panel */
-  .panel {
-    @apply bg-color-bg border border-color-border;
-    border-radius: var(--radius-md);
-    padding: calc(var(--space-sm) * 2);
-  }
-
-  .nav-pill {
-    @apply bg-color-bg-muted border border-color-border rounded-full;
-    padding: var(--space-sm) var(--space-xl); /* 8px top/bottom — 24px left/right */
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2xl); /* 32px spacing between links */
-  }
-
-  .nav-link {
-    @apply type-cta text-color-text-secondary;
-    transition: color 0.2s ease;
-  }
-
-  .nav-link:hover {
-    @apply text-color-text-primary;
-  }
-
-  .nav-link-active {
-    @apply type-cta text-color-text-primary;
-  }
 }
 
 /* =========================================
-   CTAs 
+   STACK UTILITIES
    ========================================= */
-@layer components {
-  /* CTA WRAPPER */
-  .btn-cta-wrapper {
-    cursor: pointer;
-  }
-
-  /* TEXT CTA */
-  .btn-cta {
-    @apply type-cta leading-[16px] text-color-text-secondary pr-10 inline-flex items-center;
-    transition: color 0.2s ease;
-  }
-
-  /* ICON CIRCLE BUTTON (32×32) */
-  .btn-cta-icon {
-    @apply absolute right-0 top-1/2 -translate-y-1/2 
-           w-8 h-8 grid place-items-center 
-           rounded-[20px] border border-color-border bg-color-bg 
-           transition-colors;
-    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  }
-
-  /* HOVER EFFECT — unified (triggered on wrapper) */
-  .btn-cta-wrapper:hover .btn-cta {
-    @apply text-color-text-primary;
-  }
-  .btn-cta-wrapper:hover .btn-cta-icon {
-    border-color: var(--color-50);
-    @apply text-color-text-primary;
-    transform: translateY(-50%) scale(1.02);
-  }
-
-  .btn-cta-wrapper:active .btn-cta-icon {
-    transform: translateY(-50%) scale(0.95);
-  }
-
-  /* LIFE GALLERY ARROWS */
-  .life-gallery-arrow {
-    transition: border-color 0.2s ease, transform 0.2s ease;
-  }
-
-  .life-gallery-arrow:hover {
-    border-color: var(--color-50);
-    transform: scale(1.02);
-  }
-
-  .life-gallery-arrow:active {
-    transform: scale(0.95);
-  }
-
-  /* PROJECT CLOSE BUTTON */
-  .project-close-button {
-    transition: border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
-  }
-
-  .project-close-button:hover {
-    border-color: var(--color-border, var(--color-40));
-    @apply text-color-text-primary;
-    transform: scale(1.02);
-  }
-
-  .project-close-button:active {
-    transform: scale(0.95);
-  }
-}
-
-@layer components {
-  /* INPUT CTA — “Tell me about your project…” */
-  .btn-input {
-    @apply inline-flex w-full items-center
-           rounded-full border border-color-border-secondary
-           bg-color-bg
-           h-12 pl-3 pr-12 text-left
-           cursor-pointer
-           transition-all duration-300 ease-out;
-  }
-
-  .btn-input:hover {
-    border-color: rgba(var(--color-60-rgb), 0.6);
-  }
-
-  .btn-input-text {
-    @apply type-body-sm text-color-60 transition-colors duration-300 ease-out;
-  }
-
-  .btn-input:hover .btn-input-text {
-    @apply text-color-text-secondary;
-  }
-
-  /* Circle icon inside input */
-  .btn-input-icon {
-    @apply w-8 h-8 grid place-items-center 
-           rounded-[20px] border border-color-border-secondary
-           bg-color-bg-surface
-           absolute right-2 top-1/2 -translate-y-1/2
-           cursor-pointer
-           transition-colors
-           hover:border-color-border hover:bg-color-bg-muted;
-  }
-
-  /* Hover border highlight for cards (uses dynamic theme color) */
-  .hover-border-highlight {
-    transition: border-color 0.3s ease-out;
-  }
-  .group:hover .hover-border-highlight {
-    border-color: rgba(var(--color-60-rgb), 0.6);
-  }
-
-  /* Input hover effect (uses dynamic theme color, not when focused) */
-  .input-hover:hover:not(:focus) {
-    border-color: rgba(var(--color-60-rgb), 0.6);
-  }
-}
-
-@layer components {
-  /* ===== I DESIGN — patterned surface ===== */
-  .card-i-design {
-    @apply relative overflow-hidden;
-  }
-
-  /* Pattern background */
-  .card-i-design::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--color-bg); /* isti kao ostatak stranice */
-    background-image: url("data:image/svg+xml,%3Csvg width='42' height='20' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23191813' fill-opacity='1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: repeat;
-    opacity: 1;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Left→right fade into bg */
-  .card-i-design::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to right,
-      var(--color-bg) 0%,
-      rgba(var(--color-0-rgb), 0) 55%
-    );
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* Content above pattern */
-  .card-i-design > * {
-    position: relative;
-    z-index: 2;
-  }
-
-  /* Pills (filled, bez bordera) */
-  .pill-filled {
-    @apply inline-flex items-center justify-center
-           rounded-full bg-color-bg-surface
-           px-6 py-2
-           type-body-sm-strong;
-  }
-
-  /* Link pill — design system tokens */
-  .link-pill {
-    @apply bg-color-bg-surface border border-color-border-secondary text-color-text-primary;
-  }
-  .link-pill:hover {
-    @apply bg-color-bg-muted;
-    text-decoration: underline;
-  }
-
-  /* Case study nav — 40px icon buttons (prev/next/all projects) */
-  .case-study-nav-btn {
-    width: var(--size-nav-icon);
-    height: var(--size-nav-icon);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--color-border);
-    @apply flex items-center justify-center text-color-text-secondary transition-colors;
-  }
-  .case-study-nav-btn:hover {
-    @apply text-color-text-primary;
-    border-color: var(--color-border-secondary);
-  }
-  .case-study-nav-btn-disabled {
-    width: var(--size-nav-icon);
-    height: var(--size-nav-icon);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--color-border);
-    @apply flex items-center justify-center text-color-text-secondary opacity-50;
-  }
-}
 
 @layer utilities {
-  .stack-xs > * + * {
-    margin-top: var(--space-xs);
-  }
-
-  .stack-sm > * + * {
-    margin-top: var(--space-sm);
-  }
-
-  .stack-md > * + * {
-    margin-top: var(--space-md);
-  }
-
-  .stack-lg > * + * {
-    margin-top: calc(var(--space-sm) * 2);
-  }
-
-  .stack-xl > * + * {
-    margin-top: var(--space-xl);
-  }
-
-  .stack-2xl > * + * {
-    margin-top: var(--space-2xl);
-  }
-
-  .stack-3xl > * + * {
-    margin-top: var(--space-3xl);
-  }
-
-  .stack-5xl > * + * {
-    margin-top: calc(var(--space-2xl) + var(--space-xl));
-  }
-
-  .stack-gutter > * + * {
-    margin-top: var(--layout-gutter);
-  }
-}
-
-/* ========== CHAT BUBBLE POP-IN (iMessage style) ========== */
-@keyframes bubbleIn {
-  0% {
-    opacity: 0;
-    transform: translateY(8px) scale(0.97);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(0) scale(1.02);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.animate-bubble {
-  animation: bubbleIn 0.32s ease-out;
-}
-
-/* ========== SLIDE IN (subtle, for mobile testimonials) ========== */
-@keyframes slideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-slide-in {
-  animation: slideIn 0.4s ease-out forwards;
-  opacity: 0;
-}
-
-/* ========== TYPING DOTS (3 bouncing dots) ========== */
-@keyframes typingDot {
-  0%,
-  60%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.5;
-  }
-  30% {
-    transform: translateY(-3px);
-    opacity: 1;
-  }
-}
-
-.typing-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background-color: var(--color-40); /* blago svjetlija nijansa teksta */
-  animation: typingDot 1s ease-in-out infinite;
-}
-
-.typing-dot-delay-1 {
-  animation-delay: 0.18s;
-}
-
-.typing-dot-delay-2 {
-  animation-delay: 0.36s;
-}
-
-/* ========== CASE STUDIES ARTICLE IMGS ========== */
-@layer components {
-  .project-media-full {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-@layer components {
-  /* ===== MODAL OVERLAY S NOISE-OM ===== */
-  .overlay-noise {
-    /* isto kao Figma: fill + blur */
-    background-color: rgba(var(--color-0-rgb), 0.3);
-    backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(25px);
-
-    /* subtle noise preko cijelog ekrana */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: auto;
-  }
-}
-
-@layer components {
-  .experience-fade {
-    @apply pointer-events-none absolute inset-x-0 bottom-0 h-12;
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--color-0-rgb), 0),
-      var(--color-bg)
-    );
-  }
-
-  .testimonials-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    background: linear-gradient(90deg, rgba(var(--color-0-rgb), 0) 39.69%, var(--color-0) 100%),
-      linear-gradient(270deg, rgba(var(--color-0-rgb), 0) 43.41%, var(--color-0) 100%);
-  }
-}
-
-@keyframes illustration-pan {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* =========================================
-   PROJECT MODAL SCROLLBAR POSITIONING
-   ========================================= */
-@layer components {
-  .project-modal-scroll {
-    /* Extend scrollable area 16px into card padding (24px - 8px = 16px) */
-    /* This positions scrollbar 8px from modal edge instead of 24px */
-    margin-right: -16px;
-    padding-right: 16px;
-  }
+  .stack-xs  > * + * { margin-top: var(--space-xs);   }
+  .stack-sm  > * + * { margin-top: var(--space-sm);   }
+  .stack-md  > * + * { margin-top: var(--space-md);   }
+  .stack-lg  > * + * { margin-top: var(--space-base); }
+  .stack-xl  > * + * { margin-top: var(--space-xl);   }
+  .stack-2xl > * + * { margin-top: var(--space-2xl);  }
+  .stack-5xl > * + * { margin-top: var(--space-5xl);  }
 }
 

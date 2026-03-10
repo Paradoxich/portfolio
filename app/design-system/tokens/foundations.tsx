@@ -2,135 +2,98 @@
 
 // Font-size scale
 export const fontSizeTokens = [
-  { token: "font-size.xxxs", value: "12px" },
-  { token: "font-size.xxs", value: "13px" },
-  { token: "font-size.xs", value: "14px" },
-  { token: "font-size.sm", value: "16px" },
-  { token: "font-size.md", value: "20px" },
-  { token: "font-size.lg", value: "24px" },
-  { token: "font-size.xl", value: "32px" },
-  { token: "font-size.2xl", value: "40px" },
-  { token: "font-size.3xl", value: "48px" },
+  { token: "font-size.xxxs", value: "12px", role: "Labels, badges" },
+  { token: "font-size.xs",   value: "14px", role: "UI text – body-sm, meta" },
+  { token: "font-size.base", value: "16px", role: "Standard body, general UI" },
+  { token: "font-size.sm",   value: "18px", role: "Editorial / case-study body" },
+  { token: "font-size.md",   value: "20px", role: "Testimonial quotes" },
+  { token: "font-size.lg",   value: "24px", role: "h4, card titles" },
+  { token: "font-size.xl",   value: "32px", role: "h3, notes quote" },
+  { token: "font-size.2xl",  value: "40px", role: "h2" },
+  { token: "font-size.3xl",  value: "48px", role: "h1" },
 ];
 
-// Spacing scale (4px grid)
+// Spacing scale (4px base grid)
 export const spacingTokens = [
-  { token: "space.xs", value: "4px" },
-  { token: "space.sm", value: "8px" },
-  { token: "space.md", value: "12px" },
-  { token: "space.lg", value: "20px" },
-  { token: "space.xl", value: "24px" },
-  { token: "space.2xl", value: "32px" },
-  { token: "space.3xl", value: "40px" },
+  { token: "space.xs",      value: "4px" },
+  { token: "space.sm",      value: "8px" },
+  { token: "space.md",      value: "12px" },
+  { token: "space.base",    value: "16px" },
+  { token: "space.lg",      value: "20px" },
+  { token: "space.xl",      value: "24px" },
+  { token: "space.2xl",     value: "32px" },
+  { token: "space.3xl",     value: "40px" },
+  { token: "space.4xl",     value: "64px" },
+  { token: "space.5xl",     value: "56px" },
+  { token: "space.section", value: "120px" },
 ];
 
 // Layout tokens (container + gutter)
 export const layoutTokens = [
-  {
-    token: "size.container",
-    value: "1352px",
-  },
-  {
-    token: "space.gutter",
-    value: "20px",
-  },
+  { token: "size.container", value: "1400px" },
+  { token: "space.gutter",   value: "20px" },
 ];
 
 // Line-height scale
 export const lineHeightTokens = [
-  { token: "line-height.none", value: "1" },
-  { token: "line-height.compact", value: "1.1" },
-  { token: "line-height.tight", value: "1.2" },
-  { token: "line-height.snug", value: "1.4" },
-  { token: "line-height.relaxed", value: "1.5" },
-  { token: "line-height.body", value: "1.6" },
-  { token: "line-height.loose", value: "1.7" },
+  { token: "line-height.none",    value: "1",    role: "Single-line labels, badges" },
+  { token: "line-height.heading", value: "1.1",  role: "All display and heading text" },
+  { token: "line-height.snug",    value: "1.3",  role: "Card titles, medium content headings" },
+  { token: "line-height.ui",      value: "1.45", role: "UI text, captions, short-form content" },
+  { token: "line-height.body",    value: "1.6",  role: "Long-form body copy" },
 ];
 
 // Letter-spacing scale
 export const trackingTokens = [
-  { token: "tracking.tight", value: "-0.03em" },
-  { token: "tracking.normal", value: "0em" },
+  { token: "tracking.tight",    value: "-0.03em" },
+  { token: "tracking.normal",   value: "0em" },
   { token: "tracking.expanded", value: "0.02em" },
 ];
 
 // Font-weight scale
 export const fontWeightTokens = [
   { token: "font-weight.regular", value: "400" },
-  { token: "font-weight.medium", value: "500" },
+  { token: "font-weight.medium",  value: "500" },
 ];
 
-// Color scale – neutral ramp (both themes)
+// Color scale – neutral ramp (all themes)
 export const colorTokens = [
-  { token: "color-0", warm: "#100F0C", cool: "#0a0a0a" },
-  { token: "color-05", warm: "#151310", cool: "#0f0f0f" },
-  { token: "color-10", warm: "#1B1F17", cool: "#141414" },
-  { token: "color-20", warm: "#23221B", cool: "#1f1f1f" },
-  { token: "color-30", warm: "#272921", cool: "#262626" },
-  { token: "color-40", warm: "#2E3027", cool: "#333333" },
-  { token: "color-50", warm: "#424539", cool: "#484848" },
-  { token: "color-60", warm: "#555A4B", cool: "#5c5c5c" },
-  { token: "color-80", warm: "#A39E8E", cool: "#a3a3a3" },
-  { token: "color-90", warm: "#F3F0E9", cool: "#e5e5e5" },
-  { token: "color-100", warm: "#FFFFFF", cool: "#ffffff" },
+  { token: "color-0",   warm: "#100F0C", cool: "#0a0a0a", light: "#FAFAFA" },
+  { token: "color-05",  warm: "#151310", cool: "#0f0f0f", light: "#F2F2F2" },
+  { token: "color-10",  warm: "#1B1F17", cool: "#141414", light: "#E3E3E3" },
+  { token: "color-20",  warm: "#23221B", cool: "#1f1f1f", light: "#D9D9D9" },
+  { token: "color-30",  warm: "#272921", cool: "#262626", light: "#CCCCCC" },
+  { token: "color-40",  warm: "#2E3027", cool: "#333333", light: "#BFBFBF" },
+  { token: "color-50",  warm: "#424539", cool: "#484848", light: "#B3B3B3" },
+  { token: "color-60",  warm: "#555A4B", cool: "#5c5c5c", light: "#A6A6A6" },
+  { token: "color-80",  warm: "#A39E8E", cool: "#a3a3a3", light: "#4D4D4D" },
+  { token: "color-90",  warm: "#F3F0E9", cool: "#e5e5e5", light: "#0D0D0D" },
 ];
 
 // Theming tokens – dynamic values that change with color scheme
 export const themingTokens = [
-  { token: "color-0-rgb", warm: "16, 15, 12", cool: "10, 10, 10", role: "RGB for gradient opacity" },
-  { token: "color-20-rgb", warm: "35, 34, 27", cool: "31, 31, 31", role: "RGB for gradient opacity" },
-  { token: "color-60-rgb", warm: "85, 90, 75", cool: "92, 92, 92", role: "RGB for hover opacity" },
-  { token: "color-blend", warm: "#43402C", cool: "#3a3a3a", role: "Illustration color overlay" },
-  { token: "color-accent", warm: "#84873d", cool: "#6b6b6b", role: "Button fill (e.g. Water button)" },
-  { token: "image-filter", warm: "none", cool: "grayscale(100%)", role: "Theme-based image filter" },
+  { token: "color-0-rgb",  warm: "16, 15, 12",  cool: "10, 10, 10",  light: "250, 250, 250", role: "RGB for gradient opacity" },
+  { token: "color-10-rgb", warm: "25, 24, 19",  cool: "20, 20, 20",  light: "227, 227, 227", role: "RGB for translucent surface fills" },
+  { token: "color-60-rgb", warm: "85, 90, 75",  cool: "92, 92, 92",  light: "166, 166, 166", role: "RGB for hover opacity" },
+  { token: "image-filter", warm: "none",        cool: "grayscale(100%)", light: "none",       role: "Theme-based image filter" },
 ];
 
 // Border-radius scale
 export const radiusTokens = [
-  { token: "radius.sm", value: "8px" },
-  { token: "radius.md", value: "12px" },
-  { token: "radius.lg", value: "20px" },
+  { token: "radius.sm",   value: "8px" },
+  { token: "radius.md",   value: "12px" },
+  { token: "radius.lg",   value: "20px" },
   { token: "radius.full", value: "9999px" },
 ];
 
 // Layout grid tokens (12-col grid)
 export const layoutGridTokens = [
-  {
-    token: "grid.columns",
-    value: "12",
-  },
-  {
-    token: "grid.gutter",
-    value: "20px",
-  },
-  {
-    token: "grid.margin",
-    value: "40px",
-  },
+  { token: "grid.columns", value: "12" },
+  { token: "grid.gutter",  value: "20px" },
 ];
 
-export const layoutColumnTokens = [
-  { token: "col.1", value: "1fr" },
-  { token: "col.2", value: "2fr" },
-  { token: "col.3", value: "3fr" },
-  { token: "col.4", value: "4fr" },
-  { token: "col.5", value: "5fr" },
-  { token: "col.6", value: "6fr" },
-  { token: "col.7", value: "7fr" },
-  { token: "col.8", value: "8fr" },
-  { token: "col.9", value: "9fr" },
-  { token: "col.10", value: "10fr" },
-  { token: "col.11", value: "11fr" },
-  { token: "col.12", value: "12fr" },
-];
-
+// Layout container tokens
 export const layoutContainerTokens = [
-  {
-    token: "container.max-width",
-    value: "1352px",
-  },
-  {
-    token: "container.padding.x",
-    value: "40px",
-  },
+  { token: "container.max-width", value: "1400px" },
+  { token: "container.padding.x", value: "40px" },
 ];

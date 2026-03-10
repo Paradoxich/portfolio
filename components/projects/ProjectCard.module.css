@@ -1,0 +1,28 @@
+/* Layout overrides on top of the global .card-interactive surface token */
+.card {
+  position: relative;
+  background-color: color-mix(in srgb, var(--color-30) 40%, transparent);
+  padding: var(--space-2xl); /* override card-interactive's space-xl */
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: var(--color-30);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-ui);
+  color: var(--color-text-secondary);
+  font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+}

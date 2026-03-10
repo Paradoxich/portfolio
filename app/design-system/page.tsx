@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import React, { useState, type ReactNode } from "react";
 import { PageShell } from "@/components/layout/PageShell";
 import {
   // foundations
@@ -21,7 +21,6 @@ import {
   spacingUtilityTokens,
   radiusUtilityTokens,
   surfaceUtilities,
-  buttonUtilities,
   layoutUtilities,
 } from "./tokens/index";
 
@@ -45,6 +44,10 @@ export default function DesignSystemPage() {
 
   return (
     <PageShell className="stack-xl w-full min-w-0">
+      <div
+        className="stack-xl w-full min-w-0"
+        style={{ "--color-border": "var(--color-10)", "--color-border-subtle": "var(--color-10)" } as React.CSSProperties}
+      >
         {/* Header */}
         <header className="stack-md">
           <h1 className="type-h1">Design System</h1>
@@ -56,7 +59,7 @@ export default function DesignSystemPage() {
         </header>
 
         {/* Tabs */}
-        <div className="inline-flex items-center gap-1 rounded-full border border-color-border bg-color-bg-muted p-1">
+        <div className="inline-flex items-center gap-1 rounded-full border border-color-border-subtle bg-color-05 p-1">
           {tabs.map((tab) => {
             const isActive = tab.id === activeTab;
             return (
@@ -78,6 +81,7 @@ export default function DesignSystemPage() {
         {/* Tab content */}
         {activeTab === "foundations" && <FoundationsTab />}
         {activeTab === "utilities" && <UtilitiesTab />}
+      </div>
     </PageShell>
   );
 }
@@ -98,7 +102,7 @@ function FoundationsTab() {
       {/* =========================
           TYPOGRAPHY (4 cols)
       ========================== */}
-      <section className="card stack-xl">
+      <section className="border-t border-color-border pt-2xl stack-xl">
         <SectionHeader
           label="Typography"
           description="Usage-agnostic type scale"
@@ -111,7 +115,7 @@ function FoundationsTab() {
             { title: "Tracking", tokens: trackingTokens },
             { title: "Font weight", tokens: fontWeightTokens },
           ].map((group) => (
-            <div key={group.title} className="card rounded-xl p-4">
+            <div key={group.title} className="panel">
               <p className="type-body-sm-strong mb-3">
                 {group.title}
               </p>
@@ -124,7 +128,7 @@ function FoundationsTab() {
       {/* =========================
           COLOR + RADIUS (2 cols)
       ========================== */}
-      <section className="card stack-xl">
+      <section className="border-t border-color-border pt-2xl stack-xl">
         <SectionHeader
           label="Color & Radius"
           description="Foundational visuals"
@@ -141,6 +145,7 @@ function FoundationsTab() {
                     <Th>Token</Th>
                     <Th>Warm</Th>
                     <Th>Cool</Th>
+                    <Th>Light</Th>
                   </tr>
                 </thead>
                 <tbody>
@@ -150,24 +155,17 @@ function FoundationsTab() {
                       className="border-b border-color-border last:border-0"
                     >
                       <Td>{c.token}</Td>
-                      <Td>
-                        <div className="flex items-center gap-2">
-                          <span
-                            className="inline-block h-4 w-4 rounded-full border border-color-border"
-                            style={{ backgroundColor: c.warm }}
-                          />
-                          <span className="type-body-xs">{c.warm}</span>
-                        </div>
-                      </Td>
-                      <Td>
-                        <div className="flex items-center gap-2">
-                          <span
-                            className="inline-block h-4 w-4 rounded-full border border-color-border"
-                            style={{ backgroundColor: c.cool }}
-                          />
-                          <span className="type-body-xs">{c.cool}</span>
-                        </div>
-                      </Td>
+                      {([c.warm, c.cool, c.light] as string[]).map((val, i) => (
+                        <Td key={i}>
+                          <div className="flex items-center gap-2">
+                            <span
+                              className="inline-block h-4 w-4 rounded-full border border-color-border"
+                              style={{ backgroundColor: val }}
+                            />
+                            <span className="type-body-xs">{val}</span>
+                          </div>
+                        </Td>
+                      ))}
                     </tr>
                   ))}
                 </tbody>
@@ -213,7 +211,7 @@ function FoundationsTab() {
       {/* =========================
           THEMING (dynamic tokens)
       ========================== */}
-      <section className="card stack-xl">
+      <section className="border-t border-color-border pt-2xl stack-xl">
         <SectionHeader
           label="Theming"
           description="Dynamic tokens for color scheme switching"
@@ -224,10 +222,11 @@ function FoundationsTab() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left">
               <thead>
-                <tr className="border-b border-color-border">
+                  <tr className="border-b border-color-border">
                   <Th>Token</Th>
                   <Th>Warm</Th>
                   <Th>Cool</Th>
+                  <Th>Light</Th>
                   <Th>Role</Th>
                 </tr>
               </thead>
@@ -238,32 +237,21 @@ function FoundationsTab() {
                     className="border-b border-color-border last:border-0"
                   >
                     <Td>{t.token}</Td>
-                    <Td>
-                      {t.warm.startsWith("#") ? (
-                        <div className="flex items-center gap-2">
-                          <span
-                            className="inline-block h-4 w-4 rounded-full border border-color-border"
-                            style={{ backgroundColor: t.warm }}
-                          />
-                          <span className="type-body-xs">{t.warm}</span>
-                        </div>
-                      ) : (
-                        <span className="type-body-xs">{t.warm}</span>
-                      )}
-                    </Td>
-                    <Td>
-                      {t.cool.startsWith("#") ? (
-                        <div className="flex items-center gap-2">
-                          <span
-                            className="inline-block h-4 w-4 rounded-full border border-color-border"
-                            style={{ backgroundColor: t.cool }}
-                          />
-                          <span className="type-body-xs">{t.cool}</span>
-                        </div>
-                      ) : (
-                        <span className="type-body-xs">{t.cool}</span>
-                      )}
-                    </Td>
+                    {([t.warm, t.cool, t.light] as string[]).map((val, i) => (
+                      <Td key={i}>
+                        {val.startsWith("#") ? (
+                          <div className="flex items-center gap-2">
+                            <span
+                              className="inline-block h-4 w-4 rounded-full border border-color-border"
+                              style={{ backgroundColor: val }}
+                            />
+                            <span className="type-body-xs">{val}</span>
+                          </div>
+                        ) : (
+                          <span className="type-body-xs">{val}</span>
+                        )}
+                      </Td>
+                    ))}
                     <Td>{t.role}</Td>
                   </tr>
                 ))}
@@ -276,7 +264,7 @@ function FoundationsTab() {
       {/* =========================
           SPACING + LAYOUT (2 cols)
       ========================== */}
-      <section className="card stack-xl mb-10">
+      <section className="border-t border-color-border pt-2xl stack-xl">
         <SectionHeader
           label="Spacing & Layout"
           description="Structure + rhythm"
@@ -355,7 +343,7 @@ function UtilitiesTab() {
   return (
     <div className="space-y-8 md:space-y-10">
       {/* Typography utilities */}
-      <section className="card stack-lg">
+      <section className="border-t border-color-border pt-2xl stack-lg">
         <SectionHeader
           label="Typography · utilities"
           description="Type styles composed from foundations"
@@ -392,48 +380,8 @@ function UtilitiesTab() {
         </div>
       </section>
 
-      {/* Button utilities */}
-      <section className="card stack-lg">
-        <SectionHeader
-          label="Buttons · utilities"
-          description="Reusable button system (btn-primary, btn-secondary, btn-ghost)"
-        />
-
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse text-left">
-            <thead>
-              <tr className="border-b border-color-border">
-                <Th>Name</Th>
-                <Th>Role</Th>
-                <Th>Uses tokens</Th>
-                <Th>Description</Th>
-                <Th align="right">Preview</Th>
-              </tr>
-            </thead>
-            <tbody>
-              {buttonUtilities.map((b) => (
-                <tr
-                  key={b.name}
-                  className="border-b border-color-border last:border-0 align-top"
-                >
-                  <Td>{b.name}</Td>
-                  <Td>{b.role}</Td>
-                  <Td className="whitespace-pre-line">{b.tokens}</Td>
-                  <Td>{b.description}</Td>
-                  <Td align="right">
-                    <button type="button" className={b.className}>
-                      {b.name.replace("btn-", "")}
-                    </button>
-                  </Td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
       {/* Color utilities */}
-      <section className="card stack-lg">
+      <section className="border-t border-color-border pt-2xl stack-lg">
         <SectionHeader
           label="Color · utilities"
           description="Usage-based aliases"
@@ -447,6 +395,7 @@ function UtilitiesTab() {
                 <Th>Maps to</Th>
                 <Th>Warm</Th>
                 <Th>Cool</Th>
+                <Th>Light</Th>
               </tr>
             </thead>
             <tbody>
@@ -457,24 +406,17 @@ function UtilitiesTab() {
                 >
                   <Td>{c.token}</Td>
                   <Td>{c.mapsTo}</Td>
-                  <Td>
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="inline-block h-4 w-4 rounded-full border border-color-border"
-                        style={{ backgroundColor: c.warm }}
-                      />
-                      <span className="type-body-xs">{c.warm}</span>
-                    </div>
-                  </Td>
-                  <Td>
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="inline-block h-4 w-4 rounded-full border border-color-border"
-                        style={{ backgroundColor: c.cool }}
-                      />
-                      <span className="type-body-xs">{c.cool}</span>
-                    </div>
-                  </Td>
+                  {([c.warm, c.cool, c.light] as string[]).map((val, i) => (
+                    <Td key={i}>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className="inline-block h-4 w-4 rounded-full border border-color-border"
+                          style={{ backgroundColor: val }}
+                        />
+                        <span className="type-body-xs">{val}</span>
+                      </div>
+                    </Td>
+                  ))}
                 </tr>
               ))}
             </tbody>
@@ -483,7 +425,7 @@ function UtilitiesTab() {
       </section>
 
       {/* Radius utilities */}
-      <section className="card stack-lg">
+      <section className="border-t border-color-border pt-2xl stack-lg">
         <SectionHeader
           label="Border radius · utilities"
           description="Usage-based corner styles"
@@ -520,7 +462,7 @@ function UtilitiesTab() {
       </section>
 
       {/* Spacing utilities */}
-      <section className="card stack-lg">
+      <section className="border-t border-color-border pt-2xl stack-lg">
         <SectionHeader
           label="Spacing · utilities"
           description="Functional spacing patterns"
@@ -557,7 +499,7 @@ function UtilitiesTab() {
       </section>
 
       {/* Layout utilities */}
-      <section className="card stack-lg">
+      <section className="border-t border-color-border pt-2xl stack-lg">
         <SectionHeader
           label="Layout · utilities"
           description="Containers, grids, and section offsets"
@@ -591,7 +533,7 @@ function UtilitiesTab() {
       </section>
 
       {/* Surface utilities */}
-      <section className="card stack-lg mb-10">
+      <section className="border-t border-color-border pt-2xl stack-lg">
         <SectionHeader
           label="Surfaces · utilities"
           description="Cards & muted surfaces"

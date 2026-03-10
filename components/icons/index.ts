@@ -5,8 +5,6 @@ export { LabExperiment } from "./LabExperiment";
 export { Notes } from "./Notes";
 export { Heart } from "./Heart";
 export { Dropdown } from "./Dropdown";
-export { ExternalLink } from "./ExternalLink";
-export { Download } from "./Download";
 export { Copy } from "./Copy";
 export { ArrowLeft } from "./ArrowLeft";
 export { ArrowRight } from "./ArrowRight";

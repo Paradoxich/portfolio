@@ -22,8 +22,8 @@ export default function TestimonialsSection({
 
   return (
     <section className="col-span-12">
-      <div className="experiment-card w-full">
-        <div className="experiment-inner px-2xl py-2xl">
+      <div className="card-tinted w-full">
+        <div className="card-tinted-inner px-2xl py-2xl">
           <div className="flex min-h-[320px] items-center justify-center">
             <ChatAnimation
               messages={testimonials[activeTestimonial].messages}
@@ -62,10 +62,10 @@ export default function TestimonialsSection({
                   </span>
 
                   <span className="flex flex-col">
-                    <span className="type-body-xs font-normal leading-[1.3] text-color-text-primary">
+                    <span className="type-body-xs font-normal leading-snug text-color-text-primary">
                       {t.name}
                     </span>
-                    <span className="type-body-xs font-normal leading-[1.3]">
+                    <span className="type-body-xs font-normal leading-snug">
                       {t.role}
                     </span>
                   </span>
@@ -75,7 +75,7 @@ export default function TestimonialsSection({
           </div>
         </div>
 
-        <p className="type-experiment-label">Testimonials</p>
+        <p className="type-body-sm">Testimonials</p>
       </div>
     </section>
   );

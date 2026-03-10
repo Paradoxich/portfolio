@@ -30,7 +30,7 @@ function ProfileAvatar() {
   }
   return (
     <Image
-      src="/ana-profile.png"
+      src="/general/ana-profile.png"
       alt="Ana Beverin"
       width={24}
       height={24}
@@ -50,7 +50,7 @@ const navSections = [
     { href: "/experiments", label: "Experiments", Icon: LabExperiment },
   ],
   [
-    { href: "/notes", label: "Notes", Icon: Notes },
+    // { href: "/notes", label: "Notes", Icon: Notes }, // hidden until notes feature is ready
     { href: "/testimonials", label: "Testimonials", Icon: Heart },
   ],
 ];
@@ -59,7 +59,7 @@ const navSections = [
 function NavDivider() {
   return (
     <div className="py-2" role="separator">
-      <div className="h-px w-full bg-color-10" />
+      <div className="h-px w-full bg-color-border-inset" />
     </div>
   );
 }
@@ -83,7 +83,7 @@ function ProfileMenuItem({
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
       onClick={onClose}
-      className="flex items-center w-full h-8 pl-2 rounded-[8px] hover:bg-color-bg-muted focus:bg-color-bg-muted focus-visible:bg-color-bg-muted transition-colors font-geist"
+      className="flex items-center w-full h-8 pl-2 rounded-[8px] hover:bg-color-interactive-hover focus:bg-color-interactive-hover focus-visible:bg-color-interactive-hover transition-colors font-geist"
     >
       <span className="truncate flex-1 min-w-0 type-body-sm text-color-text-primary">
         {label}
@@ -125,7 +125,7 @@ export function Sidebar() {
 
   return (
     <aside
-      className="sidebar hidden md:flex fixed left-0 top-0 bottom-0 w-[230px] flex-col z-40 bg-color-bg border-r border-color-10"
+      className="sidebar hidden md:flex fixed left-0 top-0 bottom-0 w-[230px] flex-col z-40 bg-color-bg border-r border-color-border-inset"
     >
       <div className="flex flex-col h-full p-2 gap-4 overflow-visible">
         {/* Profile + dropdown */}
@@ -142,8 +142,8 @@ export function Sidebar() {
               Ana Beverin
             </span>
             <span
-              className={`flex w-8 h-8 shrink-0 items-center justify-center rounded-[8px] text-color-text-secondary transition-colors hover:bg-color-bg-muted hover:text-color-text-primary ${
-                profileMenuOpen ? "bg-color-bg-muted text-color-text-primary" : ""
+              className={`flex w-8 h-8 shrink-0 items-center justify-center rounded-[8px] text-color-text-secondary transition-colors hover:bg-color-interactive-hover hover:text-color-text-primary ${
+                profileMenuOpen ? "bg-color-interactive-hover text-color-text-primary" : ""
               }`}
             >
               <Dropdown
@@ -173,7 +173,7 @@ export function Sidebar() {
               />
               <NavDivider />
               <ProfileMenuItem
-                href="/cv.pdf"
+                href="/docs/CV-Beverin-2026.pdf"
                 label="CV"
                 Icon={ArrowDown}
                 external={false}
@@ -183,7 +183,7 @@ export function Sidebar() {
               <button
                 type="button"
                 onClick={copyEmail}
-                className="flex items-center w-full h-8 pl-2 rounded-[8px] text-left hover:bg-color-bg-muted focus:bg-color-bg-muted focus-visible:bg-color-bg-muted transition-colors font-geist"
+                className="flex items-center w-full h-8 pl-2 rounded-[8px] text-left hover:bg-color-interactive-hover focus:bg-color-interactive-hover focus-visible:bg-color-interactive-hover transition-colors font-geist"
               >
                 <span className="truncate flex-1 min-w-0 type-body-sm text-color-text-primary">
                   ana.beverin@gmail.com
@@ -209,8 +209,8 @@ export function Sidebar() {
                     href={href}
                     className={`group flex items-center gap-0 w-full h-12 rounded-[8px] transition-colors ${
                       active
-                        ? "bg-color-bg-muted text-color-90"
-                        : "text-color-text-secondary hover:bg-color-bg-muted hover:text-color-90 focus:bg-color-bg-muted focus-visible:bg-color-bg-muted"
+                        ? "bg-color-interactive-hover text-color-text-primary"
+                        : "text-color-text-secondary hover:bg-color-interactive-hover hover:text-color-text-primary focus:bg-color-interactive-hover focus-visible:bg-color-interactive-hover"
                     }`}
                   >
                     <span className="flex w-12 h-12 shrink-0 items-center justify-center [&>svg]:text-current">
@@ -219,8 +219,8 @@ export function Sidebar() {
                     <span
                       className={`type-body-sm truncate flex-1 min-w-0 ${
                         active
-                          ? "text-color-90"
-                          : "text-color-text-secondary group-hover:text-color-90"
+                          ? "text-color-text-primary"
+                          : "text-color-text-secondary group-hover:text-color-text-primary"
                       }`}
                     >
                       {label}

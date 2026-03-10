@@ -1,6 +1,7 @@
- "use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
+import styles from "./ChatAnimation.module.css";
 
 const DEFAULT_MESSAGES = [
   "I love working with Ana!",
@@ -124,7 +125,7 @@ export default function ChatAnimation({ messages, disableTypingAnimation }: Chat
           <div
             key={index}
             className={`inline-flex max-w-full rounded-surface bg-color-20 px-4 py-3 ${
-              skipAnimation ? "animate-slide-in" : "animate-bubble"
+              skipAnimation ? styles.slideIn : styles.bubble
             }`}
             style={
               skipAnimation ? { animationDelay: `${index * 50}ms` } : undefined
@@ -136,10 +137,10 @@ export default function ChatAnimation({ messages, disableTypingAnimation }: Chat
 
         {/* Typing dots – uvijek lijevo, bez teksta (hidden on mobile) */}
         {dotsVisible && !skipAnimation && (
-          <div className="inline-flex items-center gap-1 rounded-surface bg-color-20 px-3 py-2 animate-bubble">
-            <span className="typing-dot" />
-            <span className="typing-dot typing-dot-delay-1" />
-            <span className="typing-dot typing-dot-delay-2" />
+          <div className={`inline-flex items-center gap-1 rounded-surface bg-color-20 px-3 py-2 ${styles.bubble}`}>
+            <span className={styles.dot} />
+            <span className={`${styles.dot} ${styles.dotDelay1}`} />
+            <span className={`${styles.dot} ${styles.dotDelay2}`} />
           </div>
         )}
       </div>

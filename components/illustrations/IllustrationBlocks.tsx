@@ -98,7 +98,7 @@ export function IllustrationBlocks({
                     isReversed ? "md:col-start-7 md:text-right" : ""
                   }`}
                 >
-                  <p className="type-illustration-caption">{copyText}</p>
+                  <p className="type-body">{copyText}</p>
                 </div>
               </div>
             ) : null}

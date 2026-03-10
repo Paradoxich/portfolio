@@ -3,82 +3,70 @@
 import * as React from "react";
 
 const colorSchemes = {
-  // Current "green" / warm theme
+  // Warm dark — default green-tinted theme
   warm: {
-    "--color-0": "#100F0C",
-    "--color-05": "#151310",
-    "--color-10": "#1B1F17",
-    "--color-20": "#23221b",
-    "--color-30": "#272921",
-    "--color-40": "#2e3027",
-    "--color-50": "#424539",
-    "--color-60": "#555a4b",
-    "--color-80": "#A39E8E",
-    "--color-90": "#f3f0e9",
-    "--color-100": "#ffffff",
-    // Gradient helpers (rgba versions)
-    "--color-0-rgb": "16, 15, 12",
-    "--color-10-rgb": "25, 24, 19",
-    "--color-20-rgb": "35, 34, 27",
-    // Color blend overlay for illustrations
-    "--color-blend": "#43402C",
-    // Hover states (rgb for opacity variants)
-    "--color-60-rgb": "85, 90, 75",
-    // Button fill color
-    "--color-accent": "#84873d",
-    // Decorative graphic accent (dots, highlights)
-    "--color-graphic-muted": "#6F6B5F",
-    // Image filter (none for warm)
-    "--image-filter": "none",
+    // ── Color scale ────────────────────────────────────────────────────────────
+    "--color-0":  "#100F0C", // bg            — page background, card-ghost fill
+    "--color-05": "#151310", // bg-card        — card-interactive, card-tinted surfaces
+    "--color-10": "#1B1F17", // bg-muted / border-inset — hover bg, nav/drawer dividers, separators
+    "--color-20": "#23221B", // bg-surface / border-subtle — active surface, tinted card borders
+    "--color-30": "#272921", // border         — default borders, dividers, "Let's chat" button border
+    "--color-40": "#2E3027", // border-secondary — project card border, scrollbar thumb
+    "--color-50": "#424539", // (scale only — no semantic alias)
+    "--color-60": "#555A4B", // text-tertiary  — decorative icons (PixelQuote), rain stroke, scrollbar hover
+    "--color-80": "#A39E8E", // text-secondary — labels, descriptions, nav items (inactive)
+    "--color-90": "#F3F0E9", // text-primary   — headings, body text, active nav items
+    // ── RGB helpers (used for rgba() opacity variants) ──────────────────────
+    "--color-0-rgb":  "16, 15, 12",  // gradient overlays in ProjectCardBackground
+    "--color-10-rgb": "25, 24, 19",  // muted surface overlays
+    "--color-60-rgb": "85, 90, 75",  // opacity tints (currently unused, reserved)
+    // ── Decorative & filters ────────────────────────────────────────────────
+    "--color-graphic-muted": "#6F6B5F", // illustration dots and graphic accents
+    "--image-filter": "none",           // CSS filter applied to <img> elements
   },
-  // Current "black" / cool theme
+
+  // Cool dark — neutral black/gray theme
   cool: {
-    "--color-0": "#0a0a0a",
-    "--color-05": "#0f0f0f",
-    "--color-10": "#141414",
-    "--color-20": "#1f1f1f",
-    "--color-30": "#262626",
-    "--color-40": "#333333",
-    "--color-50": "#484848",
-    "--color-60": "#5c5c5c",
-    "--color-80": "#a3a3a3",
-    "--color-90": "#e5e5e5",
-    "--color-100": "#ffffff",
-    // Gradient helpers (rgba versions)
-    "--color-0-rgb": "10, 10, 10",
-    "--color-10-rgb": "20, 20, 20",
-    "--color-20-rgb": "31, 31, 31",
-    // Color blend overlay for illustrations (neutral gray)
-    "--color-blend": "#3a3a3a",
-    // Hover states (rgb for opacity variants)
-    "--color-60-rgb": "92, 92, 92",
-    // Button fill color
-    "--color-accent": "#6b6b6b",
-    "--color-graphic-muted": "#757575",
-    // Image filter (grayscale for cool)
-    "--image-filter": "grayscale(100%)",
+    // ── Color scale ────────────────────────────────────────────────────────────
+    "--color-0":  "#0A0A0A", // bg            — page background, card-ghost fill
+    "--color-05": "#0F0F0F", // bg-card        — card-interactive, card-tinted surfaces
+    "--color-10": "#141414", // bg-muted / border-inset — hover bg, nav/drawer dividers, separators
+    "--color-20": "#1F1F1F", // bg-surface / border-subtle — active surface, tinted card borders
+    "--color-30": "#262626", // border         — default borders, dividers, "Let's chat" button border
+    "--color-40": "#333333", // border-secondary — project card border, scrollbar thumb
+    "--color-50": "#484848", // (scale only — no semantic alias)
+    "--color-60": "#5C5C5C", // text-tertiary  — decorative icons (PixelQuote), rain stroke, scrollbar hover
+    "--color-80": "#A3A3A3", // text-secondary — labels, descriptions, nav items (inactive)
+    "--color-90": "#E5E5E5", // text-primary   — headings, body text, active nav items
+    // ── RGB helpers (used for rgba() opacity variants) ──────────────────────
+    "--color-0-rgb":  "10, 10, 10",  // gradient overlays in ProjectCardBackground
+    "--color-10-rgb": "20, 20, 20",  // muted surface overlays
+    "--color-60-rgb": "92, 92, 92",  // opacity tints (currently unused, reserved)
+    // ── Decorative & filters ────────────────────────────────────────────────
+    "--color-graphic-muted": "#757575", // illustration dots and graphic accents
+    "--image-filter": "grayscale(100%)", // CSS filter applied to <img> elements
   },
-  // Placeholder for future light/color theme – values to be tuned
+
+  // Light — inverted gray scale, values still being tuned
   light: {
-    "--color-0": "#f5f3f0",
-    "--color-05": "#eeece8",
-    "--color-10": "#f8f6f2",
-    "--color-20": "#ffffff",
-    "--color-10-rgb": "248, 246, 242",
-    "--color-30": "#e0ded7",
-    "--color-40": "#cdc8bc",
-    "--color-50": "#bcb5a2",
-    "--color-60": "#a59d86",
-    "--color-80": "#5c5540",
-    "--color-90": "#1e1a11",
-    "--color-100": "#000000",
-    "--color-0-rgb": "245, 243, 240",
-    "--color-20-rgb": "255, 255, 255",
-    "--color-blend": "#e3dccd",
-    "--color-60-rgb": "165, 157, 134",
-    "--color-accent": "#7f8250",
-    "--color-graphic-muted": "#8a8370",
-    "--image-filter": "none",
+    // ── Color scale ────────────────────────────────────────────────────────────
+    "--color-0":  "#FAFAFA", // bg            — page background, card-ghost fill
+    "--color-05": "#F2F2F2", // bg-card        — card-interactive, card-tinted surfaces
+    "--color-10": "#E3E3E3", // bg-muted / border-inset — hover bg, nav/drawer dividers, separators
+    "--color-20": "#D9D9D9", // bg-surface / border-subtle — active surface, tinted card borders
+    "--color-30": "#CCCCCC", // border         — default borders, dividers, "Let's chat" button border
+    "--color-40": "#BFBFBF", // border-secondary — project card border, scrollbar thumb
+    "--color-50": "#B3B3B3", // (scale only — no semantic alias)
+    "--color-60": "#A6A6A6", // text-tertiary  — decorative icons (PixelQuote), rain stroke, scrollbar hover
+    "--color-80": "#4D4D4D", // text-secondary — labels, descriptions, nav items (inactive)
+    "--color-90": "#0D0D0D", // text-primary   — headings, body text, active nav items
+    // ── RGB helpers (used for rgba() opacity variants) ──────────────────────
+    "--color-0-rgb":  "250, 250, 250", // gradient overlays in ProjectCardBackground
+    "--color-10-rgb": "227, 227, 227", // muted surface overlays
+    "--color-60-rgb": "166, 166, 166", // opacity tints (currently unused, reserved)
+    // ── Decorative & filters ────────────────────────────────────────────────
+    "--color-graphic-muted": "#FFFFFF", // illustration dots and graphic accents
+    "--image-filter": "none",           // CSS filter applied to <img> elements
   },
 } as const;
 
@@ -190,8 +178,8 @@ export function ThemeSwitcherInline() {
   ];
 
   return (
-    <div className="experiment-card w-full h-full flex flex-col">
-      <div className="experiment-inner flex w-full flex-1 items-center justify-center gap-4 px-4 py-3">
+    <div className="card-tinted w-full h-full flex flex-col">
+      <div className="card-tinted-inner flex w-full flex-1 items-center justify-center gap-4 px-4 py-3">
         {schemes.map((scheme) => {
           const isActive = colorScheme === scheme.key;
           return (
@@ -212,7 +200,7 @@ export function ThemeSwitcherInline() {
           );
         })}
       </div>
-      <p className="type-experiment-label">Theme switcher</p>
+      <p className="type-body-sm">Theme switcher</p>
     </div>
   );
 }

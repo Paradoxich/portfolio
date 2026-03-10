@@ -2,6 +2,7 @@
 
 import { PageShell } from "@/components/layout/PageShell";
 import { PixelQuote } from "@/components/icons/PixelQuote";
+import styles from "./page.module.css";
 
 export default function NotesPage() {
   return (
@@ -12,7 +13,7 @@ export default function NotesPage() {
           <span className="text-[var(--color-20)]" aria-hidden>
             <PixelQuote size={24} />
           </span>
-          <p className="type-notes-quote">
+          <p className={styles.quote}>
             You know the greatest danger facing us is ourselves, and irrational
             fear of the unknown. There&apos;s no such thing as the unknown. Only
             things temporarily hidden, temporarily not understood.
@@ -20,7 +21,7 @@ export default function NotesPage() {
         </div>
 
         {/* Bottom note */}
-        <p className="type-notes-note shrink-0">
+        <p className={`${styles.note} shrink-0`}>
           This portfolio started as a way to test modern ways, and ended up as
           my creative playground. One of my biggest pet peeves in general work
           is not having a central place for my thoughts. I want bite sized,

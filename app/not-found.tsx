@@ -41,7 +41,7 @@ export default function NotFound() {
               border border-color-border
               text-color-text-primary
               type-body-sm
-              hover:border-[var(--color-50)]
+              hover:border-color-text-tertiary
               transition-colors
             "
           >

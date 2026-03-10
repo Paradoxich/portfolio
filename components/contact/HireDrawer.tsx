@@ -147,7 +147,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
               w-full max-w-md
               flex flex-col
               bg-color-bg
-              border-l border-color-10
+              border-l border-color-border-inset
             "
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -157,7 +157,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
             {/* HEADER */}
             <div className="flex flex-col gap-2 p-6">
               <div className="flex items-center justify-between">
-                <h2 className="project-card-title">Let&apos;s work together</h2>
+                <h2 className="type-h4">Let&apos;s work together</h2>
                 <button
                   onClick={handleClose}
                   className="
@@ -222,7 +222,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
 
             {/* SEPARATOR */}
             <div className="px-6 py-2" role="separator">
-              <div className="h-px w-full bg-color-10" />
+              <div className="h-px w-full bg-color-border-inset" />
             </div>
 
             {/* CONTENT */}

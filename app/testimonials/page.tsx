@@ -5,6 +5,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { PixelQuote } from "@/components/icons/PixelQuote";
 import { useHireDrawer } from "@/components/contact/HireDrawerContext";
 import { ArrowRight } from "@/components/icons";
+import styles from "./page.module.css";
 
 const TESTIMONIALS = [
   {
@@ -50,16 +51,16 @@ function TestimonialCard({
   const [firstSentence, rest] = splitFirstSentence(quote);
 
   return (
-    <div className="flex h-full min-h-0 flex-col items-start gap-0 rounded-card border border-color-10 bg-color-bg p-2xl">
+    <div className="card-ghost flex h-full min-h-0 flex-col items-start gap-0 p-2xl">
       <span className="shrink-0 text-[var(--color-20)]" aria-hidden>
         <PixelQuote size={24} />
       </span>
-      <p className="type-testimonial-quote mt-4 flex-1 w-full min-h-[96px]">
-        <span className="type-testimonial-quote-highlight">{firstSentence}</span>
+      <p className={`${styles.quote} mt-4 flex-1 w-full min-h-[96px]`}>
+        <span className={styles.quoteHighlight}>{firstSentence}</span>
         {rest ? ` ${rest}` : null}
       </p>
       <div className="w-full shrink-0 py-8" role="separator" aria-hidden>
-        <div className="h-px w-full bg-color-10" />
+        <div className="h-px w-full bg-color-border-inset" />
       </div>
       <div className="flex shrink-0 items-center gap-md">
         <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full">
@@ -72,8 +73,8 @@ function TestimonialCard({
           />
         </div>
         <div className="flex flex-col">
-          <span className="type-testimonial-author">{name}</span>
-          <span className="type-testimonial-role">{role}</span>
+          <span className="type-body-sm-strong">{name}</span>
+          <span className="type-body-sm">{role}</span>
         </div>
       </div>
     </div>
@@ -84,11 +85,11 @@ function PlaceholderCard() {
   const { openHireDrawer } = useHireDrawer();
 
   return (
-    <div className="flex h-full min-h-0 flex-col items-start gap-0 rounded-card border border-dashed border-color-10 bg-color-bg p-2xl">
+    <div className="card-ghost border-dashed flex h-full min-h-0 flex-col items-start gap-0 p-2xl">
       <span className="shrink-0 text-[var(--color-20)]" aria-hidden>
         <PixelQuote size={24} />
       </span>
-      <p className="type-testimonial-quote mt-4 flex-1 w-full min-h-[96px]">
+      <p className={`${styles.quote} mt-4 flex-1 w-full min-h-[96px]`}>
         I&apos;ve saved a place for your kind words.
       </p>
       <div className="shrink-0 w-full">

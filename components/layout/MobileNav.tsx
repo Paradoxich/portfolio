@@ -76,7 +76,7 @@ export function MobileNav() {
               { href: "/projects", label: "Projects" },
               { href: "/illustrations", label: "Illustrations" },
               { href: "/experiments", label: "Experiments" },
-              { href: "/notes", label: "Notes" },
+              // { href: "/notes", label: "Notes" }, // hidden until notes feature is ready
               { href: "/testimonials", label: "Testimonials" },
             ].map(({ href, label }) => (
               <Link
@@ -106,7 +106,7 @@ export function MobileNav() {
             >
               Instagram
             </a>
-            <a href="/cv.pdf" className="block py-2 type-body-sm text-color-text-secondary hover:text-color-text-primary">
+            <a href="/docs/CV-Beverin-2026.pdf" className="block py-2 type-body-sm text-color-text-secondary hover:text-color-text-primary">
               CV
             </a>
           </div>

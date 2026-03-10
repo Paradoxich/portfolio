@@ -1,0 +1,17 @@
+/* Notes quote — 32 / snug(1.3) / regular */
+.quote {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-secondary);
+  font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+}
+
+/* Notes footnote — 14 / ui(1.45) / regular / intentionally very muted (color-40, darker than text-secondary) */
+.note {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-ui);
+  color: var(--color-40);
+  font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+}

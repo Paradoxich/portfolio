@@ -32,7 +32,7 @@ export type ProjectConfig = {
   // thumbnail image for list icons (if hero is video, use this for list display)
   thumbnail?: string;
 
-  // case-study content komponenta – opcionalno
+  /** Case study page component — optional */
   Page?: React.ComponentType<{ heroSlot?: React.ReactNode }>;
 };
 

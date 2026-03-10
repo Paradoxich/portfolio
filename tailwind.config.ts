@@ -9,46 +9,48 @@ const config: Config = {
       colors: {
         // neutral ramp
         "color-0": "var(--color-0)",
+        "color-05": "var(--color-05)",
         "color-10": "var(--color-10)",
         "color-20": "var(--color-20)",
         "color-30": "var(--color-30)",
         "color-40": "var(--color-40)",
+        "color-50": "var(--color-50)",
         "color-60": "var(--color-60)",
         "color-80": "var(--color-80)",
         "color-90": "var(--color-90)",
-        "color-100": "var(--color-100)",
 
         // usage aliases
         "color-bg": "var(--color-bg)",
+        "color-bg-card": "var(--color-bg-card)",
         "color-bg-surface": "var(--color-bg-surface)",
         "color-bg-muted": "var(--color-bg-muted)",
+        "color-border-inset": "var(--color-border-inset)" /* structural dividers – nav, drawer, separators */,
         "color-border-subtle": "var(--color-border-subtle)" /* subtle – inset / experiment */,
         "color-border": "var(--color-border)",
         "color-border-secondary":
           "var(--color-border-secondary)" /* secondary / hover */,
         "color-text-primary": "var(--color-text-primary)",
         "color-text-secondary": "var(--color-text-secondary)",
-      },
-
-      maxWidth: {
-        container: "var(--layout-container)", // 1352px
+        "color-text-tertiary": "var(--color-text-tertiary)",
+        "color-interactive-hover": "var(--color-interactive-hover)",
       },
 
       spacing: {
-        // core scale (ako ti zatreba direktno)
-        xs: "var(--space-xs)",
-        sm: "var(--space-sm)",
-        md: "var(--space-md)",
-        base: "var(--space-base)",
-        lg: "var(--space-lg)",
-        xl: "var(--space-xl)",
-        "2xl": "var(--space-2xl)",
-        "3xl": "var(--space-3xl)",
-        "4xl": "var(--space-4xl)",
+        // core scale
+        xs: "var(--space-xs)",      // 4px
+        sm: "var(--space-sm)",      // 8px
+        md: "var(--space-md)",      // 12px
+        base: "var(--space-base)",  // 16px
+        lg: "var(--space-lg)",      // 20px
+        xl: "var(--space-xl)",      // 24px
+        "2xl": "var(--space-2xl)", // 32px
+        "3xl": "var(--space-3xl)", // 40px
+        "4xl": "var(--space-4xl)", // 64px
+        "5xl": "var(--space-5xl)", // 56px (between 3xl–4xl – stack-5xl / hero-gap)
 
         // layout helpers
-        gutter: "var(--layout-gutter)", // koristiš kao gap-gutter
-        card: "var(--space-xl)", // p-card → 24px (ako ga ikad poželiš)
+        gutter: "var(--layout-gutter)",
+        section: "var(--space-section)", // 120px – section-level separators
         "nav-icon": "var(--size-nav-icon)",
         "hero-placeholder": "var(--size-hero-placeholder)",
       },
@@ -64,14 +66,24 @@ const config: Config = {
         geist: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
       },
 
+      fontSize: {
+        xxxs: "var(--font-size-xxxs)", // 12px – labels, badges
+        xs: "var(--font-size-xs)",     // 14px – UI text, captions (overrides Tailwind xs=12)
+        base: "var(--font-size-base)", // 16px – standard body
+        sm: "var(--font-size-sm)",     // 18px – editorial body (overrides Tailwind sm=14)
+        md: "var(--font-size-md)",     // 20px – testimonial quotes
+        lg: "var(--font-size-lg)",     // 24px – h4, card titles
+        xl: "var(--font-size-xl)",     // 32px – h3, notes quote
+        "2xl": "var(--font-size-2xl)", // 40px – h2
+        "3xl": "var(--font-size-3xl)", // 48px – h1, hero
+      },
+
       lineHeight: {
-        none: "var(--line-height-none)",
-        compact: "var(--line-height-compact)",
-        tight: "var(--line-height-tight)",
-        snug: "var(--line-height-snug)",
-        relaxed: "var(--line-height-relaxed)",
-        body: "var(--line-height-body)",
-        loose: "var(--line-height-loose)",
+        none: "var(--line-height-none)",       // 1     – single-line labels
+        heading: "var(--line-height-heading)", // 1.1   – all display / heading text
+        snug: "var(--line-height-snug)",       // 1.3   – card titles, medium headings
+        ui: "var(--line-height-ui)",           // 1.45  – UI text, captions, short content
+        body: "var(--line-height-body)",       // 1.6   – long-form body copy
       },
 
       letterSpacing: {
@@ -81,23 +93,11 @@ const config: Config = {
       },
 
       fontWeight: {
-        // postojeće util klase:
         normal: "var(--font-weight-regular)",
         medium: "var(--font-weight-medium)",
-        // opcionalni alias ako želiš baš token ime:
-        regular: "var(--font-weight-regular)",
       },
 
-      keyframes: {
-        "illustration-pan": {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-      },
 
-      animation: {
-        "illustration-pan": "illustration-pan 80s linear infinite",
-      },
     },
   },
   plugins: [],

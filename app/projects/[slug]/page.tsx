@@ -9,6 +9,7 @@ import { Projects } from "@/components/icons/Projects";
 import { useRouter, useParams } from "next/navigation";
 import { PageShell } from "@/components/layout/PageShell";
 import { projectsConfig } from "@/components/projects/ProjectsConfig";
+import styles from "./page.module.css";
 
 function ProjectPageContent() {
   const router = useRouter();
@@ -120,34 +121,34 @@ function ProjectPageContent() {
           {project.Page && <project.Page heroSlot={renderHero()} />}
 
           {/* Prev/Next navigation */}
-          <nav className="flex justify-center mt-4xl pt-2xl border-t border-color-10">
+          <nav className="flex justify-center mt-4xl pt-2xl border-t border-color-border-inset">
             <div className="flex gap-sm">
               {prevProject ? (
                 <Link
                   href={`/projects/${prevProject.slug ?? prevProject.key}`}
-                  className="case-study-nav-btn"
+                  className={styles.navBtn}
                   aria-label={`Previous: ${prevProject.label ?? prevProject.key}`}
                 >
                   <ArrowLeft size={20} />
                 </Link>
               ) : (
-                <span className="case-study-nav-btn-disabled" aria-hidden>
+                <span className={styles.navBtnDisabled} aria-hidden>
                   <ArrowLeft size={20} />
                 </span>
               )}
-              <Link href="/projects" className="case-study-nav-btn" aria-label="All projects">
+              <Link href="/projects" className={styles.navBtn} aria-label="All projects">
                 <Projects size={20} />
               </Link>
               {nextProject ? (
                 <Link
                   href={`/projects/${nextProject.slug ?? nextProject.key}`}
-                  className="case-study-nav-btn"
+                  className={styles.navBtn}
                   aria-label={`Next: ${nextProject.label ?? nextProject.key}`}
                 >
                   <ArrowRight size={20} />
                 </Link>
               ) : (
-                <span className="case-study-nav-btn-disabled" aria-hidden>
+                <span className={styles.navBtnDisabled} aria-hidden>
                   <ArrowRight size={20} />
                 </span>
               )}
