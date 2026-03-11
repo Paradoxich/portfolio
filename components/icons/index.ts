@@ -11,3 +11,6 @@ export { ArrowRight } from "./ArrowRight";
 export { ArrowOutward } from "./ArrowOutward";
 export { ArrowDown } from "./ArrowDown";
 export { PixelQuote } from "./PixelQuote";
+export { CheckmarkCircle } from "./CheckmarkCircle";
+export { LocationPin } from "./LocationPin";
+export { NodeNetwork } from "./NodeNetwork";

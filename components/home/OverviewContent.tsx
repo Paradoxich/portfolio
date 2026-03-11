@@ -9,13 +9,11 @@ import {
   GraphicFocusAreas,
 } from "@/components/home/CapabilityGraphics";
 import { PageShell } from "@/components/layout/PageShell";
-
-const iconAvailableForProjects =
-  "http://localhost:3845/assets/de66c5c94ea188247a661b8f26c681b425d699fa.svg";
-const iconLocation =
-  "http://localhost:3845/assets/422ec033dcb881e4a03cd08641abc48cee8d392a.svg";
-const iconRemoteCollaboration =
-  "http://localhost:3845/assets/c67c7921c7240a17bf596154816420c9013860bd.svg";
+import {
+  CheckmarkCircle,
+  LocationPin,
+  NodeNetwork,
+} from "@/components/icons";
 
 type Capability = {
   title: string;
@@ -105,28 +103,20 @@ export function OverviewContent() {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-[32px] md:gap-[56px] opacity-60">
-          <div className="flex items-center gap-2">
-            <img
-              src={iconAvailableForProjects}
-              alt=""
-              className="h-5 w-5"
-            />
+          <div className="flex items-center gap-2 text-color-text-secondary">
+            <CheckmarkCircle size={20} />
             <p className="type-body-sm text-color-text-secondary">
               Available for new projects
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <img src={iconLocation} alt="" className="h-5 w-5" />
+          <div className="flex items-center gap-2 text-color-text-secondary">
+            <LocationPin size={20} />
             <p className="type-body-sm text-color-text-secondary">
               Croatia · CET (UTC+1)
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <img
-              src={iconRemoteCollaboration}
-              alt=""
-              className="h-5 w-5"
-            />
+          <div className="flex items-center gap-2 text-color-text-secondary">
+            <NodeNetwork size={20} />
             <p className="type-body-sm text-color-text-secondary">
               Remote collaboration
             </p>
