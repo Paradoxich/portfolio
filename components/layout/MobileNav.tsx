@@ -1,12 +1,46 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import * as React from "react";
 import { useHireDrawer } from "@/components/contact/HireDrawerContext";
+import {
+  ArrowRight,
+  FaceSmile,
+  Projects,
+  FountainPen,
+  LabExperiment,
+  Heart,
+  ArrowOutward,
+  ArrowDown,
+} from "@/components/icons";
+
+function MobileProfileAvatar() {
+  const [useFallback, setUseFallback] = React.useState(false);
+  if (useFallback) {
+    return (
+      <span className="flex w-6 h-6 shrink-0 items-center justify-center rounded-full text-[12px] font-medium bg-color-border-secondary text-color-text-secondary">
+        A
+      </span>
+    );
+  }
+  return (
+    <Image
+      src="/general/ana-profile.png"
+      alt="Ana Beverin"
+      width={24}
+      height={24}
+      className="h-6 w-6 shrink-0 rounded-full object-cover"
+      onError={() => setUseFallback(true)}
+    />
+  );
+}
 
 export function MobileNav() {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
   const { openHireDrawer } = useHireDrawer();
+  const pathname = usePathname();
 
   React.useEffect(() => {
     if (sidebarOpen) {
@@ -21,14 +55,17 @@ export function MobileNav() {
 
   return (
     <>
-      <header className="md:hidden sticky top-0 z-50 flex items-center justify-between px-4 py-4 border-b border-color-border bg-color-bg">
-        <Link href="/" className="type-body-strong text-color-text-primary">
-          Ana Beverin
+      <header className="md:hidden flex items-center justify-between px-4 py-4 border-b border-color-border bg-color-bg">
+        <Link href="/" className="flex items-center gap-2">
+          <MobileProfileAvatar />
+          <span className="type-body-sm font-medium text-color-text-primary">
+            Ana Beverin
+          </span>
         </Link>
         <div className="flex items-center gap-2">
           <button
             onClick={openHireDrawer}
-            className="type-body-sm text-color-text-secondary hover:text-color-text-primary px-3 py-2"
+            className="inline-flex items-center h-8 px-3 rounded-full border border-color-border-secondary type-body-sm font-medium text-color-text-primary"
           >
             Let&apos;s chat
           </button>
@@ -53,13 +90,13 @@ export function MobileNav() {
         />
       )}
       <aside
-        className={`md:hidden fixed top-0 left-0 bottom-0 w-[280px] max-w-[85vw] bg-color-bg border-r border-color-border z-[61] transform transition-transform duration-200 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        className={`md:hidden fixed inset-x-0 bottom-0 max-h-[80vh] bg-color-bg border-t border-color-border z-[61] transform transition-transform duration-200 rounded-t-[20px] ${
+          sidebarOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <div className="p-6 flex flex-col h-full">
+        <div className="px-4 py-2 flex flex-col h-full">
           <div className="flex items-center justify-between mb-6">
-            <span className="type-body-strong text-color-text-primary">Menu</span>
+            <span className="type-body-sm text-color-text-primary">Menu</span>
             <button
               onClick={() => setSidebarOpen(false)}
               className="p-2 -mr-2 text-color-text-secondary hover:text-color-text-primary"
@@ -72,44 +109,43 @@ export function MobileNav() {
           </div>
           <nav className="flex flex-col gap-1">
             {[
-              { href: "/", label: "Overview" },
-              { href: "/projects", label: "Projects" },
-              { href: "/illustrations", label: "Illustrations" },
-              { href: "/experiments", label: "Experiments" },
-              // { href: "/notes", label: "Notes" }, // hidden until notes feature is ready
-              { href: "/testimonials", label: "Testimonials" },
-            ].map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                onClick={() => setSidebarOpen(false)}
-                className="px-3 py-2 rounded-lg text-color-text-secondary hover:text-color-text-primary hover:bg-color-bg-muted type-body-sm"
-              >
-                {label}
-              </Link>
-            ))}
+              { href: "/", label: "Overview", Icon: FaceSmile },
+              { href: "/projects", label: "Projects", Icon: Projects },
+              { href: "/illustrations", label: "Illustrations", Icon: FountainPen },
+              { href: "/experiments", label: "Experiments", Icon: LabExperiment },
+              // { href: "/notes", label: "Notes", Icon: Notes }, // hidden until notes feature is ready
+              { href: "/testimonials", label: "Testimonials", Icon: Heart },
+            ].map(({ href, label, Icon }) => {
+              const active =
+                href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setSidebarOpen(false)}
+                  className={`group flex items-center w-full h-10 rounded-[8px] px-0 transition-colors ${
+                    active
+                      ? "bg-color-interactive-hover text-color-text-primary"
+                      : "text-color-text-secondary hover:bg-color-interactive-hover hover:text-color-text-primary focus:bg-color-interactive-hover focus-visible:bg-color-interactive-hover"
+                  }`}
+                >
+                  <span className="flex w-10 h-10 shrink-0 items-center justify-center [&>svg]:text-current">
+                    <Icon size={20} />
+                  </span>
+                  <span
+                    className={`type-body-sm truncate flex-1 min-w-0 ${
+                      active
+                        ? "text-color-text-primary"
+                        : "text-color-text-secondary group-hover:text-color-text-primary"
+                    }`}
+                  >
+                    {label}
+                  </span>
+                </Link>
+              );
+            })}
           </nav>
-          <div className="mt-6 pt-6 border-t border-color-border">
-            <a
-              href="https://www.linkedin.com/in/paradoxich/"
-              target="_blank"
-              rel="noreferrer"
-              className="block py-2 type-body-sm text-color-text-secondary hover:text-color-text-primary"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://www.instagram.com/paradoxich/"
-              target="_blank"
-              rel="noreferrer"
-              className="block py-2 type-body-sm text-color-text-secondary hover:text-color-text-primary"
-            >
-              Instagram
-            </a>
-            <a href="/docs/CV-Beverin-2026.pdf" className="block py-2 type-body-sm text-color-text-secondary hover:text-color-text-primary">
-              CV
-            </a>
-          </div>
         </div>
       </aside>
     </>

@@ -160,7 +160,7 @@
     width: 100%;
     max-width: var(--layout-container);
     margin-inline: auto;
-    padding: var(--space-3xl);
+    padding: var(--space-xl);
   }
 
   .layout-grid {
@@ -190,6 +190,10 @@
   }
 
   @media (min-width: 768px) {
+    .page-shell {
+      padding: var(--space-3xl);
+    }
+
     .with-sidebar {
       margin-left: 230px;
     }

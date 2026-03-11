@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { TopStickyBar } from "@/components/layout/TopStickyBar";
+import { MobileFooter } from "@/components/layout/MobileFooter";
 import { ColorSchemeProvider } from "@/components/theme/ColorSchemeProvider";
 import { HireDrawerProvider } from "@/components/contact/HireDrawerContext";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
               <main className="flex min-h-0 flex-1 flex-col min-w-0 overflow-y-auto with-sidebar">
                 <TopStickyBar />
                 {children}
+                <MobileFooter />
               </main>
             </div>
           </HireDrawerProvider>

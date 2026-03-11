@@ -30,7 +30,7 @@ export function TopStickyBar() {
   const title = getPageTitle(pathname);
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 shrink-0 items-center justify-center px-5 bg-color-bg border-b border-color-border-inset">
+    <header className="hidden md:flex sticky top-0 z-30 h-16 shrink-0 items-center justify-center px-5 bg-color-bg border-b border-color-border-inset">
       <span className="font-geist type-body-xs text-color-text-secondary">
         {title}
       </span>
