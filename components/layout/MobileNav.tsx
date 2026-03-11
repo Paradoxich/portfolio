@@ -5,16 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import * as React from "react";
 import { useHireDrawer } from "@/components/contact/HireDrawerContext";
-import {
-  ArrowRight,
-  FaceSmile,
-  Projects,
-  FountainPen,
-  LabExperiment,
-  Heart,
-  ArrowOutward,
-  ArrowDown,
-} from "@/components/icons";
+import { FaceSmile, Projects, FountainPen, LabExperiment, Heart } from "@/components/icons";
 
 function MobileProfileAvatar() {
   const [useFallback, setUseFallback] = React.useState(false);

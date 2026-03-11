@@ -3,7 +3,6 @@
 import * as React from "react";
 import Image from "next/image";
 import { ArrowRight } from "@/components/icons/ArrowRight";
-import styles from "./CaseStudyLayout.module.css";
 
 // ─── Content types ────────────────────────────────────────────────────────────
 
@@ -107,21 +106,6 @@ type CaseStudyLayoutProps = {
   heroSlot?: React.ReactNode;
   children: React.ReactNode;
 };
-
-const externalLinkIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    style={{ flexShrink: 0 }}
-  >
-    <path
-      fill="currentColor"
-      d="m16.004 9.414l-8.607 8.607l-1.414-1.414L14.59 8H7.003V6h11v11h-2z"
-    />
-  </svg>
-);
 
 export function CaseStudyLayout({
   title,

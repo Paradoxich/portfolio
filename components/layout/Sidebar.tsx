@@ -10,7 +10,6 @@ import {
   Projects,
   FountainPen,
   LabExperiment,
-  Notes,
   Heart,
   Dropdown,
   ArrowOutward,
