@@ -132,25 +132,43 @@ export function CaseStudyLayout({
   heroSlot,
   children,
 }: CaseStudyLayoutProps) {
+  let metaYear: string | undefined;
+  let metaStatus: string | undefined;
+
+  if (typeof meta === "string") {
+    const parts = meta.split("•");
+    metaYear = parts[0]?.trim();
+    metaStatus = parts[1]?.trim();
+  }
+
   return (
     <article className="w-full stack-5xl">
       {/* Title block */}
       <section className="stack-lg">
         <div className="text-column stack-lg">
           <div className="flex items-center gap-base flex-wrap">
-            {meta && <p className="type-body-sm">{meta}</p>}
-            {links?.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-                className={`${styles.linkPill} h-2xl px-base rounded-pill flex items-center justify-center gap-sm type-body-sm transition-colors`}
-              >
-                {link.label}
-                {externalLinkIcon}
-              </a>
-            ))}
+            {(metaYear || links?.length) && (
+              <p className="type-body-sm text-color-text-secondary">
+                {metaYear}
+                {(metaStatus || links?.[0]) && (
+                  <>
+                    <span className="inline-block mx-[0.75ch]">•</span>
+                    {links?.[0] ? (
+                      <a
+                        href={links[0].href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="hover:underline hover:text-color-text-primary"
+                      >
+                        {links[0].label}
+                      </a>
+                    ) : (
+                      <span>{metaStatus}</span>
+                    )}
+                  </>
+                )}
+              </p>
+            )}
           </div>
           <h1 className="type-h1 text-balance">
             <span className="text-color-text-primary font-medium">

@@ -24,6 +24,11 @@ export const portfolioContext: SectionData = {
       type: "p",
       text: "Instead of treating AI as a shortcut, I used the portfolio as a playground.",
     },
+    {
+      type: "p",
+      text:
+        "This case study covers the first version of my portfolio. A newer version of the site has since been rebuilt with a different architecture and design system, and I’m currently writing an updated case study about that process.",
+    },
   ],
 };
 

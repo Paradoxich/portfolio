@@ -4,7 +4,7 @@ import type { SectionData } from "../CaseStudyLayout";
 export const mixlodgeMeta = {
   title: "Turning an early idea into a structured booking product",
   subtitle: " ",
-  meta: "2025 • Not yet launched",
+  meta: "2025  •  Not yet launched",
   tldrItems: [
     <>
       <strong className="font-medium text-color-text-primary">

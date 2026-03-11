@@ -67,6 +67,10 @@ const colorSchemes = {
     // ── Decorative & filters ────────────────────────────────────────────────
     "--color-graphic-muted": "#FFFFFF", // illustration dots and graphic accents
     "--image-filter": "none",           // CSS filter applied to <img> elements
+
+    // ── Typography overrides (light theme) ─────────────────────────────────
+    "--font-weight-regular": "450", // body text, secondary labels
+    "--font-weight-medium": "550",  // headings, emphasized text
   },
 } as const;
 

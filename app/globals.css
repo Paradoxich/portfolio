@@ -284,7 +284,7 @@
   /* Interactive card surface token — card-bg + secondary border. Full implementation in ProjectCard.module.css. */
   .card-interactive {
     background-color: var(--color-bg-card);
-    border: 1px solid var(--color-border-secondary);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
     transition: background-color 0.18s ease;
@@ -331,10 +331,11 @@
 }
 
 /* =========================================
-   STACK UTILITIES
+   STACK UTILITIES & TYPOGRAPHY BRIDGE
    ========================================= */
 
 @layer utilities {
+  /* Vertical stack helpers */
   .stack-xs  > * + * { margin-top: var(--space-xs);   }
   .stack-sm  > * + * { margin-top: var(--space-sm);   }
   .stack-md  > * + * { margin-top: var(--space-md);   }
@@ -342,5 +343,14 @@
   .stack-xl  > * + * { margin-top: var(--space-xl);   }
   .stack-2xl > * + * { margin-top: var(--space-2xl);  }
   .stack-5xl > * + * { margin-top: var(--space-5xl);  }
+
+  /* Bridge Tailwind font utilities to design tokens so themes can override */
+  .font-normal {
+    font-weight: var(--font-weight-regular);
+  }
+
+  .font-medium {
+    font-weight: var(--font-weight-medium);
+  }
 }
 
