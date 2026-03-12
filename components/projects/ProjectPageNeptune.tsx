@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { CaseStudyLayout, CaseStudySection } from "./CaseStudyLayout";
 import {
   neptuneMeta,
@@ -32,13 +33,16 @@ export function ProjectPageNeptune() {
       <section className="stack-md pt-base pb-base">
         <div className="relative w-full aspect-video overflow-hidden rounded-surface border border-color-border-inset bg-color-bg-muted">
           {deckImages.map((src, index) => (
-            <img
+            <Image
               key={src}
               src={src}
               alt={`Neptune brand deck slide ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+              fill
+              className={`object-cover transition-opacity duration-300 ${
                 index === currentSlide ? "opacity-100" : "opacity-0"
               }`}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 960px"
+              priority={index === 0}
             />
           ))}
           <div className="absolute left-base right-base bottom-base flex items-center justify-center pointer-events-none">
