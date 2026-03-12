@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { CoffeeCup, Icecream } from "@/components/icons";
+import { CoffeeCup } from "@/components/icons";
 
 const colorSchemes = {
   // Warm dark — default green-tinted theme
