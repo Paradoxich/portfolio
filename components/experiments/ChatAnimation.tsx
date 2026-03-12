@@ -124,7 +124,7 @@ export default function ChatAnimation({ messages, disableTypingAnimation }: Chat
         {MESSAGES.slice(0, visibleMessages).map((msg, index) => (
           <div
             key={index}
-            className={`inline-flex max-w-full rounded-surface bg-color-20 px-4 py-3 ${
+            className={`inline-flex max-w-full rounded-surface bg-color-10 px-4 py-3 ${
               skipAnimation ? styles.slideIn : styles.bubble
             }`}
             style={

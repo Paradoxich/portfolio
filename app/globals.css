@@ -7,21 +7,21 @@
    ========================================= */
 
 :root {
-  /* Color scale – neutral ramp */
-  --color-0: #100F0C;
-  --color-05: #151310;
-  --color-10: #1B1F17;
-  --color-20: #23221b;
+  /* Color scale – neutral ramp (warm theme default) */
+  --color-0: #080806;
+  --color-05: #0F0F0C;
+  --color-10: #141712;
+  --color-20: #1F1E18;
   --color-30: #272921;
-  --color-40: #2e3027;
-  --color-50: #424539;
-  --color-60: #555a4b;
-  --color-80: #A39E8E;
-  --color-90: #f3f0e9;
+  --color-40: #35382C;
+  --color-50: #494D3F;
+  --color-60: #665E55;
+  --color-80: #BDAD9A;
+  --color-90: #F3F0E9;
   /* RGB helpers for opacity/gradient variants */
-  --color-0-rgb: 16, 15, 12;
-  --color-10-rgb: 25, 24, 19;
-  --color-60-rgb: 85, 90, 75;
+  --color-0-rgb: 60, 20, 3;
+  --color-10-rgb: 96, 22, 9;
+  --color-60-rgb: 60, 17, 40;
 
   /* Contact form & status accents */
   --color-success: #18C340;
@@ -31,7 +31,7 @@
   --color-input-placeholder: var(--color-60);
 
   /* Decorative graphic accent (dots, highlights in illustrations) */
-  --color-graphic-muted: #6F6B5F;
+  --color-graphic-muted: #606655;
 
   /* Image filter for theme switching */
   --image-filter: none;
@@ -48,7 +48,7 @@
   --color-text-primary: var(--color-90);
   --color-text-secondary: var(--color-80);
   --color-text-tertiary: var(--color-60);  /* decorative / disabled / icon tint */
-  --color-interactive-hover: color-mix(in srgb, var(--color-30) 50%, transparent); /* nav item hover / active bg */
+  --color-interactive-hover: var(--color-30); /* nav item hover / active bg */
 
   /* Type scale */
   --font-size-xxxs: 12px;  /* labels, badges */
@@ -268,8 +268,10 @@
 
   /* Label — 12 / none / expanded / medium / uppercase */
   .type-label {
-    font-size: var(--font-size-xxxs);
+    font-size: var(--font-size-xs); /* 14px */
+    font-family: var(--font-geist-mono, var(--font-geist-sans), system-ui, monospace);
     @apply tracking-expanded font-medium uppercase text-color-text-secondary;
+    letter-spacing: 0.04em; /* slightly more than default expanded */
     line-height: var(--line-height-none);
   }
 
@@ -288,14 +290,9 @@
   /* Interactive card surface token — card-bg + secondary border. Full implementation in ProjectCard.module.css. */
   .card-interactive {
     background-color: var(--color-bg-card);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
-    transition: background-color 0.18s ease;
-  }
-
-  .card-interactive:hover {
-    background-color: var(--color-bg-muted);
   }
 
   /* Ghost / outline card — page bg + hairline inset border. Non-interactive. */

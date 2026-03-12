@@ -58,23 +58,23 @@ export const fontWeightTokens = [
 
 // Color scale – neutral ramp (all themes)
 export const colorTokens = [
-  { token: "color-0",   warm: "#100F0C", cool: "#0a0a0a", light: "#FAFAFA" },
-  { token: "color-05",  warm: "#151310", cool: "#0f0f0f", light: "#F2F2F2" },
-  { token: "color-10",  warm: "#1B1F17", cool: "#141414", light: "#E3E3E3" },
-  { token: "color-20",  warm: "#23221B", cool: "#1f1f1f", light: "#D9D9D9" },
+  { token: "color-0",   warm: "#080806", cool: "#0a0a0a", light: "#FAFAFA" },
+  { token: "color-05",  warm: "#0F0F0C", cool: "#0f0f0f", light: "#F2F2F2" },
+  { token: "color-10",  warm: "#141712", cool: "#141414", light: "#E3E3E3" },
+  { token: "color-20",  warm: "#1F1E18", cool: "#1f1f1f", light: "#D9D9D9" },
   { token: "color-30",  warm: "#272921", cool: "#262626", light: "#CCCCCC" },
-  { token: "color-40",  warm: "#2E3027", cool: "#333333", light: "#BFBFBF" },
-  { token: "color-50",  warm: "#424539", cool: "#484848", light: "#B3B3B3" },
-  { token: "color-60",  warm: "#555A4B", cool: "#5c5c5c", light: "#A6A6A6" },
+  { token: "color-40",  warm: "#35382C", cool: "#333333", light: "#BFBFBF" },
+  { token: "color-50",  warm: "#494D3F", cool: "#484848", light: "#B3B3B3" },
+  { token: "color-60",  warm: "#606655", cool: "#5c5c5c", light: "#A6A6A6" },
   { token: "color-80",  warm: "#A39E8E", cool: "#a3a3a3", light: "#4D4D4D" },
   { token: "color-90",  warm: "#F3F0E9", cool: "#e5e5e5", light: "#0D0D0D" },
 ];
 
 // Theming tokens – dynamic values that change with color scheme
 export const themingTokens = [
-  { token: "color-0-rgb",  warm: "16, 15, 12",  cool: "10, 10, 10",  light: "250, 250, 250", role: "RGB for gradient opacity" },
-  { token: "color-10-rgb", warm: "25, 24, 19",  cool: "20, 20, 20",  light: "227, 227, 227", role: "RGB for translucent surface fills" },
-  { token: "color-60-rgb", warm: "85, 90, 75",  cool: "92, 92, 92",  light: "166, 166, 166", role: "RGB for hover opacity" },
+  { token: "color-0-rgb",  warm: "60, 20, 3",   cool: "10, 10, 10",  light: "250, 250, 250", role: "RGB for gradient opacity" },
+  { token: "color-10-rgb", warm: "96, 22, 9",   cool: "20, 20, 20",  light: "227, 227, 227", role: "RGB for translucent surface fills" },
+  { token: "color-60-rgb", warm: "60, 17, 40",  cool: "92, 92, 92",  light: "166, 166, 166", role: "RGB for hover opacity" },
   { token: "image-filter", warm: "none",        cool: "grayscale(100%)", light: "none",       role: "Theme-based image filter" },
 ];
 

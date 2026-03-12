@@ -328,11 +328,14 @@ function GraphicFocusAreas() {
         </filter>
       </defs>
       <g clipPath="url(#focus-clip)">
-        <path d="M0 0.341003H320V160.341H0V0.341003Z" fill="url(#focus-gradient)" />
+        {/* Flow lines (background) */}
         <path d="M222.199 141.001C222.199 125.15 222.199 121.871 222.199 112.717C222.199 104.445 218.234 96.6663 211.536 91.8123C198.698 82.5084 190.848 67.82 190.247 51.9763L188.199 -1.99878" stroke="var(--color-40)" strokeWidth="1.5" />
         <path d="M272.199 141.001L272.199 126.082C272.199 110.059 262.424 95.6566 247.533 89.7406C217.75 77.9087 198.199 49.1047 198.199 17.0578L198.199 -1.9986" stroke="var(--color-40)" strokeDasharray="4 4" />
         <path d="M94.1992 141L94.1992 126.081C94.1992 110.057 103.975 95.6554 118.866 89.7395C148.649 77.9075 168.199 49.1035 168.199 17.0567L168.199 -1.99977" stroke="var(--color-40)" strokeDasharray="4 4" />
         <path d="M147.199 141.001C147.199 124.692 147.199 121.691 147.199 111.908C147.199 104.092 150.746 96.694 156.842 91.8028C168.501 82.4482 175.525 68.4928 176.091 53.5557L178.199 -1.99878" stroke="var(--color-40)" strokeDasharray="4 4" />
+
+        {/* Focus gradient overlay between lines and cards */}
+        <path d="M0 0.341003H320V160.341H0V0.341003Z" fill="url(#focus-gradient)" />
         <rect x="232.697" y="115.841" width="79" height="80" rx="7.5" fill="var(--color-0)" stroke="var(--color-10)" />
         <rect x="54.6953" y="115.841" width="79" height="88" rx="7.5" fill="var(--color-0)" stroke="var(--color-10)" />
         <rect x="112.697" y="115.841" width="79" height="93" rx="7.5" fill="var(--color-0)" stroke="var(--color-10)" />

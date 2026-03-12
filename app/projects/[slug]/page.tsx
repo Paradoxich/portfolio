@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "@/components/icons/ArrowLeft";
 import { ArrowRight } from "@/components/icons/ArrowRight";
@@ -53,59 +52,6 @@ function ProjectPageContent() {
 
   if (!project) return null;
 
-  const renderHero = () => {
-    if (project.hero?.type === "image") {
-      const positionClass =
-        project.hero.position === "top"
-          ? "object-top"
-          : project.hero.position === "bottom"
-            ? "object-bottom"
-            : "object-center";
-      return (
-        <div className="w-full mb-2xl">
-          <div className="relative aspect-video rounded-[var(--radius-md)] border border-color-border-inset overflow-hidden">
-            <Image
-              src={project.hero.src}
-              alt={project.hero.alt ?? ""}
-              fill
-              className={`object-cover ${positionClass}`}
-              sizes="(max-width: 1024px) 100vw, 960px"
-            />
-          </div>
-        </div>
-      );
-    }
-
-    if (project.hero?.type === "video") {
-      const positionClass =
-        project.hero.position === "top"
-          ? "object-top"
-          : project.hero.position === "bottom"
-            ? "object-bottom"
-            : "object-center";
-      return (
-        <div className="w-full mb-2xl">
-          <div className="relative aspect-video rounded-[var(--radius-md)] border border-color-border-secondary overflow-hidden">
-            <video
-              src={project.hero.src}
-              className={`w-full h-full object-cover ${positionClass}`}
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <div className="w-full h-hero-placeholder mb-2xl rounded-surface border border-color-border-secondary bg-color-bg-muted flex items-center justify-center">
-        <span className="type-body-xs">Hero placeholder (500px tall)</span>
-      </div>
-    );
-  };
-
   return (
     <PageShell className="stack-xl">
       <div className="layout-grid">
@@ -117,8 +63,8 @@ function ProjectPageContent() {
             ← Back to projects
           </Link>
 
-          {/* Case study content (hero rendered inside layout, below summary) */}
-          {project.Page && <project.Page heroSlot={renderHero()} />}
+          {/* Case study content */}
+          {project.Page && <project.Page />}
 
           {/* Prev/Next navigation */}
           <nav className="flex justify-center mt-4xl pt-2xl border-t border-color-border-inset">

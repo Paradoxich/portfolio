@@ -14,11 +14,10 @@ import {
   shuttleTaming,
   shuttleOutcome,
   shuttleReflection,
+  shuttleHeroImage,
 } from "./content/shuttle.content";
 
-type ProjectPageProps = { heroSlot?: React.ReactNode };
-
-export function ProjectPageShuttle({ heroSlot }: ProjectPageProps) {
+export function ProjectPageShuttle() {
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   React.useEffect(() => {
@@ -28,10 +27,12 @@ export function ProjectPageShuttle({ heroSlot }: ProjectPageProps) {
   }, []);
 
   return (
-    <CaseStudyLayout {...shuttleMeta} heroSlot={heroSlot}>
+    <CaseStudyLayout {...shuttleMeta}>
       <CaseStudySection data={shuttleContext} />
+      <CaseStudySection data={shuttleHeroImage} />
       <CaseStudySection data={shuttleEarlyDays} />
 
+      <CaseStudySection data={shuttleNotWorking} />
       {/* Before / after toggle — interactive */}
       <section className="stack-md pt-base pb-base">
         <div className="relative w-full overflow-hidden rounded-surface border border-color-border-inset bg-color-bg-muted" style={{ aspectRatio: "16/10" }}>
@@ -47,9 +48,10 @@ export function ProjectPageShuttle({ heroSlot }: ProjectPageProps) {
           <p className="type-body-sm">{shuttleBeforeAfter.caption}</p>
         </div>
       </section>
-
-      <CaseStudySection data={shuttleNotWorking} />
       <CaseStudySection data={shuttleProductMoves} />
+
+
+      <CaseStudySection data={shuttleTaming} />
 
       {/* Console walkthrough video — playback rate controlled via ref */}
       <section className="stack-md pt-base pb-base">
@@ -72,8 +74,6 @@ export function ProjectPageShuttle({ heroSlot }: ProjectPageProps) {
           </p>
         </div>
       </section>
-
-      <CaseStudySection data={shuttleTaming} />
       <CaseStudySection data={shuttleOutcome} />
       <CaseStudySection data={shuttleReflection} />
     </CaseStudyLayout>

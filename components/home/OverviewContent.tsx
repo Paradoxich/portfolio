@@ -52,7 +52,7 @@ const capabilities: Capability[] = [
 export function OverviewContent() {
   return (
     <PageShell>
-      <div className="w-full max-w-3xl mx-auto mt-4xl font-geist">
+      <div className="w-full max-w-3xl mx-auto mt-2xl font-geist">
         <h1 className="type-h1 text-balance mb-5 text-center">
           I define products while they&apos;re still taking shape.
         </h1>
@@ -68,14 +68,13 @@ export function OverviewContent() {
             href="/docs/CV-Beverin-2026.pdf"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1 px-md py-sm rounded-full border border-color-border-secondary type-body-sm font-medium text-color-text-primary bg-transparent"
+            className="inline-flex items-center gap-1 px-md py-sm rounded-full border border-color-border-secondary type-body-sm font-medium text-color-text-primary bg-transparent hover:bg-color-bg-muted"
           >
             View CV
           </Link>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-1 px-md py-sm rounded-full border border-color-border-secondary type-body-sm font-medium text-color-0 transition-colors"
-            style={{ backgroundColor: "#B8D652" }}
+            className="inline-flex items-center gap-1 px-md py-sm rounded-full type-body-sm font-medium text-color-0 transition-colors bg-[#EEC643] hover:bg-[#F3F0E9]"
           >
             Explore Projects
           </Link>
@@ -102,22 +101,29 @@ export function OverviewContent() {
           ))}
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-[32px] md:gap-[56px] opacity-60">
-          <div className="flex items-center gap-2 text-color-text-secondary">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-[32px] md:gap-[56px] ">
+          <div className="flex items-center gap-2 text-color-text-tertiary">
             <CheckmarkCircle size={20} />
-            <p className="type-body-sm text-color-text-secondary">
+            <p className="type-body-sm text-color-text-tertiary">
               Available for new projects
             </p>
           </div>
-          <div className="flex items-center gap-2 text-color-text-secondary">
+          <div className="flex items-center gap-2 text-color-text-tertiary">
             <LocationPin size={20} />
-            <p className="type-body-sm text-color-text-secondary">
-              Croatia · CET (UTC+1)
+            <p className="type-body-sm text-color-text-tertiary">
+              <a
+                href="https://maps.app.goo.gl/gfYdzGSivbaBxctn8"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:underline hover:text-color-text-primary"
+              >
+                Croatia · CET (UTC+1)
+              </a>
             </p>
           </div>
-          <div className="flex items-center gap-2 text-color-text-secondary">
+          <div className="flex items-center gap-2 text-color-text-tertiary">
             <NodeNetwork size={20} />
-            <p className="type-body-sm text-color-text-secondary">
+            <p className="type-body-sm text-color-text-tertiary">
               Remote collaboration
             </p>
           </div>

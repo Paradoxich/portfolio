@@ -23,6 +23,7 @@ export function ProjectsIndex({ projects }: ProjectsIndexProps) {
                 categoryLabel={p.categoryLabel}
                 title={p.cardTitle ?? p.title}
                 href={`/projects/${p.slug ?? p.key}`}
+                background={p.cardBackground}
               />
             ))}
           </div>

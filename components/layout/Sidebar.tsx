@@ -82,7 +82,7 @@ function ProfileMenuItem({
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
       onClick={onClose}
-      className="flex items-center w-full h-8 pl-2 rounded-[8px] hover:bg-color-interactive-hover focus:bg-color-interactive-hover focus-visible:bg-color-interactive-hover transition-colors font-geist"
+      className="flex items-center w-full h-8 pl-2 rounded-[8px] hover:bg-color-bg-muted focus:bg-color-bg-muted focus-visible:bg-color-bg-muted transition-colors font-geist"
     >
       <span className="truncate flex-1 min-w-0 type-body-sm text-color-text-primary">
         {label}
@@ -141,8 +141,8 @@ export function Sidebar() {
               Ana Beverin
             </span>
             <span
-              className={`flex w-8 h-8 shrink-0 items-center justify-center rounded-[8px] text-color-text-secondary transition-colors hover:bg-color-interactive-hover hover:text-color-text-primary ${
-                profileMenuOpen ? "bg-color-interactive-hover text-color-text-primary" : ""
+              className={`flex w-8 h-8 shrink-0 items-center justify-center rounded-[8px] text-color-text-secondary transition-colors hover:bg-color-bg-muted hover:text-color-text-primary ${
+                profileMenuOpen ? "bg-color-bg-muted text-color-text-primary" : ""
               }`}
             >
               <Dropdown
@@ -154,7 +154,7 @@ export function Sidebar() {
 
             {profileMenuOpen && (
               <div
-                className="absolute left-0 top-full mt-1 flex flex-col items-stretch z-[60] w-[226px] p-2 gap-0.5 rounded-surface border border-color-border-secondary bg-color-bg"
+                className="absolute left-0 top-full mt-1 flex flex-col items-stretch z-[60] w-[226px] p-2 gap-0.5 rounded-surface border border-color-border-subtle bg-color-bg"
               >
               <ProfileMenuItem
                 href="https://www.linkedin.com/in/paradoxich/"
@@ -164,8 +164,8 @@ export function Sidebar() {
                 onClose={() => setProfileMenuOpen(false)}
               />
               <ProfileMenuItem
-                href="https://www.instagram.com/paradoxich/"
-                label="Instagram"
+                href="https://github.com/Paradoxich"
+                label="GitHub"
                 Icon={ArrowOutward}
                 external
                 onClose={() => setProfileMenuOpen(false)}
@@ -182,7 +182,7 @@ export function Sidebar() {
               <button
                 type="button"
                 onClick={copyEmail}
-                className="flex items-center w-full h-8 pl-2 rounded-[8px] text-left hover:bg-color-interactive-hover focus:bg-color-interactive-hover focus-visible:bg-color-interactive-hover transition-colors font-geist"
+                className="flex items-center w-full h-8 pl-2 rounded-[8px] text-left hover:bg-color-bg-muted focus:bg-color-bg-muted focus-visible:bg-color-bg-muted transition-colors font-geist"
               >
                 <span className="truncate flex-1 min-w-0 type-body-sm text-color-text-primary">
                   ana.beverin@gmail.com
@@ -208,8 +208,8 @@ export function Sidebar() {
                     href={href}
                     className={`group flex items-center gap-0 w-full h-12 rounded-[8px] transition-colors ${
                       active
-                        ? "bg-color-interactive-hover text-color-text-primary"
-                        : "text-color-text-secondary hover:bg-color-interactive-hover hover:text-color-text-primary focus:bg-color-interactive-hover focus-visible:bg-color-interactive-hover"
+                        ? "bg-color-bg-muted text-color-text-primary"
+                        : "text-color-text-secondary hover:bg-color-bg-muted hover:text-color-text-primary focus:bg-color-bg-muted focus-visible:bg-color-bg-muted"
                     }`}
                   >
                     <span className="flex w-12 h-12 shrink-0 items-center justify-center [&>svg]:text-current">
@@ -235,7 +235,7 @@ export function Sidebar() {
         <div className="mt-auto shrink-0 pt-4">
           <button
             onClick={openHireDrawer}
-            className="group flex w-full items-center justify-between overflow-hidden rounded-full py-2 pl-4 pr-2 transition-colors duration-300 ease-in-out bg-color-bg hover:bg-color-bg-surface border border-color-border-secondary"
+            className="group flex w-full items-center justify-between overflow-hidden rounded-full py-2 pl-4 pr-2 transition-colors duration-300 ease-in-out bg-color-bg hover:bg-color-bg-surface border border-color-border"
           >
             <span className="shrink-0 truncate font-geist type-body-sm font-medium text-color-text-primary">
               Let&apos;s chat

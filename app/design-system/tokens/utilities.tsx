@@ -117,17 +117,17 @@ export const typeUtilities = [
 
 // Color utilities (all themes)
 export const colorUtilityTokens = [
-  { token: "color.bg",              mapsTo: "color-0",  role: "Main page background",                                       warm: "#100F0C", cool: "#0a0a0a", light: "#FAFAFA" },
-  { token: "color.bg.card",         mapsTo: "color-05", role: "Card surface background (card-tinted, card-interactive)",    warm: "#151310", cool: "#0f0f0f", light: "#F2F2F2" },
-  { token: "color.bg.muted",        mapsTo: "color-10", role: "Hover / muted bg",                                          warm: "#1B1F17", cool: "#141414", light: "#E3E3E3" },
-  { token: "color.bg.surface",      mapsTo: "color-20", role: "Raised / active surface bg",                                warm: "#23221B", cool: "#1f1f1f", light: "#D9D9D9" },
-  { token: "color.border.inset",    mapsTo: "color-10", role: "Structural dividers — nav border, drawer edge, separators",  warm: "#1B1F17", cool: "#141414", light: "#E3E3E3" },
-  { token: "color.border.subtle",   mapsTo: "color-20", role: "Subtle border – tinted cards, inset surfaces",               warm: "#23221B", cool: "#1f1f1f", light: "#D9D9D9" },
+  { token: "color.bg",              mapsTo: "color-0",  role: "Main page background",                                       warm: "#080806", cool: "#0a0a0a", light: "#FAFAFA" },
+  { token: "color.bg.card",         mapsTo: "color-05", role: "Card surface background (card-tinted, card-interactive)",    warm: "#0F0F0C", cool: "#0f0f0f", light: "#F2F2F2" },
+  { token: "color.bg.muted",        mapsTo: "color-10", role: "Hover / muted bg",                                          warm: "#141712", cool: "#141414", light: "#E3E3E3" },
+  { token: "color.bg.surface",      mapsTo: "color-20", role: "Raised / active surface bg",                                warm: "#1F1E18", cool: "#1f1f1f", light: "#D9D9D9" },
+  { token: "color.border.inset",    mapsTo: "color-10", role: "Structural dividers — nav border, drawer edge, separators",  warm: "#141712", cool: "#141414", light: "#E3E3E3" },
+  { token: "color.border.subtle",   mapsTo: "color-20", role: "Subtle border – tinted cards, inset surfaces",               warm: "#1F1E18", cool: "#1f1f1f", light: "#D9D9D9" },
   { token: "color.border",          mapsTo: "color-30", role: "Default border / divider",                                   warm: "#272921", cool: "#262626", light: "#CCCCCC" },
-  { token: "color.border.secondary",mapsTo: "color-40", role: "Secondary / hover border",                                   warm: "#2E3027", cool: "#333333", light: "#BFBFBF" },
+  { token: "color.border.secondary",mapsTo: "color-40", role: "Secondary / hover border",                                   warm: "#35382C", cool: "#333333", light: "#BFBFBF" },
   { token: "color.text.primary",       mapsTo: "color-90",                                      role: "Primary text color",                                         warm: "#F3F0E9", cool: "#e5e5e5", light: "#0D0D0D" },
   { token: "color.text.secondary",     mapsTo: "color-80",                                      role: "Secondary text color",                                       warm: "#A39E8E", cool: "#a3a3a3", light: "#4D4D4D" },
-  { token: "color.text.tertiary",      mapsTo: "color-60",                                      role: "Decorative / disabled / icon tint",                          warm: "#555A4B", cool: "#5c5c5c", light: "#A6A6A6" },
+  { token: "color.text.tertiary",      mapsTo: "color-60",                                      role: "Decorative / disabled / icon tint",                          warm: "#606655", cool: "#5c5c5c", light: "#A6A6A6" },
   { token: "color.interactive.hover",  mapsTo: "color-mix(color-30, 50% transparent)",          role: "Nav item hover / active background",                         warm: "color-30 @ 50%", cool: "color-30 @ 50%", light: "color-30 @ 50%" },
 ];
 

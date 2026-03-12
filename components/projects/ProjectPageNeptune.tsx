@@ -15,9 +15,7 @@ import {
   neptuneReflection,
 } from "./content/neptune.content";
 
-type ProjectPageProps = { heroSlot?: React.ReactNode };
-
-export function ProjectPageNeptune({ heroSlot }: ProjectPageProps) {
+export function ProjectPageNeptune() {
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [currentSlide, setCurrentSlide] = React.useState(0);
 
@@ -28,10 +26,8 @@ export function ProjectPageNeptune({ heroSlot }: ProjectPageProps) {
   }, []);
 
   return (
-    <CaseStudyLayout {...neptuneMeta} heroSlot={heroSlot}>
+    <CaseStudyLayout {...neptuneMeta}>
       <CaseStudySection data={neptuneContext} />
-      <CaseStudySection data={neptuneAudience} />
-
       {/* Brand deck carousel */}
       <section className="stack-md pt-base pb-base">
         <div className="relative w-full aspect-video overflow-hidden rounded-surface border border-color-border-inset bg-color-bg-muted">
@@ -82,9 +78,15 @@ export function ProjectPageNeptune({ heroSlot }: ProjectPageProps) {
           </div>
         </div>
       </section>
+      <CaseStudySection data={neptuneAudience} />
+
+      
 
       <CaseStudySection data={neptuneWhenBranding} />
 
+      
+
+      <CaseStudySection data={neptunePrototypeChanged} />
       {/* Chat prototype video — playback rate controlled via ref */}
       <section className="stack-md pt-base pb-base">
         <div className="w-full overflow-hidden rounded-surface border border-color-border-inset bg-color-bg-muted" style={{ aspectRatio: "16/8" }}>
@@ -101,8 +103,6 @@ export function ProjectPageNeptune({ heroSlot }: ProjectPageProps) {
           </video>
         </div>
       </section>
-
-      <CaseStudySection data={neptunePrototypeChanged} />
       <CaseStudySection data={neptuneMakingEditable} />
       <CaseStudySection data={neptuneOutcome} />
       <CaseStudySection data={neptuneReflection} />

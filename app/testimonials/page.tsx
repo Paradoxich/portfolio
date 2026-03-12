@@ -96,7 +96,7 @@ function PlaceholderCard() {
         <button
           type="button"
           onClick={openHireDrawer}
-          className="group flex w-full items-center justify-between overflow-hidden rounded-full py-2 pl-4 pr-2 transition-colors duration-300 ease-in-out bg-color-bg hover:bg-color-bg-surface border border-color-border-secondary"
+          className="group flex w-full items-center justify-between overflow-hidden rounded-full py-2 pl-4 pr-2 transition-colors duration-300 ease-in-out bg-color-bg hover:bg-color-bg-surface border border-color-border"
         >
           <span className="shrink-0 truncate font-geist type-body-sm font-medium text-color-text-primary">
             Let&apos;s chat

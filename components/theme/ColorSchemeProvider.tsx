@@ -1,28 +1,30 @@
 "use client";
 
 import * as React from "react";
+import { CoffeeCup, Icecream } from "@/components/icons";
 
 const colorSchemes = {
   // Warm dark — default green-tinted theme
   warm: {
     // ── Color scale ────────────────────────────────────────────────────────────
-    "--color-0":  "#100F0C", // bg            — page background, card-ghost fill
-    "--color-05": "#151310", // bg-card        — card-interactive, card-tinted surfaces
-    "--color-10": "#1B1F17", // bg-muted / border-inset — hover bg, nav/drawer dividers, separators
-    "--color-20": "#23221B", // bg-surface / border-subtle — active surface, tinted card borders
+    "--color-0":  "#080806", // bg            — page background, card-ghost fill
+    "--color-05": "#0F0E0C", // bg-card        — card-interactive, card-tinted surfaces
+    "--color-10": "#141712", // bg-muted / border-inset — hover bg, nav/drawer dividers, separators
+    "--color-20": "#1F1E18", // bg-surface / border-subtle — active surface, tinted card borders
     "--color-30": "#272921", // border         — default borders, dividers, "Let's chat" button border
-    "--color-40": "#2E3027", // border-secondary — project card border, scrollbar thumb
-    "--color-50": "#424539", // (scale only — no semantic alias)
-    "--color-60": "#555A4B", // text-tertiary  — decorative icons (PixelQuote), rain stroke, scrollbar hover
-    "--color-80": "#A39E8E", // text-secondary — labels, descriptions, nav items (inactive)
+    "--color-40": "#35382C", // border-secondary — project card border, scrollbar thumb
+    "--color-50": "#494D3F", // (scale only — no semantic alias)
+    "--color-60": "#606655", // text-tertiary  — decorative icons (PixelQuote), rain stroke, scrollbar hover
+    "--color-80": "#BDAD9A", // text-secondary — labels, descriptions, nav items (inactive)
     "--color-90": "#F3F0E9", // text-primary   — headings, body text, active nav items
     // ── RGB helpers (used for rgba() opacity variants) ──────────────────────
-    "--color-0-rgb":  "16, 15, 12",  // gradient overlays in ProjectCardBackground
-    "--color-10-rgb": "25, 24, 19",  // muted surface overlays
-    "--color-60-rgb": "85, 90, 75",  // opacity tints (currently unused, reserved)
+    "--color-0-rgb":  "60, 20, 3",  // gradient overlays in ProjectCardBackground
+    "--color-10-rgb": "96, 22, 9",  // muted surface overlays
+    "--color-60-rgb": "81, 17, 40",  // opacity tints (currently unused, reserved)
     // ── Decorative & filters ────────────────────────────────────────────────
-    "--color-graphic-muted": "#6F6B5F", // illustration dots and graphic accents
+    "--color-graphic-muted": "#606655", // illustration dots and graphic accents
     "--image-filter": "none",           // CSS filter applied to <img> elements
+    "--project-card-gradient-rgb": "15, 15, 12", // neutral card gradient base
   },
 
   // Cool dark — neutral black/gray theme
@@ -45,6 +47,7 @@ const colorSchemes = {
     // ── Decorative & filters ────────────────────────────────────────────────
     "--color-graphic-muted": "#757575", // illustration dots and graphic accents
     "--image-filter": "grayscale(100%)", // CSS filter applied to <img> elements
+    "--project-card-gradient-rgb": "10, 10, 10", // cooler neutral for card gradient
   },
 
   // Light — inverted gray scale, values still being tuned
@@ -67,6 +70,7 @@ const colorSchemes = {
     // ── Decorative & filters ────────────────────────────────────────────────
     "--color-graphic-muted": "#FFFFFF", // illustration dots and graphic accents
     "--image-filter": "none",           // CSS filter applied to <img> elements
+    "--project-card-gradient-rgb": "20, 20, 20", // placeholder for light theme
 
     // ── Typography overrides (light theme) ─────────────────────────────────
     "--font-weight-regular": "450", // body text, secondary labels
@@ -132,19 +136,7 @@ export function ThemeSwitcherInline() {
     {
       key: "warm",
       label: "Warm theme",
-      icon: (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        >
-          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
-        </svg>
-      ),
+      icon: <CoffeeCup size={20} />,
     },
     {
       key: "cool",
@@ -159,23 +151,6 @@ export function ThemeSwitcherInline() {
           strokeWidth="1.5"
         >
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
-        </svg>
-      ),
-    },
-    {
-      key: "light",
-      label: "Light theme",
-      icon: (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        >
-          <path d="M12 3.5c1.8 0 3.25 1.46 3.25 3.25 0 1.06-.52 2.06-1.4 2.67L12 11l-1.85-1.58A3.25 3.25 0 0 1 8.75 6.75C8.75 4.96 10.2 3.5 12 3.5Z" />
-          <path d="M9.5 13.5h5L14 19l-2 1.5L10 19l-.5-5.5Z" />
         </svg>
       ),
     },

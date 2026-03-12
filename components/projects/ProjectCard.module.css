@@ -1,8 +1,8 @@
 /* Layout overrides on top of the global .card-interactive surface token */
 .card {
   position: relative;
-  background-color: color-mix(in srgb, var(--color-30) 40%, transparent);
-  padding: var(--space-2xl); /* override card-interactive's space-xl */
+  background-color: var(--color-bg-card);
+  padding: var(--space-lg); /* 24px on mobile */
   height: 280px;
   display: flex;
   flex-direction: column;
@@ -10,6 +10,109 @@
   align-items: flex-start;
   overflow: hidden;
   cursor: pointer;
+
+  /* Project-specific background graphic */
+  background-image: var(--card-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Color overlay using Figma's `color` blend mode */
+.card::before {
+  background-color: var(--color-0);
+  mix-blend-mode: color;
+}
+
+/* Linear gradient overlay – base state (fades out on hover) */
+.card::after {
+  opacity: 1;
+  transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--project-card-gradient-rgb), 1) 1.57%,
+    rgba(var(--project-card-gradient-rgb), 1) 36.55%,
+    rgba(var(--project-card-gradient-rgb), 0.94) 52.62%,
+    rgba(var(--project-card-gradient-rgb), 0.7) 76.55%,
+    rgba(var(--project-card-gradient-rgb), 0.4) 90.98%,
+    rgba(var(--project-card-gradient-rgb), 0) 99.47%
+  );
+}
+
+/* Hover overlay gradient – crossfades on top of base */
+.cardGradientHover {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--project-card-gradient-rgb), 1) 1.57%,
+    rgba(var(--project-card-gradient-rgb), 1) 24.59%,
+    rgba(var(--project-card-gradient-rgb), 0.94) 37.14%,
+    rgba(var(--project-card-gradient-rgb), 0.4) 44.07%,
+    rgba(var(--project-card-gradient-rgb), 0.2) 66.65%,
+    rgba(var(--project-card-gradient-rgb), 0) 99.47%
+  );
+}
+
+.card:hover::after {
+  opacity: 0;
+}
+
+.card:hover .cardGradientHover {
+  opacity: 1;
+}
+
+/* Bottom stack keeps title/CTA anchored to bottom-left of card */
+.bottomStack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+/* Inline "Read story" row shown under title on hover */
+.readStoryInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs); /* 14px – matches type-body-sm */
+  line-height: var(--line-height-ui);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  overflow: hidden;
+  max-height: 0;
+  margin-top: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 350ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 400ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    max-height 400ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    margin-top 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.card:hover .readStoryInline {
+  max-height: 40px;
+  margin-top: var(--space-sm); /* 8px between title and row */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: var(--space-2xl); /* 32px on desktop */
+  }
 }
 
 
@@ -18,7 +121,6 @@
   align-items: center;
   width: fit-content;
   padding: 4px 8px;
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   background: var(--color-20);
   font-size: var(--font-size-xs);

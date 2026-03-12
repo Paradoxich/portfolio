@@ -17,6 +17,18 @@ export type ContentBlock =
       aspect: string;
       caption?: string;
       priority?: boolean;
+    }
+  | {
+      type: "video";
+      src: string;
+      /** e.g. "16/9", "16/8" — used as CSS aspect-ratio */
+      aspect: string;
+      caption?: string;
+      /** Playback hints; sensible defaults if omitted */
+      autoPlay?: boolean;
+      loop?: boolean;
+      muted?: boolean;
+      playbackRate?: number;
     };
 
 export type SectionData = {
@@ -74,6 +86,38 @@ export function CaseStudySection({ data }: { data: SectionData }) {
         </section>
       );
     }
+
+    if (block.type === "video") {
+      return (
+        <section key={i} className="stack-md pt-base pb-base">
+          <div
+            style={{ aspectRatio: block.aspect }}
+            className="relative w-full overflow-hidden rounded-surface border border-color-border-inset bg-color-bg-muted"
+          >
+            <video
+              className="w-full h-full object-cover"
+              playsInline
+              autoPlay={block.autoPlay ?? true}
+              loop={block.loop ?? true}
+              muted={block.muted ?? true}
+              controls
+              ref={(el) => {
+                if (el && block.playbackRate) {
+                  el.playbackRate = block.playbackRate;
+                }
+              }}
+            >
+              <source src={block.src} type="video/mp4" />
+            </video>
+          </div>
+          {block.caption && (
+            <div className="text-column">
+              <p className="type-body-sm">{block.caption}</p>
+            </div>
+          )}
+        </section>
+      );
+    }
     return null;
   });
 
@@ -103,7 +147,6 @@ type CaseStudyLayoutProps = {
   meta?: string;
   links?: CaseStudyLink[];
   tldrItems: React.ReactNode[];
-  heroSlot?: React.ReactNode;
   children: React.ReactNode;
 };
 
@@ -113,7 +156,6 @@ export function CaseStudyLayout({
   meta,
   links,
   tldrItems,
-  heroSlot,
   children,
 }: CaseStudyLayoutProps) {
   let metaYear: string | undefined;
@@ -186,8 +228,6 @@ export function CaseStudyLayout({
           </ul>
         </div>
       </section>
-
-      {heroSlot}
 
       {children}
     </article>

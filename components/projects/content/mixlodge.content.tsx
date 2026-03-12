@@ -60,6 +60,18 @@ export const mixlodgeDiscovery: SectionData = {
   ],
 };
 
+export const mixlodgeDiscoveryImage: SectionData = {
+  blocks: [
+    {
+      type: "img",
+      src: "/case-studies/ml-disovery.png",
+      alt: "Exploratory discovery flows and early structure for MixLodge.",
+      aspect: "16/9",
+      priority: true,
+    },
+  ],
+};
+
 export const mixlodgeMvp: SectionData = {
   heading: "Defining the product",
   blocks: [
@@ -108,7 +120,7 @@ export const mixlodgeInboxImage: SectionData = {
       src: "/case-studies/ml-inbox.png",
       alt: "Collaboration workspace anchored to the booking.",
       aspect: "16/10.5",
-      caption: "Each confirmed session creates a dedicated thread for coordination and file sharing.",
+      caption: "MixLodge inbox view after a booking has been confirmed.",
       priority: true,
     },
   ],
@@ -138,6 +150,22 @@ export const mixlodgeDesignImage: SectionData = {
       aspect: "16/8",
       caption: "Landing page and product UI share a single design language.",
       priority: true,
+    },
+  ],
+};
+
+export const mixlodgeHeroVideo: SectionData = {
+
+  blocks: [
+    {
+      type: "video",
+      src: "/case-studies/mixlodge-lp-video.mp4",
+      caption: "High-level walkthrough of the MixLodge product surfaces.",
+      aspect: "16/10.5",
+      autoPlay: true,
+      loop: true,
+      muted: true,
+      playbackRate: 0.75,
     },
   ],
 };

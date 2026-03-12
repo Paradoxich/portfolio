@@ -140,6 +140,19 @@ export const portfolioSystem: SectionData = {
   ],
 };
 
+export const portfolioHeroImage: SectionData = {
+  fullWidth: true,
+  blocks: [
+    {
+      type: "img",
+      src: "/case-studies/portfolio-hero.png",
+      alt: "Overview of portfolio layout highlighting key sections.",
+      aspect: "16/9",
+      priority: true,
+    },
+  ],
+};
+
 export const portfolioOutcome: SectionData = {
   heading: "Outcome",
   blocks: [

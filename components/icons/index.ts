@@ -14,3 +14,5 @@ export { PixelQuote } from "./PixelQuote";
 export { CheckmarkCircle } from "./CheckmarkCircle";
 export { LocationPin } from "./LocationPin";
 export { NodeNetwork } from "./NodeNetwork";
+export { CoffeeCup } from "./CoffeeCup";
+export { Icecream } from "./Icecream";

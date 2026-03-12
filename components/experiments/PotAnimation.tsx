@@ -123,12 +123,12 @@ export function PotAnimation() {
           }
         >
           {/* top pipe */}
-          <path d="M27.498 0V5H34.498V0" stroke="var(--color-text-secondary)" />
+          <path d="M27.498 0V5H34.498V0" stroke="var(--color-text-tertiary)" />
           {/* dome */}
           <path
             d="M30.998 4.5C39.4147 4.5 46.9514 9.7128 49.9219 17.5879L51.7754 22.5H10.2207L12.0742 17.5879C15.0446 9.7128 22.5814 4.5 30.998 4.5Z"
             fill="var(--color-bg)"
-            stroke="var(--color-text-secondary)"
+            stroke="var(--color-text-tertiary)"
           />
           {/* bottom bar */}
           <rect
@@ -138,7 +138,7 @@ export function PotAnimation() {
             height="2"
             rx="1"
             fill="var(--color-bg)"
-            stroke="var(--color-text-secondary)"
+            stroke="var(--color-text-tertiary)"
           />
 
           {/* RAIN LINES – dashed + mask animacija */}
@@ -149,7 +149,7 @@ export function PotAnimation() {
                 <mask id={`sprinklerMask-${index}`}>
                   <motion.path
                     d={d}
-                    stroke="white"
+                    stroke="var(--color-40)"
                     strokeWidth={6}
                     strokeLinecap="round"
                     vectorEffect="non-scaling-stroke"
@@ -212,7 +212,7 @@ export function PotAnimation() {
             isRaining
               ? {}
               : {
-                  outlineColor: "var(--color-border-secondary)",
+                  outlineColor: "var(--color-border)",
                 }
           }
           transition={{
@@ -229,7 +229,7 @@ export function PotAnimation() {
     items-center justify-center
     overflow-hidden
     rounded-full
-    border border-color-text-tertiary
+    border border-color-border-secondary
     bg-transparent
     type-body-xs
     disabled:cursor-default disabled:opacity-80
@@ -237,7 +237,7 @@ export function PotAnimation() {
           >
             {/* “voda” – vertikalni tank, prazni se OD GORE PREMA DOLJE */}
             <motion.span
-              className="absolute inset-x-0 bottom-0 z-0 bg-color-border"
+              className="absolute inset-x-0 bottom-0 z-0 bg-color-bg-surface"
               initial={false}
               animate={{
                 height: `${tankLevel * 100}%`,

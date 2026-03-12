@@ -18,22 +18,14 @@ export type ProjectConfig = {
   categoryLabel: string;
   category: "client" | "personal";
 
+  /** Optional background image for the project card (public path). */
+  cardBackground?: string;
+
   /** SVG graphic for project card (theme-aware). Not used in case study. */
   cardGraphic?: React.ComponentType;
 
-  // hero vizual – used in case study only, not on project cards
-  hero?: {
-    type: "image" | "video";
-    src: string;
-    alt?: string;
-    position?: "top" | "center" | "bottom";
-  };
-
-  // thumbnail image for list icons (if hero is video, use this for list display)
-  thumbnail?: string;
-
   /** Case study page component — optional */
-  Page?: React.ComponentType<{ heroSlot?: React.ReactNode }>;
+  Page?: React.ComponentType;
 };
 
 export const projectsConfig: ProjectConfig[] = [
@@ -48,10 +40,7 @@ export const projectsConfig: ProjectConfig[] = [
     cardTitle: "Neptune: Defining the product's positioning and visual foundation",
     categoryLabel: "Developer tools",
     category: "client",
-    hero: {
-      type: "video",
-      src: "/case-studies/neptune-chat.mp4",
-    },
+    cardBackground: "/project-cards/card-neptune.png",
     Page: ProjectPageNeptune,
   },
 
@@ -64,11 +53,7 @@ export const projectsConfig: ProjectConfig[] = [
     cardTitle: "Shuttle: Designing a scalable system for a growing developer platform.",
     categoryLabel: "Developer tools",
     category: "client",
-    hero: {
-      type: "image",
-      src: "/case-studies/shuttle-console-hero.png",
-      position: "top",
-    },
+    cardBackground: "/project-cards/card-shuttle.png",
     Page: ProjectPageShuttle,
   },
 
@@ -80,10 +65,7 @@ export const projectsConfig: ProjectConfig[] = [
     cardTitle: "MixLodge: Turning an early idea into a structured booking product",
     categoryLabel: "Marketplace product",
     category: "client",
-    hero: {
-      type: "image",
-      src: "/case-studies/mixlodge-hero.png",
-    },
+    cardBackground: "/project-cards/card-mixlodge.png",
     Page: ProjectPageMixlodge,
   },
 
@@ -94,10 +76,7 @@ export const projectsConfig: ProjectConfig[] = [
     cardTitle: "Portfolio: Building a personal site as a real product.",
     categoryLabel: "Personal project",
     category: "personal",
-    hero: {
-      type: "image",
-      src: "/case-studies/portfolio-hero.png",
-    },
+    cardBackground: "/project-cards/card-portfolio.png",
     Page: ProjectPagePortfolio,
   },
 ];

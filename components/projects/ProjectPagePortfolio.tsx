@@ -14,11 +14,9 @@ import {
   portfolioBuiltWith,
 } from "./content/portfolio.content";
 
-type ProjectPageProps = { heroSlot?: React.ReactNode };
-
-export function ProjectPagePortfolio({ heroSlot }: ProjectPageProps) {
+export function ProjectPagePortfolio() {
   return (
-    <CaseStudyLayout {...portfolioMeta} heroSlot={heroSlot}>
+    <CaseStudyLayout {...portfolioMeta}>
       <CaseStudySection data={portfolioContext} />
       <CaseStudySection data={portfolioStarting} />
       <CaseStudySection data={portfolioEarlyExperiments} />

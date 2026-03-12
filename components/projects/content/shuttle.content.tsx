@@ -21,6 +21,19 @@ export const shuttleBeforeAfter = {
   caption: "Before / after: The old console technically did the job, but didn't scale.",
 };
 
+export const shuttleHeroImage: SectionData = {
+  fullWidth: true,
+  blocks: [
+    {
+      type: "img",
+      src: "/case-studies/shuttle-console-hero.png",
+      alt: "Overview of Shuttle console after redesign.",
+      aspect: "16/9",
+      priority: true,
+    },
+  ],
+};
+
 export const shuttleContext: SectionData = {
   heading: "Context",
   blocks: [

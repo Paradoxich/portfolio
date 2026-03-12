@@ -9,7 +9,7 @@ import {
 
 export default function IllustrationsPage() {
   return (
-    <PageShell className="px-4xl">
+    <PageShell className="md:px-4xl">
         <header className="layout-grid hero-gap mt-4xl">
           <section className="col-span-12 md:col-span-12 stack-md">
             <h1 className="type-h1 text-balance text-center">

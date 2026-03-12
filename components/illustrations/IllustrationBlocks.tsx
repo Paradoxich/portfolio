@@ -39,13 +39,14 @@ export function IllustrationBlocks({
                 {triptychImages.map((image, imageIndex) => (
                   <div
                     key={`${block.id}-triptych-${imageIndex}`}
-                    className="relative h-[280px] w-full overflow-hidden rounded-card md:h-[340px] lg:h-[593px]"
+                    className="w-full overflow-hidden rounded-card"
                   >
                     <Image
                       src={image.src}
                       alt={image.alt}
-                      fill
-                      className="object-cover"
+                      width={1200}
+                      height={800}
+                      className="w-full h-auto"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                     />
                   </div>
@@ -56,13 +57,14 @@ export function IllustrationBlocks({
                 <div
                   className={`col-span-12 ${
                     isReversed ? "lg:order-2" : "lg:order-1"
-                  } order-1 relative h-[320px] w-full overflow-hidden rounded-card lg:col-span-8 lg:h-full`}
+                  } order-1 w-full overflow-hidden rounded-card lg:col-span-8 lg:h-full`}
                 >
                   <Image
                     src={block.hero.src}
                     alt={block.hero.alt}
-                    fill
-                    className="object-cover"
+                    width={1600}
+                    height={1000}
+                    className="w-full h-auto"
                     sizes="(max-width: 1024px) 100vw, 960px"
                     priority={index === 0}
                   />
@@ -76,13 +78,14 @@ export function IllustrationBlocks({
                   {block.stack.map((image, stackIndex) => (
                     <div
                       key={`${block.id}-stack-${stackIndex}`}
-                      className="relative h-[240px] w-full overflow-hidden rounded-card lg:h-[310px]"
+                      className="w-full overflow-hidden rounded-card"
                     >
                       <Image
                         src={image.src}
                         alt={image.alt}
-                        fill
-                        className="object-cover"
+                        width={800}
+                        height={600}
+                        className="w-full h-auto"
                         sizes="(max-width: 1024px) 100vw, 480px"
                       />
                     </div>
