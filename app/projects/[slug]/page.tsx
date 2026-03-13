@@ -67,7 +67,7 @@ function ProjectPageContent() {
           {project.Page && <project.Page />}
 
           {/* Prev/Next navigation */}
-          <nav className="flex justify-center mt-4xl pt-2xl border-t border-color-border-inset">
+          <nav className="flex justify-center mt-5xl pt-2xl border-t border-color-border-inset">
             <div className="flex gap-sm">
               {prevProject ? (
                 <Link

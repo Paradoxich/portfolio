@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 
 export default function NotesPage() {
   return (
-    <PageShell className="flex min-h-[calc(100dvh-4rem)] flex-col justify-between py-4xl">
+    <PageShell className="flex min-h-[calc(100dvh-4rem)] flex-col justify-between py-5xl">
       <div className="mx-auto flex w-full max-w-[950px] flex-1 flex-col justify-between">
         {/* Quote group: icon + text */}
         <div className="flex flex-col gap-lg">

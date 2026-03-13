@@ -101,7 +101,7 @@ export function OverviewContent() {
           ))}
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-2xl md:gap-5xl">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-2xl md:gap-4xl">
           <div className="flex items-center gap-2 text-color-text-tertiary">
             <CheckmarkCircle size={20} />
             <p className="type-body-sm text-color-text-tertiary">

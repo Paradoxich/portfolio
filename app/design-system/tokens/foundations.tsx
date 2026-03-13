@@ -23,8 +23,8 @@ export const spacingTokens = [
   { token: "space.xl",      value: "24px" },
   { token: "space.2xl",     value: "32px" },
   { token: "space.3xl",     value: "40px" },
-  { token: "space.4xl",     value: "64px" },
-  { token: "space.5xl",     value: "56px" },
+  { token: "space.4xl",     value: "56px" },
+  { token: "space.5xl",     value: "64px" },
   { token: "space.section", value: "120px" },
 ];
 

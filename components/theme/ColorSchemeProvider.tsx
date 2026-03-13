@@ -3,85 +3,7 @@
 import * as React from "react";
 import { CoffeeCup } from "@/components/icons";
 
-const colorSchemes = {
-  // Warm dark — default green-tinted theme
-  warm: {
-    // ── Color scale ────────────────────────────────────────────────────────────
-    "--color-0":  "#080806", // bg            — page background, card-ghost fill
-    "--color-05": "#0F0E0C", // bg-card        — card-interactive, card-tinted surfaces
-    "--color-10": "#141712", // bg-muted / border-inset — hover bg, nav/drawer dividers, separators
-    "--color-20": "#1F1E18", // bg-surface / border-subtle — active surface, tinted card borders
-    "--color-30": "#272921", // border         — default borders, dividers, "Let's chat" button border
-    "--color-40": "#35382C", // border-secondary — project card border, scrollbar thumb
-    "--color-50": "#494D3F", // (scale only — no semantic alias)
-    "--color-60": "#606655", // text-tertiary  — decorative icons (PixelQuote), rain stroke, scrollbar hover
-    "--color-80": "#BDAD9A", // text-secondary — labels, descriptions, nav items (inactive)
-    "--color-90": "#F3F0E9", // text-primary   — headings, body text, active nav items
-    // ── RGB helpers (used for rgba() opacity variants) ──────────────────────
-    "--color-0-rgb":  "60, 20, 3",  // gradient overlays in ProjectCardBackground
-    "--color-10-rgb": "96, 22, 9",  // muted surface overlays
-    "--color-60-rgb": "81, 17, 40",  // opacity tints (currently unused, reserved)
-    // ── Decorative & filters ────────────────────────────────────────────────
-    "--color-graphic-muted": "#606655", // illustration dots and graphic accents
-    "--image-filter": "none",           // CSS filter applied to <img> elements
-    "--project-card-gradient-rgb": "15, 15, 12", // neutral card gradient base
-    "--color-accent-yellow": "#EEC643",
-  },
-
-  // Cool dark — neutral black/gray theme
-  cool: {
-    // ── Color scale ────────────────────────────────────────────────────────────
-    "--color-0":  "#0A0A0A", // bg            — page background, card-ghost fill
-    "--color-05": "#0F0F0F", // bg-card        — card-interactive, card-tinted surfaces
-    "--color-10": "#141414", // bg-muted / border-inset — hover bg, nav/drawer dividers, separators
-    "--color-20": "#1F1F1F", // bg-surface / border-subtle — active surface, tinted card borders
-    "--color-30": "#262626", // border         — default borders, dividers, "Let's chat" button border
-    "--color-40": "#333333", // border-secondary — project card border, scrollbar thumb
-    "--color-50": "#484848", // (scale only — no semantic alias)
-    "--color-60": "#5C5C5C", // text-tertiary  — decorative icons (PixelQuote), rain stroke, scrollbar hover
-    "--color-80": "#A3A3A3", // text-secondary — labels, descriptions, nav items (inactive)
-    "--color-90": "#E5E5E5", // text-primary   — headings, body text, active nav items
-    // ── RGB helpers (used for rgba() opacity variants) ──────────────────────
-    "--color-0-rgb":  "10, 10, 10",  // gradient overlays in ProjectCardBackground
-    "--color-10-rgb": "20, 20, 20",  // muted surface overlays
-    "--color-60-rgb": "92, 92, 92",  // opacity tints (currently unused, reserved)
-    // ── Decorative & filters ────────────────────────────────────────────────
-    "--color-graphic-muted": "#757575", // illustration dots and graphic accents
-    "--image-filter": "grayscale(100%)", // CSS filter applied to <img> elements
-    "--project-card-gradient-rgb": "10, 10, 10", // cooler neutral for card gradient
-    "--color-accent-yellow": "#EEC643",
-  },
-
-  // Light — inverted gray scale, values still being tuned
-  light: {
-    // ── Color scale ────────────────────────────────────────────────────────────
-    "--color-0":  "#FAFAFA", // bg            — page background, card-ghost fill
-    "--color-05": "#F2F2F2", // bg-card        — card-interactive, card-tinted surfaces
-    "--color-10": "#E3E3E3", // bg-muted / border-inset — hover bg, nav/drawer dividers, separators
-    "--color-20": "#D9D9D9", // bg-surface / border-subtle — active surface, tinted card borders
-    "--color-30": "#CCCCCC", // border         — default borders, dividers, "Let's chat" button border
-    "--color-40": "#BFBFBF", // border-secondary — project card border, scrollbar thumb
-    "--color-50": "#B3B3B3", // (scale only — no semantic alias)
-    "--color-60": "#A6A6A6", // text-tertiary  — decorative icons (PixelQuote), rain stroke, scrollbar hover
-    "--color-80": "#4D4D4D", // text-secondary — labels, descriptions, nav items (inactive)
-    "--color-90": "#0D0D0D", // text-primary   — headings, body text, active nav items
-    // ── RGB helpers (used for rgba() opacity variants) ──────────────────────
-    "--color-0-rgb":  "250, 250, 250", // gradient overlays in ProjectCardBackground
-    "--color-10-rgb": "227, 227, 227", // muted surface overlays
-    "--color-60-rgb": "166, 166, 166", // opacity tints (currently unused, reserved)
-    // ── Decorative & filters ────────────────────────────────────────────────
-    "--color-graphic-muted": "#FFFFFF", // illustration dots and graphic accents
-    "--image-filter": "none",           // CSS filter applied to <img> elements
-    "--project-card-gradient-rgb": "20, 20, 20", // placeholder for light theme
-    "--color-accent-yellow": "#EEC643",
-
-    // ── Typography overrides (light theme) ─────────────────────────────────
-    "--font-weight-regular": "450", // body text, secondary labels
-    "--font-weight-medium": "550",  // headings, emphasized text
-  },
-} as const;
-
-type ColorScheme = keyof typeof colorSchemes;
+type ColorScheme = "warm" | "cool" | "light";
 
 type ColorSchemeContextType = {
   colorScheme: ColorScheme;
@@ -99,19 +21,13 @@ export function ColorSchemeProvider({ children }: { children: React.ReactNode })
 
   // Apply color scheme to document
   React.useEffect(() => {
-    const root = document.documentElement;
-    const colors = colorSchemes[colorScheme];
-    
-    Object.entries(colors).forEach(([property, value]) => {
-      root.style.setProperty(property, value);
-    });
+    document.documentElement.dataset.theme = colorScheme;
   }, [colorScheme]);
 
   const toggleColorScheme = React.useCallback(() => {
-    const schemeKeys = Object.keys(colorSchemes) as ColorScheme[];
+    const schemeKeys: ColorScheme[] = ["warm", "cool", "light"];
     setColorScheme((prev) => {
-      const currentIndex = schemeKeys.indexOf(prev);
-      const nextIndex = (currentIndex + 1) % schemeKeys.length;
+      const nextIndex = (schemeKeys.indexOf(prev) + 1) % schemeKeys.length;
       return schemeKeys[nextIndex];
     });
   }, []);

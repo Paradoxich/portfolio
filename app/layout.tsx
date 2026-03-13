@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistSans.className}`}>
+    <html lang="en" data-theme="warm" className={`${GeistSans.variable} ${GeistSans.className}`}>
       <body className={GeistMono.variable}>
         <ColorSchemeProvider>
           <HireDrawerProvider>

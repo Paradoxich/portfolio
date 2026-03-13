@@ -140,7 +140,7 @@ export const spacingUtilityTokens = [
   { token: "stack-lg",  mapsTo: "space.base", role: "Relaxed stacking — compact card sections",  preview: "16px" },
   { token: "stack-xl",  mapsTo: "space.xl",   role: "Section stacking — card and CTA groups",    preview: "24px" },
   { token: "stack-2xl", mapsTo: "space.2xl",  role: "Wide stacking — page header sections",      preview: "32px" },
-  { token: "stack-5xl", mapsTo: "space.5xl",  role: "Hero stacking — case study major sections", preview: "56px" },
+  { token: "stack-5xl", mapsTo: "space.4xl",  role: "Hero stacking — case study major sections", preview: "56px" },
 ];
 
 // Radius utilities
@@ -219,7 +219,7 @@ export const layoutUtilities = [
   {
     name: "hero-gap",
     role: "Hero spacing",
-    tokens: "space.3xl (mobile) · space.5xl (desktop)",
+    tokens: "space.3xl (mobile) · space.4xl (desktop)",
     description:
       "Responsive gap beneath hero rows — 40px on mobile, 56px on desktop.",
     className: "hero-gap",

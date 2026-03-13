@@ -56,8 +56,8 @@ const config: Config = {
         xl: "var(--space-xl)",      // 24px
         "2xl": "var(--space-2xl)", // 32px
         "3xl": "var(--space-3xl)", // 40px
-        "4xl": "var(--space-4xl)", // 64px
-        "5xl": "var(--space-5xl)", // 56px (between 3xl–4xl – stack-5xl / hero-gap)
+        "4xl": "var(--space-4xl)", // 56px
+        "5xl": "var(--space-5xl)", // 64px
 
         // layout helpers
         gutter: "var(--layout-gutter)",

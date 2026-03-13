@@ -9,8 +9,8 @@ import {
 
 export default function IllustrationsPage() {
   return (
-    <PageShell className="md:px-4xl">
-        <header className="layout-grid hero-gap mt-4xl">
+    <PageShell className="md:px-5xl">
+        <header className="layout-grid hero-gap mt-5xl">
           <section className="col-span-12 md:col-span-12 stack-md">
             <h1 className="type-h1 text-balance text-center">
               <span className="text-color-text-primary font-medium">
