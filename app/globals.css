@@ -15,13 +15,13 @@
   --color-30: #272921;
   --color-40: #35382C;
   --color-50: #494D3F;
-  --color-60: #665E55;
+  --color-60: #606655;
   --color-80: #BDAD9A;
   --color-90: #F3F0E9;
   /* RGB helpers for opacity/gradient variants */
   --color-0-rgb: 60, 20, 3;
   --color-10-rgb: 96, 22, 9;
-  --color-60-rgb: 60, 17, 40;
+  --color-60-rgb: 81, 17, 40;
 
   /* Contact form & status accents */
   --color-success: #18C340;
@@ -32,6 +32,9 @@
 
   /* Decorative graphic accent (dots, highlights in illustrations) */
   --color-graphic-muted: #606655;
+
+  /* Accent colors */
+  --color-accent-yellow: #EEC643;
 
   /* Image filter for theme switching */
   --image-filter: none;

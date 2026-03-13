@@ -74,7 +74,7 @@ export function OverviewContent() {
           </Link>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-1 px-md py-sm rounded-full type-body-sm font-medium text-color-0 transition-colors bg-[#EEC643] hover:bg-[#F3F0E9]"
+            className="inline-flex items-center gap-1 px-md py-sm rounded-full type-body-sm font-medium text-color-0 transition-colors bg-[var(--color-accent-yellow)] hover:bg-color-bg-surface"
           >
             Explore Projects
           </Link>

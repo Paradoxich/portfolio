@@ -25,6 +25,7 @@ const colorSchemes = {
     "--color-graphic-muted": "#606655", // illustration dots and graphic accents
     "--image-filter": "none",           // CSS filter applied to <img> elements
     "--project-card-gradient-rgb": "15, 15, 12", // neutral card gradient base
+    "--color-accent-yellow": "#EEC643",
   },
 
   // Cool dark — neutral black/gray theme
@@ -48,6 +49,7 @@ const colorSchemes = {
     "--color-graphic-muted": "#757575", // illustration dots and graphic accents
     "--image-filter": "grayscale(100%)", // CSS filter applied to <img> elements
     "--project-card-gradient-rgb": "10, 10, 10", // cooler neutral for card gradient
+    "--color-accent-yellow": "#EEC643",
   },
 
   // Light — inverted gray scale, values still being tuned
@@ -71,6 +73,7 @@ const colorSchemes = {
     "--color-graphic-muted": "#FFFFFF", // illustration dots and graphic accents
     "--image-filter": "none",           // CSS filter applied to <img> elements
     "--project-card-gradient-rgb": "20, 20, 20", // placeholder for light theme
+    "--color-accent-yellow": "#EEC643",
 
     // ── Typography overrides (light theme) ─────────────────────────────────
     "--font-weight-regular": "450", // body text, secondary labels
