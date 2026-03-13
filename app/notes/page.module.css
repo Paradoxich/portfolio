@@ -4,7 +4,7 @@
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-snug);
   color: var(--color-text-secondary);
-  font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  font-feature-settings: var(--font-feature-editorial);
 }
 
 /* Notes footnote — 14 / ui(1.45) / regular / intentionally very muted (color-40, darker than text-secondary) */
@@ -13,5 +13,5 @@
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-ui);
   color: var(--color-40);
-  font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  font-feature-settings: var(--font-feature-editorial);
 }

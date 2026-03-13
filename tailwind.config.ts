@@ -33,6 +33,17 @@ const config: Config = {
         "color-text-secondary": "var(--color-text-secondary)",
         "color-text-tertiary": "var(--color-text-tertiary)",
         "color-interactive-hover": "var(--color-interactive-hover)",
+        "color-accent-yellow": "var(--color-accent-yellow)",
+
+        // contact form
+        "color-input-bg": "var(--color-input-bg)",
+        "color-input-border": "var(--color-input-border)",
+        "color-input-border-hover": "var(--color-input-border-hover)",
+        "color-input-placeholder": "var(--color-input-placeholder)",
+        "color-success": "var(--color-success)",
+
+        // overlays
+        "color-overlay": "var(--color-overlay)",
       },
 
       spacing: {

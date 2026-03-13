@@ -2,16 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { projectsConfig } from "@/components/projects/ProjectsConfig";
-
-const PAGE_TITLES: Record<string, string> = {
-  "/": "Overview",
-  "/projects": "Projects",
-  "/illustrations": "Illustrations",
-  "/experiments": "Experiments",
-  "/notes": "Notes",
-  "/testimonials": "Testimonials",
-  "/design-system": "Design system",
-};
+import { PAGE_TITLES } from "./nav.config";
 
 function getPageTitle(pathname: string): string {
   if (pathname === "/") return "Overview";

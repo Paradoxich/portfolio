@@ -4,7 +4,7 @@
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-ui);
   color: var(--color-text-secondary);
-  font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  font-feature-settings: var(--font-feature-editorial);
 }
 
 /* Testimonial quote — highlighted first sentence — 20 / ui(1.45) / medium */
@@ -13,5 +13,5 @@
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-ui);
   color: var(--color-text-primary);
-  font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+  font-feature-settings: var(--font-feature-editorial);
 }

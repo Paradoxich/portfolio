@@ -1,37 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
 import * as React from "react";
 import { useHireDrawer } from "@/components/contact/HireDrawerContext";
-import { FaceSmile, Projects, FountainPen, LabExperiment, Heart } from "@/components/icons";
-
-function MobileProfileAvatar() {
-  const [useFallback, setUseFallback] = React.useState(false);
-  if (useFallback) {
-    return (
-      <span className="flex w-6 h-6 shrink-0 items-center justify-center rounded-full text-[12px] font-medium bg-color-border-secondary text-color-text-secondary">
-        A
-      </span>
-    );
-  }
-  return (
-    <Image
-      src="/general/ana-profile.png"
-      alt="Ana Beverin"
-      width={24}
-      height={24}
-      className="h-6 w-6 shrink-0 rounded-full object-cover"
-      onError={() => setUseFallback(true)}
-    />
-  );
-}
+import { ProfileAvatar } from "./ProfileAvatar";
+import { NAV_SECTIONS } from "./nav.config";
+import { useIsActive } from "./useIsActive";
 
 export function MobileNav() {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
   const { openHireDrawer } = useHireDrawer();
-  const pathname = usePathname();
+  const isActive = useIsActive();
 
   React.useEffect(() => {
     if (sidebarOpen) {
@@ -48,7 +27,7 @@ export function MobileNav() {
     <>
       <header className="md:hidden flex items-center justify-between px-4 py-4 border-b border-color-border bg-color-bg">
         <Link href="/" className="flex items-center gap-2">
-          <MobileProfileAvatar />
+          <ProfileAvatar />
           <span className="type-body-sm font-medium text-color-text-primary">
             Ana Beverin
           </span>
@@ -81,7 +60,7 @@ export function MobileNav() {
         />
       )}
       <aside
-        className={`md:hidden fixed inset-x-0 bottom-0 max-h-[80vh] bg-color-bg border-t border-color-border z-[61] transform transition-transform duration-200 rounded-t-[20px] ${
+        className={`md:hidden fixed inset-x-0 bottom-0 max-h-[80vh] bg-color-bg border-t border-color-border z-[61] transform transition-transform duration-200 rounded-t-card ${
           sidebarOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >
@@ -99,23 +78,15 @@ export function MobileNav() {
             </button>
           </div>
           <nav className="flex flex-col gap-1">
-            {[
-              { href: "/", label: "Overview", Icon: FaceSmile },
-              { href: "/projects", label: "Projects", Icon: Projects },
-              { href: "/illustrations", label: "Illustrations", Icon: FountainPen },
-              { href: "/experiments", label: "Experiments", Icon: LabExperiment },
-              // { href: "/notes", label: "Notes", Icon: Notes }, // hidden until notes feature is ready
-              { href: "/testimonials", label: "Testimonials", Icon: Heart },
-            ].map(({ href, label, Icon }) => {
-              const active =
-                href === "/" ? pathname === "/" : pathname.startsWith(href);
+            {NAV_SECTIONS.flat().map(({ href, label, Icon }) => {
+              const active = isActive(href);
 
               return (
                 <Link
                   key={href}
                   href={href}
                   onClick={() => setSidebarOpen(false)}
-                  className={`group flex items-center w-full h-10 rounded-[8px] px-0 transition-colors ${
+                  className={`group flex items-center w-full h-10 rounded-sm px-0 transition-colors ${
                     active
                       ? "bg-color-interactive-hover text-color-text-primary"
                       : "text-color-text-secondary hover:bg-color-interactive-hover hover:text-color-text-primary focus:bg-color-interactive-hover focus-visible:bg-color-interactive-hover"

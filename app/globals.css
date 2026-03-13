@@ -30,6 +30,9 @@
   --color-input-border-hover: var(--color-40);
   --color-input-placeholder: var(--color-60);
 
+  /* Overlay */
+  --color-overlay: rgba(2, 2, 2, 0.50);
+
   /* Decorative graphic accent (dots, highlights in illustrations) */
   --color-graphic-muted: #606655;
 
@@ -106,6 +109,10 @@
   /* Font weight scale */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
+
+  /* Editorial font-feature-settings — ss02/ss03 on, liga off.
+     Used in testimonial and notes quote styles. */
+  --font-feature-editorial: "ss02" 1, "ss03" 1, "liga" 0;
 }
 
 /* =========================================

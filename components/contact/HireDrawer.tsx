@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { CONTACT_EMAIL } from "@/lib/constants";
 
 type HireDrawerProps = {
   isOpen: boolean;
@@ -9,6 +10,20 @@ type HireDrawerProps = {
 };
 
 type FormState = "idle" | "loading" | "success" | "error";
+
+function inputClass(hasError: boolean, extra?: string) {
+  return [
+    "w-full px-4 py-3 rounded-lg",
+    "bg-color-input-bg",
+    hasError ? "border border-red-400" : "border border-color-input-border",
+    "ring-0 ring-transparent ring-offset-0",
+    "text-color-text-primary placeholder:text-color-input-placeholder",
+    "focus:outline-none focus:border-color-input-border-hover focus:ring-1 focus:ring-color-input-border focus:ring-offset-2 focus:ring-offset-color-0",
+    "hover:border-color-input-border-hover",
+    "transition-[border-color] duration-300 ease-out type-body-sm disabled:opacity-50",
+    extra,
+  ].filter(Boolean).join(" ");
+}
 
 export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
   const [name, setName] = React.useState("");
@@ -24,7 +39,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
 
   const handleCopyEmail = async () => {
     try {
-      await navigator.clipboard.writeText("ana.beverin@gmail.com");
+      await navigator.clipboard.writeText(CONTACT_EMAIL);
       
       // Clear any existing timeout
       if (copyTimeoutRef.current) {
@@ -132,7 +147,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
         <>
           {/* OVERLAY */}
           <motion.div
-            className="fixed inset-0 z-50 bg-[rgba(2,2,2,0.50)] backdrop-blur-[16px]"
+            className="fixed inset-0 z-50 bg-color-overlay backdrop-blur-[16px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -182,7 +197,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                   onClick={handleCopyEmail}
                   className="inline-flex items-center gap-2 text-color-text-primary transition-colors group"
                 >
-                  <span className="group-hover:underline">ana.beverin@gmail.com</span>
+                  <span className="group-hover:underline">{CONTACT_EMAIL}</span>
                   {/* Tooltip hint */}
                   <span
                     className={`
@@ -273,20 +288,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                       }}
                       placeholder="Your name"
                       disabled={formState === "loading"}
-                      className={`
-                        w-full px-4 py-3
-                        rounded-lg
-                        bg-[var(--color-input-bg)]
-                        border ${errors.name ? "border-red-400" : "border-[var(--color-input-border)]"}
-                        ring-0 ring-transparent ring-offset-0
-                        text-color-text-primary
-                        placeholder:text-[var(--color-input-placeholder)]
-                        focus:outline-none focus:border-[var(--color-input-border-hover)] focus:ring-1 focus:ring-[var(--color-input-border)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
-                        hover:border-[var(--color-input-border-hover)]
-                        transition-[border-color] duration-300 ease-out
-                        type-body-sm
-                        disabled:opacity-50
-                      `}
+                      className={inputClass(!!errors.name)}
                     />
                     {errors.name && (
                       <p className="type-body-xs text-red-400">{errors.name}</p>
@@ -308,20 +310,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                       }}
                       placeholder="you@example.com"
                       disabled={formState === "loading"}
-                      className={`
-                        w-full px-4 py-3
-                        rounded-lg
-                        bg-[var(--color-input-bg)]
-                        border ${errors.email ? "border-red-400" : "border-[var(--color-input-border)]"}
-                        ring-0 ring-transparent ring-offset-0
-                        text-color-text-primary
-                        placeholder:text-[var(--color-input-placeholder)]
-                        focus:outline-none focus:border-[var(--color-input-border-hover)] focus:ring-1 focus:ring-[var(--color-input-border)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
-                        hover:border-[var(--color-input-border-hover)]
-                        transition-[border-color] duration-300 ease-out
-                        type-body-sm
-                        disabled:opacity-50
-                      `}
+                      className={inputClass(!!errors.email)}
                     />
                     {errors.email && (
                       <p className="type-body-xs text-red-400">{errors.email}</p>
@@ -342,21 +331,7 @@ export function HireDrawer({ isOpen, onClose }: HireDrawerProps) {
                       }}
                       placeholder="Tell me about your project..."
                       disabled={formState === "loading"}
-                      className={`
-                        w-full px-4 py-3 flex-1 min-h-[160px]
-                        rounded-lg
-                        bg-[var(--color-input-bg)]
-                        border ${errors.message ? "border-red-400" : "border-[var(--color-input-border)]"}
-                        ring-0 ring-transparent ring-offset-0
-                        text-color-text-primary
-                        placeholder:text-[var(--color-input-placeholder)]
-                        focus:outline-none focus:border-[var(--color-input-border-hover)] focus:ring-1 focus:ring-[var(--color-input-border)] focus:ring-offset-2 focus:ring-offset-[var(--color-0)]
-                        hover:border-[var(--color-input-border-hover)]
-                        transition-[border-color] duration-300 ease-out
-                        type-body-sm
-                        resize-none
-                        disabled:opacity-50
-                      `}
+                      className={inputClass(!!errors.message, "flex-1 min-h-[160px] resize-none")}
                     />
                     {errors.message && (
                       <p className="type-body-xs text-red-400">{errors.message}</p>

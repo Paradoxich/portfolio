@@ -98,3 +98,22 @@ export const layoutContainerTokens = [
   { token: "container.max-width", value: "1400px" },
   { token: "container.padding.x", value: "40px" },
 ];
+
+// One-off layout values — intentionally outside the spacing scale.
+// These are semantically precise values that don't fit the 4px grid
+// or exist at a scale above the current maximum. Do not add to the
+// spacing scale; keep them as named exceptions here for discoverability.
+export const layoutExceptionTokens = [
+  {
+    token: "space.illustration-gap",
+    value: "200px",
+    role: "Vertical gap between illustration blocks on /illustrations. Intentionally above the spacing scale — breathing room between full-bleed image groups.",
+    usage: "gap-[200px] in IllustrationBlocks.tsx",
+  },
+  {
+    token: "mx.bullet-separator",
+    value: "0.75ch",
+    role: "Inline margin around bullet separators (•) in CaseStudyLayout meta line. Character-relative unit preserves optical spacing regardless of font size — do not replace with a fixed px token.",
+    usage: "mx-[0.75ch] in CaseStudyLayout.tsx",
+  },
+];

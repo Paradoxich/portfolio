@@ -1,59 +1,19 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useHireDrawer } from "@/components/contact/HireDrawerContext";
 import * as React from "react";
 import {
-  FaceSmile,
-  Projects,
-  FountainPen,
-  LabExperiment,
-  Heart,
   Dropdown,
   ArrowOutward,
   ArrowDown,
   Copy,
   ArrowRight,
 } from "@/components/icons";
-
-function ProfileAvatar() {
-  const [useFallback, setUseFallback] = React.useState(false);
-  if (useFallback) {
-    return (
-      <span className="flex w-6 h-6 shrink-0 items-center justify-center rounded-full text-[12px] font-medium bg-color-border-secondary text-color-text-secondary">
-        A
-      </span>
-    );
-  }
-  return (
-    <Image
-      src="/general/ana-profile.png"
-      alt="Ana Beverin"
-      width={24}
-      height={24}
-      className="h-6 w-6 shrink-0 rounded-full object-cover border border-color-border-secondary"
-      onError={() => setUseFallback(true)}
-    />
-  );
-}
-
-const navSections = [
-  [
-    { href: "/", label: "Overview", Icon: FaceSmile },
-    { href: "/projects", label: "Projects", Icon: Projects },
-  ],
-  [
-    { href: "/illustrations", label: "Illustrations", Icon: FountainPen },
-    { href: "/experiments", label: "Experiments", Icon: LabExperiment },
-  ],
-  [
-    // { href: "/notes", label: "Notes", Icon: Notes }, // hidden until notes feature is ready
-    { href: "/testimonials", label: "Testimonials", Icon: Heart },
-  ],
-];
-
+import { ProfileAvatar } from "./ProfileAvatar";
+import { NAV_SECTIONS } from "./nav.config";
+import { useIsActive } from "./useIsActive";
+import { CONTACT_EMAIL } from "@/lib/constants";
 
 function NavDivider() {
   return (
@@ -82,7 +42,7 @@ function ProfileMenuItem({
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
       onClick={onClose}
-      className="flex items-center w-full h-8 pl-2 rounded-[8px] hover:bg-color-bg-muted focus:bg-color-bg-muted focus-visible:bg-color-bg-muted transition-colors font-geist"
+      className="flex items-center w-full h-8 pl-2 rounded-sm hover:bg-color-bg-muted focus:bg-color-bg-muted focus-visible:bg-color-bg-muted transition-colors font-geist"
     >
       <span className="truncate flex-1 min-w-0 type-body-sm text-color-text-primary">
         {label}
@@ -95,18 +55,13 @@ function ProfileMenuItem({
 }
 
 export function Sidebar() {
-  const pathname = usePathname();
+  const isActive = useIsActive();
   const { openHireDrawer } = useHireDrawer();
   const [profileMenuOpen, setProfileMenuOpen] = React.useState(false);
   const profileRef = React.useRef<HTMLDivElement>(null);
 
-  const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  };
-
   const copyEmail = React.useCallback(() => {
-    navigator.clipboard.writeText("ana.beverin@gmail.com");
+    navigator.clipboard.writeText(CONTACT_EMAIL);
     setProfileMenuOpen(false);
   }, []);
 
@@ -135,7 +90,7 @@ export function Sidebar() {
               className="flex items-center gap-0 flex-1 min-w-0 hover:text-color-text-primary transition-colors"
             >
               <span className="flex w-12 h-12 shrink-0 items-center justify-center aspect-square">
-                <ProfileAvatar />
+                <ProfileAvatar border />
               </span>
               <span className="truncate font-geist type-body-sm font-medium text-color-text-primary">
                 Ana Beverin
@@ -144,7 +99,7 @@ export function Sidebar() {
             <button
               type="button"
               onClick={() => setProfileMenuOpen((o) => !o)}
-              className={`flex w-8 h-8 shrink-0 items-center justify-center rounded-[8px] text-color-text-secondary transition-colors hover:bg-color-bg-muted hover:text-color-text-primary ${
+              className={`flex w-8 h-8 shrink-0 items-center justify-center rounded-sm text-color-text-secondary transition-colors hover:bg-color-bg-muted hover:text-color-text-primary ${
                 profileMenuOpen ? "bg-color-bg-muted text-color-text-primary" : ""
               }`}
               aria-label="Open profile menu"
@@ -156,10 +111,10 @@ export function Sidebar() {
             </button>
           </div>
 
-            {profileMenuOpen && (
-              <div
-                className="absolute left-0 top-full mt-1 flex flex-col items-stretch z-[60] w-[226px] p-2 gap-0.5 rounded-surface border border-color-border-subtle bg-color-bg"
-              >
+          {profileMenuOpen && (
+            <div
+              className="absolute left-0 top-full mt-1 flex flex-col items-stretch z-[60] w-[226px] p-2 gap-0.5 rounded-surface border border-color-border-subtle bg-color-bg"
+            >
               <ProfileMenuItem
                 href="https://www.linkedin.com/in/paradoxich/"
                 label="Linkedin"
@@ -186,10 +141,10 @@ export function Sidebar() {
               <button
                 type="button"
                 onClick={copyEmail}
-                className="flex items-center w-full h-8 pl-2 rounded-[8px] text-left hover:bg-color-bg-muted focus:bg-color-bg-muted focus-visible:bg-color-bg-muted transition-colors font-geist"
+                className="flex items-center w-full h-8 pl-2 rounded-sm text-left hover:bg-color-bg-muted focus:bg-color-bg-muted focus-visible:bg-color-bg-muted transition-colors font-geist"
               >
                 <span className="truncate flex-1 min-w-0 type-body-sm text-color-text-primary">
-                  ana.beverin@gmail.com
+                  {CONTACT_EMAIL}
                 </span>
                 <span className="shrink-0 flex items-center justify-center w-8 h-8 text-color-text-primary">
                   <Copy size={20} />
@@ -201,7 +156,7 @@ export function Sidebar() {
 
         {/* Nav */}
         <nav className="flex flex-col gap-1">
-          {navSections.map((section, i) => (
+          {NAV_SECTIONS.map((section, i) => (
             <React.Fragment key={i}>
               {i > 0 && <NavDivider />}
               {section.map(({ href, label, Icon }) => {
@@ -210,7 +165,7 @@ export function Sidebar() {
                   <Link
                     key={href}
                     href={href}
-                    className={`group flex items-center gap-0 w-full h-12 rounded-[8px] transition-colors ${
+                    className={`group flex items-center gap-0 w-full h-12 rounded-sm transition-colors ${
                       active
                         ? "bg-color-bg-muted text-color-text-primary"
                         : "text-color-text-secondary hover:bg-color-bg-muted hover:text-color-text-primary focus:bg-color-bg-muted focus-visible:bg-color-bg-muted"
