@@ -129,28 +129,32 @@ export function Sidebar() {
       <div className="flex flex-col h-full p-2 gap-4 overflow-visible">
         {/* Profile + dropdown */}
         <div className="relative shrink-0" ref={profileRef}>
-          <button
-            type="button"
-            onClick={() => setProfileMenuOpen((o) => !o)}
-            className="flex items-center gap-0 w-full text-left text-color-text-primary hover:text-color-text-primary transition-colors"
-          >
-            <span className="flex w-12 h-12 shrink-0 items-center justify-center aspect-square">
-              <ProfileAvatar />
-            </span>
-            <span className="truncate flex-1 font-geist type-body-sm font-medium text-color-text-primary">
-              Ana Beverin
-            </span>
-            <span
+          <div className="flex items-center gap-0 w-full text-color-text-primary">
+            <Link
+              href="/"
+              className="flex items-center gap-0 flex-1 min-w-0 hover:text-color-text-primary transition-colors"
+            >
+              <span className="flex w-12 h-12 shrink-0 items-center justify-center aspect-square">
+                <ProfileAvatar />
+              </span>
+              <span className="truncate font-geist type-body-sm font-medium text-color-text-primary">
+                Ana Beverin
+              </span>
+            </Link>
+            <button
+              type="button"
+              onClick={() => setProfileMenuOpen((o) => !o)}
               className={`flex w-8 h-8 shrink-0 items-center justify-center rounded-[8px] text-color-text-secondary transition-colors hover:bg-color-bg-muted hover:text-color-text-primary ${
                 profileMenuOpen ? "bg-color-bg-muted text-color-text-primary" : ""
               }`}
+              aria-label="Open profile menu"
             >
               <Dropdown
                 className={`transition-transform ${profileMenuOpen ? "rotate-180" : ""}`}
                 size={16}
               />
-            </span>
-          </button>
+            </button>
+          </div>
 
             {profileMenuOpen && (
               <div

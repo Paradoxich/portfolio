@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   overflow: hidden;
   cursor: pointer;
 
@@ -81,32 +81,11 @@
   margin-top: auto;
 }
 
-/* Inline "Read story" row shown under title on hover */
-.readStoryInline {
-  display: inline-flex;
+.topRow {
+  display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: var(--font-size-xs); /* 14px – matches type-body-sm */
-  line-height: var(--line-height-ui);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-secondary);
-  overflow: hidden;
-  max-height: 0;
-  margin-top: 0;
-  opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity 350ms cubic-bezier(0.25, 0.1, 0.25, 1),
-    transform 400ms cubic-bezier(0.25, 0.1, 0.25, 1),
-    max-height 400ms cubic-bezier(0.25, 0.1, 0.25, 1),
-    margin-top 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.card:hover .readStoryInline {
-  max-height: 40px;
-  margin-top: var(--space-sm); /* 8px between title and row */
-  opacity: 1;
-  transform: translateY(0);
+  justify-content: flex-start;
+  width: 100%;
 }
 
 @media (min-width: 768px) {

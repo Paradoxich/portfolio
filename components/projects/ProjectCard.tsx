@@ -4,7 +4,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "@/components/icons";
 import styles from "./ProjectCard.module.css";
 
 type ProjectCardProps = {
@@ -28,13 +27,11 @@ export function ProjectCard({ categoryLabel, title, href, background }: ProjectC
       >
         <div className={styles.cardGradientHover} aria-hidden="true" />
         <header className="relative z-10 flex flex-1 flex-col justify-between min-h-0">
-          <span className={styles.label}>{categoryLabel}</span>
+          <div className={styles.topRow}>
+            <span className={styles.label}>{categoryLabel}</span>
+          </div>
           <div className={styles.bottomStack}>
             <p className="type-h4 max-w-[420px]">{title}</p>
-            <div className={styles.readStoryInline} aria-hidden="true">
-              <span>Read story</span>
-              <ArrowRight size={16} />
-            </div>
           </div>
         </header>
       </motion.article>
