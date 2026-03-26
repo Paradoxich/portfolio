@@ -24,6 +24,7 @@ const config: Config = {
         "color-bg-card": "var(--color-bg-card)",
         "color-bg-surface": "var(--color-bg-surface)",
         "color-bg-muted": "var(--color-bg-muted)",
+        "color-bg-graphic-muted": "var(--color-bg-graphic-muted)",
         "color-border-inset": "var(--color-border-inset)" /* structural dividers – nav, drawer, separators */,
         "color-border-subtle": "var(--color-border-subtle)" /* subtle – inset / experiment */,
         "color-border": "var(--color-border)",
@@ -33,7 +34,10 @@ const config: Config = {
         "color-text-secondary": "var(--color-text-secondary)",
         "color-text-tertiary": "var(--color-text-tertiary)",
         "color-interactive-hover": "var(--color-interactive-hover)",
-        "color-accent-yellow": "var(--color-accent-yellow)",
+        "color-yellow-70": "var(--color-yellow-70)",
+        "color-yellow-60": "var(--color-yellow-60)",
+        "color-cta-primary": "var(--color-cta-primary)",
+        "color-cta-primary-hover": "var(--color-cta-primary-hover)",
 
         // contact form
         "color-input-bg": "var(--color-input-bg)",

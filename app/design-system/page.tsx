@@ -40,9 +40,9 @@ const neutralColors = [
 ];
 
 const accentColors = [
-  { name: "accent-yellow",  cssVar: "--color-accent-yellow" },
+  { name: "color-yellow-70", cssVar: "--color-yellow-70" },
+  { name: "color-yellow-60", cssVar: "--color-yellow-60" },
   { name: "success",        cssVar: "--color-success"       },
-  { name: "graphic-muted",  cssVar: "--color-graphic-muted" },
 ];
 
 type ColorAlias = {
@@ -57,6 +57,9 @@ const bgAliases: ColorAlias[] = [
   { name: "color-bg-card",    mapsTo: "→ color-05", cssVar: "--color-bg-card",     description: "Card surface"           },
   { name: "color-bg-muted",   mapsTo: "→ color-10", cssVar: "--color-bg-muted",    description: "Hover / muted"          },
   { name: "color-bg-surface", mapsTo: "→ color-20", cssVar: "--color-bg-surface",  description: "Raised / active surface"},
+  { name: "color-bg-graphic-muted", mapsTo: "→ color-60 (warm), custom overrides (cool/light)", cssVar: "--color-bg-graphic-muted", description: "Decorative graphic accents" },
+  { name: "color-cta-primary", mapsTo: "→ color-yellow-70", cssVar: "--color-cta-primary", description: "Primary CTA background" },
+  { name: "color-cta-primary-hover", mapsTo: "→ color-yellow-60", cssVar: "--color-cta-primary-hover", description: "Primary CTA hover background" },
 ];
 
 const borderAliases: ColorAlias[] = [

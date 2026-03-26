@@ -11,7 +11,7 @@ components/projects/
   content/
     neptune.content.tsx     ← all copy and media refs for Neptune
     shuttle.content.tsx     ← all copy and media refs for Shuttle
-    mixlodge.content.ts     ← all copy and media refs for MixLodge (.ts — no JSX needed)
+    mixlodge.content.tsx    ← all copy and media refs for MixLodge
     portfolio.content.tsx   ← all copy and media refs for Portfolio
   CaseStudyLayout.tsx       ← layout shell + CaseStudySection renderer + shared types
   CaseStudyLayout.module.css
@@ -33,7 +33,6 @@ Each content file exports a `meta` object and individual `SectionData` objects.
 export const neptuneMeta = {
   title: string;
   subtitle: string;
-  titleSeparator?: string;  // default ": "
   meta?: string;            // date / status line
   links?: { href: string; label: string }[];
   tldrItems: React.ReactNode[];
@@ -51,7 +50,8 @@ type SectionData = {
 type ContentBlock =
   | { type: "p";   text: React.ReactNode }
   | { type: "ul";  items: React.ReactNode[] }
-  | { type: "img"; src: string; alt: string; aspect: string; caption?: string; priority?: boolean };
+  | { type: "img"; src: string; alt: string; aspect: string; caption?: string; priority?: boolean }
+  | { type: "video"; src: string; aspect: string; caption?: string; autoPlay?: boolean; loop?: boolean; muted?: boolean; playbackRate?: number };
 ```
 
 `aspect` is a CSS aspect-ratio string (e.g. `"16/9"`, `"16/10.5"`). It is applied via inline `style={{ aspectRatio }}`, not a Tailwind arbitrary value.
@@ -90,12 +90,12 @@ For interactive sections that require React state or refs (carousel, before/afte
 1. Create `components/projects/content/[name].content.tsx` (or `.ts` if no JSX needed).
 2. Export `[name]Meta` and named `SectionData` constants for each section.
 3. Create `components/projects/ProjectPage[Name].tsx` — import content, render sections, add any interactive blocks inline.
-4. Add an entry to `projectsConfig` in `ProjectsConfig.tsx` with `slug`, `title`, `categoryLabel`, `hero`, and `Page`.
+4. Add an entry to `projectsConfig` in `ProjectsConfig.tsx` with `slug`, `title`, `categoryLabel`, and `Page`.
 
 ---
 
-## When to use `.ts` vs `.tsx` for content files
+## Content files and file extension
 
-Use `.ts` when all section blocks are plain strings (no inline JSX). MixLodge is the only current example.
+All current case-study content files use `.tsx`.
 
-Use `.tsx` when any block contains JSX — inline `<strong>`, `<Link>`, or rich TLDR items with bold spans. Neptune, Shuttle, and Portfolio all require `.tsx`.
+Reason: content blocks are typed as `React.ReactNode` and often include inline JSX (`<strong>`, `<Link>`, or rich TLDR rows), and the same format keeps authoring consistent across all studies.

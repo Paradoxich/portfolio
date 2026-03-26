@@ -68,7 +68,8 @@ export const colorTokens = [
   { token: "color-60",  warm: "#606655", cool: "#5c5c5c", light: "#A6A6A6" },
   { token: "color-80",  warm: "#BDAD9A", cool: "#a3a3a3", light: "#4D4D4D" },
   { token: "color-90",  warm: "#F3F0E9", cool: "#e5e5e5", light: "#0D0D0D" },
-  { token: "color-accent-yellow", warm: "#EEC643", cool: "#EEC643", light: "#EEC643" },
+  { token: "color-yellow-70", warm: "#EEC643", cool: "#EEC643", light: "#EEC643" },
+  { token: "color-yellow-60", warm: "#DBB537", cool: "#DBB537", light: "#DBB537" },
 ];
 
 // Theming tokens – dynamic values that change with color scheme

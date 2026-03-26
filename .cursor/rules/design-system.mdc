@@ -36,7 +36,7 @@ Never hardcode values that exist as tokens. No raw hex colors, no px font-sizes,
 | `type-body-sm` | 14px | Compact UI text |
 | `type-body-sm-strong` | 14px | Emphasized compact text |
 | `type-body-xs` | 12px | Dense UI, secondary meta |
-| `type-label` | 12px | Uppercase labels / badges |
+| `type-label` | 14px | Uppercase labels / badges (Geist Mono, wider tracking) |
 
 If no `type-*` class fits, compose from tokens: `font-size-xs`, `leading-ui`, `tracking-tight`, etc.
 Do not create new `type-*` globals for one-off component needs — use inline composition instead.
@@ -55,7 +55,8 @@ className="text-color-text-primary bg-color-bg-muted border-color-border"
 
 Semantic aliases: `text-color-text-primary`, `text-color-text-secondary`,
 `bg-color-bg`, `bg-color-bg-surface`, `bg-color-bg-muted`,
-`border-color-border`, `border-color-border-secondary`, `border-color-border-subtle`
+`border-color-border`, `border-color-border-secondary`, `border-color-border-subtle`,
+`bg-color-cta-primary`, `hover:bg-color-cta-primary-hover`
 
 Only use raw scale values (`color-40`, `color-60`, etc.) when no semantic alias exists
 and you have a specific intentional reason (e.g. `type-notes-note` uses `color-40` for extreme muting).
@@ -79,11 +80,10 @@ For vertical rhythm between stacked siblings, use `stack-*` utilities:
 
 | Class | Background | Clickable | Use |
 |---|---|---|---|
-| `project-card` (CSS Module) | `color-10` semi | Yes | Projects index cards |
+| `card-interactive` + `ProjectCard.module.css` | `color-bg-card` + project-specific overlays | Yes | Projects index cards |
 | `card-tinted` | `color-05` | No | Experiment blocks, theme switcher |
-| `card` | `color-bg` (outline) | No | General content cards |
-| `card-cta` | `color-bg-surface` | No | CTA / contact sections |
-| `panel` | `color-bg` (compact) | No | Nested surfaces inside cards |
+| `card-ghost` | `color-bg` (outline) | No | General content cards |
+| `card-tinted-inner` | `color-bg` (inset well) | No | Nested surfaces inside tinted cards |
 
 ## Border radius — use scale tokens
 

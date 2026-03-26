@@ -108,7 +108,7 @@ function GraphicOwnership() {
           cy="56.5"
           rx="2"
           ry="1.5"
-          fill="var(--color-graphic-muted)"
+          fill="var(--color-bg-graphic-muted)"
         />
       </g>
     </svg>
@@ -344,7 +344,7 @@ function GraphicFocusAreas() {
           <rect x="176.697" y="103.501" width="85" height="97" rx="9.5" stroke="var(--color-10)" />
         </g>
         <rect x="179.697" y="106.5" width="79" height="90" rx="7.5" fill="var(--color-10)" stroke="var(--color-40)" />
-        <circle cx="188" cy="114.341" r="2" fill="var(--color-graphic-muted)" />
+        <circle cx="188" cy="114.341" r="2" fill="var(--color-bg-graphic-muted)" />
       </g>
     </svg>
   );

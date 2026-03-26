@@ -1,7 +1,9 @@
 # Design System
 
-A single-theme dark design system for the portfolio. Tokens live in `app/globals.css`
-and are mapped to Tailwind in `tailwind.config.ts`. The interactive reference is at `/design-system`.
+A multi-theme design system for the portfolio (warm, cool, light).
+Theme values are defined in `app/globals.css` under `[data-theme="..."]`,
+semantic aliases live in `:root`, and utilities are mapped in `tailwind.config.ts`.
+The interactive reference is at `/design-system`.
 
 ---
 
@@ -38,14 +40,23 @@ Raw neutral ramp. `color-0` is darkest (near-black), `color-90` is near-white.
 --color-text-secondary      → color-80                           secondary / muted text
 --color-text-tertiary       → color-60                           decorative / disabled / icon tint
 --color-interactive-hover   → color-mix(color-30, 50% transp.)  nav item hover / active background
+--color-yellow-70           → #EEC643                            yellow scale token
+--color-yellow-60           → #DBB537                            yellow scale token (darker)
+--color-bg-graphic-muted    → color-60 (warm), theme overrides   decorative graphic accents
+--color-cta-primary         → color-yellow-70                    primary CTA accent
+--color-cta-primary-hover   → color-yellow-60                    primary CTA hover accent
 ```
 
 Tailwind equivalents: `bg-color-bg`, `bg-color-bg-card`, `text-color-text-primary`, `border-color-border`, etc.
 
 ### Special tokens
 ```
---color-graphic-muted    #6F6B5F     Decorative SVG accents (dots, highlights)
+--color-graphic-muted-theme
+                          Internal theme-level source for --color-bg-graphic-muted
 --image-filter           none / grayscale(100%)   Theme-based image filter
+--project-card-gradient-rgb
+                          15,15,12 (warm) / 10,10,10 (cool) / 20,20,20 (light)
+                          Theme-aware gradient source for project cards
 ```
 
 ---
@@ -80,7 +91,7 @@ Always use these instead of composing font properties manually.
 | `type-body-sm` | 14px | 1.45 | tight | 400 | Compact UI text |
 | `type-body-sm-strong` | 14px | 1.45 | tight | 500 | Emphasized compact text |
 | `type-body-xs` | 12px | 1.45 | normal | 500 | Dense UI, secondary meta |
-| `type-label` | 12px | 1 | expanded | 500 | Uppercase labels |
+| `type-label` | 14px | 1 | expanded (`0.04em`) | 500 | Uppercase labels, Geist Mono |
 
 Page-scoped and component-scoped type styles (testimonial quotes, notes formatting) live in CSS Modules rather than `globals.css`.
 
@@ -97,8 +108,10 @@ body     1.6    Long-form body copy
 ```
 tight     -0.03em   Headings, compact UI
 normal    0em       Body text
-expanded  0.02em    Uppercase labels
+expanded  0.02em    Default uppercase labels
 ```
+
+Note: `type-label` intentionally overrides expanded tracking to `0.04em`.
 
 ---
 
@@ -147,7 +160,7 @@ Three levels of card surface. All share the same border-radius (`radius-lg`).
 
 | Class | Background | Border | Interactive | Primary use |
 |---|---|---|---|---|
-| `card-interactive` | `color-bg-card` (color-05) | `color-border-secondary` (color-40) | Yes | Project listing cards |
+| `card-interactive` | `color-bg-card` (color-05) | `color-border` (color-30) | Yes | Project listing cards |
 | `card-tinted` | `color-bg-card` (color-05) | `color-border-subtle` (color-20) | No | Experiment blocks, theme switcher |
 | `card-ghost` | `color-bg` (color-0) | `color-border-inset` (color-10) | No | Testimonials, plain content containers |
 

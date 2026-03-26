@@ -121,6 +121,7 @@ export const colorUtilityTokens = [
   { token: "color.bg.card",         mapsTo: "color-05", role: "Card surface background (card-tinted, card-interactive)",    warm: "#0F0F0C", cool: "#0f0f0f", light: "#F2F2F2" },
   { token: "color.bg.muted",        mapsTo: "color-10", role: "Hover / muted bg",                                          warm: "#141712", cool: "#141414", light: "#E3E3E3" },
   { token: "color.bg.surface",      mapsTo: "color-20", role: "Raised / active surface bg",                                warm: "#1F1E18", cool: "#1f1f1f", light: "#D9D9D9" },
+  { token: "color.bg.graphic.muted",mapsTo: "color-60 (warm), custom per-theme override",                                  role: "Decorative graphic fills (dots/highlights)",                warm: "#606655", cool: "#757575", light: "#FFFFFF" },
   { token: "color.border.inset",    mapsTo: "color-10", role: "Structural dividers — nav border, drawer edge, separators",  warm: "#141712", cool: "#141414", light: "#E3E3E3" },
   { token: "color.border.subtle",   mapsTo: "color-20", role: "Subtle border – tinted cards, inset surfaces",               warm: "#1F1E18", cool: "#1f1f1f", light: "#D9D9D9" },
   { token: "color.border",          mapsTo: "color-30", role: "Default border / divider",                                   warm: "#272921", cool: "#262626", light: "#CCCCCC" },
@@ -129,7 +130,8 @@ export const colorUtilityTokens = [
   { token: "color.text.secondary",     mapsTo: "color-80",                                      role: "Secondary text color",                                       warm: "#BDAD9A", cool: "#a3a3a3", light: "#4D4D4D" },
   { token: "color.text.tertiary",      mapsTo: "color-60",                                      role: "Decorative / disabled / icon tint",                          warm: "#606655", cool: "#5c5c5c", light: "#A6A6A6" },
   { token: "color.interactive.hover",  mapsTo: "color-mix(color-30, 50% transparent)",          role: "Nav item hover / active background",                         warm: "color-30 @ 50%", cool: "color-30 @ 50%", light: "color-30 @ 50%" },
-  { token: "color.accent.yellow",      mapsTo: "color-accent-yellow",                           role: "Primary CTA accent (Explore Projects, key pills)",           warm: "#EEC643", cool: "#EEC643", light: "#EEC643" },
+  { token: "color.cta.primary",        mapsTo: "color-cta-primary → color-yellow-70",          role: "Primary CTA background (Explore Projects, key pills)",       warm: "#EEC643", cool: "#EEC643", light: "#EEC643" },
+  { token: "color.cta.primary.hover",  mapsTo: "color-cta-primary-hover → color-yellow-60",    role: "Hover background for primary CTA",                           warm: "#DBB537", cool: "#DBB537", light: "#DBB537" },
 ];
 
 // Stack utilities — CSS classes applied to a parent; adds margin-top to every direct child after the first

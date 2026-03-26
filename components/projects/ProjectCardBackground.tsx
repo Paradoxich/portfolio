@@ -7,7 +7,7 @@
  *   --color-bg             cube face fills (matches card background layer)
  *   --color-bg-card        gradient end stop (matches card surface)
  *   --color-border         cube edge strokes (mid-tone)
- *   --color-graphic-muted  top-face highlight dot
+ *   --color-bg-graphic-muted  top-face highlight dot
  */
 export function ProjectCardBackground() {
   return (
@@ -127,7 +127,7 @@ export function ProjectCardBackground() {
           cy="76.5"
           rx="2.03592"
           ry="1.5"
-          fill="var(--color-graphic-muted)"
+          fill="var(--color-bg-graphic-muted)"
         />
       </g>
     </svg>
