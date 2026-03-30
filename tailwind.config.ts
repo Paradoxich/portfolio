@@ -34,8 +34,18 @@ const config: Config = {
         "color-text-secondary": "var(--color-text-secondary)",
         "color-text-tertiary": "var(--color-text-tertiary)",
         "color-interactive-hover": "var(--color-interactive-hover)",
-        "color-yellow-70": "var(--color-yellow-70)",
-        "color-yellow-60": "var(--color-yellow-60)",
+        "color-nav-item-bg-hover": "var(--color-nav-item-bg-hover)",
+        "color-nav-item-bg-active": "var(--color-nav-item-bg-active)",
+        "color-nav-item-fg": "var(--color-nav-item-fg)",
+        "color-nav-item-fg-active": "var(--color-nav-item-fg-active)",
+        "color-button-secondary-bg": "var(--color-button-secondary-bg)",
+        "color-button-secondary-bg-hover":
+          "var(--color-button-secondary-bg-hover)",
+        "color-button-secondary-border":
+          "var(--color-button-secondary-border)",
+        "color-button-secondary-fg": "var(--color-button-secondary-fg)",
+        "color-accent-70": "var(--color-accent-70)",
+        "color-accent-60": "var(--color-accent-60)",
         "color-cta-primary": "var(--color-cta-primary)",
         "color-cta-primary-hover": "var(--color-cta-primary-hover)",
 

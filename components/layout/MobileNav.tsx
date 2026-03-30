@@ -88,8 +88,8 @@ export function MobileNav() {
                   onClick={() => setSidebarOpen(false)}
                   className={`group flex items-center w-full h-10 rounded-sm px-0 transition-colors ${
                     active
-                      ? "bg-color-interactive-hover text-color-text-primary"
-                      : "text-color-text-secondary hover:bg-color-interactive-hover hover:text-color-text-primary focus:bg-color-interactive-hover focus-visible:bg-color-interactive-hover"
+                      ? "bg-color-nav-item-bg-active text-color-nav-item-fg-active"
+                      : "text-color-nav-item-fg hover:bg-color-nav-item-bg-hover hover:text-color-nav-item-fg-active focus:bg-color-nav-item-bg-hover focus-visible:bg-color-nav-item-bg-hover"
                   }`}
                 >
                   <span className="flex w-10 h-10 shrink-0 items-center justify-center [&>svg]:text-current">
@@ -98,8 +98,8 @@ export function MobileNav() {
                   <span
                     className={`type-body-sm truncate flex-1 min-w-0 ${
                       active
-                        ? "text-color-text-primary"
-                        : "text-color-text-secondary group-hover:text-color-text-primary"
+                        ? "text-color-nav-item-fg-active"
+                        : "text-color-nav-item-fg group-hover:text-color-nav-item-fg-active"
                     }`}
                   >
                     {label}

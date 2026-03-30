@@ -167,8 +167,8 @@ export function Sidebar() {
                     href={href}
                     className={`group flex items-center gap-0 w-full h-12 rounded-sm transition-colors ${
                       active
-                        ? "bg-color-bg-muted text-color-text-primary"
-                        : "text-color-text-secondary hover:bg-color-bg-muted hover:text-color-text-primary focus:bg-color-bg-muted focus-visible:bg-color-bg-muted"
+                        ? "bg-color-nav-item-bg-active text-color-nav-item-fg-active"
+                        : "text-color-nav-item-fg hover:bg-color-nav-item-bg-hover hover:text-color-nav-item-fg-active focus:bg-color-nav-item-bg-hover focus-visible:bg-color-nav-item-bg-hover"
                     }`}
                   >
                     <span className="flex w-12 h-12 shrink-0 items-center justify-center [&>svg]:text-current">
@@ -177,8 +177,8 @@ export function Sidebar() {
                     <span
                       className={`type-body-sm truncate flex-1 min-w-0 ${
                         active
-                          ? "text-color-text-primary"
-                          : "text-color-text-secondary group-hover:text-color-text-primary"
+                          ? "text-color-nav-item-fg-active"
+                          : "text-color-nav-item-fg group-hover:text-color-nav-item-fg-active"
                       }`}
                     >
                       {label}

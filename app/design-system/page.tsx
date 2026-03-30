@@ -3,6 +3,7 @@
 import React from "react";
 import { PageShell } from "@/components/layout/PageShell";
 import { useColorScheme } from "@/components/theme/ColorSchemeProvider";
+import { colorTokens } from "./tokens/foundations";
 
 /* ================================
  * Runtime CSS variable reader
@@ -26,23 +27,34 @@ function useTokenHex(cssVar: string): string {
  * Token data — CSS var references only, no hardcoded hex
  * ============================== */
 
-const neutralColors = [
-  { name: "color-0",  cssVar: "--color-0"  },
-  { name: "color-05", cssVar: "--color-05" },
-  { name: "color-10", cssVar: "--color-10" },
-  { name: "color-20", cssVar: "--color-20" },
-  { name: "color-30", cssVar: "--color-30" },
-  { name: "color-40", cssVar: "--color-40" },
-  { name: "color-50", cssVar: "--color-50" },
-  { name: "color-60", cssVar: "--color-60" },
-  { name: "color-80", cssVar: "--color-80" },
-  { name: "color-90", cssVar: "--color-90" },
+const neutralTokenOrder = [
+  "color-0",
+  "color-05",
+  "color-10",
+  "color-20",
+  "color-30",
+  "color-40",
+  "color-50",
+  "color-60",
+  "color-80",
+  "color-90",
 ];
 
+const tokenToCssVar = (token: string) => `--${token}`;
+
+const neutralColors = neutralTokenOrder.map((token) => ({
+  name: token,
+  cssVar: tokenToCssVar(token),
+}));
+
 const accentColors = [
-  { name: "color-yellow-70", cssVar: "--color-yellow-70" },
-  { name: "color-yellow-60", cssVar: "--color-yellow-60" },
-  { name: "success",        cssVar: "--color-success"       },
+  ...colorTokens
+    .filter((token) => token.token.startsWith("color-accent-"))
+    .map((token) => ({
+      name: token.token,
+      cssVar: tokenToCssVar(token.token),
+    })),
+  { name: "success", cssVar: "--color-success" },
 ];
 
 type ColorAlias = {
@@ -57,9 +69,9 @@ const bgAliases: ColorAlias[] = [
   { name: "color-bg-card",    mapsTo: "→ color-05", cssVar: "--color-bg-card",     description: "Card surface"           },
   { name: "color-bg-muted",   mapsTo: "→ color-10", cssVar: "--color-bg-muted",    description: "Hover / muted"          },
   { name: "color-bg-surface", mapsTo: "→ color-20", cssVar: "--color-bg-surface",  description: "Raised / active surface"},
-  { name: "color-bg-graphic-muted", mapsTo: "→ color-60 (warm), custom overrides (cool/light)", cssVar: "--color-bg-graphic-muted", description: "Decorative graphic accents" },
-  { name: "color-cta-primary", mapsTo: "→ color-yellow-70", cssVar: "--color-cta-primary", description: "Primary CTA background" },
-  { name: "color-cta-primary-hover", mapsTo: "→ color-yellow-60", cssVar: "--color-cta-primary-hover", description: "Primary CTA hover background" },
+  { name: "color-bg-graphic-muted", mapsTo: "→ color-graphic-muted (theme primitive)", cssVar: "--color-bg-graphic-muted", description: "Decorative graphic accents" },
+  { name: "color-cta-primary", mapsTo: "→ color-accent-70", cssVar: "--color-cta-primary", description: "Primary CTA background" },
+  { name: "color-cta-primary-hover", mapsTo: "→ color-accent-60", cssVar: "--color-cta-primary-hover", description: "Primary CTA hover background" },
 ];
 
 const borderAliases: ColorAlias[] = [
@@ -395,14 +407,14 @@ function SpacingRow({ name, px, description, warn }: { name: string; px: number;
       </p>
       <div className="flex-1 flex items-center gap-4 min-w-0">
         <div
-          className="h-2 rounded-[2px] bg-[#EEC643] opacity-70 shrink-0"
+          className="h-2 rounded-[2px] bg-color-cta-primary opacity-70 shrink-0"
           style={{ width: barWidth }}
         />
         <p className="font-['Geist',sans-serif] text-[12px] font-normal leading-[1.45] text-color-text-tertiary whitespace-nowrap">
           {description}
         </p>
         {warn && (
-          <p className="font-mono text-[11px] leading-[1.45] text-[#EEC643] opacity-60 whitespace-nowrap ml-auto shrink-0">
+          <p className="font-mono text-[11px] leading-[1.45] text-color-cta-primary opacity-60 whitespace-nowrap ml-auto shrink-0">
             ⚠ {warn}
           </p>
         )}

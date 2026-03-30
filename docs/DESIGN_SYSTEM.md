@@ -40,19 +40,22 @@ Raw neutral ramp. `color-0` is darkest (near-black), `color-90` is near-white.
 --color-text-secondary      → color-80                           secondary / muted text
 --color-text-tertiary       → color-60                           decorative / disabled / icon tint
 --color-interactive-hover   → color-mix(color-30, 50% transp.)  nav item hover / active background
---color-yellow-70           → #EEC643                            yellow scale token
---color-yellow-60           → #DBB537                            yellow scale token (darker)
---color-bg-graphic-muted    → color-60 (warm), theme overrides   decorative graphic accents
---color-cta-primary         → color-yellow-70                    primary CTA accent
---color-cta-primary-hover   → color-yellow-60                    primary CTA hover accent
+--color-accent-70           → theme-defined accent               accent scale token
+--color-accent-60           → theme-defined accent (darker)      accent scale token
+--color-bg-graphic-muted    → color-graphic-muted                decorative graphic accents
+--color-cta-primary         → color-accent-70                    primary CTA accent
+--color-cta-primary-hover   → color-accent-60                    primary CTA hover accent
 ```
 
-Tailwind equivalents: `bg-color-bg`, `bg-color-bg-card`, `text-color-text-primary`, `border-color-border`, etc.
+Tailwind equivalents: `bg-color-bg`, `bg-color-bg-card`, `text-color-text-primary`, `border-color-border`, `bg-color-accent-70`, etc.
+
+Accent is intentionally separate from the neutral ramp. Set `--color-accent-70` and `--color-accent-60`
+inside each `[data-theme="..."]` block in `app/globals.css` to give each theme its own accent pair.
 
 ### Special tokens
 ```
---color-graphic-muted-theme
-                          Internal theme-level source for --color-bg-graphic-muted
+--color-graphic-muted     theme primitive used by --color-bg-graphic-muted
+--color-gradient-base-rgb theme primitive used by --project-card-gradient-rgb
 --image-filter           none / grayscale(100%)   Theme-based image filter
 --project-card-gradient-rgb
                           15,15,12 (warm) / 10,10,10 (cool) / 20,20,20 (light)
@@ -128,8 +131,8 @@ lg      20px     also: layout gutter
 xl      24px     also: standard card padding
 2xl     32px
 3xl     40px     also: page-shell padding
-4xl     64px
-5xl     56px     hero-gap desktop, stack-5xl
+4xl     56px
+5xl     64px     large content separators
 section 120px    large page separators
 ```
 

@@ -68,8 +68,8 @@ export const colorTokens = [
   { token: "color-60",  warm: "#606655", cool: "#5c5c5c", light: "#A6A6A6" },
   { token: "color-80",  warm: "#BDAD9A", cool: "#a3a3a3", light: "#4D4D4D" },
   { token: "color-90",  warm: "#F3F0E9", cool: "#e5e5e5", light: "#0D0D0D" },
-  { token: "color-yellow-70", warm: "#EEC643", cool: "#EEC643", light: "#EEC643" },
-  { token: "color-yellow-60", warm: "#DBB537", cool: "#DBB537", light: "#DBB537" },
+  { token: "color-accent-70", warm: "#EEC643", cool: "#EEC643", light: "#EEC643" },
+  { token: "color-accent-60", warm: "#DBB537", cool: "#DBB537", light: "#DBB537" },
 ];
 
 // Theming tokens – dynamic values that change with color scheme
@@ -77,6 +77,8 @@ export const themingTokens = [
   { token: "color-0-rgb",  warm: "60, 20, 3",   cool: "10, 10, 10",  light: "250, 250, 250", role: "RGB for gradient opacity" },
   { token: "color-10-rgb", warm: "96, 22, 9",   cool: "20, 20, 20",  light: "227, 227, 227", role: "RGB for translucent surface fills" },
   { token: "color-60-rgb", warm: "81, 17, 40",  cool: "92, 92, 92",  light: "166, 166, 166", role: "RGB for hover opacity" },
+  { token: "color-graphic-muted", warm: "#606655", cool: "#757575", light: "#FFFFFF", role: "Theme primitive for decorative muted graphic color" },
+  { token: "color-gradient-base-rgb", warm: "15, 15, 12", cool: "10, 10, 10", light: "20, 20, 20", role: "Theme primitive RGB source for card gradient overlays" },
   { token: "image-filter", warm: "none",        cool: "grayscale(100%)", light: "none",       role: "Theme-based image filter" },
 ];
 
