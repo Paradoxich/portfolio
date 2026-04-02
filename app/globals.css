@@ -71,7 +71,6 @@
   --image-filter:                 none;
   --font-weight-regular:          450;
   --font-weight-medium:           550;
-
   --color-cta-primary-text: var(--color-90);
   --color-text-tertiary: #666651;
   --color-bg-label: var(--color-0);
@@ -242,7 +241,7 @@
     width: 100%;
     max-width: var(--layout-container);
     margin-inline: auto;
-    padding: var(--space-xl);
+    padding: var(--space-3xl) var(--space-xl);
   }
 
   .layout-grid {

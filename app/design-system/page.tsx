@@ -119,7 +119,7 @@ const formAliases: ColorAlias[] = [
   { name: "color-input-border",       mapsTo: "→ color-30", cssVar: "--color-input-border",       description: "Input border"        },
   { name: "color-input-border-hover", mapsTo: "→ color-40", cssVar: "--color-input-border-hover", description: "Input border hover"  },
   { name: "color-input-placeholder",  mapsTo: "→ color-60", cssVar: "--color-input-placeholder",  description: "Placeholder text"    },
-  { name: "color-success",            mapsTo: "#18C340",     cssVar: "--color-success",            description: "Success state"       },
+  { name: "color-success",            mapsTo: "→ success",   cssVar: "--color-success",            description: "Success state"       },
 ];
 
 const typeStyles = [
@@ -214,14 +214,14 @@ export default function DesignSystemPage() {
             <SectionLabel>Color Scale</SectionLabel>
             <div className="flex flex-col gap-8">
               <ScaleGroup label="Neutral">
-                <div className="flex flex-wrap gap-2">
+                <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 gap-2">
                   {neutralColors.map((c) => (
                     <ColorCard key={c.name} name={c.name} cssVar={c.cssVar} />
                   ))}
                 </div>
               </ScaleGroup>
               <ScaleGroup label="Accent">
-                <div className="flex flex-wrap gap-2">
+                <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 gap-2">
                   {accentColors.map((c) => (
                     <ColorCard key={c.name} name={c.name} cssVar={c.cssVar} />
                   ))}
@@ -373,7 +373,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function ColorCard({ name, cssVar }: { name: string; cssVar: string }) {
   const hex = useTokenHex(cssVar);
   return (
-    <div className="flex flex-col gap-2 w-[124px] shrink-0">
+    <div className="flex flex-col gap-2 w-full min-w-0">
       <div
         className="h-[64px] w-full rounded-[8px] border border-color-border-subtle"
         style={{ backgroundColor: `var(${cssVar})` }}
@@ -408,21 +408,21 @@ function AliasGroup({ label, aliases }: { label: string; aliases: ColorAlias[] }
 function AliasRow({ name, mapsTo, cssVar, description }: ColorAlias) {
   const hex = useTokenHex(cssVar);
   return (
-    <div className="bg-color-bg-card-tinted border border-color-border-subtle rounded-[8px] flex items-center gap-4 h-[46px] px-4">
+    <div className="bg-color-bg-card-tinted border border-color-border-subtle rounded-[8px] flex items-center gap-3 p-3 overflow-hidden">
       <div
         className="shrink-0 size-6 rounded-[6px] border border-color-border-subtle"
         style={{ backgroundColor: `var(${cssVar})` }}
       />
-      {/* Name */}
-      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary w-[200px] shrink-0">
+      {/* Name — always shown in full; fixed width on md+ so mapsTo aligns */}
+      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary shrink-0 md:w-[240px]">
         {name}
       </p>
-      {/* mapsTo */}
-      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary flex-1 min-w-0">
+      {/* mapsTo — only on md+ where name has fixed width */}
+      <p className="hidden md:block font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary shrink-0 whitespace-nowrap">
         {mapsTo}
       </p>
-      {/* Hex · description */}
-      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-secondary flex-1 min-w-0 text-right whitespace-nowrap">
+      {/* Hex · description — first to go */}
+      <p className="hidden lg:block font-mono text-[12px] font-normal leading-[1.45] text-color-text-secondary ml-auto shrink-0 whitespace-nowrap">
         {hex} · {description}
       </p>
     </div>
@@ -460,9 +460,9 @@ function TypeCard({ className, size, weight, lh, ls, colorRole, spec, sample, mo
     : "text-color-text-secondary";
 
   return (
-    <div className="bg-color-bg-card-tinted border border-color-border-subtle rounded-[12px] flex items-start justify-between p-6 gap-6 overflow-hidden">
+    <div className="bg-color-bg-card-tinted border border-color-border-subtle rounded-[12px] flex flex-col md:flex-row md:items-start md:justify-between p-6 gap-4 md:gap-6 overflow-hidden">
       {/* Spec */}
-      <div className="flex flex-col gap-1 shrink-0 w-[220px]">
+      <div className="flex flex-col gap-1 shrink-0 md:w-[220px]">
         <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary">
           {className}
         </p>
@@ -472,7 +472,7 @@ function TypeCard({ className, size, weight, lh, ls, colorRole, spec, sample, mo
         </div>
       </div>
       {/* Preview */}
-      <div className={`flex-1 min-w-0 overflow-hidden ${colorClass}`} style={previewStyle}>
+      <div className={`min-w-0 overflow-hidden md:flex-1 ${colorClass}`} style={previewStyle}>
         {sample}
       </div>
     </div>
@@ -488,19 +488,19 @@ function SpacingRow({ name, px, description, warn }: { name: string; px: number;
   const barWidth = Math.min(px, BAR_MAX);
 
   return (
-    <div className="border-b border-color-border-inset flex items-center h-9 gap-4">
+    <div className="border-b border-color-border-inset flex items-center h-9 gap-4 overflow-hidden">
       <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary w-[100px] shrink-0">
         {name}
       </p>
-      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary w-[52px] shrink-0">
+      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary w-[44px] shrink-0">
         {px}px
       </p>
-      <div className="flex-1 flex items-center gap-4 min-w-0">
+      <div className="flex-1 flex items-center gap-4 min-w-0 overflow-hidden">
         <div
-          className="h-2 rounded-[2px] bg-color-cta-primary opacity-70 shrink-0"
+          className="h-2 rounded-[2px] bg-color-cta-primary opacity-70 max-w-full"
           style={{ width: barWidth }}
         />
-        <p className="font-['Geist',sans-serif] text-[12px] font-normal leading-[1.45] text-color-text-tertiary whitespace-nowrap">
+        <p className="hidden sm:block font-['Geist',sans-serif] text-[12px] font-normal leading-[1.45] text-color-text-tertiary whitespace-nowrap">
           {description}
         </p>
         {warn && (
@@ -568,14 +568,14 @@ function ScaleGroup({ label, children }: { label: string; children: React.ReactN
 
 function ScaleRow({ name, value, role }: { name: string; value: string; role: string }) {
   return (
-    <div className="border-b border-color-border-inset flex items-center h-9 gap-4">
-      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary w-[200px] shrink-0">
+    <div className="border-b border-color-border-inset grid grid-cols-[160px_64px_1fr] items-center h-9 overflow-hidden">
+      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary">
         {name}
       </p>
-      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary w-[80px] shrink-0">
+      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary">
         {value}
       </p>
-      <p className="font-['Geist',sans-serif] text-[12px] font-normal leading-[1.45] text-color-text-tertiary">
+      <p className="hidden md:block font-['Geist',sans-serif] text-[12px] font-normal leading-[1.45] text-color-text-tertiary">
         {role}
       </p>
     </div>
@@ -588,18 +588,18 @@ function ScaleRow({ name, value, role }: { name: string; value: string; role: st
 
 function FontSizeRow({ name, value, role }: { name: string; value: string; role: string }) {
   return (
-    <div className="border-b border-color-border-inset flex items-center min-h-[44px] gap-4 py-1 overflow-hidden">
-      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary w-[160px] shrink-0">
+    <div className="border-b border-color-border-inset grid grid-cols-[160px_64px_1fr_auto] items-center min-h-[44px] py-2 overflow-hidden">
+      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary">
         {name}
       </p>
-      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary w-[52px] shrink-0">
+      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary">
         {value}
       </p>
-      <p className="font-['Geist',sans-serif] text-[12px] font-normal leading-[1.45] text-color-text-tertiary flex-1 min-w-0">
+      <p className="hidden md:block font-['Geist',sans-serif] text-[12px] font-normal leading-[1.45] text-color-text-tertiary">
         {role}
       </p>
       <p
-        className="text-color-text-secondary shrink-0 opacity-40 leading-none"
+        className="text-color-text-secondary opacity-40 leading-none overflow-hidden max-h-[48px] text-right"
         style={{ fontSize: value }}
       >
         Aa
@@ -619,16 +619,14 @@ function RadiusCard({ name, twClass, value, description }: { name: string; twCla
         className="h-14 w-full bg-color-bg border border-color-border-subtle"
         style={{ borderRadius: value }}
       />
-      <div className="flex flex-col gap-2">
-        <div className="flex items-baseline justify-between gap-2">
-          <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary">
-            {name}
-          </p>
-          <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary shrink-0">
-            {twClass}
-          </p>
-        </div>
+      <div className="flex flex-col gap-1">
+        <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary">
+          {name}
+        </p>
         <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary">
+          {twClass}
+        </p>
+        <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary mt-1">
           {value} — {description}
         </p>
       </div>
