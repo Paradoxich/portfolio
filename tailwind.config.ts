@@ -22,6 +22,8 @@ const config: Config = {
         // usage aliases
         "color-bg": "var(--color-bg)",
         "color-bg-card": "var(--color-bg-card)",
+        "color-bg-card-tinted": "var(--color-bg-card-tinted)",
+        "color-bg-label": "var(--color-bg-label)",
         "color-bg-surface": "var(--color-bg-surface)",
         "color-bg-muted": "var(--color-bg-muted)",
         "color-bg-graphic-muted": "var(--color-bg-graphic-muted)",
@@ -48,6 +50,7 @@ const config: Config = {
         "color-accent-60": "var(--color-accent-60)",
         "color-cta-primary": "var(--color-cta-primary)",
         "color-cta-primary-hover": "var(--color-cta-primary-hover)",
+        "color-cta-primary-text": "var(--color-cta-primary-text)",
 
         // contact form
         "color-input-bg": "var(--color-input-bg)",

@@ -10,9 +10,11 @@
    THEME TOKENS
    One block per theme — theme-level primitive
    tokens live here. Semantic aliases live in :root.
+   :root[data-theme="x"] has specificity 0-2-0, beating
+   :root's 0-1-0, so semantic overrides work regardless of source order.
    ========================================= */
 
-[data-theme="warm"] {
+:root[data-theme="warm"] {
   --color-0:  #080806;
   --color-05: #0F0E0C;
   --color-10: #141712;
@@ -23,7 +25,7 @@
   --color-60: #606655;
   --color-80: #BDAD9A;
   --color-90: #F3F0E9;
-  --color-0-rgb:  8, 8, 6;
+  --color-0-rgb:  15, 14, 12;
   --color-10-rgb: 20, 23, 18;
   --color-60-rgb: 96, 102, 85;
   --color-accent-70:              #EEC643;
@@ -31,8 +33,8 @@
   --image-filter:                 none;
 }
 
-[data-theme="cool"] {
-  --color-0:  #0A0A0A;
+:root[data-theme="cool"] {
+  --color-0:  #000000;
   --color-05: #0F0F0F;
   --color-10: #141414;
   --color-20: #1F1F1F;
@@ -50,31 +52,40 @@
   --image-filter:                 grayscale(100%);
 }
 
-[data-theme="light"] {
-  --color-0:  #FAFAFA;
-  --color-05: #F2F2F2;
-  --color-10: #E3E3E3;
-  --color-20: #D9D9D9;
-  --color-30: #CCCCCC;
-  --color-40: #BFBFBF;
-  --color-50: #B3B3B3;
-  --color-60: #A6A6A6;
-  --color-80: #4D4D4D;
-  --color-90: #0D0D0D;
-  --color-0-rgb:  250, 250, 250;
-  --color-10-rgb: 227, 227, 227;
-  --color-60-rgb: 166, 166, 166;
+:root[data-theme="light"] {
+  --color-0:  #F3F0E9;
+  --color-05: #EBE3D6;
+  --color-10: #E0D7C9;
+  --color-20: #DBCAB6;
+  --color-30: #BFBFA8;
+  --color-40: #B2B298;
+  --color-50: #A6A688;
+  --color-60: #99997A;
+  --color-80: #333327;
+  --color-90: #161611;
+  --color-0-rgb:  224, 215, 201;
+  --color-10-rgb: 217, 217, 199;
+  --color-60-rgb: 153, 153, 122;
   --color-accent-70:              #EEC643;
   --color-accent-60:              #DBB537;
   --image-filter:                 none;
   --font-weight-regular:          450;
   --font-weight-medium:           550;
+  --color-border:           var(--color-20);
+  --color-cta-primary-text: var(--color-90);
+  --color-bg-card: var(--color-10);
+  --color-text-tertiary: #666651;
+  --color-bg-label: var(--color-0);
+
+
 }
 
 :root {
   /* Semantic color aliases — reference the theme scale above */
   --color-bg:               var(--color-0);   /* page background / outline card bg */
-  --color-bg-card:          var(--color-05);  /* card surface bg */
+  --color-bg-card:          var(--color-05);  /* card surface bg — project cards */
+  --color-bg-card-tinted:   var(--color-05);  /* tinted card surface — experiment cards */
+  --color-bg-label:         var(--color-20);  /* label / tag / badge bg */
   --color-bg-muted:         var(--color-10);  /* hover / muted bg */
   --color-bg-surface:       var(--color-20);  /* raised / active surface bg */
   --color-bg-graphic-muted: var(--color-60); /* decorative graphic fills */
@@ -103,6 +114,7 @@
   /* Accent scale + semantic CTA aliases (theme-aware) */
   --color-cta-primary: var(--color-accent-70);
   --color-cta-primary-hover: var(--color-accent-60);
+  --color-cta-primary-text: var(--color-0);
   --color-success:       #18C340;
 
   /* Decorative */
@@ -371,7 +383,7 @@
   }
 
   /*
-   * Tinted non-clickable card surface. Uses --color-bg-card (color-05, one
+   * Tinted non-clickable card surface. Uses --color-bg-card-tinted (color-05, one
    * step above pure bg) with a subtle border. Not interactive.
    *
    * Card surface hierarchy:
@@ -388,7 +400,7 @@
     padding: var(--space-xl);
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-border-subtle);
-    background: var(--color-bg-card);
+    background: var(--color-bg-card-tinted);
   }
 
   .card-tinted-inner {

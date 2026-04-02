@@ -3,7 +3,7 @@
   position: relative;
   background-color: var(--color-bg-card);
   padding: var(--space-lg); /* 24px on mobile */
-  height: 280px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -101,7 +101,7 @@
   width: fit-content;
   padding: 4px 8px;
   border-radius: var(--radius-sm);
-  background: var(--color-20);
+  background: var(--color-bg-label);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-ui);
