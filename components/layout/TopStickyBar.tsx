@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { projectsConfig } from "@/components/projects/ProjectsConfig";
 import { PAGE_TITLES } from "./nav.config";
+import { ThemeSwitcherCompact } from "@/components/theme/ColorSchemeProvider";
 
 function getPageTitle(pathname: string): string {
   if (pathname === "/") return "Overview";
@@ -21,10 +22,14 @@ export function TopStickyBar() {
   const title = getPageTitle(pathname);
 
   return (
-    <header className="hidden md:flex sticky top-0 z-30 h-16 shrink-0 items-center justify-center px-5 bg-color-bg border-b border-color-border-inset">
-      <span className="font-geist type-body-xs text-color-text-secondary">
+    <header className="hidden md:flex sticky top-0 z-30 h-16 shrink-0 items-center px-5 bg-color-bg border-b border-color-border-inset">
+      <div className="flex-1" />
+      <span className="font-geist type-body-xs text-color-text-secondary absolute left-1/2 -translate-x-1/2">
         {title}
       </span>
+      <div className="flex-1 flex justify-end">
+        <ThemeSwitcherCompact />
+      </div>
     </header>
   );
 }

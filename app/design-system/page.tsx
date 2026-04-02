@@ -14,10 +14,14 @@ function useTokenHex(cssVar: string): string {
   const [hex, setHex] = React.useState("");
 
   React.useEffect(() => {
-    const raw = getComputedStyle(document.documentElement)
-      .getPropertyValue(cssVar)
-      .trim();
-    setHex(raw.toUpperCase());
+    // rAF ensures the browser has applied the new data-theme before we read
+    const raf = requestAnimationFrame(() => {
+      const raw = getComputedStyle(document.documentElement)
+        .getPropertyValue(cssVar)
+        .trim();
+      setHex(raw.toUpperCase());
+    });
+    return () => cancelAnimationFrame(raf);
   }, [cssVar, colorScheme]);
 
   return hex;
@@ -65,43 +69,74 @@ type ColorAlias = {
 };
 
 const bgAliases: ColorAlias[] = [
-  { name: "color-bg",         mapsTo: "→ color-0",  cssVar: "--color-bg",         description: "Page background"        },
-  { name: "color-bg-card",    mapsTo: "→ color-05", cssVar: "--color-bg-card",     description: "Card surface"           },
-  { name: "color-bg-muted",   mapsTo: "→ color-10", cssVar: "--color-bg-muted",    description: "Hover / muted"          },
-  { name: "color-bg-surface", mapsTo: "→ color-20", cssVar: "--color-bg-surface",  description: "Raised / active surface"},
-  { name: "color-bg-graphic-muted", mapsTo: "→ color-graphic-muted (theme primitive)", cssVar: "--color-bg-graphic-muted", description: "Decorative graphic accents" },
-  { name: "color-cta-primary", mapsTo: "→ color-accent-70", cssVar: "--color-cta-primary", description: "Primary CTA background" },
-  { name: "color-cta-primary-hover", mapsTo: "→ color-accent-60", cssVar: "--color-cta-primary-hover", description: "Primary CTA hover background" },
+  { name: "color-bg",               mapsTo: "→ color-0",   cssVar: "--color-bg",               description: "Page background"              },
+  { name: "color-bg-card",          mapsTo: "→ color-05",  cssVar: "--color-bg-card",           description: "Project card surface"         },
+  { name: "color-bg-card-tinted",   mapsTo: "→ color-05",  cssVar: "--color-bg-card-tinted",    description: "Experiment card surface"      },
+  { name: "color-bg-muted",         mapsTo: "→ color-10",  cssVar: "--color-bg-muted",          description: "Hover / muted"                },
+  { name: "color-bg-surface",       mapsTo: "→ color-20",  cssVar: "--color-bg-surface",        description: "Raised / active surface"      },
+  { name: "color-bg-label",         mapsTo: "→ color-20",  cssVar: "--color-bg-label",          description: "Label / badge background"     },
+  { name: "color-bg-graphic-muted", mapsTo: "→ color-graphic-muted", cssVar: "--color-bg-graphic-muted", description: "Decorative graphic accents" },
+  { name: "color-grid-line",        mapsTo: "→ color-10",  cssVar: "--color-grid-line",         description: "Project card background grid" },
+  { name: "color-overlay",          mapsTo: "rgba(2,2,2,0.5)", cssVar: "--color-overlay",       description: "Modal / overlay scrim"        },
+];
+
+const ctaAliases: ColorAlias[] = [
+  { name: "color-cta-primary",       mapsTo: "→ color-accent-70", cssVar: "--color-cta-primary",       description: "Primary CTA background" },
+  { name: "color-cta-primary-hover", mapsTo: "→ color-accent-60", cssVar: "--color-cta-primary-hover", description: "Primary CTA hover"      },
+  { name: "color-cta-primary-text",  mapsTo: "→ color-0",         cssVar: "--color-cta-primary-text",  description: "Text on primary CTA"    },
 ];
 
 const borderAliases: ColorAlias[] = [
   { name: "color-border-inset",     mapsTo: "→ color-10", cssVar: "--color-border-inset",     description: "Structural dividers" },
-  { name: "color-border-subtle",    mapsTo: "→ color-20", cssVar: "--color-border-subtle",     description: "Subtle"             },
-  { name: "color-border",           mapsTo: "→ color-30", cssVar: "--color-border",            description: "Main border"        },
-  { name: "color-border-secondary", mapsTo: "→ color-40", cssVar: "--color-border-secondary",  description: "Hover border"       },
+  { name: "color-border-subtle",    mapsTo: "→ color-20", cssVar: "--color-border-subtle",    description: "Subtle"              },
+  { name: "color-border",           mapsTo: "→ color-20", cssVar: "--color-border",           description: "Main border"         },
+  { name: "color-border-secondary", mapsTo: "→ color-40", cssVar: "--color-border-secondary", description: "Hover border"        },
 ];
 
 const textAliases: ColorAlias[] = [
-  { name: "color-text-primary",   mapsTo: "→ color-90", cssVar: "--color-text-primary",   description: "Headings, body, active"  },
-  { name: "color-text-secondary", mapsTo: "→ color-80", cssVar: "--color-text-secondary",  description: "Labels, descriptions"   },
-  { name: "color-text-tertiary",  mapsTo: "→ color-60", cssVar: "--color-text-tertiary",   description: "Decorative / disabled"  },
+  { name: "color-text-primary",   mapsTo: "→ color-90", cssVar: "--color-text-primary",   description: "Headings, body, active" },
+  { name: "color-text-secondary", mapsTo: "→ color-80", cssVar: "--color-text-secondary", description: "Labels, descriptions"   },
+  { name: "color-text-tertiary",  mapsTo: "→ color-60", cssVar: "--color-text-tertiary",  description: "Decorative / disabled"  },
+];
+
+const interactionAliases: ColorAlias[] = [
+  { name: "color-interactive-hover",  mapsTo: "→ color-30", cssVar: "--color-interactive-hover",  description: "Generic hover state"       },
+  { name: "color-nav-item-bg-hover",  mapsTo: "→ color-10", cssVar: "--color-nav-item-bg-hover",  description: "Nav item hover background" },
+  { name: "color-nav-item-bg-active", mapsTo: "→ color-10", cssVar: "--color-nav-item-bg-active", description: "Nav item active background"},
+  { name: "color-nav-item-fg",        mapsTo: "→ color-80", cssVar: "--color-nav-item-fg",        description: "Nav item foreground"       },
+  { name: "color-nav-item-fg-active", mapsTo: "→ color-90", cssVar: "--color-nav-item-fg-active", description: "Nav item active foreground"},
+];
+
+const buttonAliases: ColorAlias[] = [
+  { name: "color-button-secondary-bg",       mapsTo: "→ color-0",  cssVar: "--color-button-secondary-bg",       description: "Secondary button background" },
+  { name: "color-button-secondary-bg-hover", mapsTo: "→ color-20", cssVar: "--color-button-secondary-bg-hover", description: "Secondary button hover"      },
+  { name: "color-button-secondary-border",   mapsTo: "→ color-30", cssVar: "--color-button-secondary-border",   description: "Secondary button border"     },
+  { name: "color-button-secondary-fg",       mapsTo: "→ color-90", cssVar: "--color-button-secondary-fg",       description: "Secondary button text"       },
+];
+
+const formAliases: ColorAlias[] = [
+  { name: "color-input-bg",           mapsTo: "→ color-05", cssVar: "--color-input-bg",           description: "Input background"    },
+  { name: "color-input-border",       mapsTo: "→ color-30", cssVar: "--color-input-border",       description: "Input border"        },
+  { name: "color-input-border-hover", mapsTo: "→ color-40", cssVar: "--color-input-border-hover", description: "Input border hover"  },
+  { name: "color-input-placeholder",  mapsTo: "→ color-60", cssVar: "--color-input-placeholder",  description: "Placeholder text"    },
+  { name: "color-success",            mapsTo: "#18C340",     cssVar: "--color-success",            description: "Success state"       },
 ];
 
 const typeStyles = [
-  { className: ".type-h1",           size: "48px", weight: "500", lh: "1.1",  ls: "-0.03em", colorRole: "color-text-primary",   sample: "Heading One" },
-  { className: ".type-h2",           size: "40px", weight: "500", lh: "1.1",  ls: "-0.03em", colorRole: "color-text-primary",   sample: "Heading Two" },
-  { className: ".type-h3",           size: "32px", weight: "500", lh: "1.1",  ls: "-0.03em", colorRole: "color-text-primary",   sample: "Heading Three" },
-  { className: ".type-h4",           size: "24px", weight: "500", lh: "1.3",  ls: "-0.03em", colorRole: "color-text-primary",   sample: "Heading Four" },
-  { className: ".type-body-lg",      size: "18px", weight: "400", lh: "1.6",  ls: "0em",     colorRole: "color-text-secondary", sample: "Body large — editorial and case study body copy. Used for long-form reading." },
-  { className: ".type-body",         size: "16px", weight: "400", lh: "1.6",  ls: "0em",     colorRole: "color-text-secondary", sample: "Body — standard UI text, descriptions, general content." },
-  { className: ".type-body-strong",  size: "16px", weight: "500", lh: "1.6",  ls: "0em",     colorRole: "color-text-primary",   sample: "Body strong — emphasized inline text, active states." },
-  { className: ".type-body-sm",      size: "14px", weight: "400", lh: "1.45", ls: "-0.03em", colorRole: "color-text-secondary", sample: "Small body — captions, metadata, secondary UI text." },
-  { className: ".type-body-sm-strong",size:"14px", weight: "500", lh: "1.45", ls: "-0.03em", colorRole: "color-text-primary",   sample: "Small body strong — emphasized small text." },
-  { className: ".type-body-xs",      size: "12px", weight: "500", lh: "1.45", ls: "0em",     colorRole: "color-text-secondary", sample: "XS body — badges, tooltips, inline annotations." },
+  { className: ".type-h1",            size: "48px", weight: "500", lh: "1.1",  ls: "-0.03em", colorRole: "color-text-primary",   spec: ["font-size-3xl", "font-weight-medium", "line-height-heading", "tracking-tight"],    sample: "Heading One" },
+  { className: ".type-h2",            size: "40px", weight: "500", lh: "1.1",  ls: "-0.03em", colorRole: "color-text-primary",   spec: ["font-size-2xl", "font-weight-medium", "line-height-heading", "tracking-tight"],    sample: "Heading Two" },
+  { className: ".type-h3",            size: "32px", weight: "500", lh: "1.1",  ls: "-0.03em", colorRole: "color-text-primary",   spec: ["font-size-xl",  "font-weight-medium", "line-height-heading", "tracking-tight"],    sample: "Heading Three" },
+  { className: ".type-h4",            size: "24px", weight: "500", lh: "1.3",  ls: "-0.03em", colorRole: "color-text-primary",   spec: ["font-size-lg",  "font-weight-medium", "line-height-snug",    "tracking-tight"],    sample: "Heading Four" },
+  { className: ".type-body-lg",       size: "18px", weight: "400", lh: "1.6",  ls: "0em",     colorRole: "color-text-secondary", spec: ["font-size-sm",   "font-weight-regular","line-height-body",    "tracking-normal"],   sample: "Body large — editorial and case study body copy. Used for long-form reading." },
+  { className: ".type-body",          size: "16px", weight: "400", lh: "1.6",  ls: "0em",     colorRole: "color-text-secondary", spec: ["font-size-base", "font-weight-regular","line-height-body",    "tracking-normal"],   sample: "Body — standard UI text, descriptions, general content." },
+  { className: ".type-body-strong",   size: "16px", weight: "500", lh: "1.6",  ls: "0em",     colorRole: "color-text-primary",   spec: ["font-size-base", "font-weight-medium", "line-height-body",    "tracking-normal"],   sample: "Body strong — emphasized inline text, active states." },
+  { className: ".type-body-sm",       size: "14px", weight: "400", lh: "1.45", ls: "-0.03em", colorRole: "color-text-secondary", spec: ["font-size-xs",   "font-weight-regular","line-height-ui",      "tracking-tight"],    sample: "Small body — captions, metadata, secondary UI text." },
+  { className: ".type-body-sm-strong",size: "14px", weight: "500", lh: "1.45", ls: "-0.03em", colorRole: "color-text-primary",   spec: ["font-size-xs",   "font-weight-medium", "line-height-ui",      "tracking-tight"],    sample: "Small body strong — emphasized small text." },
+  { className: ".type-body-xs",       size: "12px", weight: "500", lh: "1.45", ls: "0em",     colorRole: "color-text-secondary", spec: ["font-size-xxxs", "font-weight-medium", "line-height-ui",      "tracking-normal"],   sample: "XS body — badges, tooltips, inline annotations." },
 ];
 
 const monoStyles = [
-  { className: ".type-label", size: "14px", weight: "500", lh: "1",  ls: "0.04em", colorRole: "color-text-secondary", note: "UPPERCASE · secondary", sample: "Section Label / Category Tag" },
+  { className: ".type-label", size: "14px", weight: "500", lh: "1", ls: "0.04em", colorRole: "color-text-secondary", spec: ["font-size-xs", "font-weight-medium", "line-height-none", "tracking-expanded"], note: "UPPERCASE · Geist Mono", sample: "Section Label / Category Tag" },
 ];
 
 const spacingItems = [
@@ -125,6 +160,37 @@ const radiusItems = [
   { name: "radius-full", twClass: "rounded-pill",     value: "9999px", description: "Pills, buttons, tags" },
 ];
 
+const fontSizeItems = [
+  { name: "font-size-xxxs", value: "12px", role: "Labels, badges" },
+  { name: "font-size-xs",   value: "14px", role: "UI text, body-sm, meta" },
+  { name: "font-size-base", value: "16px", role: "Standard body, general UI" },
+  { name: "font-size-sm",   value: "18px", role: "Editorial / case-study body" },
+  { name: "font-size-md",   value: "20px", role: "Testimonial quotes" },
+  { name: "font-size-lg",   value: "24px", role: "h4, card titles" },
+  { name: "font-size-xl",   value: "32px", role: "h3, notes quote" },
+  { name: "font-size-2xl",  value: "40px", role: "h2" },
+  { name: "font-size-3xl",  value: "48px", role: "h1, hero" },
+];
+
+const lineHeightItems = [
+  { name: "line-height-none",    value: "1",    role: "Single-line labels, badges" },
+  { name: "line-height-heading", value: "1.1",  role: "All display / heading text" },
+  { name: "line-height-snug",    value: "1.3",  role: "Card titles, medium headings" },
+  { name: "line-height-ui",      value: "1.45", role: "UI text, captions, short content" },
+  { name: "line-height-body",    value: "1.6",  role: "Long-form body copy" },
+];
+
+const letterSpacingItems = [
+  { name: "tracking-tight",    value: "-0.03em", role: "Headings" },
+  { name: "tracking-normal",   value: "0em",     role: "Body text" },
+  { name: "tracking-expanded", value: "0.02em",  role: "Labels, mono uppercase" },
+];
+
+const fontWeightItems = [
+  { name: "font-weight-regular", value: "400", role: "Body, captions, descriptions (450 on light theme)" },
+  { name: "font-weight-medium",  value: "500", role: "Headings, strong, active states (550 on light theme)" },
+];
+
 /* ================================
  * Page
  * ============================== */
@@ -132,50 +198,74 @@ const radiusItems = [
 export default function DesignSystemPage() {
   return (
     <PageShell className="w-full min-w-0">
-      <div className="flex flex-col gap-[120px] w-full min-w-0">
+      <div className="flex flex-col gap-[100px] w-full min-w-0">
 
         {/* Title */}
         <header className="flex flex-col gap-5">
           <h1 className="type-h1">Design System</h1>
-          <p className="type-body-lg">Portfolio — Tokens &amp; Foundations</p>
+          <p className="type-body">Portfolio — Tokens &amp; Foundations</p>
         </header>
 
         {/* ===== COLORS ===== */}
-        <section className="flex flex-col gap-14 w-full">
+        <section className="flex flex-col gap-16 w-full">
 
-          {/* Neutral Scale */}
+          {/* Color Scale */}
           <div className="flex flex-col gap-5">
-            <SectionLabel>Color — Neutral Scale</SectionLabel>
-            <div className="flex flex-wrap gap-2">
-              {neutralColors.map((c) => (
-                <ColorCard key={c.name} name={c.name} cssVar={c.cssVar} />
-              ))}
-            </div>
-          </div>
-
-          {/* Accent */}
-          <div className="flex flex-col gap-5">
-            <SectionLabel>Color — Accent</SectionLabel>
-            <div className="flex flex-wrap gap-2">
-              {accentColors.map((c) => (
-                <ColorCard key={c.name} name={c.name} cssVar={c.cssVar} />
-              ))}
+            <SectionLabel>Color Scale</SectionLabel>
+            <div className="flex flex-col gap-8">
+              <ScaleGroup label="Neutral">
+                <div className="flex flex-wrap gap-2">
+                  {neutralColors.map((c) => (
+                    <ColorCard key={c.name} name={c.name} cssVar={c.cssVar} />
+                  ))}
+                </div>
+              </ScaleGroup>
+              <ScaleGroup label="Accent">
+                <div className="flex flex-wrap gap-2">
+                  {accentColors.map((c) => (
+                    <ColorCard key={c.name} name={c.name} cssVar={c.cssVar} />
+                  ))}
+                </div>
+              </ScaleGroup>
             </div>
           </div>
 
           {/* Semantic Aliases */}
           <div className="flex flex-col gap-5">
             <SectionLabel>Color — Semantic Aliases</SectionLabel>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-8">
               <AliasGroup label="Backgrounds" aliases={bgAliases} />
+              <AliasGroup label="CTA" aliases={ctaAliases} />
               <AliasGroup label="Borders" aliases={borderAliases} />
               <AliasGroup label="Text" aliases={textAliases} />
+              <AliasGroup label="Interaction" aliases={interactionAliases} />
+              <AliasGroup label="Buttons — Secondary" aliases={buttonAliases} />
+              <AliasGroup label="Form" aliases={formAliases} />
             </div>
           </div>
         </section>
 
         {/* ===== TYPOGRAPHY ===== */}
-        <section className="flex flex-col gap-14 w-full">
+        <section className="flex flex-col gap-16 w-full">
+
+          {/* Type Scale */}
+          <div className="flex flex-col gap-5">
+            <SectionLabel>Type Scale</SectionLabel>
+            <div className="flex flex-col gap-8">
+              <ScaleGroup label="Font Size">
+                {fontSizeItems.map((s) => <FontSizeRow key={s.name} {...s} />)}
+              </ScaleGroup>
+              <ScaleGroup label="Line Height">
+                {lineHeightItems.map((s) => <ScaleRow key={s.name} {...s} />)}
+              </ScaleGroup>
+              <ScaleGroup label="Letter Spacing">
+                {letterSpacingItems.map((s) => <ScaleRow key={s.name} {...s} />)}
+              </ScaleGroup>
+              <ScaleGroup label="Font Weight">
+                {fontWeightItems.map((s) => <ScaleRow key={s.name} {...s} />)}
+              </ScaleGroup>
+            </div>
+          </div>
 
           {/* Geist Sans */}
           <div className="flex flex-col gap-5">
@@ -227,8 +317,8 @@ export default function DesignSystemPage() {
               name="card-interactive"
               description="Clickable card surface. Hover changes bg to color-bg-muted."
               tokens={[
-                "bg: color-bg-card (#151310)",
-                "border: 1px color-border (#272921)",
+                "bg: color-bg-card",
+                "border: 1px color-border",
                 "radius: radius-lg (20px)",
                 "padding: space-xl (24px)",
                 "transition: bg 0.18s ease",
@@ -239,8 +329,8 @@ export default function DesignSystemPage() {
               name="card-tinted"
               description="Lightly tinted card. Non-interactive content container."
               tokens={[
-                "bg: color-bg-card (#151310)",
-                "border: 1px color-border-subtle (#23221B)",
+                "bg: color-bg-card-tinted",
+                "border: 1px color-border-subtle",
                 "radius: radius-lg (20px)",
                 "padding: space-xl (24px)",
               ]}
@@ -250,8 +340,8 @@ export default function DesignSystemPage() {
               name="card-ghost"
               description="Outline/ghost card. Non-interactive, structural use."
               tokens={[
-                "bg: color-bg (#100F0C)",
-                "border: 1px color-border-inset (#1B1F17)",
+                "bg: color-bg",
+                "border: 1px color-border-inset",
                 "radius: radius-lg (20px)",
                 "padding: space-xl (24px)",
               ]}
@@ -270,7 +360,7 @@ export default function DesignSystemPage() {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="border-b border-color-border pb-2">
+    <div className="border-b border-color-border-inset pb-2">
       <p className="type-body-sm-strong text-color-text-tertiary">{children}</p>
     </div>
   );
@@ -285,7 +375,7 @@ function ColorCard({ name, cssVar }: { name: string; cssVar: string }) {
   return (
     <div className="flex flex-col gap-2 w-[124px] shrink-0">
       <div
-        className="h-[64px] w-full rounded-[8px] border border-white/[0.06]"
+        className="h-[64px] w-full rounded-[8px] border border-color-border-subtle"
         style={{ backgroundColor: `var(${cssVar})` }}
       />
       <div className="flex flex-col gap-0.5">
@@ -318,9 +408,9 @@ function AliasGroup({ label, aliases }: { label: string; aliases: ColorAlias[] }
 function AliasRow({ name, mapsTo, cssVar, description }: ColorAlias) {
   const hex = useTokenHex(cssVar);
   return (
-    <div className="bg-color-bg-card border border-color-border-inset rounded-[8px] flex items-center gap-4 h-[46px] px-4">
+    <div className="bg-color-bg-card-tinted border border-color-border-subtle rounded-[8px] flex items-center gap-4 h-[46px] px-4">
       <div
-        className="shrink-0 size-6 rounded-[6px] border border-white/[0.06]"
+        className="shrink-0 size-6 rounded-[6px] border border-color-border-subtle"
         style={{ backgroundColor: `var(${cssVar})` }}
       />
       {/* Name */}
@@ -350,12 +440,13 @@ type TypeCardProps = {
   lh: string;
   ls: string;
   colorRole: string;
+  spec: string[];
   sample: string;
   note?: string;
   mono?: boolean;
 };
 
-function TypeCard({ className, size, weight, lh, ls, colorRole, sample, note, mono }: TypeCardProps) {
+function TypeCard({ className, size, weight, lh, ls, colorRole, spec, sample, mono }: TypeCardProps) {
   const previewStyle: React.CSSProperties = {
     fontSize: size,
     fontWeight: parseInt(weight),
@@ -369,16 +460,15 @@ function TypeCard({ className, size, weight, lh, ls, colorRole, sample, note, mo
     : "text-color-text-secondary";
 
   return (
-    <div className="bg-color-bg-card border border-color-border-inset rounded-[12px] flex items-start justify-between p-6 gap-6 overflow-hidden">
+    <div className="bg-color-bg-card-tinted border border-color-border-subtle rounded-[12px] flex items-start justify-between p-6 gap-6 overflow-hidden">
       {/* Spec */}
-      <div className="flex flex-col gap-1 shrink-0 w-[200px]">
+      <div className="flex flex-col gap-1 shrink-0 w-[220px]">
         <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary">
           {className}
         </p>
         <div className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary flex flex-col">
-          <span>{size} · weight {weight}</span>
-          <span>lh {lh} · ls {ls}</span>
-          {note ? <span>{note}</span> : <span>{colorRole}</span>}
+          {spec.map((line) => <span key={line}>{line}</span>)}
+          <span>{colorRole}</span>
         </div>
       </div>
       {/* Preview */}
@@ -460,12 +550,71 @@ function SurfaceCard({
 }
 
 /* ================================
+ * Scale group — label + rows (mirrors AliasGroup)
+ * ============================== */
+
+function ScaleGroup({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col gap-1">
+      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary mb-1">{label}</p>
+      {children}
+    </div>
+  );
+}
+
+/* ================================
+ * Generic scale row (line-height, tracking, weight)
+ * ============================== */
+
+function ScaleRow({ name, value, role }: { name: string; value: string; role: string }) {
+  return (
+    <div className="border-b border-color-border-inset flex items-center h-9 gap-4">
+      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary w-[200px] shrink-0">
+        {name}
+      </p>
+      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary w-[80px] shrink-0">
+        {value}
+      </p>
+      <p className="font-['Geist',sans-serif] text-[12px] font-normal leading-[1.45] text-color-text-tertiary">
+        {role}
+      </p>
+    </div>
+  );
+}
+
+/* ================================
+ * Font size row — includes live "Aa" preview
+ * ============================== */
+
+function FontSizeRow({ name, value, role }: { name: string; value: string; role: string }) {
+  return (
+    <div className="border-b border-color-border-inset flex items-center min-h-[44px] gap-4 py-1 overflow-hidden">
+      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-primary w-[160px] shrink-0">
+        {name}
+      </p>
+      <p className="font-mono text-[12px] font-normal leading-[1.45] text-color-text-tertiary w-[52px] shrink-0">
+        {value}
+      </p>
+      <p className="font-['Geist',sans-serif] text-[12px] font-normal leading-[1.45] text-color-text-tertiary flex-1 min-w-0">
+        {role}
+      </p>
+      <p
+        className="text-color-text-secondary shrink-0 opacity-40 leading-none"
+        style={{ fontSize: value }}
+      >
+        Aa
+      </p>
+    </div>
+  );
+}
+
+/* ================================
  * Radius card
  * ============================== */
 
 function RadiusCard({ name, twClass, value, description }: { name: string; twClass: string; value: string; description: string }) {
   return (
-    <div className="bg-color-bg-card border border-color-border-inset rounded-[12px] flex flex-col gap-5 p-6">
+    <div className="bg-color-bg-card-tinted border border-color-border-subtle rounded-[12px] flex flex-col gap-5 p-6">
       <div
         className="h-14 w-full bg-color-bg border border-color-border-subtle"
         style={{ borderRadius: value }}

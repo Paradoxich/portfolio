@@ -35,7 +35,7 @@
 
 :root[data-theme="cool"] {
   --color-0:  #000000;
-  --color-05: #0F0F0F;
+  --color-05: #0A0A0A;
   --color-10: #141414;
   --color-20: #1F1F1F;
   --color-30: #262626;
@@ -54,16 +54,16 @@
 
 :root[data-theme="light"] {
   --color-0:  #F3F0E9;
-  --color-05: #EBE3D6;
-  --color-10: #E0D7C9;
-  --color-20: #DBCAB6;
-  --color-30: #BFBFA8;
+  --color-05: #EBE8DD;
+  --color-10: #E0DED3;
+  --color-20: #D6D4C5;
+  --color-30: #CCCCB4;
   --color-40: #B2B298;
   --color-50: #A6A688;
   --color-60: #99997A;
   --color-80: #333327;
   --color-90: #161611;
-  --color-0-rgb:  224, 215, 201;
+  --color-0-rgb:  229, 227, 215;
   --color-10-rgb: 217, 217, 199;
   --color-60-rgb: 153, 153, 122;
   --color-accent-70:              #EEC643;
@@ -71,12 +71,14 @@
   --image-filter:                 none;
   --font-weight-regular:          450;
   --font-weight-medium:           550;
-  --color-border:           var(--color-20);
+
   --color-cta-primary-text: var(--color-90);
-  --color-bg-card: var(--color-10);
   --color-text-tertiary: #666651;
   --color-bg-label: var(--color-0);
   --color-grid-line:        var(--color-20); 
+  --color-nav-item-bg-active: var(--color-05);
+  --color-nav-item-bg-hover: var(--color-05);
+ 
 }
 
 :root {

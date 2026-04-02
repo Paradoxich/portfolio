@@ -52,7 +52,7 @@ const capabilities: Capability[] = [
 export function OverviewContent() {
   return (
     <PageShell>
-      <div className="w-full max-w-3xl mx-auto mt-2xl font-geist">
+      <div className="w-full max-w-3xl mx-auto font-geist">
         <h1 className="type-h1 text-balance mb-5 text-center">
           I define products while they&apos;re still taking shape.
         </h1>
@@ -63,7 +63,7 @@ export function OverviewContent() {
           ship.
         </p>
 
-        <div className="mb-8 flex justify-center gap-sm">
+        <div className="mb-12 flex justify-center gap-sm">
           <Link
             href="/docs/CV-Beverin-2026.pdf"
             target="_blank"
