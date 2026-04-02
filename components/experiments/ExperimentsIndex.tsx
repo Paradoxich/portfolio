@@ -1,9 +1,10 @@
- "use client";
+"use client";
 
 import { PageShell } from "@/components/layout/PageShell";
 import { WaterPlantSection } from "@/components/experiments/WaterPlantSection";
 import TestimonialsSection from "@/components/experiments/TestimonialsSection";
 import { ThemeSwitcherInline } from "@/components/theme/ColorSchemeProvider";
+import { DesignSystemCard } from "@/components/experiments/DesignSystemCard";
 
 const EXPERIMENT_TESTIMONIALS = [
   {
@@ -47,9 +48,11 @@ export function ExperimentsIndex() {
               <TestimonialsSection testimonials={EXPERIMENT_TESTIMONIALS} />
             </div>
           </section>
+          <div className="col-span-12">
+            <DesignSystemCard />
+          </div>
         </div>
       </div>
     </PageShell>
   );
 }
-

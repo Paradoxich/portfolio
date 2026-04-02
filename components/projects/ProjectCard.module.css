@@ -31,7 +31,7 @@
     90deg,
     rgba(var(--project-card-gradient-rgb), 1) 1.57%,
     rgba(var(--project-card-gradient-rgb), 1) 36.55%,
-    rgba(var(--project-card-gradient-rgb), 0.94) 52.62%,
+    rgba(var(--project-card-gradient-rgb), 1) 52.62%,
     rgba(var(--project-card-gradient-rgb), 0.7) 76.55%,
     rgba(var(--project-card-gradient-rgb), 0.4) 90.98%,
     rgba(var(--project-card-gradient-rgb), 0.2) 100%
@@ -48,28 +48,32 @@
     90deg,
     rgba(var(--project-card-gradient-rgb), 1) 1.57%,
     rgba(var(--project-card-gradient-rgb), 1) 24.59%,
-    rgba(var(--project-card-gradient-rgb), 0.94) 37.14%,
+    rgba(var(--project-card-gradient-rgb), 1) 37.14%,
     rgba(var(--project-card-gradient-rgb), 0.4) 44.07%,
     rgba(var(--project-card-gradient-rgb), 0.2) 66.65%,
-    rgba(var(--project-card-gradient-rgb), 0) 99.47%
+    rgba(var(--project-card-gradient-rgb), 0) 100%
   );
 }
 
 @media (hover: hover) {
+  /* Hover-out: ::after snaps back first, then cardGradientHover follows */
   .card::after {
-    transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .cardGradientHover {
-    transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1) 120ms;
   }
 
+  /* Hover-in: cardGradientHover leads, ::after follows after a delay */
   .card:hover::after {
     opacity: 0;
+    transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1) 120ms;
   }
 
   .card:hover .cardGradientHover {
     opacity: 1;
+    transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
