@@ -24,6 +24,7 @@ export function ProjectsIndex({ projects }: ProjectsIndexProps) {
                 title={p.cardTitle ?? p.title}
                 href={`/projects/${p.slug ?? p.key}`}
                 background={p.cardBackground}
+                comingSoon={p.comingSoon}
               />
             ))}
           </div>

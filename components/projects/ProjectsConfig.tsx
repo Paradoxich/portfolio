@@ -26,6 +26,9 @@ export type ProjectConfig = {
 
   /** Case study page component — optional */
   Page?: React.ComponentType;
+
+  /** When true, card is non-clickable and shows a "Coming Soon" badge. */
+  comingSoon?: boolean;
 };
 
 export const projectsConfig: ProjectConfig[] = [
@@ -38,7 +41,7 @@ export const projectsConfig: ProjectConfig[] = [
     title:
       "Visual direction and early workflow exploration for an AI infra platform.",
     cardTitle: "Neptune: Defining the product's positioning and visual foundation",
-    categoryLabel: "Developer tools",
+    categoryLabel: "Developer Tools",
     category: "client",
     cardBackground: "/project-cards/card-neptune.png",
     Page: ProjectPageNeptune,
@@ -51,7 +54,7 @@ export const projectsConfig: ProjectConfig[] = [
     title:
       "Establishing a scalable product system for a growing dev platform.",
     cardTitle: "Shuttle: Designing a scalable system for a growing developer platform.",
-    categoryLabel: "Developer tools",
+    categoryLabel: "Developer Tools",
     category: "client",
     cardBackground: "/project-cards/card-shuttle.png",
     Page: ProjectPageShuttle,
@@ -63,7 +66,7 @@ export const projectsConfig: ProjectConfig[] = [
     label: "MixLodge",
     title: "Defining the product foundations for an early-stage booking tool.",
     cardTitle: "MixLodge: Turning an early idea into a structured booking product",
-    categoryLabel: "Marketplace product",
+    categoryLabel: "Marketplace",
     category: "client",
     cardBackground: "/project-cards/card-mixlodge.png",
     Page: ProjectPageMixlodge,
@@ -74,9 +77,29 @@ export const projectsConfig: ProjectConfig[] = [
     label: "Portfolio",
     title: "Designing and building this portfolio as a real product.",
     cardTitle: "Portfolio: Building a personal site as a real product.",
-    categoryLabel: "Personal project",
+    categoryLabel: "Personal",
     category: "personal",
     cardBackground: "/project-cards/card-portfolio.png",
     Page: ProjectPagePortfolio,
+  },
+
+  {
+    key: "optimoroute",
+    label: "Optimoroute",
+    title: "OptimoRoute: Modernizing a live routing platform without disrupting revenue.",
+    categoryLabel: "Route Optimization",
+    category: "client",
+    cardBackground: "/project-cards/card-optimoroute.png",
+    comingSoon: true,
+  },
+
+  {
+    key: "dealio",
+    label: "Dealio",
+    title: "Dealio: Designing a mobile-first marketplace for clarity and scale",
+    categoryLabel: "Marketplace",
+    category: "client",
+    cardBackground: "/project-cards/card-dealio.png",
+    comingSoon: true,
   },
 ];

@@ -11,30 +11,35 @@ type ProjectCardProps = {
   title: string;
   href: string;
   background?: string;
+  comingSoon?: boolean;
 };
 
-export function ProjectCard({ categoryLabel, title, href, background }: ProjectCardProps) {
-  return (
-    <Link href={href}>
-      <motion.article
-        transition={{ duration: 0.18, ease: [0.25, 0.1, 0.25, 1] }}
-        className={`card-interactive ${styles.card}`}
-        style={
-          background
-            ? ({ "--card-bg-image": `url(${background})` } as React.CSSProperties)
-            : undefined
-        }
-      >
-        <div className={styles.cardGradientHover} aria-hidden="true" />
-        <header className="relative z-10 flex flex-1 flex-col justify-between min-h-0">
-          <div className={styles.topRow}>
-            <span className={styles.label}>{categoryLabel}</span>
-          </div>
-          <div className={styles.bottomStack}>
-            <p className="type-h4 max-w-[320px]">{title}</p>
-          </div>
-        </header>
-      </motion.article>
-    </Link>
+export function ProjectCard({ categoryLabel, title, href, background, comingSoon }: ProjectCardProps) {
+  const cardStyle = background
+    ? ({ "--card-bg-image": `url(${background})` } as React.CSSProperties)
+    : undefined;
+
+  const inner = (
+    <motion.article
+      transition={{ duration: 0.18, ease: [0.25, 0.1, 0.25, 1] }}
+      className={`card-interactive ${styles.card} ${comingSoon ? styles.cardComingSoon : ""}`}
+      style={cardStyle}
+    >
+      <div className={styles.cardGradientHover} aria-hidden="true" />
+      <header className="relative z-10 flex flex-1 flex-col justify-between min-h-0">
+        <div className={styles.topRow}>
+          <span className={styles.label}>{categoryLabel}</span>
+          {comingSoon && (
+            <span className={styles.comingSoonBadge}>Coming Soon</span>
+          )}
+        </div>
+        <div className={styles.bottomStack}>
+          <p className="type-h4 max-w-[320px]">{title}</p>
+        </div>
+      </header>
+    </motion.article>
   );
+
+  if (comingSoon) return <div>{inner}</div>;
+  return <Link href={href}>{inner}</Link>;
 }

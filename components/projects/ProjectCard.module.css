@@ -112,3 +112,29 @@
   color: var(--color-text-secondary);
   font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
 }
+
+.cardComingSoon {
+  cursor: default;
+  opacity: 0.5;
+}
+
+@media (hover: hover) {
+  .cardComingSoon:hover::after {
+    opacity: 1;
+    transition: none;
+  }
+
+  .cardComingSoon:hover .cardGradientHover {
+    opacity: 0;
+    transition: none;
+  }
+}
+
+.comingSoonBadge {
+  margin-left: var(--space-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-ui);
+  color: var(--color-text-tertiary);
+  font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+}
