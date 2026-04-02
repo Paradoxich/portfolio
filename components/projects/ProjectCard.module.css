@@ -11,31 +11,19 @@
   overflow: hidden;
   cursor: pointer;
 
-  /* Project-specific background graphic */
   background-image: var(--card-bg-image);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.card::before,
+/* Linear gradient overlay – base state (fades out on hover) */
 .card::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-}
-
-/* Color overlay using Figma's `color` blend mode */
-.card::before {
-  background-color: var(--color-0);
-  mix-blend-mode: color;
-}
-
-/* Linear gradient overlay – base state (fades out on hover) */
-.card::after {
   opacity: 1;
-  transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
   background: linear-gradient(
     90deg,
     rgba(var(--project-card-gradient-rgb), 1) 1.57%,
@@ -43,7 +31,7 @@
     rgba(var(--project-card-gradient-rgb), 0.94) 52.62%,
     rgba(var(--project-card-gradient-rgb), 0.7) 76.55%,
     rgba(var(--project-card-gradient-rgb), 0.4) 90.98%,
-    rgba(var(--project-card-gradient-rgb), 0) 99.47%
+    rgba(var(--project-card-gradient-rgb), 0.2) 100%
   );
 }
 
@@ -53,7 +41,6 @@
   inset: 0;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
   background: linear-gradient(
     90deg,
     rgba(var(--project-card-gradient-rgb), 1) 1.57%,
@@ -65,12 +52,22 @@
   );
 }
 
-.card:hover::after {
-  opacity: 0;
-}
+@media (hover: hover) {
+  .card::after {
+    transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
 
-.card:hover .cardGradientHover {
-  opacity: 1;
+  .cardGradientHover {
+    transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .card:hover::after {
+    opacity: 0;
+  }
+
+  .card:hover .cardGradientHover {
+    opacity: 1;
+  }
 }
 
 /* Bottom stack keeps title/CTA anchored to bottom-left of card */

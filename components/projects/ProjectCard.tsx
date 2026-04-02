@@ -31,7 +31,7 @@ export function ProjectCard({ categoryLabel, title, href, background }: ProjectC
             <span className={styles.label}>{categoryLabel}</span>
           </div>
           <div className={styles.bottomStack}>
-            <p className="type-h4 max-w-[420px]">{title}</p>
+            <p className="type-h4 max-w-[320px]">{title}</p>
           </div>
         </header>
       </motion.article>
