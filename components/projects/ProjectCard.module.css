@@ -11,10 +11,13 @@
   overflow: hidden;
   cursor: pointer;
 
-  background-image: var(--card-bg-image);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-image:
+    var(--card-bg-image, none),
+    repeating-linear-gradient(var(--color-grid-line) 0 1px, transparent 1px 100%),
+    repeating-linear-gradient(90deg, var(--color-grid-line) 0 1px, transparent 1px 100%);
+  background-size: cover, 30px 30px, 30px 30px;
+  background-position: center, 0 -2px, 0 -2px;
+  background-repeat: no-repeat, repeat, repeat;
 }
 
 /* Linear gradient overlay – base state (fades out on hover) */

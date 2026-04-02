@@ -76,6 +76,7 @@
   --color-bg-card: var(--color-10);
   --color-text-tertiary: #666651;
   --color-bg-label: var(--color-0);
+  --color-grid-line:        var(--color-20); 
 }
 
 :root {
@@ -87,6 +88,7 @@
   --color-bg-muted:         var(--color-10);  /* hover / muted bg */
   --color-bg-surface:       var(--color-20);  /* raised / active surface bg */
   --color-bg-graphic-muted: var(--color-60); /* decorative graphic fills */
+  --color-grid-line:        var(--color-10);  /* project card background grid */
   --color-border-inset:     var(--color-10);  /* structural dividers */
   --color-border-subtle:    var(--color-20);  /* subtle border */
   --color-border:           var(--color-30);  /* main border */
