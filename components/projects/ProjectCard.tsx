@@ -9,12 +9,20 @@ import styles from "./ProjectCard.module.css";
 type ProjectCardProps = {
   categoryLabel: string;
   title: string;
+  description?: string;
   href: string;
   background?: string;
   comingSoon?: boolean;
 };
 
-export function ProjectCard({ categoryLabel, title, href, background, comingSoon }: ProjectCardProps) {
+export function ProjectCard({
+  categoryLabel,
+  title,
+  description,
+  href,
+  background,
+  comingSoon,
+}: ProjectCardProps) {
   const cardStyle = background
     ? ({ "--card-bg-image": `url(${background})` } as React.CSSProperties)
     : undefined;
@@ -34,7 +42,10 @@ export function ProjectCard({ categoryLabel, title, href, background, comingSoon
           )}
         </div>
         <div className={styles.bottomStack}>
-          <p className="type-h4 max-w-[320px]">{title}</p>
+          <p className="type-h4 max-w-[380px]">{title}</p>
+          {description && (
+            <p className="leading-body type-body-sm tracking-normal text-color-text-secondary max-w-[380px]">{description}</p>
+          )}
         </div>
       </header>
     </motion.article>

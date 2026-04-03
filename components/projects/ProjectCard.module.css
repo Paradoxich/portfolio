@@ -3,7 +3,7 @@
   position: relative;
   background-color: var(--color-bg-card);
   padding: var(--space-lg); /* 24px on mobile */
-  height: 300px;
+  height: 384px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -82,6 +82,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  gap: var(--space-sm);
   margin-top: auto;
 }
 
