@@ -20,7 +20,7 @@ export function MobileFooter() {
           Illustrations
         </Link>
         <Link
-          href="/docs/CV-Beverin-2026.pdf"
+          href="/docs/CV-Ana-Beverin-2026.pdf"
           className="hover:text-color-text-primary"
         >
           View CV

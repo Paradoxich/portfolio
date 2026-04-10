@@ -131,7 +131,7 @@ export function Sidebar() {
               />
               <NavDivider />
               <ProfileMenuItem
-                href="/docs/CV-Beverin-2026.pdf"
+                href="/docs/CV-Ana-Beverin-2026.pdf"
                 label="CV"
                 Icon={ArrowDown}
                 external={false}

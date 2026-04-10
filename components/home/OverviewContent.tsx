@@ -65,7 +65,7 @@ export function OverviewContent() {
 
         <div className="mb-12 flex justify-center gap-sm">
           <Link
-            href="/docs/CV-Beverin-2026.pdf"
+            href="/docs/CV-Ana-Beverin-2026.pdf"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-1 px-md py-sm rounded-full border border-color-border-secondary type-body-sm font-medium text-color-text-primary bg-transparent hover:bg-color-bg-muted"

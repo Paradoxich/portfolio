@@ -4,6 +4,7 @@ import { ProjectPageShuttle } from "./ProjectPageShuttle";
 import { ProjectPageMixlodge } from "./ProjectPageMixlodge";
 import { ProjectPagePortfolio } from "./ProjectPagePortfolio";
 import { ProjectPageNeptune } from "./ProjectPageNeptune";
+import { ProjectPageOptimoroute } from "./ProjectPageOptimoroute";
 
 export type ProjectConfig = {
   key: string;
@@ -96,8 +97,8 @@ export const projectsConfig: ProjectConfig[] = [
     cardDescription: "Led the UI modernization of a real-time routing software. Working closely with engineering, I drove iterative improvements that increased usability and feature discovery without disrupting existing users or revenue.",
     categoryLabel: "Route Optimization",
     category: "client",
-  
-    comingSoon: true,
+    cardBackground: "/project-cards/card-optimoroute.png",
+    Page: ProjectPageOptimoroute,
   },
 
   {

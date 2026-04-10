@@ -41,7 +41,7 @@ export function ProjectPageShuttle() {
             afterSrc={shuttleBeforeAfter.afterSrc}
             altBefore="Shuttle console before redesign"
             altAfter="Shuttle console after redesign"
-            defaultView="before"
+            defaultView="after"
           />
         </div>
         <div className="text-column">
