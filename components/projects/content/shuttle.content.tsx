@@ -160,20 +160,21 @@ export const shuttleTaming: SectionData = {
 export const shuttleOutcome: SectionData = {
   heading: "Outcome",
   blocks: [
+
     {
       type: "p",
       text:
-        "For users, the console became predictable and guiding. Information hierarchy was clearer, patterns were consistent, and managing multiple projects felt structurally sound.",
+      "The redesigned console launched to measurable early traction. In the first week, the platform saw 177 new signups, 69 users reached activation (40% activation rate), and around 70 first deployments completed. New users were moving from signup to deployment without friction.",
     },
     {
       type: "p",
       text:
-        "For the team, the redesign established a stable UI foundation. Feature work moved faster and with fewer debates because patterns were predefined and enforced. ",
+        "For the team, the redesign established a foundation that scaled. Feature work moved faster with fewer debates because patterns were predefined and enforced. Design and engineering were aligned again. ",
     },
     {
       type: "p",
       text:
-        "Design and engineering were aligned again. And the interface finally matched the maturity of the platform.",
+        "The interface finally matched the maturity of the platform underneath it.",
     },
   ],
 };
