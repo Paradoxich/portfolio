@@ -53,6 +53,21 @@ export function OverviewContent() {
   return (
     <PageShell>
       <div className="w-full max-w-3xl mx-auto font-geist">
+        <div className="mt-xl mb-2xl flex justify-center">
+          <a
+            href="https://santolina.app"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-sm rounded-sm border border-color-border bg-color-bg-card px-sm py-xs type-body-sm text-color-text-tertiary transition-colors hover:bg-color-bg-muted hover:text-color-text-secondary"
+          >
+            <span
+              className="size-1 shrink-0 rounded-full bg-color-success"
+              aria-hidden
+            />
+            Defining direction for Santolina
+          </a>
+        </div>
+
         <h1 className="type-h1 text-balance mb-5 text-center">
           I define products while they&apos;re still taking shape.
         </h1>
@@ -105,7 +120,7 @@ export function OverviewContent() {
           <div className="flex items-center gap-2 text-color-text-tertiary">
             <CheckmarkCircle size={20} />
             <p className="type-body-sm text-color-text-tertiary">
-              Available for new projects
+              Available for full-time roles
             </p>
           </div>
           <div className="flex items-center gap-2 text-color-text-tertiary">
@@ -117,7 +132,7 @@ export function OverviewContent() {
                 rel="noreferrer"
                 className="hover:underline hover:text-color-text-primary"
               >
-                Croatia · CET (UTC+1)
+                Croatia · UTC +2
               </a>
             </p>
           </div>
