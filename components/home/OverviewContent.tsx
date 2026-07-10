@@ -64,7 +64,7 @@ export function OverviewContent() {
               className="size-1 shrink-0 rounded-full bg-color-success"
               aria-hidden
             />
-            Defining direction for Santolina
+            Building Santolina
           </a>
         </div>
 
