@@ -1,73 +1,41 @@
-# Ana Beverin — Portfolio
+# Ana Beverin · Portfolio
 
-Personal portfolio and design system playground built with Next.js, Tailwind CSS, and Framer Motion.
+**Live at [anabeverin.com](https://anabeverin.com)**
 
-## Stack
+I'm a senior product designer with 9 years of experience, most of it as the sole designer at startups, owning discovery, IA, interaction design, and design systems end to end. More recently, I've been working in the design-to-code space: designing, prototyping, and shipping directly in React using Cursor, Claude Code, and Figma MCP.
 
-- **Framework**: Next.js 15 (App Router)
-- **Styling**: Tailwind CSS + CSS Modules + custom design tokens via CSS variables
-- **Animation**: Framer Motion
-- **Font**: Geist (via `next/font`)
-- **Email**: Resend (contact form API route)
+This repository is the portfolio itself. I designed and built it from scratch, no template, no theme, as a place to document both my work and how I build.
 
-## Design System
+I keep the portfolio public because I believe shipped work is more useful than screenshots. If you're curious how something works, the code is here to explore.
 
-The site ships its own lightweight design system documented at `/design-system`. Key concepts:
+## What's inside
 
-- **Tokens** — color scale, spacing, typography, radius, and line-height defined as CSS custom properties in `app/globals.css` and mapped to Tailwind utilities in `tailwind.config.ts`
-- **Semantic aliases** — raw scale values (`--color-30`) are aliased to role names (`--color-border`) to decouple usage from the scale
-- **Theme switching** — three color schemes (warm, cool, light) managed by `ColorSchemeProvider`, which applies CSS variable overrides directly on `document.documentElement`
-- **Type utilities** — global `.type-*` classes composed from tokens via `@apply` for shared typography patterns; page-specific type styles live in CSS Modules
+- **Design system:** semantic design tokens, CSS variables, Tailwind mappings, and live documentation at [/design-system](https://anabeverin.com/design-system).
+- **Themes:** three interchangeable themes (warm, cool, light) built through token overrides rather than component-level styling.
+- **Case studies:** selected work from Shuttle, Neptune, Dealio, and OptimoRoute, covering process, decisions, and outcomes.
+- **Motion and interaction:** hand-built Framer Motion animations and interactive experiments.
+- **Illustration:** a gallery of my illustration work; visual craft is part of the toolkit.
 
-See `docs/DESIGN_SYSTEM.md` and `.cursor/rules/` for full guidelines.
+## How it's built
 
-## Project Structure
+Next.js 15 (App Router) · Tailwind CSS + CSS Modules · Framer Motion · TypeScript · Resend for the contact form · deployed on Vercel.
 
-```
-app/
-  globals.css          # Design tokens + global component/utility classes
-  layout.tsx           # Root layout (providers, sidebar, nav)
-  page.tsx             # Overview / home
-  projects/            # Projects index + [slug] case studies
-  illustrations/       # Illustration gallery
-  experiments/         # Interactive experiments
-  notes/               # Notes (placeholder)
-  testimonials/        # Testimonials
-  design-system/       # Living design system documentation
+Design system reference lives in [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md).
 
-components/
-  layout/              # Sidebar, MobileNav, TopStickyBar, PageShell
-  home/                # Overview page components + capability graphics
-  projects/            # ProjectCard, ProjectModal, CaseStudyLayout, etc.
-  illustrations/       # IllustrationBlocks
-  experiments/         # PotAnimation, ChatAnimation, TestimonialsSection, etc.
-  contact/             # HireDrawer + context
-  theme/               # ColorSchemeProvider + ThemeSwitcherInline
-  icons/               # SVG icon components
-
-public/
-  case-studies/        # Case study images and videos
-  illustrations/       # Illustration images
-  testimonials/        # Testimonial avatars
-  docs/                # CV PDF
-
-docs/
-  DESIGN_SYSTEM.md     # Full design system reference
-```
-
-## Getting Started
+## Run it locally
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000). The contact form needs a `RESEND_API_KEY` in `.env.local`; everything else runs without configuration.
 
-## Environment Variables
+## Get in touch
 
-Create a `.env.local` for the contact form:
+I'm looking for product, design engineering, or early-stage design roles where I can own problems from concept to production.
 
-```
-RESEND_API_KEY=your_key_here
-```
+- [anabeverin.com](https://anabeverin.com)
+- [LinkedIn](https://linkedin.com/in/paradoxich)
+- [CV](https://anabeverin.com/docs/CV-Ana-Beverin-2026.pdf)
+- ana.beverin@gmail.com
