@@ -1,0 +1,9 @@
+/* External link pill used in case study headers */
+.linkPill {
+  @apply bg-color-bg-surface border border-color-border-secondary text-color-text-primary;
+}
+
+.linkPill:hover {
+  @apply bg-color-bg-muted;
+  text-decoration: underline;
+}

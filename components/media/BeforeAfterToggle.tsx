@@ -49,7 +49,7 @@ export function BeforeAfterToggle({
       {/* Bottom controls */}
       <div className="absolute left-4 right-4 bottom-4 flex items-center justify-center pointer-events-none">
         {/* Toggle pill */}
-        <div className="pointer-events-auto inline-flex items-center gap-1 p-1 rounded-full bg-color-bg-surface/95 border border-color-border backdrop-blur-md shadow-lg">
+        <div className="pointer-events-auto inline-flex items-center gap-1 p-1 rounded-full bg-color-bg border border-color-border  shadow-lg">
           <button
             type="button"
             onClick={() => setView("before")}

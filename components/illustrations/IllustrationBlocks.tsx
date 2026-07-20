@@ -26,43 +26,45 @@ export function IllustrationBlocks({
   copyTexts,
 }: IllustrationBlocksProps) {
   return (
-    <div className="flex flex-col gap-14">
+    <div className="flex flex-col gap-[200px]">
       {blocks.map((block, index) => {
         const isReversed = index % 2 === 1;
         const triptychImages = [block.hero, ...block.stack];
-        const copyText = copyTexts?.[index];
+        const copyText = copyTexts?.[index] ?? block.description;
 
         return (
-          <div key={block.id} className="flex flex-col gap-14">
+          <div key={block.id} className="flex flex-col gap-2xl">
             {variant === "triptych" ? (
-              <div className="grid gap-gutter md:grid-cols-3">
+              <div className="grid gap-gutter md:grid-cols-3 mb-2xl">
                 {triptychImages.map((image, imageIndex) => (
                   <div
                     key={`${block.id}-triptych-${imageIndex}`}
-                    className="relative h-[280px] w-full overflow-hidden rounded-[var(--radius-lg)] md:h-[340px] lg:h-[593px]"
+                    className="w-full overflow-hidden rounded-card"
                   >
                     <Image
                       src={image.src}
                       alt={image.alt}
-                      fill
-                      className="object-cover"
+                      width={1200}
+                      height={800}
+                      className="w-full h-auto"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                     />
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="grid gap-gutter lg:grid-cols-12 lg:h-[600px]">
+              <div className="grid gap-gutter lg:grid-cols-12 lg:h-full">
                 <div
                   className={`col-span-12 ${
                     isReversed ? "lg:order-2" : "lg:order-1"
-                  } order-1 relative h-[320px] w-full overflow-hidden rounded-[var(--radius-lg)] lg:col-span-8 lg:h-full`}
+                  } order-1 w-full overflow-hidden rounded-card lg:col-span-8 lg:h-full`}
                 >
                   <Image
                     src={block.hero.src}
                     alt={block.hero.alt}
-                    fill
-                    className="object-cover"
+                    width={1600}
+                    height={1000}
+                    className="w-full h-auto"
                     sizes="(max-width: 1024px) 100vw, 960px"
                     priority={index === 0}
                   />
@@ -76,13 +78,14 @@ export function IllustrationBlocks({
                   {block.stack.map((image, stackIndex) => (
                     <div
                       key={`${block.id}-stack-${stackIndex}`}
-                      className="relative h-[240px] w-full overflow-hidden rounded-[var(--radius-lg)] lg:h-[300px]"
+                      className="w-full overflow-hidden rounded-card"
                     >
                       <Image
                         src={image.src}
                         alt={image.alt}
-                        fill
-                        className="object-cover"
+                        width={800}
+                        height={600}
+                        className="w-full h-auto"
                         sizes="(max-width: 1024px) 100vw, 480px"
                       />
                     </div>
@@ -93,17 +96,13 @@ export function IllustrationBlocks({
 
             {copyText ? (
               <div className="layout-grid">
-                <div className="col-span-12 md:col-span-6 md:col-start-4 py-14">
-                  <p className="type-body text-color-text-secondary">
-                    {copyText}
-                  </p>
+                <div
+                  className={`col-span-12 md:col-span-6 ${
+                    isReversed ? "md:col-start-7 md:text-right" : ""
+                  }`}
+                >
+                  <p className="type-body">{copyText}</p>
                 </div>
-              </div>
-            ) : index < blocks.length - 1 ? (
-              <div className="py-14">
-                <p className="type-body text-color-text-secondary">
-                  {block.description ?? "Block description…"}
-                </p>
               </div>
             ) : null}
           </div>

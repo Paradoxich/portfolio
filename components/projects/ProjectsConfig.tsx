@@ -4,124 +4,34 @@ import { ProjectPageShuttle } from "./ProjectPageShuttle";
 import { ProjectPageMixlodge } from "./ProjectPageMixlodge";
 import { ProjectPagePortfolio } from "./ProjectPagePortfolio";
 import { ProjectPageNeptune } from "./ProjectPageNeptune";
-
-export type Theme = {
-  // Case study colors (modal/page)
-  bg?: string; // case study background color (defaults to cardBg if not provided)
-  border?: string; // case study border color (defaults to cardBorder if not provided)
-  
-  // Card colors (project card on projects page)
-  cardBg?: string; // card background color (defaults to bg if not provided)
-  cardBorder?: string; // card border color (defaults to border if not provided)
-  
-  // Shared colors
-  bgSurface?: string; // card/surface background
-  bgMuted?: string; // muted background
-  borderSecondary?: string; // secondary border (used for images/videos)
-  imageBorder?: string; // specific border color for images/videos (defaults to borderSecondary)
-  textPrimary?: string; // primary text color
-  textSecondary?: string; // secondary text color
-  accent?: string; // accent color (optional)
-  scrollbarColor?: string; // scrollbar thumb color
-  scrollGradient?: string; // top scroll gradient color (defaults to bg if not provided)
-  closeButtonBg?: string; // close button circle fill color (defaults to bg if not provided)
-  linkPillBg?: string; // link pill background color (defaults to bgSurface if not provided)
-  linkPillText?: string; // link pill text color (defaults to textPrimary if not provided)
-  linkPillHoverBg?: string; // link pill hover background color (defaults to bgSurface if not provided)
-  tldrBg?: string; // TL;DR section background color (defaults to bgMuted if not provided)
-};
-
-// Define themes here - change colors in one place per case study
-export const themes = {
-  "neptune-lp": {
-    // Case study colors (modal/page)
-    bg: "#0B1016",
-    border: "rgba(39, 52, 67, 0.50)",
-    
-    
-    // Shared colors
-    bgSurface: "#1a1a1a",
-    bgMuted: "#10161D",
-    borderSecondary: "rgba(39, 52, 67, 0.50)",
-    textPrimary: "#f0f0f0",
-    textSecondary: "#B1BDC8",
-    accent: "#4a9eff",
-    scrollbarColor: "rgba(39, 52, 67, 0.50)",
-    scrollGradient: "#0B1016", // top scroll gradient color (defaults to bg if not provided)
-    closeButtonBg: "#0B1016", // close button circle fill color (defaults to bg if not provided)
-    linkPillBg: "#10161D", // link pill background color
-    linkPillText: "#f0f0f0", // link pill text color
-    linkPillHoverBg: "#121921", // link pill hover background color
-    tldrBg: "#10161D", // TL;DR section background color
-  } as Theme,
-
-  "shuttle-console": {
-    // Case study colors (modal/page)
-    bg: "#0E1115",
-    border: "#1E242B",
-    
-    // Shared colors
-    bgSurface: "#1a1a1a",
-    bgMuted: "#151515",
-    borderSecondary: "rgba(39, 52, 67, 0.50)",
-    textPrimary: "#f0f0f0",
-    textSecondary: "#ADB5C0",
-    accent: "#4a9eff",
-    scrollbarColor: "rgba(39, 52, 67, 0.50)",
-    scrollGradient: "#0E1115", // top scroll gradient color (defaults to bg if not provided)
-    closeButtonBg: "#0E1115", // close button circle fill color (defaults to bg if not provided)
-
-    linkPillBg: "#14191F", // link pill background color
-    linkPillText: "#ADB5C0", // link pill text color
-    linkPillHoverBg: "#181D24", // link pill hover background color
-    tldrBg: "#14191F", // TL;DR section background color
-  } as Theme,
-
-  "mixlodge-mvp": {
-    // Case study colors (modal/page)
-    bg: "#121212",
-    border: "#232323",
-    
-    // Shared colors
-    bgSurface: "#1a1a1a",
-    bgMuted: "#151515",
-    borderSecondary: "#232323",
-    textPrimary: "#F2F0EF",
-    textSecondary: "#B1B1B1",
-    accent: "#4a9eff",
-    scrollbarColor: "rgba(255, 255, 255, 0.1)",
-    scrollGradient: "#121212", // top scroll gradient color (defaults to bg if not provided)
-    closeButtonBg: "#121212", // close button circle fill color (defaults to bg if not provided)
-    tldrBg: "#181818", // TL;DR section background color
-  } as Theme,
-  
-  
-  
-} as const;
+import { ProjectPageOptimoroute } from "./ProjectPageOptimoroute";
 
 export type ProjectConfig = {
   key: string;
+  /** URL slug for routing (e.g. "neptune" -> /projects/neptune). Falls back to key if not set. */
+  slug?: string;
   label?: string;
+  /** Card title on projects index (can differ from case study) */
   title: string;
-  href?: string;
+  /** Card-specific title; falls back to title if not set */
+  cardTitle?: string;
+  /** Optional card description shown under card title on projects index */
+  cardDescription?: string;
+  /** Display label for category (e.g. "Developer tools", "Marketplace product", "Personal project") */
+  categoryLabel: string;
   category: "client" | "personal";
 
-  // hero vizual – opcionalno za SVE projekte
-  hero?: {
-    type: "image" | "video";
-    src: string;
-    alt?: string;
-    position?: "top" | "center" | "bottom"; // focal point for cropping (default: center)
-  };
+  /** Optional background image for the project card (public path). */
+  cardBackground?: string;
 
-  // thumbnail image for list icons (if hero is video, use this for list display)
-  thumbnail?: string;
+  /** SVG graphic for project card (theme-aware). Not used in case study. */
+  cardGraphic?: React.ComponentType;
 
-  // theme – opcionalno za custom boje po projektu
-  theme?: Theme;
-
-  // case-study content komponenta – opcionalno
+  /** Case study page component — optional */
   Page?: React.ComponentType;
+
+  /** When true, card is non-clickable and shows a "Coming Soon" badge. */
+  comingSoon?: boolean;
 };
 
 export const projectsConfig: ProjectConfig[] = [
@@ -129,49 +39,42 @@ export const projectsConfig: ProjectConfig[] = [
 
   {
     key: "neptune-lp",
+    slug: "neptune",
     label: "Neptune",
     title:
       "Visual direction and early workflow exploration for an AI infra platform.",
-    href: "/projects/neptune",
+    cardTitle: "Neptune",
+    cardDescription: "Designed the visual identity and positioning for an AI infrastructure platform. Drove the brand direction, built an animated prototype to clarify how the product works, and helped align the team around a clearer product story.",
+    categoryLabel: "Developer Tools",
     category: "client",
-    hero: {
-      type: "video",
-      src: "/case-studies/neptune-chat.mp4",
-    },
-    theme: themes["neptune-lp"],
+    cardBackground: "/project-cards/card-neptune.png",
     Page: ProjectPageNeptune,
-    // hero i Page možeš dodati kasnije
   },
 
   {
     key: "shuttle-console",
+    slug: "shuttle",
     label: "Shuttle",
     title:
       "Establishing a scalable product system for a growing dev platform.",
-    href: "/projects/shuttle",
+    cardTitle: "Shuttle",
+    cardDescription: "Redesigned the developer console, replacing fragmented patterns with a scalable system. The new foundation improves feature discovery, simplifies project management, and gives the platform room to grow.",
+    categoryLabel: "Developer Tools",
     category: "client",
-    hero: {
-      type: "image",
-      src: "/case-studies/shuttle-console-hero.png",
-      position: "top",
-    },
-    theme: themes["shuttle-console"],
+    cardBackground: "/project-cards/card-shuttle.png",
     Page: ProjectPageShuttle,
-  
-   
   },
 
   {
     key: "mixlodge-brand",
+    slug: "mixlodge",
     label: "MixLodge",
     title: "Defining the product foundations for an early-stage booking tool.",
-    href: "/projects/mixlodge",
+    cardTitle: "MixLodge",
+    cardDescription: "Led product definition and end-to-end design for a booking platform connecting studios, services, and artists. Defined the core workflows and product logic that shaped the MVP from concept to something shippable.",
+    categoryLabel: "Marketplace",
     category: "client",
-    hero: {
-      type: "image",
-      src: "/case-studies/mixlodge-hero.png",
-    },
-    theme: themes["mixlodge-mvp"],
+    cardBackground: "/project-cards/card-mixlodge.png",
     Page: ProjectPageMixlodge,
   },
 
@@ -179,12 +82,33 @@ export const projectsConfig: ProjectConfig[] = [
     key: "portfolio",
     label: "Portfolio",
     title: "Designing and building this portfolio as a real product.",
-    href: "/contact",
+    cardTitle: "Portfolio",
+    cardDescription: "Designed and built my own portfolio site, treating it as a real product rather than a showcase. I used it to explore how AI tooling can integrate into an actual design-to-code workflow.",
+    categoryLabel: "Personal",
     category: "personal",
-    hero: {
-      type: "image",
-      src: "/case-studies/portfolio-hero.png",
-    },
+    cardBackground: "/project-cards/card-portfolio.png",
     Page: ProjectPagePortfolio,
+  },
+
+  {
+    key: "optimoroute",
+    label: "Optimoroute",
+    title: "OptimoRoute",
+    cardDescription: "Led the UI modernization of a real-time routing software. Working closely with engineering, I drove iterative improvements that increased usability and feature discovery without disrupting existing users or revenue.",
+    categoryLabel: "Route Optimization",
+    category: "client",
+    cardBackground: "/project-cards/card-optimoroute.png",
+    Page: ProjectPageOptimoroute,
+  },
+
+  {
+    key: "dealio",
+    label: "Dealio",
+    title: "Dealio",
+    cardDescription: "Designed the end-to-end mobile marketplace experience for Dealio, handling complex, high-input workflows like ad creation and listing navigation while keeping the experience fast and intuitive.",
+    categoryLabel: "Marketplace",
+    category: "client",
+   
+    comingSoon: true,
   },
 ];

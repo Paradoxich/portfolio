@@ -1,0 +1,102 @@
+# Ana Beverin — Senior Product Designer
+
+Portfolio: https://anabeverin.com
+Email: ana.beverin@gmail.com
+LinkedIn: https://linkedin.com/in/paradoxich
+CV: https://anabeverin.com/docs/CV-Ana-Beverin-2026.pdf
+Location: Opatija, Croatia (CET, UTC+1) — available for remote work worldwide
+Invoicing: Kofa Design (EU contractor entity)
+
+---
+
+## About
+
+I'm a senior product designer with 9 years of experience. I turn
+ambiguity into clear direction, shaped flows, and visual systems that
+are actually ready to hand to engineering.
+
+Most of my career has been as the sole designer at startups, which
+means I'm used to owning the full scope: discovery, IA, interaction
+design, design systems, and working directly with founders and
+engineers without a lot of process overhead.
+
+Lately I've been working more in the design-to-code space — using
+Cursor, Claude Code, and Figma MCP integration to build and prototype
+in the browser, not just in Figma.
+
+---
+
+## Skills
+
+Product design, visual design, brand identity, illustration,
+interaction design, 0-to-1 product shaping, systems thinking,
+user flows and information architecture, design systems,
+interactive prototyping (Figma + code), design-to-code workflows,
+frontend prototyping with React/Next.js/Tailwind.
+
+Tools: Figma, Framer, Cursor, Claude Code, Adobe CC, Tailwind CSS,
+React, Next.js, Vercel, GitHub, Linear, Notion, Slack.
+
+---
+
+## Work history
+
+### Kofa Design — Independent Design Consultancy (2022–present)
+
+My own consultancy for remote contract and freelance work. Recent
+projects span developer tooling, AI infrastructure, marketplaces,
+and SaaS.
+
+**Shuttle** — Sole product designer from early traction to 20,000+
+developers and 120,000+ deployments. Led a complete console audit and
+redesign: consistent UI patterns, design system, and IA across dev
+console, web, and growth surfaces.
+
+**Neptune** — Brand identity and web experience for an AI
+infrastructure platform. Built and shipped a scripted agent-chat
+animation with AI, now live on the site.
+
+**Dealio** — End-to-end marketplace design from concept to launch in
+under a year. Simplified seller ad creation, improved buyer discovery,
+structured buyer-seller communication. Launched with 78% CSAT.
+
+**MixLodge** — MVP definition and end-to-end design for a marketplace
+connecting musicians and producers. Covered discovery, booking, and
+collaboration flows. Delivered implementation-ready architecture in
+3 months.
+
+### OptimoRoute — Lead Product Designer (2020–2022)
+
+Led end-to-end product design for a route optimization platform used
+by logistics teams worldwide. Managed a two-person design team. Helped
+shift the product from engineering-first to design-driven.
+
+Redesign increased returning session duration by 34%, improved
+discoverability across Analytics, Dispatch, and Planning, and reduced
+time-to-first-use at the 75th and 90th percentiles.
+
+### Five Agency (now Endava) — Product Designer (2017–2020)
+
+Owned design across client projects spanning mobile apps, web
+products, and digital brand experiences. Led design workstreams,
+collaborated with stakeholders and engineers, mentored junior
+designers.
+
+### Produkcija Pokret — Digital Designer, Illustrator (2016–2017)
+
+Illustration systems, animated explainers, landing pages, and
+marketing campaigns.
+
+---
+
+## Education
+
+Masters, Multimedia — Faculty of Graphic Arts, University of Zagreb (2017)
+Digital Product Design — Infinum Academy (2016)
+Bachelors, IT Design — University of Applied Sciences (2014)
+
+---
+
+## What I'm looking for
+
+Open to full-time remote roles where I'm embedded in the team and have real design ownership. Available now.

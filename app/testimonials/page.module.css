@@ -1,0 +1,17 @@
+/* Testimonial quote — 20 / ui(1.45) / regular */
+.quote {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-ui);
+  color: var(--color-text-secondary);
+  font-feature-settings: var(--font-feature-editorial);
+}
+
+/* Testimonial quote — highlighted first sentence — 20 / ui(1.45) / medium */
+.quoteHighlight {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-ui);
+  color: var(--color-text-primary);
+  font-feature-settings: var(--font-feature-editorial);
+}

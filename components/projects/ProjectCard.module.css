@@ -1,0 +1,141 @@
+/* Layout overrides on top of the global .card-interactive surface token */
+.card {
+  position: relative;
+  background-color: var(--color-bg-card);
+  padding: var(--space-lg); /* 24px on mobile */
+  height: 384px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  overflow: hidden;
+  cursor: pointer;
+
+  background-image:
+    var(--card-bg-image, none),
+    repeating-linear-gradient(var(--color-grid-line) 0 1px, transparent 1px 100%),
+    repeating-linear-gradient(90deg, var(--color-grid-line) 0 1px, transparent 1px 100%);
+  background-size: cover, 30px 30px, 30px 30px;
+  background-position: center, 0 -2px, 0 -2px;
+  background-repeat: no-repeat, repeat, repeat;
+}
+
+/* Linear gradient overlay – base state (fades out on hover) */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--project-card-gradient-rgb), 1) 1.57%,
+    rgba(var(--project-card-gradient-rgb), 1) 36.55%,
+    rgba(var(--project-card-gradient-rgb), 1) 52.62%,
+    rgba(var(--project-card-gradient-rgb), 0.7) 76.55%,
+    rgba(var(--project-card-gradient-rgb), 0.4) 90.98%,
+    rgba(var(--project-card-gradient-rgb), 0.2) 100%
+  );
+}
+
+/* Hover overlay gradient – crossfades on top of base */
+.cardGradientHover {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--project-card-gradient-rgb), 1) 1.57%,
+    rgba(var(--project-card-gradient-rgb), 1) 24.59%,
+    rgba(var(--project-card-gradient-rgb), 1) 37.14%,
+    rgba(var(--project-card-gradient-rgb), 0.4) 44.07%,
+    rgba(var(--project-card-gradient-rgb), 0.2) 66.65%,
+    rgba(var(--project-card-gradient-rgb), 0) 100%
+  );
+}
+
+@media (hover: hover) {
+  /* Hover-out: ::after snaps back first, then cardGradientHover follows */
+  .card::after {
+    transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cardGradientHover {
+    transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1) 120ms;
+  }
+
+  /* Hover-in: cardGradientHover leads, ::after follows after a delay */
+  .card:hover::after {
+    opacity: 0;
+    transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1) 120ms;
+  }
+
+  .card:hover .cardGradientHover {
+    opacity: 1;
+    transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Bottom stack keeps title/CTA anchored to bottom-left of card */
+.bottomStack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-top: auto;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: var(--space-2xl); /* 32px on desktop */
+  }
+}
+
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-label);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-ui);
+  color: var(--color-text-secondary);
+  font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+}
+
+.cardComingSoon {
+  cursor: default;
+  opacity: 0.5;
+}
+
+@media (hover: hover) {
+  .cardComingSoon:hover::after {
+    opacity: 1;
+    transition: none;
+  }
+
+  .cardComingSoon:hover .cardGradientHover {
+    opacity: 0;
+    transition: none;
+  }
+}
+
+.comingSoonBadge {
+  margin-left: var(--space-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-ui);
+  color: var(--color-text-tertiary);
+  font-feature-settings: "ss02" 1, "ss03" 1, "liga" 0;
+}

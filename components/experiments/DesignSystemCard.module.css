@@ -1,0 +1,9 @@
+.card {
+  transition: border-color 200ms ease;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    border-color: var(--color-30);
+  }
+}

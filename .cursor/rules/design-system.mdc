@@ -1,0 +1,91 @@
+---
+description: Design system conventions — tokens, typography, spacing, color, surfaces
+alwaysApply: true
+---
+
+# Design System Rules
+
+The full token reference is in `app/globals.css` (CSS vars) and `tailwind.config.ts` (Tailwind utilities).
+The living documentation is at `app/design-system/` and `docs/DESIGN_SYSTEM.md`.
+
+## Core principle
+
+Never hardcode values that exist as tokens. No raw hex colors, no px font-sizes, no arbitrary spacing.
+
+```tsx
+// ❌ BAD
+<p style={{ fontSize: '14px', color: '#A39E8E' }}>
+<div className="text-[14px] text-[#A39E8E]">
+
+// ✅ GOOD
+<p className="type-body-sm">
+<p className="type-body-sm text-color-text-secondary">
+```
+
+## Typography — always use `type-*` classes
+
+| Class | Size | Use |
+|---|---|---|
+| `type-h1` | 48px | Page / hero titles |
+| `type-h2` | 40px | Section headings |
+| `type-h3` | 32px | Sub-section headings (reserved, not widely used) |
+| `type-h4` | 24px | Card titles, subheadings |
+| `type-body` | 16px | General UI body text |
+| `type-body-lg` | 18px | Case study / editorial body |
+| `type-body-strong` | 16px | Emphasized body text |
+| `type-body-sm` | 14px | Compact UI text |
+| `type-body-sm-strong` | 14px | Emphasized compact text |
+| `type-body-xs` | 12px | Dense UI, secondary meta |
+| `type-label` | 14px | Uppercase labels / badges (Geist Mono, wider tracking) |
+
+If no `type-*` class fits, compose from tokens: `font-size-xs`, `leading-ui`, `tracking-tight`, etc.
+Do not create new `type-*` globals for one-off component needs — use inline composition instead.
+
+## Colors — always use semantic aliases
+
+Prefer semantic Tailwind utilities over raw scale values:
+
+```tsx
+// ❌ BAD
+className="text-color-90 bg-color-10 border-color-30"
+
+// ✅ GOOD
+className="text-color-text-primary bg-color-bg-muted border-color-border"
+```
+
+Semantic aliases: `text-color-text-primary`, `text-color-text-secondary`,
+`bg-color-bg`, `bg-color-bg-surface`, `bg-color-bg-muted`,
+`border-color-border`, `border-color-border-secondary`, `border-color-border-subtle`,
+`bg-color-cta-primary`, `hover:bg-color-cta-primary-hover`
+
+Only use raw scale values (`color-40`, `color-60`, etc.) when no semantic alias exists
+and you have a specific intentional reason (e.g. `type-notes-note` uses `color-40` for extreme muting).
+
+## Spacing — use scale tokens, not arbitrary values
+
+```tsx
+// ❌ BAD
+className="gap-[20px] p-[24px] mt-[32px]"
+
+// ✅ GOOD
+className="gap-lg p-xl mt-2xl"
+```
+
+Scale: `xs(4)` `sm(8)` `md(12)` `base(16)` `lg(20)` `xl(24)` `2xl(32)` `3xl(40)` `4xl(56)` `5xl(64)`
+
+For vertical rhythm between stacked siblings, use `stack-*` utilities:
+`stack-xs` `stack-sm` `stack-md` `stack-lg` `stack-xl` `stack-5xl`
+
+## Card surfaces — 3-level hierarchy
+
+| Class | Background | Clickable | Use |
+|---|---|---|---|
+| `card-interactive` + `ProjectCard.module.css` | `color-bg-card` + project-specific overlays | Yes | Projects index cards |
+| `card-tinted` | `color-05` | No | Experiment blocks, theme switcher |
+| `card-ghost` | `color-bg` (outline) | No | General content cards |
+| `card-tinted-inner` | `color-bg` (inset well) | No | Nested surfaces inside tinted cards |
+
+## Border radius — use scale tokens
+
+`rounded-sm(8px)` `rounded-md(12px)` `rounded-lg(20px)` `rounded-full(pill)`
+Never use `rounded-[1000px]`, `rounded-[999px]`, or arbitrary radius values.

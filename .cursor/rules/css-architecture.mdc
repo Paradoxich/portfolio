@@ -1,0 +1,89 @@
+---
+description: CSS architecture — what goes in globals, CSS Modules, and inline Tailwind
+alwaysApply: true
+---
+
+# CSS Architecture
+
+## The three layers
+
+### 1. `app/globals.css` — truly global only
+
+Lives here if it's used in 3+ places across different directories, or is a foundation primitive.
+
+- `:root` design tokens (colors, spacing, type scale, radius, line-height, tracking)
+- `@layer base` — html, body, scrollbar
+- Layout primitives: `.page-shell`, `.layout-grid`, `.hero-gap`, `.text-column`, `.with-sidebar`
+- Type scale: all `.type-*` classes
+- Universal surfaces: `.card`, `.card-tinted`, `.card-tinted-inner`, `.card-cta`, `.panel`, `.link-pill`
+- Stack utilities: `.stack-xs` through `.stack-5xl`
+- Keyframes used by Tailwind animation tokens
+
+**Do not add** component-specific styles here. If you're adding a class used in only one component,
+it belongs in a CSS Module.
+
+### 2. CSS Modules (`.module.css`) — component-specific
+
+Use when a component needs styles that can't be cleanly expressed as Tailwind utilities
+(pseudo-elements, complex selectors, `::before`/`::after` with dynamic vars).
+
+Co-locate next to the component file:
+```
+components/projects/ProjectCard.tsx
+components/projects/ProjectCard.module.css   ← scoped styles
+```
+
+Rules for modules:
+- Use CSS custom properties (`var(--color-border)`) — they're globally available
+- Do NOT use `@apply` in CSS Modules
+- Keep the scope tight — only styles for that one component
+- Keyframes used by only one component belong here, not in globals
+
+Current modules: `ProjectCard.module.css`, `ChatAnimation.module.css`, `page.module.css` (project slug page)
+
+### 3. Inline Tailwind — single-property constraints and layout
+
+Use for layout constraints, responsive modifiers, and one-off overrides that don't need a class.
+
+```tsx
+// ✅ Fine as inline Tailwind (single layout constraint)
+<p className="type-h4 max-w-[420px]">
+
+// ✅ Fine as inline Tailwind (responsive layout)
+<div className="col-span-12 md:col-span-6">
+
+// ❌ Not fine — this is a multi-property visual pattern, use globals or a module
+<div className="flex flex-col gap-6 p-6 rounded-[20px] border border-[#272921] bg-[#151310]">
+```
+
+## Decision tree
+
+```
+Does it use design tokens and appear in 3+ places across different directories?
+  → globals.css (@layer components)
+
+Is it a complex visual pattern for a single component (pseudo-elements, etc.)?
+  → CSS Module
+
+Is it a single layout value (max-width, col-span, order)?
+  → Inline Tailwind
+
+Is it a typography/color/spacing utility?
+  → Use existing type-*, color-*, space-* Tailwind utilities (never recreate them)
+```
+
+## What NOT to do
+
+```tsx
+// ❌ Hardcoded hex in className
+className="text-[#A39E8E] bg-[#23221b]"
+
+// ❌ Hardcoded px size for type
+className="text-[14px] leading-[1.45]"
+
+// ❌ Arbitrary spacing that has a token equivalent
+className="gap-[20px] p-[24px]"    // use gap-lg p-xl
+
+// ❌ Adding a global CSS class for something used in one place
+// (add to CSS module or compose inline instead)
+```
