@@ -34,6 +34,7 @@ const config: Config = {
           "var(--color-border-secondary)" /* secondary / hover */,
         "color-text-primary": "var(--color-text-primary)",
         "color-text-secondary": "var(--color-text-secondary)",
+        "color-text-emphasis": "var(--color-text-emphasis)",
         "color-text-tertiary": "var(--color-text-tertiary)",
         "color-interactive-hover": "var(--color-interactive-hover)",
         "color-nav-item-bg-hover": "var(--color-nav-item-bg-hover)",

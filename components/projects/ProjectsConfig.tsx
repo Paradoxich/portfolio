@@ -5,6 +5,7 @@ import { ProjectPageMixlodge } from "./ProjectPageMixlodge";
 import { ProjectPagePortfolio } from "./ProjectPagePortfolio";
 import { ProjectPageNeptune } from "./ProjectPageNeptune";
 import { ProjectPageOptimoroute } from "./ProjectPageOptimoroute";
+import { ProjectPageSantolina } from "./ProjectPageSantolina";
 
 export type ProjectConfig = {
   key: string;
@@ -35,7 +36,17 @@ export type ProjectConfig = {
 };
 
 export const projectsConfig: ProjectConfig[] = [
-  
+  {
+    key: "santolina",
+    label: "Santolina",
+    title: "Santolina",
+    cardDescription:
+      "Reimagined garden planning around curated, AI-enriched plant knowledge instead of static databases. Designed, implemented, and shipped the entire product.",
+    categoryLabel: "Personal",
+    category: "personal",
+    cardBackground: "/project-cards/card-santolina.png",
+    Page: ProjectPageSantolina,
+  },
 
   {
     key: "neptune-lp",

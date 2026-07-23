@@ -96,6 +96,7 @@
   --color-border-secondary: var(--color-40);  /* secondary / hover border */
   --color-text-primary:     var(--color-90);
   --color-text-secondary:   var(--color-80);
+  --color-text-emphasis:    color-mix(in oklab, var(--color-80), var(--color-90) 50%); /* inline bold leads — between secondary and primary */
   --color-text-tertiary:    var(--color-60);  /* decorative / disabled / icon tint */
   --color-interactive-hover: var(--color-30); /* nav item hover / active bg */
 
