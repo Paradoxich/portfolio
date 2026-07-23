@@ -5,3 +5,6 @@ out
 .env.local
 .DS_Store
 tsconfig.tsbuildinfo
+
+# Claude Code local settings
+.claude/settings.local.json
