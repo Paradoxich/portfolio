@@ -35,6 +35,8 @@ export function DitherLabCard() {
         <Slider label="Cell (px)" value={cell} min={1} max={8} onChange={setCell} hint="1 = small · 8 = big" />
       </div>
 
+      <div className="border-t border-color-border-inset md:hidden" />
+
       <div className="flex flex-col gap-xl">
         <span className="type-label">Hover lens</span>
 
@@ -95,8 +97,11 @@ export function DitherLabCard() {
               <Drawer.Overlay className="fixed inset-0 z-40 bg-color-overlay" />
               <Drawer.Content className="fixed inset-x-0 bottom-0 z-50 flex max-h-[85vh] flex-col gap-2xl rounded-t-card border-t border-color-border-subtle bg-color-bg-card-tinted px-xl pb-xl pt-md outline-none">
                 <Drawer.Handle className="!bg-color-border-secondary" />
-                <Drawer.Title className="type-body-sm">Dither lab controls</Drawer.Title>
-                <div className="flex flex-col gap-2xl overflow-y-auto">{controls}</div>
+                <div className="flex flex-col gap-4xl overflow-y-auto">
+                  <Drawer.Title className="type-body-sm">Dither lab controls</Drawer.Title>
+                  <div className="border-t border-color-border-inset" />
+                  {controls}
+                </div>
               </Drawer.Content>
             </Drawer.Portal>
           </Drawer.Root>
