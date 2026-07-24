@@ -5,6 +5,7 @@ import { WaterPlantSection } from "@/components/experiments/WaterPlantSection";
 import TestimonialsSection from "@/components/experiments/TestimonialsSection";
 import { ThemeSwitcherInline } from "@/components/theme/ColorSchemeProvider";
 import { DesignSystemCard } from "@/components/experiments/DesignSystemCard";
+import { DitherLabCard } from "@/components/experiments/DitherLabCard";
 
 const EXPERIMENT_TESTIMONIALS = [
   {
@@ -37,6 +38,9 @@ export function ExperimentsIndex() {
     <PageShell>
       <div className="max-w-[1040px] mx-auto">
         <div className="layout-grid gap-xl items-stretch">
+          <div className="col-span-12">
+            <DitherLabCard />
+          </div>
           <section className="col-span-12 md:col-span-4 flex h-full flex-col">
             <WaterPlantSection />
             <div className="mt-xl flex-1 flex items-stretch">
