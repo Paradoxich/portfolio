@@ -23,9 +23,10 @@ export default function CvPrintPage() {
           <Image
             src="/general/ana-profile.png"
             alt={cv.name}
-            width={72}
-            height={72}
+            width={216}
+            height={216}
             priority
+            quality={90}
             className={styles.photo}
           />
           <div>

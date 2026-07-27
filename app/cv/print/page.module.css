@@ -44,8 +44,8 @@
   gap: 20px;
 }
 
-/* print-color-adjust keeps Chrome from dropping the image's dark artwork
-   when printing to PDF. */
+/* Requested at 3x its display size so the printed photo stays sharp at
+   300 DPI. print-color-adjust keeps Chrome from washing it out. */
 .photo {
   width: 72px;
   height: 72px;
