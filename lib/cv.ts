@@ -21,12 +21,11 @@ export const cv = {
   title: "Product Designer & Design Engineer",
   location: "Croatia",
   contact: {
+    phone: "+385 99 592 8738",
     email: "ana.beverin@gmail.com",
     linkedin: "linkedin.com/in/paradoxich",
     linkedinHref: "https://linkedin.com/in/paradoxich/",
     site: "anabeverin.com",
-    substack: "substack.com/@paradoxich",
-    substackHref: "https://substack.com/@paradoxich",
   },
   summary:
     "I design and build products from idea to production. My background is in product design, but over the last year I've moved into design engineering, using AI-assisted development to ship production-ready applications. I work across product strategy, UX, visual craft, design systems, and implementation.",

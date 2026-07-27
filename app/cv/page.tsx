@@ -62,6 +62,7 @@ export default function CvPage() {
 
           <div className="flex flex-wrap items-center gap-x-lg gap-y-1 type-body-sm text-color-text-tertiary">
             <span>{cv.location}</span>
+            <span>{cv.contact.phone}</span>
             <a
               href={cv.contact.linkedinHref}
               target="_blank"
@@ -81,14 +82,6 @@ export default function CvPage() {
               className="hover:text-color-text-primary hover:underline"
             >
               {cv.contact.site}
-            </a>
-            <a
-              href={cv.contact.substackHref}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-color-text-primary hover:underline"
-            >
-              {cv.contact.substack}
             </a>
           </div>
 
