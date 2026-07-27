@@ -4,13 +4,22 @@ export function WritingSection() {
   return (
     <section className="px-xl py-6xl md:px-section md:py-section">
       <div className="flex flex-col md:flex-row md:items-stretch">
-        <div className="flex flex-col gap-lg py-2xl md:min-h-[180px] md:flex-1 md:pr-2xl">
+        <div className="flex flex-col gap-md py-2xl md:min-h-[180px] md:flex-1 md:pr-2xl">
           <h2 className="text-xl font-medium leading-heading tracking-tight text-color-text-primary">
             Writing
           </h2>
           <p className="type-body-sm leading-ui text-color-text-secondary md:max-w-[254px]">
             Thoughts on product design, building software, and whatever
-            I&apos;m currently obsessed with.
+            I&apos;m currently obsessed with. Published on{" "}
+            <a
+              href="https://paradoxich.substack.com"
+              target="_blank"
+              rel="noreferrer"
+              className="underline decoration-dotted underline-offset-4 transition-colors hover:text-color-text-primary"
+            >
+              Substack
+            </a>
+            .
           </p>
         </div>
         {writingPosts.map((post) => (
