@@ -138,6 +138,7 @@
   --font-size-xl: 32px;    /* h3, notes quote */
   --font-size-2xl: 40px;   /* h2 */
   --font-size-3xl: 48px;   /* h1, hero */
+  --font-size-4xl: 72px;   /* display – homepage hero */
 
   /* Layout */
   --layout-container: 1400px; /* 1512 - 80 - 80 */
@@ -147,6 +148,7 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
+  --radius-xl: 32px;
   --radius-full: 9999px;
 
   /* Spacing scale */
@@ -160,6 +162,7 @@
   --space-3xl: 40px;
   --space-4xl: 56px;   /* hero gap (desktop), stack-5xl */
   --space-5xl: 64px;   /* large content separators */
+  --space-6xl: 80px;   /* card-row gutters, footer padding */
   --space-section: 120px; /* large section gap – page separators */
 
   /* Sizes */

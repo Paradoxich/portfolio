@@ -151,6 +151,7 @@ const spacingItems = [
   { name: "space-3xl",     px: 40,  description: "Page shell padding" },
   { name: "space-4xl",     px: 56,  description: "Hero gap (desktop)" },
   { name: "space-5xl",     px: 64,  description: "Large content separators" },
+  { name: "space-6xl",     px: 80,  description: "Card-row gutters, footer padding" },
   { name: "space-section", px: 120, description: "Major section dividers" },
 ];
 
@@ -158,6 +159,7 @@ const radiusItems = [
   { name: "radius-sm",   twClass: "rounded-sm",      value: "8px",    description: "Small elements, labels, inputs" },
   { name: "radius-md",   twClass: "rounded-surface",  value: "12px",   description: "Surface elements, inner cards" },
   { name: "radius-lg",   twClass: "rounded-card",     value: "20px",   description: "Cards, major components" },
+  { name: "radius-xl",   twClass: "rounded-card-xl",  value: "32px",   description: "Editorial feature cards" },
   { name: "radius-full", twClass: "rounded-pill",     value: "9999px", description: "Pills, buttons, tags" },
 ];
 
@@ -171,6 +173,7 @@ const fontSizeItems = [
   { name: "font-size-xl",   value: "32px", role: "h3, notes quote" },
   { name: "font-size-2xl",  value: "40px", role: "h2" },
   { name: "font-size-3xl",  value: "48px", role: "h1, hero" },
+  { name: "font-size-4xl",  value: "72px", role: "Display, homepage hero" },
 ];
 
 const lineHeightItems = [

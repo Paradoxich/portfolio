@@ -76,6 +76,7 @@ const config: Config = {
         "3xl": "var(--space-3xl)", // 40px
         "4xl": "var(--space-4xl)", // 56px
         "5xl": "var(--space-5xl)", // 64px
+        "6xl": "var(--space-6xl)", // 80px
 
         // layout helpers
         gutter: "var(--layout-gutter)",
@@ -87,6 +88,7 @@ const config: Config = {
       borderRadius: {
         sm: "var(--radius-sm)",
         card: "var(--radius-lg)",
+        "card-xl": "var(--radius-xl)",
         surface: "var(--radius-md)",
         pill: "var(--radius-full)",
       },
@@ -105,6 +107,7 @@ const config: Config = {
         xl: "var(--font-size-xl)",     // 32px – h3, notes quote
         "2xl": "var(--font-size-2xl)", // 40px – h2
         "3xl": "var(--font-size-3xl)", // 48px – h1, hero
+        "4xl": "var(--font-size-4xl)", // 72px – display, homepage hero
       },
 
       lineHeight: {
