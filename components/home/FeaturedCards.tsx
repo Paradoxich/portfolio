@@ -3,8 +3,8 @@ import Link from "next/link";
 import styles from "./FeaturedCards.module.css";
 
 const headlineClass =
-  "text-xl font-medium leading-snug tracking-tight text-color-text-primary";
-const labelClass = "type-body-lg text-color-text-secondary";
+  "text-lg font-medium leading-snug tracking-tight text-color-text-primary md:text-xl";
+const labelClass = "type-body text-color-text-secondary md:text-sm";
 
 // Editorial feature cards: hook headline + project label over exported
 // Figma art, linking into the case studies.

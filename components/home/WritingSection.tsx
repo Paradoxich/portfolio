@@ -8,7 +8,7 @@ export function WritingSection() {
           <h2 className="text-xl font-medium leading-heading tracking-tight text-color-text-primary">
             Writing
           </h2>
-          <p className="max-w-[254px] type-body-sm leading-ui text-color-text-secondary">
+          <p className="type-body-sm leading-ui text-color-text-secondary md:max-w-[254px]">
             Thoughts on product design, building software, and whatever
             I&apos;m currently obsessed with.
           </p>
@@ -19,9 +19,9 @@ export function WritingSection() {
             href={post.url}
             target="_blank"
             rel="noreferrer"
-            className="group flex flex-col justify-between gap-lg border-t border-color-border-inset p-2xl md:min-h-[180px] md:flex-1 md:border-l md:border-t-0"
+            className="group flex flex-col justify-between gap-md border-t border-color-border-inset py-lg md:min-h-[180px] md:flex-1 md:gap-lg md:border-l md:border-t-0 md:p-2xl"
           >
-            <p className="text-md leading-snug text-color-text-secondary transition-colors group-hover:text-color-text-primary">
+            <p className="text-base leading-snug text-color-text-secondary transition-colors group-hover:text-color-text-primary md:text-md">
               {post.title}
             </p>
             <p className="type-body-sm tracking-tight text-color-text-tertiary">

@@ -65,16 +65,9 @@ function ProjectPageContent() {
   if (!project) return null;
 
   return (
-    <PageShell className="stack-xl">
+    <PageShell className="stack-xl pt-5xl md:pt-6xl">
       <div className="layout-grid">
         <section className="col-span-12">
-          <Link
-            href="/"
-            className="md:hidden type-body-sm text-color-text-secondary hover:text-color-text-primary transition-colors mb-2xl inline-block"
-          >
-            ← Back to home
-          </Link>
-
           {project.Page && <project.Page />}
 
           <nav className="flex justify-center mt-5xl pt-2xl border-t border-color-border-inset">
