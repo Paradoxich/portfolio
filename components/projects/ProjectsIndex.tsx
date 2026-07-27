@@ -16,7 +16,7 @@ export function ProjectsIndex({ projects }: ProjectsIndexProps) {
     <PageShell className="stack-xl">
       <div className="layout-grid">
         <section className="col-span-12">
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {list.map((p) => (
               <ProjectCard
                 key={p.key}
