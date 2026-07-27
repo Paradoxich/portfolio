@@ -1,0 +1,40 @@
+/* Editorial feature cards on the homepage. Gradients need explicit color
+   stops over the card art, which Tailwind's from/to utilities can't express
+   at the design's stop positions, so they live here on tokens. */
+
+.santolinaCard {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.tintedCard {
+  background: var(--color-bg-card-tinted);
+  border: 1px solid var(--color-border-subtle);
+}
+
+/* Santolina: fade the artwork into the card floor and toward the text side. */
+.overlayUp {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-bg), transparent 100%) 0%,
+    var(--color-bg) 100%
+  );
+}
+
+.overlayLeft {
+  background: linear-gradient(
+    to right,
+    var(--color-bg) 0%,
+    color-mix(in srgb, var(--color-bg), transparent 100%) 60%
+  );
+}
+
+/* Half cards: solid on the text side, clearing over the panel art. */
+.overlayTinted {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-card-tinted) 42%,
+    color-mix(in srgb, var(--color-bg-card-tinted), transparent 80%) 78%,
+    color-mix(in srgb, var(--color-bg-card-tinted), transparent 100%) 99%
+  );
+}
