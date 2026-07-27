@@ -76,6 +76,17 @@
   color: #555;
 }
 
+.contactItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.contactItem svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
 /* ---- Intro ---- */
 
 .role {

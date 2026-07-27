@@ -82,6 +82,14 @@ export default function CvPage() {
             >
               {cv.contact.site}
             </a>
+            <a
+              href={cv.contact.substackHref}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-color-text-primary hover:underline"
+            >
+              {cv.contact.substack}
+            </a>
           </div>
 
           <p className={`type-body text-color-text-secondary ${styles.summaryGap}`}>{cv.summary}</p>

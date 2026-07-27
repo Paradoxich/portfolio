@@ -16,3 +16,7 @@ export { LocationPin } from "./LocationPin";
 export { NodeNetwork } from "./NodeNetwork";
 export { CoffeeCup } from "./CoffeeCup";
 export { Icecream } from "./Icecream";
+export { Mail } from "./Mail";
+export { LinkedIn } from "./LinkedIn";
+export { Globe } from "./Globe";
+export { Substack } from "./Substack";

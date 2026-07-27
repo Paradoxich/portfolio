@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { LocationPin, Mail, LinkedIn, Globe, Substack } from "@/components/icons";
 import { cv } from "@/lib/cv";
 import styles from "./page.module.css";
 
@@ -32,10 +33,26 @@ export default function CvPrintPage() {
           <div>
             <h1 className={styles.name}>{cv.name}</h1>
             <div className={styles.contactRow}>
-              <span>{cv.location}</span>
-              <a href={cv.contact.linkedinHref}>{cv.contact.linkedin}</a>
-              <a href={`mailto:${cv.contact.email}`}>{cv.contact.email}</a>
-              <a href={`https://${cv.contact.site}`}>{cv.contact.site}</a>
+              <span className={styles.contactItem}>
+                <LocationPin size={12} />
+                {cv.location}
+              </span>
+              <a className={styles.contactItem} href={cv.contact.linkedinHref}>
+                <LinkedIn size={12} />
+                {cv.contact.linkedin}
+              </a>
+              <a className={styles.contactItem} href={`mailto:${cv.contact.email}`}>
+                <Mail size={12} />
+                {cv.contact.email}
+              </a>
+              <a className={styles.contactItem} href={`https://${cv.contact.site}`}>
+                <Globe size={12} />
+                {cv.contact.site}
+              </a>
+              <a className={styles.contactItem} href={cv.contact.substackHref}>
+                <Substack size={12} />
+                {cv.contact.substack}
+              </a>
             </div>
           </div>
         </header>
