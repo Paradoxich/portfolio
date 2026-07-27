@@ -38,6 +38,24 @@
 
 /* ---- Header ---- */
 
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* print-color-adjust keeps Chrome from dropping the image's dark artwork
+   when printing to PDF. */
+.photo {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
 .name {
   font-size: 26px;
   font-weight: 600;

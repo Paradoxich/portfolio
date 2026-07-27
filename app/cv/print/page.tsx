@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { cv } from "@/lib/cv";
 import styles from "./page.module.css";
 
@@ -16,14 +17,27 @@ export default function CvPrintPage() {
   return (
     <div className={styles.page}>
       <article className={styles.sheet}>
-        {/* Header */}
-        <h1 className={styles.name}>{cv.name}</h1>
-        <div className={styles.contactRow}>
-          <span>{cv.location}</span>
-          <a href={cv.contact.linkedinHref}>{cv.contact.linkedin}</a>
-          <a href={`mailto:${cv.contact.email}`}>{cv.contact.email}</a>
-          <a href={`https://${cv.contact.site}`}>{cv.contact.site}</a>
-        </div>
+        {/* Header. `priority` matters here: Next lazy-loads images by default,
+            which can print an empty box in headless Chrome. */}
+        <header className={styles.header}>
+          <Image
+            src="/general/ana-profile.png"
+            alt={cv.name}
+            width={72}
+            height={72}
+            priority
+            className={styles.photo}
+          />
+          <div>
+            <h1 className={styles.name}>{cv.name}</h1>
+            <div className={styles.contactRow}>
+              <span>{cv.location}</span>
+              <a href={cv.contact.linkedinHref}>{cv.contact.linkedin}</a>
+              <a href={`mailto:${cv.contact.email}`}>{cv.contact.email}</a>
+              <a href={`https://${cv.contact.site}`}>{cv.contact.site}</a>
+            </div>
+          </div>
+        </header>
 
         {/* Intro */}
         <p className={styles.role}>{cv.title}</p>
