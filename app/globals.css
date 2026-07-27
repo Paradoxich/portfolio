@@ -270,17 +270,9 @@
     margin-inline: auto;
   }
 
-  .with-sidebar {
-    margin-left: 0;
-  }
-
   @media (min-width: 768px) {
     .page-shell {
       padding: var(--space-3xl);
-    }
-
-    .with-sidebar {
-      margin-left: 230px;
     }
   }
 }
@@ -360,11 +352,8 @@
     line-height: var(--line-height-none);
   }
 
-  /* Testimonial quote — 20 / ui(1.45) / regular — page-scoped, see app/testimonials/page.module.css */
-  /* Testimonial quote-highlight — 20 / ui(1.45) / medium — page-scoped, see app/testimonials/page.module.css */
-  /* Notes quote — 32 / snug / regular — page-scoped, see app/notes/page.module.css */
-  /* Notes note — 14 / ui / very muted (color-40) — page-scoped, see app/notes/page.module.css */
-  /* Link pill — surface with hover — component-scoped, see components/projects/CaseStudyLayout.module.css */
+  /* Notes quote — 32 / snug / regular — page-scoped, see app/(back)/notes/page.module.css */
+  /* Notes note — 14 / ui / very muted (color-40) — page-scoped, see app/(back)/notes/page.module.css */
 }
 
 /* =========================================
@@ -372,7 +361,7 @@
    ========================================= */
 
 @layer components {
-  /* Interactive card surface token — card-bg + secondary border. Full implementation in ProjectCard.module.css. */
+  /* Interactive card surface token — card-bg + secondary border. */
   .card-interactive {
     background-color: var(--color-bg-card);
     border: 1px solid var(--color-border);
@@ -399,7 +388,7 @@
    * step above pure bg) with a subtle border. Not interactive.
    *
    * Card surface hierarchy:
-   *   1. card-interactive  — clickable, prominent bg (ProjectCard.module.css)
+   *   1. card-interactive  — clickable, prominent bg
    *   2. .card-tinted      — non-clickable, lightly tinted bg  ← this one
    *   3. .card-ghost       — non-clickable, outline/ghost
    *
