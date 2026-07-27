@@ -25,7 +25,7 @@ export function MobileNav() {
 
   return (
     <>
-      <header className="md:hidden flex items-center justify-between px-4 py-4 border-b border-color-border-inset bg-color-bg">
+      <header className="md:hidden print:hidden flex items-center justify-between px-4 py-4 border-b border-color-border-inset bg-color-bg">
         <Link href="/" className="flex items-center gap-2">
           <ProfileAvatar />
           <span className="type-body-sm font-medium text-color-text-primary">
@@ -60,7 +60,7 @@ export function MobileNav() {
         />
       )}
       <aside
-        className={`md:hidden fixed inset-x-0 bottom-0 max-h-[80vh] bg-color-bg border-t border-color-border-inset z-[61] transform transition-transform duration-200 rounded-t-card ${
+        className={`md:hidden print:hidden fixed inset-x-0 bottom-0 max-h-[80vh] bg-color-bg border-t border-color-border-inset z-[61] transform transition-transform duration-200 rounded-t-card ${
           sidebarOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >

@@ -555,3 +555,18 @@
   }
 }
 
+/* =========================================
+   PRINT
+   Themes are dark-first; printed pages get a white background.
+   Chrome (app shell) is hidden via print:hidden utilities on the
+   layout components; page-specific print rules live in co-located
+   CSS Modules (see app/cv/page.module.css).
+   ========================================= */
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+  }
+}
+
