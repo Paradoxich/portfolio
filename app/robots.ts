@@ -5,8 +5,10 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        disallow: ["/projects/", "/testimonials/"],
+        allow: "/",
+        disallow: ["/api/"],
       },
     ],
+    sitemap: "https://anabeverin.com/sitemap.xml",
   };
 }

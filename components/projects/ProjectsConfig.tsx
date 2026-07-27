@@ -33,6 +33,15 @@ export type ProjectConfig = {
 
   /** When true, card is non-clickable and shows a "Coming Soon" badge. */
   comingSoon?: boolean;
+
+  /** SEO meta description for the case study page; falls back to cardDescription. */
+  seoDescription?: string;
+
+  /** OG/Twitter share image for the case study page (public path, 1200x630). */
+  ogImage?: string;
+
+  /** When true, the case study page is excluded from search indexing. */
+  noindex?: boolean;
 };
 
 export const projectsConfig: ProjectConfig[] = [
@@ -45,6 +54,7 @@ export const projectsConfig: ProjectConfig[] = [
     categoryLabel: "Personal",
     category: "personal",
     cardBackground: "/project-cards/card-santolina.png",
+    ogImage: "/og/og-santolina.png",
     Page: ProjectPageSantolina,
   },
 
@@ -59,6 +69,7 @@ export const projectsConfig: ProjectConfig[] = [
     categoryLabel: "Developer Tools",
     category: "client",
     cardBackground: "/project-cards/card-neptune.png",
+    ogImage: "/og/og-neptune.png",
     Page: ProjectPageNeptune,
   },
 
@@ -73,6 +84,7 @@ export const projectsConfig: ProjectConfig[] = [
     categoryLabel: "Developer Tools",
     category: "client",
     cardBackground: "/project-cards/card-shuttle.png",
+    ogImage: "/og/og-shuttle.png",
     Page: ProjectPageShuttle,
   },
 
@@ -86,6 +98,7 @@ export const projectsConfig: ProjectConfig[] = [
     categoryLabel: "Marketplace",
     category: "client",
     cardBackground: "/project-cards/card-mixlodge.png",
+    ogImage: "/og/og-mixlodge.png",
     Page: ProjectPageMixlodge,
   },
 
@@ -98,6 +111,7 @@ export const projectsConfig: ProjectConfig[] = [
     categoryLabel: "Personal",
     category: "personal",
     cardBackground: "/project-cards/card-portfolio.png",
+    ogImage: "/og/og-portfolio.png",
     Page: ProjectPagePortfolio,
   },
 
@@ -109,17 +123,8 @@ export const projectsConfig: ProjectConfig[] = [
     categoryLabel: "Route Optimization",
     category: "client",
     cardBackground: "/project-cards/card-optimoroute.png",
+    ogImage: "/og/og-optimoroute.png",
+    noindex: true,
     Page: ProjectPageOptimoroute,
-  },
-
-  {
-    key: "dealio",
-    label: "Dealio",
-    title: "Dealio",
-    cardDescription: "Designed the end-to-end mobile marketplace experience for Dealio, handling complex, high-input workflows like ad creation and listing navigation while keeping the experience fast and intuitive.",
-    categoryLabel: "Marketplace",
-    category: "client",
-   
-    comingSoon: true,
   },
 ];

@@ -1,4 +1,5 @@
 // app/layout.tsx
+import type { Metadata } from "next";
 import "./globals.css";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -10,9 +11,37 @@ import { MobileFooter } from "@/components/layout/MobileFooter";
 import { ColorSchemeProvider } from "@/components/theme/ColorSchemeProvider";
 import { HireDrawerProvider } from "@/components/contact/HireDrawerContext";
 
-export const metadata = {
-  title: "Ana — Product Designer",
-  description: "Portfolio & experiments",
+const SITE_DESCRIPTION =
+  "Senior product designer with 9 years of experience, now shipping production React alongside the design work. Case studies, a live design system, and a portfolio built as a real product.";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://anabeverin.com"),
+  title: {
+    default: "Ana Beverin — Product Designer & Design Engineer",
+    template: "%s — Ana Beverin",
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Ana Beverin",
+    title: "Ana Beverin — Product Designer & Design Engineer",
+    description: SITE_DESCRIPTION,
+    url: "https://anabeverin.com",
+    images: [
+      {
+        url: "/og/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "Ana Beverin — Product Designer & Design Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ana Beverin — Product Designer & Design Engineer",
+    description: SITE_DESCRIPTION,
+    images: ["/og/og-default.png"],
+  },
 };
 
 const personStructuredData = {
@@ -100,7 +129,6 @@ const personStructuredData = {
     {
       "@type": "CreativeWork",
       name: "Dealio — Mobile Marketplace",
-      url: "https://anabeverin.com/projects/dealio",
       description:
         "Designed end-to-end mobile marketplace experience from concept to launch in under one year. Simplified seller ad creation, improved buyer discovery, and introduced structured buyer-seller communication. Launched with 78% CSAT.",
     },
@@ -137,10 +165,10 @@ export default function RootLayout({
       <body className={GeistMono.variable}>
         <ColorSchemeProvider>
           <HireDrawerProvider>
-            <div className="flex h-screen flex-col overflow-hidden">
+            <div className="flex h-screen print:h-auto flex-col overflow-hidden print:overflow-visible">
               <Sidebar />
               <MobileNav />
-              <main className="flex min-h-0 flex-1 flex-col min-w-0 overflow-y-auto with-sidebar">
+              <main className="flex min-h-0 flex-1 flex-col min-w-0 overflow-y-auto print:overflow-visible with-sidebar print:ml-0">
                 <TopStickyBar />
                 {children}
                 <MobileFooter />

@@ -4,15 +4,9 @@ import type { Metadata } from "next";
 import { ProjectsIndex } from "@/components/projects/ProjectsIndex";
 
 export const metadata: Metadata = {
-  robots: {
-    index: false,
-    follow: false,
-    googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
-    },
-  },
+  title: "Projects",
+  description:
+    "Case studies from Santolina, Shuttle, Neptune, MixLodge, OptimoRoute, and this portfolio, covering process, decisions, and outcomes.",
 };
 
 export default function ProjectsPage() {
