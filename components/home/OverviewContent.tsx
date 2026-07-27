@@ -8,6 +8,10 @@ import {
   GraphicCollaboration,
   GraphicFocusAreas,
 } from "@/components/home/CapabilityGraphics";
+import { MetricsRow } from "@/components/home/MetricsRow";
+import { FeaturedWork } from "@/components/home/FeaturedWork";
+import { TestimonialPullQuote } from "@/components/home/TestimonialPullQuote";
+import { AboutBlock } from "@/components/home/AboutBlock";
 import { PageShell } from "@/components/layout/PageShell";
 import {
   CheckmarkCircle,
@@ -69,20 +73,19 @@ export function OverviewContent() {
         </div>
 
         <h1 className="type-h1 text-balance mb-5 text-center">
-          I define products while they&apos;re still taking shape.
+          I design products, then ship them as production code.
         </h1>
 
         <p className="type-body max-w-xl mb-6 text-color-text-secondary mx-auto text-center">
-          Hi, I&apos;m Ana. I work closely with founders and engineers to define
-          direction, shape flows, and build visual systems that are ready to
-          ship.
+          Hi, I&apos;m Ana. Nine years of product design, now paired with the
+          engineering to ship what I design. I work with founders and
+          engineers to define direction, shape flows, and get real products
+          out the door.
         </p>
 
         <div className="mb-12 flex justify-center gap-sm">
           <Link
-            href="/docs/CV-Ana-Beverin-2026.pdf"
-            target="_blank"
-            rel="noreferrer"
+            href="/cv"
             className="inline-flex items-center gap-1 px-md py-sm rounded-full border border-color-border-secondary type-body-sm font-medium text-color-text-primary bg-transparent hover:bg-color-bg-muted"
           >
             View CV
@@ -116,6 +119,17 @@ export function OverviewContent() {
           ))}
         </div>
 
+        <MetricsRow />
+      </div>
+
+      <div className="w-full max-w-5xl mx-auto font-geist">
+        <FeaturedWork />
+      </div>
+
+      <div className="w-full max-w-3xl mx-auto font-geist">
+        <TestimonialPullQuote />
+        <AboutBlock />
+
         <div className="mt-8 flex flex-wrap items-center justify-center gap-2xl md:gap-4xl">
           <div className="flex items-center gap-2 text-color-text-tertiary">
             <CheckmarkCircle size={20} />
@@ -147,4 +161,3 @@ export function OverviewContent() {
     </PageShell>
   );
 }
-
