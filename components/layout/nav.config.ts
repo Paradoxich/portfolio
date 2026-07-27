@@ -36,4 +36,6 @@ export const PAGE_TITLES: Record<string, string> = {
   "/notes": "Notes",
   "/testimonials": "Testimonials",
   "/design-system": "Design system",
+  "/cv": "CV",
+  "/cv/print": "CV",
 };

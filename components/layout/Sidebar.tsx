@@ -6,7 +6,6 @@ import * as React from "react";
 import {
   Dropdown,
   ArrowOutward,
-  ArrowDown,
   Copy,
   ArrowRight,
 } from "@/components/icons";
@@ -79,7 +78,7 @@ export function Sidebar() {
 
   return (
     <aside
-      className="sidebar hidden md:flex fixed left-0 top-0 bottom-0 w-[230px] flex-col z-40 bg-color-bg border-r border-color-border-inset"
+      className="sidebar hidden md:flex print:hidden fixed left-0 top-0 bottom-0 w-[230px] flex-col z-40 bg-color-bg border-r border-color-border-inset"
     >
       <div className="flex flex-col h-full p-2 gap-4 overflow-visible">
         {/* Profile + dropdown */}
@@ -131,9 +130,9 @@ export function Sidebar() {
               />
               <NavDivider />
               <ProfileMenuItem
-                href="/docs/CV-Ana-Beverin-2026.pdf"
+                href="/cv"
                 label="CV"
-                Icon={ArrowDown}
+                Icon={ArrowRight}
                 external={false}
                 onClose={() => setProfileMenuOpen(false)}
               />

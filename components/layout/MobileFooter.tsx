@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function MobileFooter() {
   return (
-    <footer className="md:hidden mt-8 border-t border-color-border-inset px-4 py-8 stack-md">
+    <footer className="md:hidden print:hidden mt-8 border-t border-color-border-inset px-4 py-8 stack-md">
       <nav className="grid grid-cols-2 gap-y-4 gap-x-4 type-body-sm text-color-text-secondary">
         <Link href="/" className="hover:text-color-text-primary">
           Overview
@@ -19,10 +19,7 @@ export function MobileFooter() {
         <Link href="/illustrations" className="hover:text-color-text-primary">
           Illustrations
         </Link>
-        <Link
-          href="/docs/CV-Ana-Beverin-2026.pdf"
-          className="hover:text-color-text-primary"
-        >
+        <Link href="/cv" className="hover:text-color-text-primary">
           View CV
         </Link>
       </nav>
