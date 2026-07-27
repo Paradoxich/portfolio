@@ -63,41 +63,42 @@ export function SiteFooter() {
 
   return (
     <footer className="w-full border-t border-color-border-inset">
-      <div className="flex flex-col gap-2xl px-xl py-6xl md:flex-row md:items-start md:justify-between md:px-section">
-        <div className="flex gap-6xl md:w-[583px] md:gap-lg">
-          <div className="flex-1">
-            <FooterColumn title="Portfolio" links={FOOTER_PORTFOLIO_LINKS}>
-              <button
-                type="button"
-                onClick={openHireDrawer}
-                className={`${itemClass} self-start text-left`}
-              >
-                Contact
-              </button>
-            </FooterColumn>
+      <div className="mx-auto w-full max-w-[1512px]">
+        <div className="flex flex-col gap-2xl px-xl py-6xl md:flex-row md:items-start md:justify-between md:px-section">
+          <div className="flex gap-6xl md:w-[583px] md:gap-lg">
+            <div className="flex-1">
+              <FooterColumn title="Portfolio" links={FOOTER_PORTFOLIO_LINKS}>
+                <button
+                  type="button"
+                  onClick={openHireDrawer}
+                  className={`${itemClass} self-start text-left`}
+                >
+                  Contact
+                </button>
+              </FooterColumn>
+            </div>
+            <div className="flex-1">
+              <FooterColumn title="Links" links={FOOTER_SOCIAL_LINKS} />
+            </div>
           </div>
-          <div className="flex-1">
-            <FooterColumn title="Links" links={FOOTER_SOCIAL_LINKS} />
-          </div>
-        </div>
 
-        <div className="flex flex-wrap items-start gap-1">
-          <Chip Icon={CheckmarkCircle} label="Available for work" />
-          <Chip Icon={LocationPin} label="Croatia" />
-          <Chip Icon={Globe} label="Remote" />
+          <div className="flex flex-wrap items-start gap-1">
+            <Chip Icon={CheckmarkCircle} label="Available for work" />
+            <Chip Icon={LocationPin} label="Croatia" />
+            <Chip Icon={Globe} label="Remote" />
+          </div>
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-md border-t border-color-border-inset px-xl py-lg md:px-section">
-        <span className="inline-flex h-7 items-center gap-sm rounded-pill border border-color-border-subtle px-md">
-          <span className="size-1 shrink-0 rounded-full bg-color-success" aria-hidden />
-          <span className="type-body-sm tracking-tight text-color-text-secondary">
-            All systems mostly normal
+      <div className="border-t border-color-border-inset">
+        <div className="mx-auto flex w-full max-w-[1512px] flex-wrap items-center justify-between gap-md px-xl py-lg md:px-section">
+          <span className="inline-flex h-7 items-center gap-sm rounded-pill border border-color-border-subtle px-md">
+            <span className="size-1 shrink-0 rounded-full bg-color-success" aria-hidden />
+            <span className="type-body-sm tracking-tight text-color-text-secondary">
+              All systems mostly normal
+            </span>
           </span>
-        </span>
-        <div className="flex items-center gap-lg">
           <ThemeSwitcherCompact />
-          <p className="type-body-sm tracking-tight text-color-30">© Ana Beverin</p>
         </div>
       </div>
     </footer>
