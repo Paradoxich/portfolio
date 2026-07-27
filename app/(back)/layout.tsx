@@ -1,10 +1,15 @@
-// Route group for standalone pages that get the minimal back-to-home bar.
-// Pass-through for now; the BackBar mounts here when the global shell is
-// removed.
+import { BackBar } from "@/components/layout/BackBar";
+
+// Standalone pages: minimal chrome, just a back-to-home bar above the page.
 export default function BackGroupLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <div className="flex min-h-dvh flex-col">
+      <BackBar />
+      <main className="flex min-w-0 flex-1 flex-col">{children}</main>
+    </div>
+  );
 }

@@ -4,10 +4,6 @@ import "./globals.css";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/react";
-import { Sidebar } from "@/components/layout/Sidebar";
-import { MobileNav } from "@/components/layout/MobileNav";
-import { TopStickyBar } from "@/components/layout/TopStickyBar";
-import { MobileFooter } from "@/components/layout/MobileFooter";
 import { ColorSchemeProvider } from "@/components/theme/ColorSchemeProvider";
 import { HireDrawerProvider } from "@/components/contact/HireDrawerContext";
 
@@ -164,17 +160,7 @@ export default function RootLayout({
       </head>
       <body className={GeistMono.variable}>
         <ColorSchemeProvider>
-          <HireDrawerProvider>
-            <div className="flex h-screen print:h-auto flex-col overflow-hidden print:overflow-visible">
-              <Sidebar />
-              <MobileNav />
-              <main className="flex min-h-0 flex-1 flex-col min-w-0 overflow-y-auto print:overflow-visible with-sidebar print:ml-0">
-                <TopStickyBar />
-                {children}
-                <MobileFooter />
-              </main>
-            </div>
-          </HireDrawerProvider>
+          <HireDrawerProvider>{children}</HireDrawerProvider>
         </ColorSchemeProvider>
         <Analytics />
       </body>

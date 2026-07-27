@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { OverviewContent } from "@/components/home/OverviewContent";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 
 export const metadata: Metadata = {
   description:
@@ -7,5 +8,12 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <OverviewContent />;
+  return (
+    <>
+      <main className="min-w-0">
+        <OverviewContent />
+      </main>
+      <SiteFooter />
+    </>
+  );
 }

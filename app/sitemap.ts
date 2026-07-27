@@ -6,8 +6,6 @@ const BASE_URL = "https://anabeverin.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
-    "/projects",
-    "/testimonials",
     "/illustrations",
     "/experiments",
     "/design-system",

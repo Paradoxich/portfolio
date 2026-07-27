@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { BackBar } from "@/components/layout/BackBar";
 import { PageShell } from "@/components/layout/PageShell";
 import { cv } from "@/lib/cv";
 import styles from "./page.module.css";
@@ -30,7 +31,9 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 export default function CvPage() {
   return (
-    <PageShell className="w-full max-w-4xl mx-auto">
+    <>
+      <BackBar />
+      <PageShell className="w-full max-w-4xl mx-auto">
       <article className={`${styles.article} ${styles.sectionStack}`}>
         {/* Header */}
         <header className="stack-lg">
@@ -198,6 +201,7 @@ export default function CvPage() {
           </div>
         </section>
       </article>
-    </PageShell>
+      </PageShell>
+    </>
   );
 }

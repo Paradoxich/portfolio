@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
-import { TestimonialsPageClient } from "./TestimonialsPageClient";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Testimonials",
-  description:
-    "What founders and product managers say about working with Ana Beverin.",
-};
-
+// Testimonials are retired from the nav for now; quotes live on in
+// lib/testimonials.ts for future use inside case studies.
 export default function TestimonialsPage() {
-  return <TestimonialsPageClient />;
+  redirect("/");
 }
