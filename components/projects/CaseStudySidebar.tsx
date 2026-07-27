@@ -1,15 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { projectsConfig } from "@/components/projects/ProjectsConfig";
-import { ArrowLeft, FaceSmile, Projects } from "@/components/icons";
+import { ArrowLeft } from "@/components/icons";
 
+// Thumbnails live in public/projects/thumbs/<slug>.png, cropped from the
+// project card art.
 const caseStudies = projectsConfig
   .filter((p) => p.Page)
   .map((p) => ({
     slug: p.slug ?? p.key,
     label: p.label ?? p.title,
+    thumb: `/projects/thumbs/${p.slug ?? p.key}.png`,
   }));
 
 const rowClass =
@@ -39,9 +43,8 @@ export function CaseStudySidebar() {
           Case studies
         </p>
 
-        {caseStudies.map(({ slug, label }) => {
+        {caseStudies.map(({ slug, label, thumb }) => {
           const active = pathname === `/projects/${slug}`;
-          const Icon = active ? Projects : FaceSmile;
 
           return (
             <Link
@@ -55,7 +58,13 @@ export function CaseStudySidebar() {
               }`}
             >
               <span className="flex size-12 shrink-0 items-center justify-center">
-                <Icon size={20} />
+                <Image
+                  src={thumb}
+                  alt=""
+                  width={24}
+                  height={24}
+                  className="size-6 rounded-sm border border-color-border-subtle object-cover"
+                />
               </span>
               {label}
             </Link>
