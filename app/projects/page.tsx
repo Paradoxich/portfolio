@@ -1,15 +1,10 @@
 // app/projects/page.tsx
-import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { projectsConfig } from "@/components/projects/ProjectsConfig";
 
-import { ProjectsIndex } from "@/components/projects/ProjectsIndex";
-
-export const metadata: Metadata = {
-  title: "Projects",
-  description:
-    "Case studies from Santolina, Shuttle, Neptune, MixLodge, OptimoRoute, and this portfolio, covering process, decisions, and outcomes.",
-};
-
+// The case-study sidebar is the project switcher now; /projects just lands
+// on the first case study.
 export default function ProjectsPage() {
-  return <ProjectsIndex />;
+  const first = projectsConfig.find((p) => p.Page);
+  redirect(`/projects/${first ? (first.slug ?? first.key) : ""}`);
 }
-

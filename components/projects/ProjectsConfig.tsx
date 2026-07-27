@@ -59,21 +59,6 @@ export const projectsConfig: ProjectConfig[] = [
   },
 
   {
-    key: "neptune-lp",
-    slug: "neptune",
-    label: "Neptune",
-    title:
-      "Visual direction and early workflow exploration for an AI infra platform.",
-    cardTitle: "Neptune",
-    cardDescription: "Designed the visual identity and positioning for an AI infrastructure platform. Drove the brand direction, built an animated prototype to clarify how the product works, and helped align the team around a clearer product story.",
-    categoryLabel: "Developer Tools",
-    category: "client",
-    cardBackground: "/project-cards/card-neptune.png",
-    ogImage: "/og/og-neptune.png",
-    Page: ProjectPageNeptune,
-  },
-
-  {
     key: "shuttle-console",
     slug: "shuttle",
     label: "Shuttle",
@@ -86,6 +71,21 @@ export const projectsConfig: ProjectConfig[] = [
     cardBackground: "/project-cards/card-shuttle.png",
     ogImage: "/og/og-shuttle.png",
     Page: ProjectPageShuttle,
+  },
+
+  {
+    key: "neptune-lp",
+    slug: "neptune",
+    label: "Neptune",
+    title:
+      "Visual direction and early workflow exploration for an AI infra platform.",
+    cardTitle: "Neptune",
+    cardDescription: "Designed the visual identity and positioning for an AI infrastructure platform. Drove the brand direction, built an animated prototype to clarify how the product works, and helped align the team around a clearer product story.",
+    categoryLabel: "Developer Tools",
+    category: "client",
+    cardBackground: "/project-cards/card-neptune.png",
+    ogImage: "/og/og-neptune.png",
+    Page: ProjectPageNeptune,
   },
 
   {
@@ -103,6 +103,19 @@ export const projectsConfig: ProjectConfig[] = [
   },
 
   {
+    key: "optimoroute",
+    label: "OptimoRoute",
+    title: "OptimoRoute",
+    cardDescription: "Led the UI modernization of a real-time routing software. Working closely with engineering, I drove iterative improvements that increased usability and feature discovery without disrupting existing users or revenue.",
+    categoryLabel: "Route Optimization",
+    category: "client",
+    cardBackground: "/project-cards/card-optimoroute.png",
+    ogImage: "/og/og-optimoroute.png",
+    noindex: true,
+    Page: ProjectPageOptimoroute,
+  },
+
+  {
     key: "portfolio",
     label: "Portfolio",
     title: "Designing and building this portfolio as a real product.",
@@ -113,18 +126,5 @@ export const projectsConfig: ProjectConfig[] = [
     cardBackground: "/project-cards/card-portfolio.png",
     ogImage: "/og/og-portfolio.png",
     Page: ProjectPagePortfolio,
-  },
-
-  {
-    key: "optimoroute",
-    label: "Optimoroute",
-    title: "OptimoRoute",
-    cardDescription: "Led the UI modernization of a real-time routing software. Working closely with engineering, I drove iterative improvements that increased usability and feature discovery without disrupting existing users or revenue.",
-    categoryLabel: "Route Optimization",
-    category: "client",
-    cardBackground: "/project-cards/card-optimoroute.png",
-    ogImage: "/og/og-optimoroute.png",
-    noindex: true,
-    Page: ProjectPageOptimoroute,
   },
 ];

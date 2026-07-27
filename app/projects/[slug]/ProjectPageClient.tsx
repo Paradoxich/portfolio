@@ -7,6 +7,7 @@ import { ArrowRight } from "@/components/icons/ArrowRight";
 import { Projects } from "@/components/icons/Projects";
 import { useRouter, useParams } from "next/navigation";
 import { PageShell } from "@/components/layout/PageShell";
+import { useHireDrawer } from "@/components/contact/HireDrawerContext";
 import { projectsConfig } from "@/components/projects/ProjectsConfig";
 import styles from "./page.module.css";
 
@@ -14,12 +15,13 @@ function ProjectPageContent() {
   const router = useRouter();
   const params = useParams();
   const slug = params.slug as string;
+  const { isOpen: drawerOpen } = useHireDrawer();
 
   const project = projectsConfig.find((p) => (p.slug ?? p.key) === slug);
 
   React.useEffect(() => {
     if (!project) {
-      router.push("/projects");
+      router.push("/");
     }
   }, [project, router]);
 
@@ -38,8 +40,18 @@ function ProjectPageContent() {
 
   React.useEffect(() => {
     function handleKey(e: KeyboardEvent) {
+      if (drawerOpen || e.defaultPrevented) return;
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
       if (e.key === "Escape") {
-        router.push("/projects");
+        router.push("/");
       } else if (e.key === "ArrowLeft" && prevProject) {
         router.push(`/projects/${prevProject.slug ?? prevProject.key}`);
       } else if (e.key === "ArrowRight" && nextProject) {
@@ -48,7 +60,7 @@ function ProjectPageContent() {
     }
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [prevProject, nextProject, router]);
+  }, [prevProject, nextProject, router, drawerOpen]);
 
   if (!project) return null;
 
@@ -57,10 +69,10 @@ function ProjectPageContent() {
       <div className="layout-grid">
         <section className="col-span-12">
           <Link
-            href="/projects"
+            href="/"
             className="md:hidden type-body-sm text-color-text-secondary hover:text-color-text-primary transition-colors mb-2xl inline-block"
           >
-            ← Back to projects
+            ← Back to home
           </Link>
 
           {project.Page && <project.Page />}
@@ -80,7 +92,7 @@ function ProjectPageContent() {
                   <ArrowLeft size={20} />
                 </span>
               )}
-              <Link href="/projects" className={styles.navBtn} aria-label="All projects">
+              <Link href="/" className={styles.navBtn} aria-label="Back to home">
                 <Projects size={20} />
               </Link>
               {nextProject ? (
