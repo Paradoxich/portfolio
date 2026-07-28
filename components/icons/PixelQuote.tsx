@@ -12,6 +12,7 @@ export function PixelQuote({ className = "", size = 24 }: PixelQuoteProps) {
       viewBox="0 0 24 24"
       fill="none"
       className={className}
+      aria-hidden
     >
       <path
         d="M10 13H11V21H10V22H2V21H1V7H2V5H3V4H4V3H6V2H8V3H9V6H8V7H6V8H5V12H10V13Z"

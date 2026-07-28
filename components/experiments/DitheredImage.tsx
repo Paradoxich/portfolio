@@ -43,6 +43,17 @@ export interface DitheredImageProps {
   rotate?: number;
   /** Static zoom multiplier applied on top of the base framing (1 = default). */
   zoom?: number;
+  /** Pre-dither brightness multiplier (1 = unchanged), like Figma's dither Brightness. */
+  brightness?: number;
+  /** Pre-dither contrast around mid-grey (1 = unchanged), like Figma's dither Contrast. */
+  contrast?: number;
+  /**
+   * Quantise luminance instead of RGB and map it onto a single tint ramp
+   * (black -> monoColor), mirroring Figma's mono dither.
+   */
+  mono?: boolean;
+  /** Tint for mono mode, as a hex color. Ignored unless `mono` is set. */
+  monoColor?: string;
   motion?: boolean;
   /**
    * When true, the Ken Burns drift only advances while the pointer is over the
@@ -50,6 +61,12 @@ export interface DitheredImageProps {
    * always-on drift). Ignored under prefers-reduced-motion.
    */
   motionOnHover?: boolean;
+}
+
+function hexToRgb01(hex: string): [number, number, number] {
+  const h = hex.replace("#", "");
+  const v = parseInt(h.length === 3 ? h.split("").map((c) => c + c).join("") : h, 16);
+  return [((v >> 16) & 255) / 255, ((v >> 8) & 255) / 255, (v & 255) / 255];
 }
 
 const HOVER_MODES = {
@@ -96,6 +113,10 @@ uniform float u_corner;
 uniform vec2 u_focus;
 uniform float u_rotate;
 uniform float u_zoom;
+uniform float u_brightness;
+uniform float u_contrast;
+uniform float u_mono;
+uniform vec3 u_monoColor;
 
 void main() {
   vec2 off = gl_FragCoord.xy - u_mouse;
@@ -155,6 +176,7 @@ void main() {
   vec2 img = (cover - 0.5) / zoom + 0.5 + drift + u_focus;
 
   vec3 c = texture2D(u_image, img).rgb;
+  c = clamp((c - 0.5) * u_contrast + 0.5, 0.0, 1.0) * u_brightness;
 
   float cell = u_cell;
   if (u_mode > 2.5 && u_mode < 3.5) {
@@ -165,6 +187,12 @@ void main() {
 
   float steps = max(u_levels - 1.0, 1.0);
   vec3 dithered = floor(c * steps + threshold) / steps;
+
+  // Mono mode quantises luminance instead of RGB and maps the result onto a
+  // single tint ramp (black -> u_monoColor), mirroring Figma's mono dither.
+  float lum = dot(c, vec3(0.299, 0.587, 0.114));
+  float lumQ = floor(lum * steps + threshold) / steps;
+  dithered = mix(dithered, u_monoColor * lumQ, u_mono);
 
   vec3 outColor = dithered;
   if (u_mode < 2.5) {
@@ -232,6 +260,10 @@ export function DitheredImage({
   focusY = 0,
   rotate = 0,
   zoom = 1,
+  brightness = 1,
+  contrast = 1,
+  mono = false,
+  monoColor = "#ffffff",
   motion = true,
   motionOnHover = false,
 }: DitheredImageProps) {
@@ -248,6 +280,10 @@ export function DitheredImage({
   const focusYRef = useRef(focusY);
   const rotateRef = useRef(rotate);
   const zoomRef = useRef(zoom);
+  const brightnessRef = useRef(brightness);
+  const contrastRef = useRef(contrast);
+  const monoRef = useRef(mono);
+  const monoColorRef = useRef(monoColor);
   levelsRef.current = levels;
   cellRef.current = cell;
   revealRadiusRef.current = revealRadius;
@@ -258,6 +294,10 @@ export function DitheredImage({
   focusYRef.current = focusY;
   rotateRef.current = rotate;
   zoomRef.current = zoom;
+  brightnessRef.current = brightness;
+  contrastRef.current = contrast;
+  monoRef.current = mono;
+  monoColorRef.current = monoColor;
   const requestRenderRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
@@ -312,6 +352,10 @@ export function DitheredImage({
       focus: gl.getUniformLocation(prog, "u_focus"),
       rotate: gl.getUniformLocation(prog, "u_rotate"),
       zoom: gl.getUniformLocation(prog, "u_zoom"),
+      brightness: gl.getUniformLocation(prog, "u_brightness"),
+      contrast: gl.getUniformLocation(prog, "u_contrast"),
+      mono: gl.getUniformLocation(prog, "u_mono"),
+      monoColor: gl.getUniformLocation(prog, "u_monoColor"),
     };
     gl.uniform1i(u.image, 0);
     gl.uniform1i(u.bayer, 1);
@@ -454,6 +498,11 @@ export function DitheredImage({
       gl.uniform2f(u.focus, focusXRef.current, focusYRef.current);
       gl.uniform1f(u.rotate, (rotateRef.current * Math.PI) / 180);
       gl.uniform1f(u.zoom, zoomRef.current);
+      gl.uniform1f(u.brightness, brightnessRef.current);
+      gl.uniform1f(u.contrast, contrastRef.current);
+      gl.uniform1f(u.mono, monoRef.current ? 1 : 0);
+      const mc = hexToRgb01(monoColorRef.current);
+      gl.uniform3f(u.monoColor, mc[0], mc[1], mc[2]);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
 
@@ -510,7 +559,7 @@ export function DitheredImage({
 
   useEffect(() => {
     requestRenderRef.current?.();
-  }, [levels, cell, revealRadius, softness, weight, hoverMode, focusX, focusY, rotate, zoom]);
+  }, [levels, cell, revealRadius, softness, weight, hoverMode, focusX, focusY, rotate, zoom, brightness, contrast, mono, monoColor]);
 
   return (
     <div ref={wrapperRef} className={`relative overflow-hidden ${className ?? ""}`}>
