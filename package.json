@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cv:pdf": "\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf=public/docs/CV-Ana-Beverin-2026.pdf http://localhost:3000/cv/print"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.1.15",

@@ -1,0 +1,55 @@
+/* Screen styling stays in type-* utilities and Tailwind per the
+   design-system CSS architecture rules; this module holds page-specific
+   values that fall outside the shared token scale, plus print overrides. */
+
+.actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+/* Between-section rhythm for this page only; 72px isn't a shared spacing
+   token, so it lives here rather than as a new global stack-* utility. */
+.sectionStack > * + * {
+  margin-top: 72px;
+}
+
+/* Overrides the header's stack-lg (16px) for this one paragraph; tied
+   specificity with `.stack-lg > * + *` means a plain mt-xl utility loses
+   the cascade, so the override lives here instead. */
+.summaryGap {
+  margin-top: var(--space-xl);
+}
+
+.muted {
+  /* class hook for the print override below; no screen-only styling */
+}
+
+@media print {
+  .actions {
+    display: none;
+  }
+
+  .article {
+    color: #111 !important;
+  }
+
+  .article :is(h1, h2, h3, p, span, a, li) {
+    color: #111 !important;
+  }
+
+  .article .muted {
+    color: #555 !important;
+  }
+
+  /* Cards read as UI on screen; in print, strip the chrome so entries flow
+     like a document instead of forcing tall boxes onto fresh pages. */
+  .article :global(.card-ghost) {
+    background: #fff !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .article :global(.bg-color-bg-label) {
+    background: #f0f0f0 !important;
+  }
+}

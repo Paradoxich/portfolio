@@ -1,0 +1,173 @@
+/* Print-source document for the CV PDF (/cv/print).
+   This page deliberately opts out of the theme system: it represents a paper
+   document, so colors are fixed print-safe values rather than theme tokens.
+   Spacing and type sizes are document-scale (pt-ish), not the UI scale.
+   The screen view is a preview of the printed sheet. */
+
+@page {
+  size: A4;
+  margin: 16mm 14mm;
+}
+
+.page {
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+.sheet {
+  max-width: 780px;
+  margin-inline: auto;
+  background: #fff;
+  color: #111;
+  padding: 56px 56px 64px;
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+@media print {
+  .page {
+    padding: 0;
+  }
+
+  .sheet {
+    max-width: none;
+    padding: 0;
+    border-radius: 0;
+  }
+}
+
+/* ---- Header ---- */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Requested at 3x its display size so the printed photo stays sharp at
+   300 DPI. print-color-adjust keeps Chrome from washing it out. */
+.photo {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.name {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.contactRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin-top: 10px;
+  font-size: 11.5px;
+  color: #555;
+}
+
+.contactRow a {
+  color: #555;
+}
+
+/* ---- Intro ---- */
+
+.role {
+  margin-top: 28px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.summary {
+  margin-top: 6px;
+  color: #333;
+}
+
+/* ---- Sections ---- */
+
+.label {
+  margin-top: 32px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ddd;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #777;
+  break-after: avoid;
+}
+
+/* ---- Experience ---- */
+
+.entry {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.entryMeta {
+  break-inside: avoid;
+}
+
+.company {
+  font-weight: 600;
+}
+
+.roleLine {
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: #333;
+}
+
+.period {
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: #888;
+}
+
+.entryBody p + p {
+  margin-top: 10px;
+}
+
+.entryBody strong {
+  font-weight: 600;
+  color: #111;
+}
+
+/* ---- Education ---- */
+
+.eduGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 16px;
+  break-inside: avoid;
+}
+
+.eduDegree {
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: #333;
+}
+
+.eduYear {
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: #888;
+}
+
+/* ---- Skills / tools prose ---- */
+
+.prose {
+  margin-top: 12px;
+  color: #333;
+  break-inside: avoid;
+}

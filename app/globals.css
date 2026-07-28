@@ -138,6 +138,7 @@
   --font-size-xl: 32px;    /* h3, notes quote */
   --font-size-2xl: 40px;   /* h2 */
   --font-size-3xl: 48px;   /* h1, hero */
+  --font-size-4xl: 72px;   /* display – homepage hero */
 
   /* Layout */
   --layout-container: 1400px; /* 1512 - 80 - 80 */
@@ -147,6 +148,7 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
+  --radius-xl: 32px;
   --radius-full: 9999px;
 
   /* Spacing scale */
@@ -160,6 +162,7 @@
   --space-3xl: 40px;
   --space-4xl: 56px;   /* hero gap (desktop), stack-5xl */
   --space-5xl: 64px;   /* large content separators */
+  --space-6xl: 80px;   /* card-row gutters, footer padding */
   --space-section: 120px; /* large section gap – page separators */
 
   /* Sizes */
@@ -267,17 +270,9 @@
     margin-inline: auto;
   }
 
-  .with-sidebar {
-    margin-left: 0;
-  }
-
   @media (min-width: 768px) {
     .page-shell {
       padding: var(--space-3xl);
-    }
-
-    .with-sidebar {
-      margin-left: 230px;
     }
   }
 }
@@ -357,11 +352,8 @@
     line-height: var(--line-height-none);
   }
 
-  /* Testimonial quote — 20 / ui(1.45) / regular — page-scoped, see app/testimonials/page.module.css */
-  /* Testimonial quote-highlight — 20 / ui(1.45) / medium — page-scoped, see app/testimonials/page.module.css */
-  /* Notes quote — 32 / snug / regular — page-scoped, see app/notes/page.module.css */
-  /* Notes note — 14 / ui / very muted (color-40) — page-scoped, see app/notes/page.module.css */
-  /* Link pill — surface with hover — component-scoped, see components/projects/CaseStudyLayout.module.css */
+  /* Notes quote — 32 / snug / regular — page-scoped, see app/(back)/notes/page.module.css */
+  /* Notes note — 14 / ui / very muted (color-40) — page-scoped, see app/(back)/notes/page.module.css */
 }
 
 /* =========================================
@@ -369,7 +361,7 @@
    ========================================= */
 
 @layer components {
-  /* Interactive card surface token — card-bg + secondary border. Full implementation in ProjectCard.module.css. */
+  /* Interactive card surface token — card-bg + secondary border. */
   .card-interactive {
     background-color: var(--color-bg-card);
     border: 1px solid var(--color-border);
@@ -396,7 +388,7 @@
    * step above pure bg) with a subtle border. Not interactive.
    *
    * Card surface hierarchy:
-   *   1. card-interactive  — clickable, prominent bg (ProjectCard.module.css)
+   *   1. card-interactive  — clickable, prominent bg
    *   2. .card-tinted      — non-clickable, lightly tinted bg  ← this one
    *   3. .card-ghost       — non-clickable, outline/ghost
    *
@@ -552,6 +544,21 @@
 
   .font-medium {
     font-weight: var(--font-weight-medium);
+  }
+}
+
+/* =========================================
+   PRINT
+   Themes are dark-first; printed pages get a white background.
+   Chrome (app shell) is hidden via print:hidden utilities on the
+   layout components; page-specific print rules live in co-located
+   CSS Modules (see app/cv/page.module.css).
+   ========================================= */
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
   }
 }
 

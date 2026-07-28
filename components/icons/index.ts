@@ -16,3 +16,4 @@ export { LocationPin } from "./LocationPin";
 export { NodeNetwork } from "./NodeNetwork";
 export { CoffeeCup } from "./CoffeeCup";
 export { Icecream } from "./Icecream";
+export { Globe } from "./Globe";

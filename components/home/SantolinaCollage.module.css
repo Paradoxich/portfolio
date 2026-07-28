@@ -1,0 +1,166 @@
+/* Santolina product-UI collage shown on the homepage feature card.
+   These values are intentionally NOT portfolio design tokens — they render a
+   depiction of the Santolina app's own light UI, so the palette, radii, and
+   type are hardcoded to match that product rather than this site's system. */
+
+.collage {
+  position: relative;
+  width: 506px;
+  height: 559px;
+  --card-bg: #edf2ee;
+  --card-subtle: #f8f8f8;
+  --card-border: rgba(255, 255, 255, 0.5);
+  --card-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.25);
+  --text-primary: #111111;
+  --text-meta: #6b6b6b;
+}
+
+.card {
+  position: absolute;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  padding: 24px;
+  overflow: hidden;
+}
+
+/* Garden Insight card */
+.insight {
+  left: 176px;
+  top: 0;
+  width: 330px;
+  height: 291px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.insightText {
+  width: 282px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--text-primary);
+}
+
+.insightLabel {
+  width: 282px;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: normal;
+  letter-spacing: 0.55px;
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+
+.birdBox {
+  position: absolute;
+  left: 131px;
+  top: 106px;
+  width: 207.726px;
+  height: 259.296px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: darken;
+}
+
+.birdRot {
+  transform: rotate(12.79deg);
+}
+
+.birdWindow {
+  width: 160.955px;
+  height: 229.361px;
+  overflow: hidden;
+}
+
+.birdWindow img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Care Tips card */
+.care {
+  left: 0;
+  top: 303px;
+  width: 506px;
+  height: 256px;
+}
+
+.careContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 458px;
+}
+
+.careHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: -0.34px;
+  color: var(--text-primary);
+}
+
+.meta {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-meta);
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.taskRow {
+  background: var(--card-subtle);
+  border-radius: 8px;
+  height: 40px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.rowContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 437px;
+  white-space: nowrap;
+}
+
+.rowLabel {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.rowMeta {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--text-meta);
+}
+
+.moreOverlay {
+  position: absolute;
+  left: -1px;
+  bottom: -1px;
+  width: 506px;
+  height: 71px;
+  background: linear-gradient(to top, var(--card-bg) 0%, rgba(237, 242, 238, 0) 100%);
+}

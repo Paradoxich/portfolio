@@ -1,6 +1,8 @@
 # Ana Beverin · Portfolio
 
-**Live at [anabeverin.com](https://anabeverin.com)**
+![Portfolio homepage](.github/readme-hero.png)
+
+**Live at [anabeverin.com](https://anabeverin.com)** — product designer who ships production code.
 
 I'm a senior product designer with 9 years of experience, most of it as the sole designer at startups, owning discovery, IA, interaction design, and design systems end to end. More recently, I've been working in the design-to-code space: designing, prototyping, and shipping directly in React using Cursor, Claude Code, and Figma MCP.
 
@@ -12,7 +14,7 @@ I keep the portfolio public because I believe shipped work is more useful than s
 
 - **Design system:** semantic design tokens, CSS variables, Tailwind mappings, and live documentation at [/design-system](https://anabeverin.com/design-system).
 - **Themes:** three interchangeable themes (warm, cool, light) built through token overrides rather than component-level styling.
-- **Case studies:** selected work from Shuttle, Neptune, Dealio, and OptimoRoute, covering process, decisions, and outcomes.
+- **Case studies:** selected work from Santolina, Shuttle, Neptune, MixLodge, and OptimoRoute, covering process, decisions, and outcomes.
 - **Motion and interaction:** hand-built Framer Motion animations and interactive experiments.
 - **Illustration:** a gallery of my illustration work; visual craft is part of the toolkit.
 
@@ -37,5 +39,5 @@ I'm looking for product, design engineering, or early-stage design roles where I
 
 - [anabeverin.com](https://anabeverin.com)
 - [LinkedIn](https://linkedin.com/in/paradoxich)
-- [CV](https://anabeverin.com/docs/CV-Ana-Beverin-2026.pdf)
+- [CV](https://anabeverin.com/cv)
 - ana.beverin@gmail.com

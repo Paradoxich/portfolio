@@ -1,18 +1,7 @@
-import type { Metadata } from "next";
-import { TestimonialsPageClient } from "./TestimonialsPageClient";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  robots: {
-    index: false,
-    follow: false,
-    googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
-    },
-  },
-};
-
+// Testimonials are retired from the nav for now; quotes live on in
+// lib/testimonials.ts for future use inside case studies.
 export default function TestimonialsPage() {
-  return <TestimonialsPageClient />;
+  redirect("/");
 }

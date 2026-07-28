@@ -32,7 +32,24 @@ export interface DitheredImageProps {
   softness?: number;
   weight?: number;
   hoverMode?: "reveal" | "organic" | "magnify" | "coarsen" | "spotlight";
+  /**
+   * Recenters which part of the photo is framed (and orbited around), in UV
+   * space. 0 = centered; +x pans the framing right, +y pans it toward the
+   * bottom of the source image. Useful when the subject sits off-center.
+   */
+  focusX?: number;
+  focusY?: number;
+  /** Static clockwise rotation of the photo within the canvas, in degrees. */
+  rotate?: number;
+  /** Static zoom multiplier applied on top of the base framing (1 = default). */
+  zoom?: number;
   motion?: boolean;
+  /**
+   * When true, the Ken Burns drift only advances while the pointer is over the
+   * canvas and eases to a stop on leave. Independent of `motion` (the
+   * always-on drift). Ignored under prefers-reduced-motion.
+   */
+  motionOnHover?: boolean;
 }
 
 const HOVER_MODES = {
@@ -76,6 +93,9 @@ uniform float u_mode;
 uniform vec2 u_velocity;
 uniform float u_weight;
 uniform float u_corner;
+uniform vec2 u_focus;
+uniform float u_rotate;
+uniform float u_zoom;
 
 void main() {
   vec2 off = gl_FragCoord.xy - u_mouse;
@@ -102,6 +122,17 @@ void main() {
     pos = mix(pos, u_mouse, core * 0.35 * u_hover);
   }
 
+  // Static image rotation in pixel space, so it's a true visual angle. Only the
+  // image sampling is rotated — the Bayer threshold below keys off the
+  // unrotated gl_FragCoord, keeping the dither grid screen-locked.
+  if (u_rotate != 0.0) {
+    vec2 rcenter = u_resolution * 0.5;
+    vec2 rel = pos - rcenter;
+    float ca = cos(u_rotate);
+    float sa = sin(u_rotate);
+    pos = vec2(ca * rel.x - sa * rel.y, sa * rel.x + ca * rel.y) + rcenter;
+  }
+
   vec2 uv = pos / u_resolution;
   uv.y = 1.0 - uv.y;
   float canvasAspect = u_resolution.x / u_resolution.y;
@@ -111,10 +142,17 @@ void main() {
     : vec2(canvasAspect / imageAspect, 1.0);
   vec2 cover = (uv - 0.5) * scale + 0.5;
 
-  float t = u_time * 0.157;
-  float zoom = 1.2 + 0.1 * sin(t);
-  vec2 drift = vec2(0.11 * sin(t), 0.06 * sin(t - 1.5708));
-  vec2 img = (cover - 0.5) / zoom + 0.5 + drift;
+  // Slow Ken Burns orbit. The pan must stay within the crop the zoom leaves
+  // free, or the sample slides off the image edge and clamps/stretches. That
+  // free margin is 0.5*(1 - 1/zoom); the drift amplitudes below are kept under
+  // the margin at the minimum zoom (1.23 -> margin ~0.094) so the photo never
+  // leaves its own bounds.
+  float t = u_time * 0.075;
+  float zoom = u_zoom * (1.28 + 0.05 * sin(t));
+  vec2 drift = vec2(0.06 * sin(t), 0.04 * sin(t - 1.5708));
+  // u_focus recenters which part of the photo is framed: +x pans right, +y
+  // pans toward the bottom of the source image (0 = centered).
+  vec2 img = (cover - 0.5) / zoom + 0.5 + drift + u_focus;
 
   vec3 c = texture2D(u_image, img).rgb;
 
@@ -190,7 +228,12 @@ export function DitheredImage({
   softness = 0.45,
   weight = 0.5,
   hoverMode = "reveal",
+  focusX = 0,
+  focusY = 0,
+  rotate = 0,
+  zoom = 1,
   motion = true,
+  motionOnHover = false,
 }: DitheredImageProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -201,12 +244,20 @@ export function DitheredImage({
   const softnessRef = useRef(softness);
   const weightRef = useRef(weight);
   const modeRef = useRef(HOVER_MODES[hoverMode]);
+  const focusXRef = useRef(focusX);
+  const focusYRef = useRef(focusY);
+  const rotateRef = useRef(rotate);
+  const zoomRef = useRef(zoom);
   levelsRef.current = levels;
   cellRef.current = cell;
   revealRadiusRef.current = revealRadius;
   softnessRef.current = softness;
   weightRef.current = weight;
   modeRef.current = HOVER_MODES[hoverMode];
+  focusXRef.current = focusX;
+  focusYRef.current = focusY;
+  rotateRef.current = rotate;
+  zoomRef.current = zoom;
   const requestRenderRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
@@ -258,6 +309,9 @@ export function DitheredImage({
       velocity: gl.getUniformLocation(prog, "u_velocity"),
       weight: gl.getUniformLocation(prog, "u_weight"),
       corner: gl.getUniformLocation(prog, "u_corner"),
+      focus: gl.getUniformLocation(prog, "u_focus"),
+      rotate: gl.getUniformLocation(prog, "u_rotate"),
+      zoom: gl.getUniformLocation(prog, "u_zoom"),
     };
     gl.uniform1i(u.image, 0);
     gl.uniform1i(u.bayer, 1);
@@ -323,8 +377,14 @@ export function DitheredImage({
     };
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const still = reduced || !motion;
+    const alwaysMotion = motion && !reduced;
+    const hoverMotion = motionOnHover && !reduced;
+    // "still" = fully static: no drift loop and instant (non-eased) hover.
+    const still = !alwaysMotion && !hoverMotion;
     const start = performance.now();
+    // Drift clock for hover motion — advances only while hovered so the Ken
+    // Burns easing resumes from where it stopped rather than jumping.
+    let animTime = 0;
 
     let targetX = 0;
     let targetY = 0;
@@ -343,10 +403,12 @@ export function DitheredImage({
       targetY = canvas.height - (e.clientY - rect.top) * r;
       targetHover = 1;
       if (still) render(performance.now());
+      else if (hoverMotion) ensureLoop();
     };
     const onPointerLeave = () => {
       targetHover = 0;
       if (still) render(performance.now());
+      else if (hoverMotion) ensureLoop();
     };
     canvas.addEventListener("pointermove", onPointerMove);
     canvas.addEventListener("pointerleave", onPointerLeave);
@@ -368,6 +430,13 @@ export function DitheredImage({
         [smoothY, velY] = smoothDamp(smoothY, targetY, velY, smoothTime, dt);
       }
       smoothHover += (targetHover - smoothHover) * (still ? 1 : 0.12);
+      let timeValue = 0;
+      if (alwaysMotion) {
+        timeValue = (now - start) / 1000;
+      } else if (hoverMotion) {
+        animTime += dt * smoothHover;
+        timeValue = animTime;
+      }
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.uniform2f(u.resolution, canvas.width, canvas.height);
       gl.uniform2f(u.imageSize, imgW, imgH);
@@ -380,25 +449,44 @@ export function DitheredImage({
       gl.uniform1f(u.mode, modeRef.current);
       gl.uniform2f(u.velocity, velX / 60, velY / 60);
       gl.uniform1f(u.weight, weightRef.current);
-      gl.uniform1f(u.time, still ? 0 : (now - start) / 1000);
+      gl.uniform1f(u.time, timeValue);
       gl.uniform1f(u.corner, cornerCss * (window.devicePixelRatio || 1));
+      gl.uniform2f(u.focus, focusXRef.current, focusYRef.current);
+      gl.uniform1f(u.rotate, (rotateRef.current * Math.PI) / 180);
+      gl.uniform1f(u.zoom, zoomRef.current);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
 
     let raf = 0;
+    let running = false;
     const loop = (now: number) => {
       render(now);
-      raf = requestAnimationFrame(loop);
+      if (alwaysMotion) {
+        raf = requestAnimationFrame(loop);
+      } else if (hoverMotion && (targetHover === 1 || smoothHover > 0.002)) {
+        raf = requestAnimationFrame(loop);
+      } else {
+        // Hover ended and the drift has eased to a stop — idle until next hover.
+        running = false;
+        raf = 0;
+      }
     };
-    if (still) {
-      render(performance.now());
-    } else {
+    function ensureLoop() {
+      if (running) return;
+      running = true;
+      lastMs = performance.now();
       raf = requestAnimationFrame(loop);
+    }
+    if (alwaysMotion) {
+      running = true;
+      raf = requestAnimationFrame(loop);
+    } else {
+      render(performance.now());
     }
 
     const ro = new ResizeObserver(() => {
       readCorner();
-      if (still) render(performance.now());
+      if (!running) render(performance.now());
     });
     ro.observe(canvas);
     if (loaded) render(performance.now());
@@ -418,11 +506,11 @@ export function DitheredImage({
       gl.deleteShader(vs);
       gl.deleteShader(fs);
     };
-  }, [src, motion]);
+  }, [src, motion, motionOnHover]);
 
   useEffect(() => {
     requestRenderRef.current?.();
-  }, [levels, cell, revealRadius, softness, weight, hoverMode]);
+  }, [levels, cell, revealRadius, softness, weight, hoverMode, focusX, focusY, rotate, zoom]);
 
   return (
     <div ref={wrapperRef} className={`relative overflow-hidden ${className ?? ""}`}>

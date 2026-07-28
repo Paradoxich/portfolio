@@ -1,21 +1,10 @@
 // app/projects/page.tsx
-import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { projectsConfig } from "@/components/projects/ProjectsConfig";
 
-import { ProjectsIndex } from "@/components/projects/ProjectsIndex";
-
-export const metadata: Metadata = {
-  robots: {
-    index: false,
-    follow: false,
-    googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
-    },
-  },
-};
-
+// The case-study sidebar is the project switcher now; /projects just lands
+// on the first case study.
 export default function ProjectsPage() {
-  return <ProjectsIndex />;
+  const first = projectsConfig.find((p) => p.Page);
+  redirect(`/projects/${first ? (first.slug ?? first.key) : ""}`);
 }
-
