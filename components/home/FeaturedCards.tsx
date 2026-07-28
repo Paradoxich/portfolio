@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./FeaturedCards.module.css";
+import { SantolinaCollage } from "./SantolinaCollage";
+import { DitheredImage } from "@/components/experiments/DitheredImage";
 
 const headlineClass =
   "text-lg font-medium leading-snug tracking-tight text-color-text-primary md:text-xl";
@@ -16,26 +18,26 @@ export function FeaturedCards() {
         href="/projects/santolina"
         className={`${styles.santolinaCard} group relative block h-[420px] overflow-hidden rounded-card-xl p-2xl md:h-[583px] md:p-3xl`}
       >
-        <Image
-          src="/home/santolina-garden.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-60 transition-transform duration-500 group-hover:scale-[1.02]"
-          style={{ objectPosition: "50% 65%" }}
-        />
-        <Image
-          src="/home/santolina-collage.png"
-          alt="Santolina dashboard cards over a garden photo"
-          width={536}
-          height={525}
-          priority
-          className="absolute right-0 top-[57px] hidden h-[calc(100%-57px)] w-auto max-w-none md:block"
-        />
-        <div className={`${styles.overlayUp} absolute inset-0`} aria-hidden />
-        <div className={`${styles.overlayLeft} absolute inset-0`} aria-hidden />
-        <div className="relative flex h-full max-w-[569px] flex-col justify-end gap-sm">
+        <div className="absolute inset-0 opacity-60 transition-transform duration-500 group-hover:scale-[1.02]">
+          <DitheredImage
+            src="/home/santolina-garden.jpg"
+            levels={6}
+            cell={2}
+            revealRadius={0}
+            motion={false}
+            motionOnHover
+            // Radius must live on the DitheredImage wrapper: its shader reads
+            // this computed border-radius and masks its own corners, since
+            // Firefox won't clip the accelerated canvas via the card's
+            // overflow-hidden. Matches the card's rounded-card-xl.
+            className="h-full w-full rounded-card-xl"
+          />
+        </div>
+        <div className="pointer-events-none absolute right-[40px] top-[24px] hidden md:block">
+          <SantolinaCollage />
+        </div>
+        <div className={`${styles.overlayUp} pointer-events-none absolute inset-0`} aria-hidden />
+        <div className="pointer-events-none relative flex h-full max-w-[569px] flex-col justify-end gap-sm">
           <h2 className={headlineClass}>
             Garden apps know a lot about plants. They rarely understand gardens.
           </h2>

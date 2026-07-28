@@ -33,6 +33,12 @@ export interface DitheredImageProps {
   weight?: number;
   hoverMode?: "reveal" | "organic" | "magnify" | "coarsen" | "spotlight";
   motion?: boolean;
+  /**
+   * When true, the Ken Burns drift only advances while the pointer is over the
+   * canvas and eases to a stop on leave. Independent of `motion` (the
+   * always-on drift). Ignored under prefers-reduced-motion.
+   */
+  motionOnHover?: boolean;
 }
 
 const HOVER_MODES = {
@@ -191,6 +197,7 @@ export function DitheredImage({
   weight = 0.5,
   hoverMode = "reveal",
   motion = true,
+  motionOnHover = false,
 }: DitheredImageProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -323,8 +330,14 @@ export function DitheredImage({
     };
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const still = reduced || !motion;
+    const alwaysMotion = motion && !reduced;
+    const hoverMotion = motionOnHover && !reduced;
+    // "still" = fully static: no drift loop and instant (non-eased) hover.
+    const still = !alwaysMotion && !hoverMotion;
     const start = performance.now();
+    // Drift clock for hover motion — advances only while hovered so the Ken
+    // Burns easing resumes from where it stopped rather than jumping.
+    let animTime = 0;
 
     let targetX = 0;
     let targetY = 0;
@@ -343,10 +356,12 @@ export function DitheredImage({
       targetY = canvas.height - (e.clientY - rect.top) * r;
       targetHover = 1;
       if (still) render(performance.now());
+      else if (hoverMotion) ensureLoop();
     };
     const onPointerLeave = () => {
       targetHover = 0;
       if (still) render(performance.now());
+      else if (hoverMotion) ensureLoop();
     };
     canvas.addEventListener("pointermove", onPointerMove);
     canvas.addEventListener("pointerleave", onPointerLeave);
@@ -368,6 +383,13 @@ export function DitheredImage({
         [smoothY, velY] = smoothDamp(smoothY, targetY, velY, smoothTime, dt);
       }
       smoothHover += (targetHover - smoothHover) * (still ? 1 : 0.12);
+      let timeValue = 0;
+      if (alwaysMotion) {
+        timeValue = (now - start) / 1000;
+      } else if (hoverMotion) {
+        animTime += dt * smoothHover;
+        timeValue = animTime;
+      }
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.uniform2f(u.resolution, canvas.width, canvas.height);
       gl.uniform2f(u.imageSize, imgW, imgH);
@@ -380,25 +402,41 @@ export function DitheredImage({
       gl.uniform1f(u.mode, modeRef.current);
       gl.uniform2f(u.velocity, velX / 60, velY / 60);
       gl.uniform1f(u.weight, weightRef.current);
-      gl.uniform1f(u.time, still ? 0 : (now - start) / 1000);
+      gl.uniform1f(u.time, timeValue);
       gl.uniform1f(u.corner, cornerCss * (window.devicePixelRatio || 1));
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
 
     let raf = 0;
+    let running = false;
     const loop = (now: number) => {
       render(now);
-      raf = requestAnimationFrame(loop);
+      if (alwaysMotion) {
+        raf = requestAnimationFrame(loop);
+      } else if (hoverMotion && (targetHover === 1 || smoothHover > 0.002)) {
+        raf = requestAnimationFrame(loop);
+      } else {
+        // Hover ended and the drift has eased to a stop — idle until next hover.
+        running = false;
+        raf = 0;
+      }
     };
-    if (still) {
-      render(performance.now());
-    } else {
+    function ensureLoop() {
+      if (running) return;
+      running = true;
+      lastMs = performance.now();
       raf = requestAnimationFrame(loop);
+    }
+    if (alwaysMotion) {
+      running = true;
+      raf = requestAnimationFrame(loop);
+    } else {
+      render(performance.now());
     }
 
     const ro = new ResizeObserver(() => {
       readCorner();
-      if (still) render(performance.now());
+      if (!running) render(performance.now());
     });
     ro.observe(canvas);
     if (loaded) render(performance.now());
@@ -418,7 +456,7 @@ export function DitheredImage({
       gl.deleteShader(vs);
       gl.deleteShader(fs);
     };
-  }, [src, motion]);
+  }, [src, motion, motionOnHover]);
 
   useEffect(() => {
     requestRenderRef.current?.();
