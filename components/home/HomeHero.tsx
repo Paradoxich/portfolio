@@ -12,8 +12,8 @@ export function HomeHero() {
         I design products.
       </h1>
       <p className="mt-lg max-w-[476px] type-body text-color-text-secondary">
-        Recently I&apos;ve been learning what happens when you stop handing them
-        over and start building them yourself.
+        I spent 9 years handing them over to engineers. Recently I&apos;ve been
+        learning what happens when you build them yourself.
       </p>
       <div className="mt-lg flex gap-lg">
         <Link href="/cv" className={heroLink}>

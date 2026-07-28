@@ -2,7 +2,7 @@ import { writingPosts } from "@/lib/writing";
 
 export function WritingSection() {
   return (
-    <section className="px-xl py-6xl md:px-section md:py-section">
+    <section className="px-xl py-6xl md:px-section md:py-[200px]">
       <div className="flex flex-col md:flex-row md:items-stretch">
         <div className="flex flex-col gap-md py-2xl md:min-h-[180px] md:flex-1 md:pr-2xl">
           <h2 className="text-xl font-medium leading-heading tracking-tight text-color-text-primary">
