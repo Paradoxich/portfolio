@@ -8,9 +8,8 @@ export function WritingSection() {
           <h2 className="text-xl font-medium leading-heading tracking-tight text-color-text-primary">
             Writing
           </h2>
-          <p className="type-body-sm leading-ui text-color-text-secondary md:max-w-[254px]">
-            Thoughts on product design, building software, and whatever
-            I&apos;m currently obsessed with. Published on{" "}
+          <p className="type-body leading-ui text-color-text-secondary md:max-w-[254px]">
+            Thoughts on building Santolina. Published on{" "}
             <a
               href="https://paradoxich.substack.com"
               target="_blank"

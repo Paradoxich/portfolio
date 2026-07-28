@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BackBar } from "@/components/layout/BackBar";
 import { PageShell } from "@/components/layout/PageShell";
+import { ExperienceList } from "@/components/cv/ExperienceList";
 import { cv } from "@/lib/cv";
 import styles from "./page.module.css";
 
@@ -17,9 +18,6 @@ const buttonSecondary =
 
 const pill =
   "inline-flex items-center px-sm py-xs rounded-sm bg-color-bg-label type-body-sm text-color-text-secondary";
-
-const linkedLabel =
-  "text-color-text-primary hover:underline underline-offset-2";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -94,55 +92,7 @@ export default function CvPage() {
         {/* Experience */}
         <section>
           <SectionLabel>Work Experience</SectionLabel>
-          <div className="stack-lg">
-            {cv.experience.map((job) => (
-              <div
-                key={job.company + job.period}
-                className="card-ghost grid grid-cols-1 md:grid-cols-[220px_1fr] gap-x-lg gap-y-3"
-              >
-                <div>
-                  <p className="type-body font-medium">
-                    {job.href ? (
-                      <Link href={job.href} className={linkedLabel}>
-                        {job.company}
-                      </Link>
-                    ) : (
-                      <span className="text-color-text-primary">{job.company}</span>
-                    )}
-                  </p>
-                  <p className="type-body-sm text-color-text-secondary">{job.role}</p>
-                  <p className={`type-body-sm text-color-text-tertiary ${styles.muted}`}>
-                    {job.period}
-                  </p>
-                </div>
-                <div className="stack-md">
-                  {job.summary?.split("\n\n").map((para, i) => (
-                    <p key={i} className="type-body text-color-text-secondary">
-                      {para}
-                    </p>
-                  ))}
-                  {job.bullets && (
-                    <ul className="stack-sm">
-                      {job.bullets.map((b) => (
-                        <li key={b.label} className="type-body text-color-text-secondary">
-                          {b.href ? (
-                            <Link href={b.href} className={`type-body-strong ${linkedLabel}`}>
-                              {b.label}
-                            </Link>
-                          ) : (
-                            <span className="type-body-strong text-color-text-primary">
-                              {b.label}
-                            </span>
-                          )}
-                          : {b.text}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
+          <ExperienceList items={cv.experience} />
         </section>
 
         {/* Selected work */}

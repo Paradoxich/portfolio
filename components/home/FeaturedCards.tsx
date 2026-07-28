@@ -3,10 +3,11 @@ import Link from "next/link";
 import styles from "./FeaturedCards.module.css";
 import { SantolinaCollage } from "./SantolinaCollage";
 import { DitheredImage } from "@/components/experiments/DitheredImage";
+import { ArrowRight } from "@/components/icons";
 
 const headlineClass =
   "text-lg font-medium leading-snug tracking-tight text-color-text-primary md:text-xl";
-const labelClass = "type-body text-color-text-secondary md:text-sm";
+const labelClass = "type-body text-color-text-secondary";
 
 // Project label with a right-arrow that eases in when the parent card (a
 // `group`) is hovered — a subtle "read the case study" affordance.
@@ -14,20 +15,10 @@ function CardLabel({ text }: { text: string }) {
   return (
     <p className={`${labelClass} flex items-center gap-xs`}>
       {text}
-      <svg
-        className="h-[1em] w-[1em] -translate-x-1 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100"
-        viewBox="0 0 16 16"
-        fill="none"
-        aria-hidden
-      >
-        <path
-          d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <ArrowRight
+        size={20}
+        className="-translate-x-1 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100"
+      />
     </p>
   );
 }
@@ -65,7 +56,7 @@ export function FeaturedCards() {
           <SantolinaCollage />
         </div>
         <div className={`${styles.overlayUp} pointer-events-none absolute inset-0`} aria-hidden />
-        <div className="pointer-events-none relative flex h-full max-w-[569px] flex-col justify-end gap-sm">
+        <div className="pointer-events-none relative flex h-full max-w-[569px] flex-col justify-end gap-lg">
           <h2 className={headlineClass}>
             Garden apps know a lot about plants. They rarely understand gardens.
           </h2>
@@ -129,7 +120,7 @@ export function FeaturedCards() {
             alt="Neptune MCP install card"
             width={332}
             height={340}
-            className="absolute right-0 top-1/2 hidden h-[90%] w-auto -translate-y-1/2 transition-transform duration-500 group-hover:-translate-x-1 md:block"
+            className="absolute right-0 top-1/2 hidden h-[90%] w-auto -translate-y-1/2 transition-transform duration-500 group-hover:scale-[1.04] md:block"
           />
           <div className={`${styles.overlayTinted} absolute inset-0`} aria-hidden />
           <div className="relative flex h-full max-w-[395px] flex-col justify-between">

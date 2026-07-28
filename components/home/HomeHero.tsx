@@ -7,7 +7,7 @@ export function HomeHero() {
   return (
     <section className="px-xl py-6xl md:px-section md:py-section">
       <h1 className="text-3xl font-medium leading-heading tracking-tight text-color-text-primary md:text-4xl">
-        I&apos;m Ana.
+        Hello, I&apos;m Ana.
         <br />
         I design products.
       </h1>
