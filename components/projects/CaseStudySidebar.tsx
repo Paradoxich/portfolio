@@ -25,7 +25,7 @@ export function CaseStudySidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="sticky top-0 hidden max-h-dvh w-[230px] shrink-0 flex-col self-start overflow-y-auto border-r border-color-border-inset bg-color-bg md:flex">
+    <aside className="sticky top-0 hidden h-dvh w-[230px] shrink-0 flex-col self-start overflow-y-auto border-r border-color-border-inset bg-color-bg md:flex">
       <nav className="flex flex-col gap-1 p-sm">
         <Link
           href="/"
