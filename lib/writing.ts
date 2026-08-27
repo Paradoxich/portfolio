@@ -10,18 +10,18 @@ export type WritingPost = {
 
 export const writingPosts: WritingPost[] = [
   {
+    title: "I outsourced the boring parts",
+    date: "Aug 17, 2026",
+    url: "https://paradoxich.substack.com/p/i-outsourced-the-boring-parts",
+  },
+  {
+    title: "The screen that had nothing left to do",
+    date: "Aug 13, 2026",
+    url: "https://paradoxich.substack.com/p/the-screen-that-had-nothing-left",
+  },
+  {
     title: "Finding Santolina's visual language",
     date: "Jul 22, 2026",
     url: "https://paradoxich.substack.com/p/finding-santolinas-visual-language",
-  },
-  {
-    title: "The database doesn't know what a garden looks like",
-    date: "Jul 13, 2026",
-    url: "https://paradoxich.substack.com/p/the-database-doesnt-know-what-a-garden",
-  },
-  {
-    title: "The plant database that fought back",
-    date: "Jul 10, 2026",
-    url: "https://paradoxich.substack.com/p/the-plant-database-that-fought-back",
   },
 ];
